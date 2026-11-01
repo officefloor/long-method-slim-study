@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "long-method-slim-study"
+version = "0.0.0"
+description = "The long methods of a random open-source sample, priced by SinewSlim and OfficeFloorSlim"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = ["open-source-repository-sampler==0.2.1"]
+
+[tool.setuptools]
+packages = ["long_method_slim_study"]

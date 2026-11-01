@@ -20,10 +20,22 @@ has been scanned. See [docs/ANALYSIS_PLAN.md](docs/ANALYSIS_PLAN.md).
 | Path | What it is |
 |---|---|
 | `docs/ANALYSIS_PLAN.md` | The questions, sample, instruments, measures and analysis, fixed before any repository is read |
+| `step1_setup.sh` … `step4_analyse.sh` | Every step, run by hand in order: set up, draw the sample, scan it, analyse |
+| `long_method_slim_study/pins.py` | Every value the plan fixes: seed, size, criteria, scope, versions |
+| `long_method_slim_study/scan.py` | The hook the sampler calls for each repository: OfficeFloorSlim's scan, kept raw |
+| `long_method_slim_study/analyse.py` | The measures and intervals, from the raw scans; it computes no cost |
 | `sample/` | The sampler's CSV and derivation (once drawn) |
-| `harness/` | The hook the sampler calls for each repository, and the analysis (to come) |
 | `results/` | The raw scans and the analysis (once run) |
 | `paper/` | The write-up (to come) |
+
+## Replicating
+
+```bash
+./step1_setup.sh     # .venv, the pinned sampler, the released OfficeFloorSlim (sha256-checked), tests
+./step2_sample.sh    # the sample, with the plan's seed; commit sample/
+./step3_run.sh       # each repository cloned at its commit and scanned; resumable
+./step4_analyse.sh   # results/analysis/analysis.json
+```
 
 ## Licence
 

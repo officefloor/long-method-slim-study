@@ -103,11 +103,15 @@ would say was chosen to favour function injection. C1 and C2 compare what both m
 
 ## 7. Order of work
 
-1. Settle every **[DECIDE]** and **[FILL]** and commit this file. This is registration.
-2. Draw the sample with the fixed seed and commit the sampler's CSV and derivation.
-3. Run: the sampler clones each usable repository at its pinned commit and calls
-   `officefloorslim scan`; the JSON for each is kept, raw.
-4. Analyse as section 6, and write up.
+Each step is a script, run by hand; the values it uses are in `long_method_slim_study/pins.py`.
+
+1. Settle every **[DECIDE]** and **[FILL]** here and in `pins.py`, set `pins.REGISTERED`, and
+   commit both. This is registration. `step1_setup.sh` then fetches the pinned release.
+2. `step2_sample.sh`: draw the sample with the fixed seed (it refuses another seed, or an
+   unregistered plan), and commit the sampler's CSV and derivation.
+3. `step3_run.sh`: the sampler clones each usable repository at its pinned commit and calls
+   `officefloorslim scan --no-growth`; the JSON for each is kept, raw.
+4. `step4_analyse.sh`: the measures and intervals of sections 5 and 6, then the write-up.
 
 ## 8. Threats
 
