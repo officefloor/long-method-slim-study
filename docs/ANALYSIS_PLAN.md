@@ -28,8 +28,8 @@ Reach and shape are what this study means by function injection being cheaper th
 The two total costs count different things and are never compared (section 5), except inside
 the combined split, which adds them to choose its plan (section 4).
 
-It is descriptive, with two confirmatory hypotheses (section 6, *Hypotheses*), each with how it
-will be read fixed here. It reports every figure it computes, whichever way it points.
+It is descriptive, with one confirmatory hypothesis, H1, and a second question, H2, estimated
+without a threshold (section 6, *Hypotheses*); how each is read is fixed here. It reports every figure it computes, whichever way it points.
 
 ## 2. What was known when this was written
 
@@ -167,9 +167,10 @@ pooled over the sample; the pooled, per-tier and per-repository figures are repo
   **refuted** if the whole interval is below 25%; **inconclusive** otherwise.
 - **H2 (improvement).** Where extraction alone would slim a method, the combined split chooses
   injection and costs less: K2's improved over the long methods SinewSlim slims.
-  **[DECIDE: a share to read it against, read as H1 is (supported, refuted, inconclusive); or none,
-  reporting it as an estimate only.]** OfficeFloor's own code gave 29% (section 2), seen before
-  this was set, so any share chosen now is chosen knowing it. Ties are never counted as
+  **No threshold (decided 1 November 2026): it is reported as an estimate with its interval.**
+  OfficeFloor's own code gave 29% (section 2) before this was set, so a share chosen now would be
+  chosen knowing it, and would test nothing. H1, whose quarter was fixed before any scan, is the
+  test of the expectation. Ties are never counted as
   improvements: the tie-break favours injection, and the tied count is reported beside H2.
 
 The injection split's figures (S2, S3) are reported beside the combined split's, so a reader

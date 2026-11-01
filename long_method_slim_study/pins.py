@@ -44,10 +44,10 @@ ONLY = [".java", ".yml", ".yaml", ".woof", ".officefloor"]
 H1_SHARE = 0.25
 H1_MINIMUM = 30
 # H2: of the long methods SinewSlim slims, the share where the combined split chooses injection and
-# its sum is strictly lower than SinewSlim's cost plus 1. DECIDE: a threshold to read it against,
-# or "none" to report it as an estimate only. OfficeFloor's own code gave 95 of 327 (29%), seen
-# before this was set (section 2).
-H2_SHARE = None
+# its sum is strictly lower than SinewSlim's cost plus 1. Decided 1 November 2026: "none", an
+# estimate with its interval and no threshold, since OfficeFloor's own code had already given 95
+# of 327 (29%) (section 2) and a threshold chosen knowing it would not test anything.
+H2_SHARE = "none"
 
 # Analysis (section 6).
 BOOTSTRAP_RESAMPLES = 10_000
