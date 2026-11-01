@@ -5,9 +5,10 @@
 #   ./step3_run.sh
 #
 # Verifies the sample against its derivation; then the sampler clones each usable repository
-# at its pinned commit (shallow, and only the files the scan reads: pins.ONLY), runs the hook (long_method_slim_study.scan: OfficeFloorSlim's
-# scan, raw JSON into results/scans/), and deletes the clone. The hook checks that the commit
-# scanned is the pinned one. Resumable: a re-run skips what the run log records as done.
+# at its pinned commit (shallow, and only the files the scan reads: pins.ONLY), runs the hook
+# (long_method_slim_study.scan: OfficeFloorSlim's scan, raw JSON into results/scans/), and
+# deletes the clone. The hook checks that the commit scanned is the pinned one. Resumable: a
+# re-run skips what the run log records as done.
 set -euo pipefail
 cd "$(dirname "$0")"
 export PYTHONUNBUFFERED=1
