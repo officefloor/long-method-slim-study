@@ -16,9 +16,10 @@ TIERS = ["high", "mid", "low"]
 MIN_FUNCTIONS = 50
 MIN_FILES_WITH_FUNCTIONS = 15
 EXCLUDE_OWNERS = ["officefloor", "sagenschneider"]
-# DECIDE: the date the code was written before (section 3, As of); the plan's recommendation.
-AS_OF = "2021-06-01"
-# FILL: the sampler's release with --as-of (proposed in its docs/proposals/as-of.md).
+# The date the code was written before (section 3, As of): decided 1 November 2026, six months
+# before 1 June 2021, itself before GitHub Copilot's technical preview (29 June 2021).
+AS_OF = "2020-12-01"
+# FILL: the sampler's release with --as-of (built at 25c4bf6 there, to be released).
 SAMPLER_VERSION = None
 
 # Instruments (section 4). FILL: OfficeFloorSlim's release, and its jar's sha256 from that
