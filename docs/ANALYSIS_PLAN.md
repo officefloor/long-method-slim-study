@@ -200,6 +200,10 @@ Each step is a script, run by hand; the values it uses are in `long_method_slim_
 - **The combined split's tie-break favours injection.** On a tie on the sum, the fewer pieces
   win, so injection is chosen over the one-function plan. Ties are therefore counted apart from
   improvements (K2), and every plan a tie decided is flagged in the raw scans (`tie_by_pieces`).
+- **The injection split charges one flow too many** for an early `return` in a method's last
+  function (it goes where the end goes), as released in `officefloorslim-split/1` and left so
+  (decided 1 November 2026). It can only overstate the injection split's costs, never flatter it;
+  the combined split does not charge it for the method as one function.
 - **Adding the two costs.** The combined split adds the injection and extraction totals to choose
   its plan, a weight of 1 to 1: both count values crossing a boundary and 1 per part, but a
   different weight could choose differently. The two parts are reported beside the sum.
