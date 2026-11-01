@@ -10,7 +10,7 @@ from long_method_slim_study import analyse, scan
 
 
 def method(status, cost=None, width=None, pieces=None, largest=None, feasible=True, seam=0, functions=2,
-           largest_function=20, reason=None, category=None):
+           largest_function=20, reason=None, category=None, combined=None, combined_category=None):
     s = {"status": status, "cost": cost}
     if cost is not None:
         s |= {"width": width, "pieces": pieces, "largest_piece": largest}
@@ -19,8 +19,13 @@ def method(status, cost=None, width=None, pieces=None, largest=None, feasible=Tr
         o |= {"worst_seam": seam, "functions": [{}] * functions, "largest_function": largest_function}
     else:
         o |= {"reason": reason}
+    if combined is None:  # by default: the method as one function, SinewSlim's cost plus 1
+        combined = {"feasible": True, "extraction_only": True, "sum": (cost or 0) + 1} if cost is not None \
+            else {"feasible": feasible, "extraction_only": False, "sum": 9} if feasible else {"feasible": False, "reason": reason}
+    cc = combined_category if combined_category is not None else category
     return {"path": "A.java", "type": "A", "signature": "f()", "line": 1, "sinewslim": s, "officefloor": o,
-            "category": None if category is None else {"number": category}}
+            "combined": combined, "category": None if category is None else {"number": category},
+            "combined_category": None if cc is None else {"number": cc}}
 
 
 def scan_doc(methods, readings=None):
@@ -90,6 +95,36 @@ class AnalyseTest(unittest.TestCase):
         self.assertEqual({"usable": 2, "scanned": 1, "not_scanned": ["b/two"], "excluded": 1, "error": 0}, r["sample"])
         self.assertEqual({"high": 10.0, "low": 100.0}, r["weights"])
         self.assertEqual(1.0, r["headline"]["category3_over_S1"]["pooled"])
+
+
+    def test_the_combined_split_counts(self):
+        r = analyse.repository(scan_doc([
+            # SinewSlim slims all three: injection cheaper, a tie, and extraction only
+            method("slimmable", cost=4, width=2, pieces=1, largest=20,
+                   combined={"feasible": True, "extraction_only": False, "sum": 3}),
+            method("slimmable", cost=4, width=2, pieces=1, largest=20,
+                   combined={"feasible": True, "extraction_only": False, "sum": 5}),
+            method("slimmable", cost=4, width=2, pieces=1, largest=20),
+            # stuck: injection's category 4 is the combined split's 3
+            method("not_slimmable", feasible=False, reason="loop", category=4, combined_category=3,
+                   combined={"feasible": True, "extraction_only": False, "sum": 7}),
+            method("not_slimmable", feasible=False, reason="loop", category=4,
+                   combined={"feasible": False, "reason": "loop"}),
+        ]))
+        self.assertEqual((3, 1, 1), (r["slimmable"], r["improved"], r["tied"]))
+        self.assertEqual({"0": 1, "2": 1}, r["savings"])  # 4 + 1 - 3; 4 + 1 - 5 is no saving
+        self.assertEqual((3, 1), (r["injection_used"], r["extraction_only"]))
+        self.assertEqual((2, 0, 1), (r["stuck"], r["stuck_planned"], r["stuck_combined"]))
+        self.assertEqual({"3": 1, "4": 1}, r["combined_category"])
+        self.assertEqual({"loop": 1}, r["reasons_combined"])
+
+    def test_a_hypothesis_is_read_from_its_interval(self):
+        self.assertEqual("supported", analyse.reading([0.26, 0.4], 0.25, 30, 30))
+        self.assertEqual("inconclusive", analyse.reading([0.26, 0.4], 0.25, 29, 30))  # too few to read
+        self.assertEqual("inconclusive", analyse.reading([0.2, 0.3], 0.25))
+        self.assertEqual("refuted", analyse.reading([0.05, 0.2], 0.25, 100, 30))
+        self.assertEqual("estimate", analyse.reading([0.05, 0.2], None))
+        self.assertEqual("estimate", analyse.reading([0.05, 0.2], "none"))
 
 
 class HookTest(unittest.TestCase):

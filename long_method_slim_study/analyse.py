@@ -26,9 +26,28 @@ def repository(scan: dict) -> dict:
     """One repository's counts, from its scan."""
     status, category, reasons_long, reasons_stuck = Counter(), Counter(), Counter(), Counter()
     slim_costs, pairs, worse = [], [], []
-    stuck = stuck_planned = 0
+    combined_category, reasons_combined, savings = Counter(), Counter(), Counter()
+    stuck = stuck_planned = stuck_combined = 0
+    slimmable = improved = tied = injection_used = extraction_only = 0
     for m in scan["methods"]:
-        s, o = m["sinewslim"], m["officefloor"]
+        s, o, c = m["sinewslim"], m["officefloor"], m["combined"]
+        if c["feasible"]:
+            if c["extraction_only"]:
+                extraction_only += 1
+            else:
+                injection_used += 1
+        else:
+            reasons_combined[c["reason"]] += 1
+        if s["status"] in SLIMMABLE and s.get("cost") is not None:
+            # H2: where SinewSlim slims it, does the combined split choose injection and cost less?
+            slimmable += 1
+            if c["feasible"] and not c["extraction_only"]:
+                saving = s["cost"] + 1 - c["sum"]
+                savings[saving] += 1
+                if saving > 0:
+                    improved += 1
+                elif saving == 0:
+                    tied += 1
         status[s["status"]] += 1
         if s["status"] in SLIMMABLE and s.get("cost") is not None:
             slim_costs.append(s["cost"])
@@ -37,6 +56,8 @@ def repository(scan: dict) -> dict:
             stuck += 1
             stuck_planned += 1 if o["feasible"] else 0
             category[str(m["category"]["number"])] += 1
+            combined_category[str(m["combined_category"]["number"])] += 1
+            stuck_combined += 1 if c["feasible"] else 0
         if not o["feasible"]:
             reasons_long[o["reason"]] += 1
             if is_stuck:
@@ -52,7 +73,11 @@ def repository(scan: dict) -> dict:
             "readings": dict(scan["methods_by_reading"]), "status": dict(status), "slim_costs": slim_costs,
             "stuck": stuck, "stuck_planned": stuck_planned, "category": dict(category),
             "reasons_long": dict(reasons_long), "reasons_stuck": dict(reasons_stuck), "pairs": pairs,
-            "worse": worse, "unparsed": len(scan["unparsed"])}
+            "worse": worse, "unparsed": len(scan["unparsed"]),
+            "stuck_combined": stuck_combined, "combined_category": dict(combined_category),
+            "reasons_combined": dict(reasons_combined), "slimmable": slimmable, "improved": improved, "tied": tied,
+            "savings": {str(k): v for k, v in sorted(savings.items())}, "injection_used": injection_used,
+            "extraction_only": extraction_only}
 
 
 def ratio(rows: list[dict], num: str, den: str, weights: dict[str, float] | None = None) -> float | None:
@@ -66,6 +91,8 @@ def ratio(rows: list[dict], num: str, den: str, weights: dict[str, float] | None
 def value(r: dict, key: str) -> float:
     if key.startswith("category."):
         return r["category"].get(key.split(".", 1)[1], 0)
+    if key.startswith("combined_category."):
+        return r["combined_category"].get(key.split(".", 1)[1], 0)
     return r[key]
 
 
@@ -118,6 +145,12 @@ def pooled(rows: list[dict]) -> dict:
                                        "quartiles": statistics.quantiles(costs, n=4) if len(costs) > 1 else costs,
                                        "max": costs[-1]},
         "S1": total("stuck"), "S2": total("stuck_planned"), "S3": merged("category"),
+        "S2c": total("stuck_combined"), "S3c": merged("combined_category"),
+        "K1": {"long_with_plan": total("injection_used") + total("extraction_only"),
+               "injection_used": total("injection_used"), "extraction_only": total("extraction_only"),
+               "without_plan": merged("reasons_combined")},
+        "K2": {"slimmable": total("slimmable"), "improved": total("improved"), "tied": total("tied"),
+               "saving": merged("savings")},
         "C1": summarise_pairs(pairs, "seam"),
         "C2": {"parts": summarise_pairs(pairs, "parts"), "largest": summarise_pairs(pairs, "largest")},
         "F1": {"long_without_plan": merged("reasons_long"), "stuck_without_plan": merged("reasons_stuck")},
@@ -126,25 +159,53 @@ def pooled(rows: list[dict]) -> dict:
     }
 
 
-def per_repository(rows: list[dict], num: str) -> dict:
-    """P1: each repository's share, over those with at least one stuck method."""
-    shares = sorted(value(r, num) / r["stuck"] for r in rows if r["stuck"])
+def per_repository(rows: list[dict], num: str, den: str = "stuck") -> dict:
+    """P1: each repository's share, over those with at least one method in the denominator."""
+    shares = sorted(value(r, num) / r[den] for r in rows if r[den])
     return {"repositories": len(shares), "median": round(statistics.median(shares), 4) if shares else None}
 
 
+def figure(rows: list[dict], weights: dict[str, float], num: str, den: str) -> dict:
+    """One headline figure: pooled and population, each with its interval, by tier, per repository."""
+    return {
+        "count": sum(value(r, num) for r in rows), "of": sum(r[den] for r in rows),
+        "pooled": round(ratio(rows, num, den) or 0, 4),
+        "interval": bootstrap(rows, num, den, None, pins.BOOTSTRAP_RESAMPLES, pins.BOOTSTRAP_SEED, pins.INTERVAL),
+        "population": round(ratio(rows, num, den, weights) or 0, 4),
+        "population_interval": bootstrap(rows, num, den, weights, pins.BOOTSTRAP_RESAMPLES, pins.BOOTSTRAP_SEED,
+                                         pins.INTERVAL),
+        "by_tier": {t: round(ratio([r for r in rows if r["tier"] == t], num, den) or 0, 4)
+                    for t in sorted({r["tier"] for r in rows})},
+        "per_repository": per_repository(rows, num, den),
+    }
+
+
+def reading(interval: list[float] | None, threshold: float | None, count: int = 0, minimum: int = 0) -> str:
+    """A hypothesis read from its population interval (section 6, Hypotheses): supported when the
+    whole interval is at or above the threshold and the count reaches the minimum; refuted when the
+    whole interval is below it; otherwise inconclusive. Without a threshold, an estimate only."""
+    if threshold is None or threshold == "none":
+        return "estimate"
+    if interval is None:
+        return "inconclusive"
+    if interval[0] >= threshold and count >= minimum:
+        return "supported"
+    if interval[1] < threshold:
+        return "refuted"
+    return "inconclusive"
+
+
 def headline(rows: list[dict], weights: dict[str, float]) -> dict:
-    out = {}
-    for name, num in (("S2_over_S1", "stuck_planned"), ("category3_over_S1", "category.3")):
-        out[name] = {
-            "pooled": round(ratio(rows, num, "stuck") or 0, 4),
-            "interval": bootstrap(rows, num, "stuck", None, pins.BOOTSTRAP_RESAMPLES, pins.BOOTSTRAP_SEED, pins.INTERVAL),
-            "population": round(ratio(rows, num, "stuck", weights) or 0, 4),
-            "population_interval": bootstrap(rows, num, "stuck", weights, pins.BOOTSTRAP_RESAMPLES, pins.BOOTSTRAP_SEED,
-                                             pins.INTERVAL),
-            "by_tier": {t: round(ratio([r for r in rows if r["tier"] == t], num, "stuck") or 0, 4)
-                        for t in sorted({r["tier"] for r in rows})},
-            "per_repository": per_repository(rows, num),
-        }
+    out = {name: figure(rows, weights, num, "stuck")
+           for name, num in (("S2_over_S1", "stuck_planned"), ("category3_over_S1", "category.3"),
+                             ("S2c_over_S1", "stuck_combined"), ("category3c_over_S1", "combined_category.3"))}
+    out["improved_over_slimmable"] = figure(rows, weights, "improved", "slimmable")
+    out["tied_over_slimmable"] = figure(rows, weights, "tied", "slimmable")
+    h1, h2 = out["category3c_over_S1"], out["improved_over_slimmable"]
+    out["H1"] = {"reading": reading(h1["population_interval"], pins.H1_SHARE, h1["count"], pins.H1_MINIMUM),
+                 "share": pins.H1_SHARE, "minimum": pins.H1_MINIMUM, "figure": "category3c_over_S1"}
+    out["H2"] = {"reading": reading(h2["population_interval"], pins.H2_SHARE), "share": pins.H2_SHARE,
+                 "figure": "improved_over_slimmable"}
     return out
 
 
@@ -182,6 +243,7 @@ def analyse(scans_dir: str, sample_csv: str, derivation: dict) -> dict:
         "by_tier": {t: pooled([r for r in rows if r["tier"] == t]) for t in sorted({r["tier"] for r in rows})},
         "officefloor_worst_seam_larger": [w | {"repository": r["full_name"]} for r in rows for w in r["worse"]],
         "per_repository": [{k: v for k, v in r.items() if k not in ("pairs", "worse", "slim_costs")} for r in rows],
+        "combined_reading": "officefloorslim-split/2",
     }
 
 
