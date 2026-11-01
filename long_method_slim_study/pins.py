@@ -8,8 +8,7 @@ refuses to draw the sample before then.
 # The plan's registration (section 7, step 1): set True in the commit that registers it.
 REGISTERED = False
 
-# Sample (section 3). The seed decided 1 November 2026. DECIDE: the size (the plan's
-# recommendation).
+# Sample (section 3): the seed and the size, decided 1 November 2026.
 SEED = 20261101
 TARGET = 580
 LANGS = ["java"]

@@ -55,10 +55,10 @@ way it points.
   (over 5,000 stars), mid (1,000 to 5,000) and low (200 to 999).
 - **Criteria** (as `seed3`'s): at least 50 functions, in at least 15 files; repositories owned by
   `officefloor` or `sagenschneider` excluded.
-- **Size.** **[DECIDE]** 580 usable repositories, as `seed3`. Recommended: the same. Before the
-  as-of date GitHub lists 546 high-tier, 2,539 mid-tier and 8,818 low-tier Java repositories
-  (1 November 2026); tiers are drawn equally, so 580 is about 193 usable a tier, well within
-  each, while 1,160 would take most of the high tier.
+- **Size: 580 usable repositories** (decided 1 November 2026), as `seed3`. Before the as-of
+  date GitHub lists 546 high-tier, 2,539 mid-tier and 8,818 low-tier Java repositories (1
+  November 2026); tiers are drawn equally, so 580 is about 193 usable a tier, well within each,
+  while 1,160 would take most of the high tier for intervals only about 30% narrower.
 - **Seed: `20261101`** (decided 1 November 2026): a new seed, not 3, so the sample is one
   nobody has looked at. The first sample drawn with it is used.
 - **Tiers** are drawn equally, so population estimates weight each stratum by population over
