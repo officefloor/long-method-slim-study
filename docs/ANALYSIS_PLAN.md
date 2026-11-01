@@ -45,13 +45,12 @@ way it points.
 
 - **Tool.** `open-source-repository-sampler` **[FILL: the released version with `--as-of`]**,
   which draws a seeded, stratified simple random sample of GitHub repositories and pins each to
-  a commit. The as-of option is proposed, not yet built (the sampler's
-  `docs/proposals/as-of.md`).
-- **As of.** **[DECIDE]** the date before which the code was written. Recommended: **1 June
-  2021**, before GitHub Copilot's technical preview opened (29 June 2021). The latest
-  defensible date is 30 November 2022, when ChatGPT was released and AI-written code entered
-  general use. Every repository was created before the date, is pinned to the newest commit on
-  its default branch's first-parent history before it, and is judged by the criteria there.
+  a commit. Its `--as-of` option is built (25c4bf6 there) and to be released.
+- **As of: 1 December 2020** (decided 1 November 2026). GitHub Copilot's technical preview
+  opened on 29 June 2021; 1 June 2021 is before it, and this date is six months before that
+  again, so that no code in the sample was written with AI code generation. Every repository
+  was created before the date, is pinned to the newest commit on its default branch's
+  first-parent history committed before it, and is judged by the criteria there.
 - **Frame.** Java repositories created before the as-of date, in three popularity tiers: high
   (over 5,000 stars), mid (1,000 to 5,000) and low (200 to 999).
 - **Criteria** (as `seed3`'s): at least 50 functions, in at least 15 files; repositories owned by
@@ -151,5 +150,5 @@ Each step is a script, run by hand; the values it uses are in `long_method_slim_
   where they are named so.
 - **The size criterion is counted by Lizard** (1.23.0, as the sampler pins it), which does not
   read Java records: a repository near the criterion that uses them could be undercounted and
-  excluded. Records arrived in Java 16 (March 2021) and were rare before 2022, so before the
-  recommended date this is close to moot; with a later date it is a threat to state.
+  excluded. Records arrived as a final feature in Java 16 (March 2021), after the as-of date
+  (only as a preview in Java 14 and 15), so this is close to moot.
