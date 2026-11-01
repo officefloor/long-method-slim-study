@@ -6,7 +6,7 @@ refuses to draw the sample before then.
 """
 
 # The plan's registration (section 7, step 1): set True in the commit that registers it.
-REGISTERED = False
+REGISTERED = True
 
 # Sample (section 3): the seed and the size, decided 1 November 2026.
 SEED = 20261101
