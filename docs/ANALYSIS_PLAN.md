@@ -43,9 +43,9 @@ way it points.
 
 ## 3. Sample
 
-- **Tool.** `open-source-repository-sampler` **[FILL: the released version with `--as-of`]**,
-  which draws a seeded, stratified simple random sample of GitHub repositories and pins each to
-  a commit. Its `--as-of` option is built (25c4bf6 there) and to be released.
+- **Tool.** `open-source-repository-sampler` **0.3.0** (25c4bf6, from PyPI), which draws a
+  seeded, stratified simple random sample of GitHub repositories and pins each to a commit,
+  here as of the date below (`--as-of`).
 - **As of: 1 December 2020** (decided 1 November 2026). GitHub Copilot's technical preview
   opened on 29 June 2021; 1 June 2021 is before it, and this date is six months before that
   again, so that no code in the sample was written with AI code generation. Every repository
