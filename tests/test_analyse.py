@@ -54,6 +54,15 @@ class AnalyseTest(unittest.TestCase):
         # the low tier weighs 9 to the high tier's 1: (1*1 + 9*3) / (1*4 + 9*6)
         self.assertAlmostEqual(28 / 58, analyse.ratio(rows, "category.3", "stuck", {"high": 1.0, "low": 9.0}))
 
+    def test_per_repository_reading(self):
+        rows = [{"tier": "t", "stuck": 100, "stuck_planned": 90, "category": {}},
+                {"tier": "t", "stuck": 2, "stuck_planned": 0, "category": {}},
+                {"tier": "t", "stuck": 4, "stuck_planned": 1, "category": {}},
+                {"tier": "t", "stuck": 0, "stuck_planned": 0, "category": {}}]
+        # pooled, the large repository carries it; the median of the three with stuck methods does not
+        self.assertAlmostEqual(91 / 106, analyse.ratio(rows, "stuck_planned", "stuck"))
+        self.assertEqual({"repositories": 3, "median": 0.25}, analyse.per_repository(rows, "stuck_planned"))
+
     def test_bootstrap_is_seeded_and_brackets_the_estimate(self):
         rows = [{"tier": "t", "stuck": 10, "stuck_planned": k, "category": {}} for k in (2, 4, 6, 8)]
         a = analyse.bootstrap(rows, "stuck_planned", "stuck", None, 2000, 7, 0.95)

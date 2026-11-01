@@ -126,6 +126,12 @@ def pooled(rows: list[dict]) -> dict:
     }
 
 
+def per_repository(rows: list[dict], num: str) -> dict:
+    """P1: each repository's share, over those with at least one stuck method."""
+    shares = sorted(value(r, num) / r["stuck"] for r in rows if r["stuck"])
+    return {"repositories": len(shares), "median": round(statistics.median(shares), 4) if shares else None}
+
+
 def headline(rows: list[dict], weights: dict[str, float]) -> dict:
     out = {}
     for name, num in (("S2_over_S1", "stuck_planned"), ("category3_over_S1", "category.3")):
@@ -137,6 +143,7 @@ def headline(rows: list[dict], weights: dict[str, float]) -> dict:
                                              pins.INTERVAL),
             "by_tier": {t: round(ratio([r for r in rows if r["tier"] == t], num, "stuck") or 0, 4)
                         for t in sorted({r["tier"] for r in rows})},
+            "per_repository": per_repository(rows, num),
         }
     return out
 

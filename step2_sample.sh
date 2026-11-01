@@ -4,8 +4,9 @@
 #
 #   ./step2_sample.sh [any other `open-source-repository-sampler sample` flag]
 #
-# Draws Java across the sampler's three tiers with the plan's seed, criteria and size, the
-# author's own repositories excluded, into sample/. The seed is fixed by the plan: this refuses
+# Draws Java across the sampler's three tiers with the plan's seed, criteria, size and as-of
+# date (each repository as it stood before it), the author's own repositories excluded, into
+# sample/. The seed is fixed by the plan: this refuses
 # --seed, and refuses to draw before the plan is registered (pins.REGISTERED). Commit sample/
 # after this step. Interrupted? Re-run the same command to resume the draw.
 set -euo pipefail
@@ -24,10 +25,10 @@ for a in "$@"; do
   case "$a" in --seed|--seed=*) echo "ERROR: the seed is fixed by the plan ($(pin SEED))" >&2; exit 1 ;; esac
 done
 
-echo "=== STEP 2: draw Java, seed $(pin SEED), target $(pin TARGET) usable -> sample/ ==="
+echo "=== STEP 2: draw Java as of $(pin AS_OF), seed $(pin SEED), target $(pin TARGET) usable -> sample/ ==="
 "$SAMPLER" sample --langs "$(pin LANGS)" --tiers "$(pin TIERS)" --target "$(pin TARGET)" --seed "$(pin SEED)" \
     --min-functions "$(pin MIN_FUNCTIONS)" --min-files-with-functions "$(pin MIN_FILES_WITH_FUNCTIONS)" \
-    --exclude-owners "$(pin EXCLUDE_OWNERS)" --out-dir sample "$@"
+    --exclude-owners "$(pin EXCLUDE_OWNERS)" --as-of "$(pin AS_OF)" --out-dir sample "$@"
 
 cat <<'NEXT'
 

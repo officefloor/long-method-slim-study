@@ -16,7 +16,10 @@ TIERS = ["high", "mid", "low"]
 MIN_FUNCTIONS = 50
 MIN_FILES_WITH_FUNCTIONS = 15
 EXCLUDE_OWNERS = ["officefloor", "sagenschneider"]
-SAMPLER_VERSION = "0.2.1"
+# DECIDE: the date the code was written before (section 3, As of); the plan's recommendation.
+AS_OF = "2021-06-01"
+# FILL: the sampler's release with --as-of (proposed in its docs/proposals/as-of.md).
+SAMPLER_VERSION = None
 
 # Instruments (section 4). FILL: OfficeFloorSlim's release, and its jar's sha256 from that
 # GitHub Release, once both are published.
@@ -43,6 +46,8 @@ INTERVAL = 0.95
 def unsettled() -> list[str]:
     """What is still to fill before the instruments can be fetched."""
     out = []
+    if SAMPLER_VERSION is None:
+        out.append("SAMPLER_VERSION")
     if OFFICEFLOORSLIM_VERSION is None:
         out.append("OFFICEFLOORSLIM_VERSION")
     if OFFICEFLOORSLIM_JAR_SHA256 is None:

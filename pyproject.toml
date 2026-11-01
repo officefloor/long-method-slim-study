@@ -8,7 +8,8 @@ version = "0.0.0"
 description = "The long methods of a random open-source sample, priced by SinewSlim and OfficeFloorSlim"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
-dependencies = ["open-source-repository-sampler==0.2.1"]
+# the sampler is installed by setup.sh at pins.SAMPLER_VERSION, the one place it is pinned
+dependencies = []
 
 [tool.setuptools]
 packages = ["long_method_slim_study"]

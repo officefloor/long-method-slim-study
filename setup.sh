@@ -11,15 +11,17 @@ cd "$(dirname "$0")"
 python3 -m venv .venv
 .venv/bin/pip install --quiet --upgrade pip
 .venv/bin/pip install --quiet -e .
-echo "sampler: $(.venv/bin/open-source-repository-sampler --version 2>&1 | head -1)"
 
 PY=".venv/bin/python"
 missing="$("$PY" -c 'from long_method_slim_study import pins; print(" ".join(pins.unsettled()))')"
 if [ -n "$missing" ]; then
   echo "ERROR: not pinned yet in long_method_slim_study/pins.py: $missing" >&2
-  echo "       (the released OfficeFloorSlim the study calls; docs/ANALYSIS_PLAN.md, section 4)" >&2
+  echo "       (the released sampler and OfficeFloorSlim the study uses; docs/ANALYSIS_PLAN.md, 3 and 4)" >&2
   exit 1
 fi
+SAMPLER_VERSION="$("$PY" -c 'from long_method_slim_study import pins; print(pins.SAMPLER_VERSION)')"
+.venv/bin/pip install --quiet "open-source-repository-sampler==$SAMPLER_VERSION"
+echo "sampler: $(.venv/bin/open-source-repository-sampler --version 2>&1 | head -1)"
 VERSION="$("$PY" -c 'from long_method_slim_study import pins; print(pins.OFFICEFLOORSLIM_VERSION)')"
 SHA="$("$PY" -c 'from long_method_slim_study import pins; print(pins.OFFICEFLOORSLIM_JAR_SHA256)')"
 mkdir -p lib
