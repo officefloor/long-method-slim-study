@@ -22,10 +22,10 @@ AS_OF = "2020-12-01"
 # The sampler's release with --as-of (v0.3.0, 25c4bf6, on PyPI 1 November 2026).
 SAMPLER_VERSION = "0.3.0"
 
-# Instruments (section 4). FILL: OfficeFloorSlim's release, and its jar's sha256 from that
-# GitHub Release, once both are published.
-OFFICEFLOORSLIM_VERSION = None
-OFFICEFLOORSLIM_JAR_SHA256 = None
+# Instruments (section 4): OfficeFloorSlim 0.2.1 (released 1 November 2026, built on SinewSlim
+# 0.2.0 from Maven Central), and its jar's sha256 from that GitHub Release.
+OFFICEFLOORSLIM_VERSION = "0.2.1"
+OFFICEFLOORSLIM_JAR_SHA256 = "80b293a6aaeafd2a0cd138360554c5371e62a6ce6b80c47d9a8ce5d10b67d4e4"
 
 # Scope (section 4): production Java, no tests, decided 1 November 2026 (OfficeFloorSlim's
 # defaults, plus test directories outside Maven's layout). The configuration files are read only

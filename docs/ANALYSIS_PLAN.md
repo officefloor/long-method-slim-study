@@ -68,11 +68,11 @@ way it points.
 
 Every cost comes from the released products. This repository computes none.
 
-- **OfficeFloorSlim** **[FILL: released version]**, its command line `officefloorslim scan
+- **OfficeFloorSlim 0.2.1**, its command line `officefloorslim scan
   --format json` (schema `officefloorslim-scan/2`), run once per repository at its pinned
   commit. It reports, for every long method, both columns:
   - **SinewSlim's assessment**, under SinewSlim's defaults, from the SinewSlim libraries it is
-    built on (**[FILL: SinewSlim released version]**): trigger 26, target 25, at most 5
+    built on (**SinewSlim 0.2.0**, from Maven Central): trigger 26, target 25, at most 5
     parameters and 1 return per piece, records offered, no framework reading;
   - **the OfficeFloor split**, `officefloorslim-split/1`: every line in a function, none over
     25 code lines; its cost the values carried between functions, plus 1 per function and per
