@@ -8,7 +8,8 @@ refuses to draw the sample before then.
 # The plan's registration (section 7, step 1): set True in the commit that registers it.
 REGISTERED = False
 
-# Sample (section 3). DECIDE: the seed and the size; these are the plan's recommendations.
+# Sample (section 3). The seed decided 1 November 2026. DECIDE: the size (the plan's
+# recommendation).
 SEED = 20261101
 TARGET = 580
 LANGS = ["java"]
@@ -27,9 +28,9 @@ SAMPLER_VERSION = "0.3.0"
 OFFICEFLOORSLIM_VERSION = None
 OFFICEFLOORSLIM_JAR_SHA256 = None
 
-# Scope (section 4). DECIDE: production Java only; these are the plan's recommendations
-# (OfficeFloorSlim's defaults, plus test directories outside Maven's layout). The configuration
-# files are read only for the classification.
+# Scope (section 4): production Java, no tests, decided 1 November 2026 (OfficeFloorSlim's
+# defaults, plus test directories outside Maven's layout). The configuration files are read only
+# for the classification.
 INCLUDE = ["**/*.java", "**/*.yml", "**/*.yaml", "**/*.woof", "**/*.officefloor"]
 EXCLUDE = ["**/src/test/**", "**/src/it/**", "**/build/**", "**/target/**", "**/generated/**",
            "**/node_modules/**", "**/test/**", "**/tests/**"]

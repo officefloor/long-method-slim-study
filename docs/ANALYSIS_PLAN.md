@@ -55,9 +55,12 @@ way it points.
   (over 5,000 stars), mid (1,000 to 5,000) and low (200 to 999).
 - **Criteria** (as `seed3`'s): at least 50 functions, in at least 15 files; repositories owned by
   `officefloor` or `sagenschneider` excluded.
-- **Size.** **[DECIDE]** 580 usable repositories, as `seed3`. Recommended: the same.
-- **Seed.** **[DECIDE]** a new seed, not 3, so the sample is one nobody has looked at.
-  Recommended: `20261101`. It is fixed here, and the first sample drawn with it is used.
+- **Size.** **[DECIDE]** 580 usable repositories, as `seed3`. Recommended: the same. Before the
+  as-of date GitHub lists 546 high-tier, 2,539 mid-tier and 8,818 low-tier Java repositories
+  (1 November 2026); tiers are drawn equally, so 580 is about 193 usable a tier, well within
+  each, while 1,160 would take most of the high tier.
+- **Seed: `20261101`** (decided 1 November 2026): a new seed, not 3, so the sample is one
+  nobody has looked at. The first sample drawn with it is used.
 - **Tiers** are drawn equally, so population estimates weight each stratum by population over
   usable, as the sampler's derivation gives them; between-tier comparisons need no weights.
 
@@ -76,10 +79,10 @@ Every cost comes from the released products. This repository computes none.
     flow; loops and lambda bodies never cut; at most 5 carried values per function. The cost
     model and its limits were decided before this plan (OfficeFloorSlim's `DESIGN.md`, *The
     OfficeFloor split*).
-- **Scope.** **[DECIDE]** production Java only. Recommended: OfficeFloorSlim's defaults (every
-  `.java`, leaving out `src/test`, `src/it`, `build`, `target`, `generated` and `node_modules`),
-  plus `**/test/**` and `**/tests/**`, since open-source projects do not all follow Maven's
-  layout.
+- **Scope: production Java, no tests** (decided 1 November 2026): every `.java`, leaving out
+  `src/test`, `src/it`, `build`, `target`, `generated` and `node_modules` (OfficeFloorSlim's
+  defaults), and `**/test/**` and `**/tests/**`, since open-source projects do not all follow
+  Maven's layout.
 - **Growth** is not measured: it needs each repository's history, and the questions do not.
 - **What is downloaded:** each repository at its pinned commit, shallow, and only its `.java`,
   `.yml`, `.yaml`, `.woof` and `.officefloor` files (the sampler's `--only`): the files the scan reads.
