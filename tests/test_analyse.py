@@ -91,6 +91,11 @@ class HookTest(unittest.TestCase):
         self.assertEqual("json", cmd[cmd.index("--format") + 1])
         self.assertIn("**/tests/**", cmd)
 
+    def test_the_clone_holds_every_file_the_scan_reads(self):
+        from long_method_slim_study import pins
+        for glob in pins.INCLUDE:
+            self.assertIn(glob.rsplit("*", 1)[-1], pins.ONLY, glob)
+
     def test_names_never_nest(self):
         self.assertTrue(scan.out_path("out", "owner/name").endswith("owner__name.json"))
 

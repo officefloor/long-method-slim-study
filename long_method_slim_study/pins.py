@@ -30,6 +30,10 @@ INCLUDE = ["**/*.java", "**/*.yml", "**/*.yaml", "**/*.woof", "**/*.officefloor"
 EXCLUDE = ["**/src/test/**", "**/src/it/**", "**/build/**", "**/target/**", "**/generated/**",
            "**/node_modules/**", "**/test/**", "**/tests/**"]
 
+# What each clone downloads (the sampler's `run --only`, a sparse checkout): only the files the
+# scan reads. The rest of each repository is never fetched.
+ONLY = [".java", ".yml", ".yaml", ".woof", ".officefloor"]
+
 # Analysis (section 6).
 BOOTSTRAP_RESAMPLES = 10_000
 BOOTSTRAP_SEED = 20261101

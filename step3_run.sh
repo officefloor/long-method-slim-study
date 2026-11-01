@@ -5,7 +5,7 @@
 #   ./step3_run.sh
 #
 # Verifies the sample against its derivation; then the sampler clones each usable repository
-# at its pinned commit (shallow), runs the hook (long_method_slim_study.scan: OfficeFloorSlim's
+# at its pinned commit (shallow, and only the files the scan reads: pins.ONLY), runs the hook (long_method_slim_study.scan: OfficeFloorSlim's
 # scan, raw JSON into results/scans/), and deletes the clone. The hook checks that the commit
 # scanned is the pinned one. Resumable: a re-run skips what the run log records as done.
 set -euo pipefail
@@ -26,7 +26,8 @@ echo "=== STEP 3: verify the sample ==="
 
 echo
 echo "=== STEP 3: scan each usable repository -> results/scans/ ==="
-"$SAMPLER" run "$SAMPLE" --run-log results/run-log.jsonl -- \
+ONLY="$("$PY" -c 'from long_method_slim_study import pins; print(",".join(pins.ONLY))')"
+"$SAMPLER" run "$SAMPLE" --only "$ONLY" --run-log results/run-log.jsonl -- \
     "$PY" -m long_method_slim_study.scan --repo {path} --full-name {full_name} --commit {commit} --out results/scans
 
 cat <<'NEXT'

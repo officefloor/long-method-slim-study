@@ -68,6 +68,8 @@ Every cost comes from the released products. This repository computes none.
   plus `**/test/**` and `**/tests/**`, since open-source projects do not all follow Maven's
   layout.
 - **Growth** is not measured: it needs each repository's history, and the questions do not.
+- **What is downloaded:** each repository at its pinned commit, shallow, and only its `.java`,
+  `.yml`, `.yaml`, `.woof` and `.officefloor` files (the sampler's `--only`): the files the scan reads.
 
 ## 5. Measures
 
