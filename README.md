@@ -12,8 +12,8 @@ The study computes no cost of its own. It draws the sample with
 [open-source-repository-sampler](https://github.com/officefloor/open-source-repository-sampler)
 and calls the released products' command lines for every figure.
 
-**Status:** the analysis plan is drafted, not registered. No sample has been drawn and nothing
-has been scanned. See [docs/ANALYSIS_PLAN.md](docs/ANALYSIS_PLAN.md).
+**Status:** the analysis plan was registered on 1 November 2026 (`bcb5d48`). The sample was drawn
+on 2 November 2026: 580 usable Java repositories (`sample/`). Nothing has been scanned yet. See [docs/ANALYSIS_PLAN.md](docs/ANALYSIS_PLAN.md).
 
 ## Layout
 

@@ -1,8 +1,12 @@
 # Analysis plan: what extraction cannot slim, and whether function injection can
 
-> **Status: DRAFT, not yet registered.** Registration is the commit of this file with every
-> **[DECIDE]** and **[FILL]** settled, before the sample is drawn. After that, any change is a
+> **Status: REGISTERED** on 1 November 2026, by commit `bcb5d48` (`pins.REGISTERED` set), with
+> every **[DECIDE]** and **[FILL]** settled, before the sample was drawn. Any change since is a
 > dated amendment that says what had been seen when it was made.
+>
+> *2 November 2026: this status line only, which still read "DRAFT, not yet registered" after
+> registration. Nothing else in the plan changed. Seen by then: the drawn sample (`sample/`);
+> no repository had been scanned.*
 
 ## 1. Purpose
 
