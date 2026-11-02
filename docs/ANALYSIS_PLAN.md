@@ -256,8 +256,8 @@ read. Nothing in sections 1 to 8 changes but the version.
 - The scans of 0.3.0 and the released 0.5.0 jar compared field for field, all but `links` and the
   scan's run time: OfficeFloor's repository (446 long methods), and jsignpdf's 255- and
   385-statement methods (0.3.0: 7 and 36 minutes; 0.5.0: 10 and 27 seconds). All equal.
-  The 575-statement method is still being scanned by 0.3.0 for the same comparison; its result is
-  added here when it ends.
+  The 575-statement method (`SignPdfForm`), scanned by 0.3.0 from its own jar at low priority:
+  3 hours 17 minutes (11,843 s); 0.5.0: 75 seconds. All 6 of the file's long methods equal.
 
 **After step 3**, the 69 repositories 0.3.0 had scanned are compared field for field with their
 0.5.0 scans, and the result is reported with the analysis, whichever way it falls; the 0.3.0
