@@ -7,6 +7,9 @@
 > *2 November 2026: this status line only, which still read "DRAFT, not yet registered" after
 > registration. Nothing else in the plan changed. Seen by then: the drawn sample (`sample/`);
 > no repository had been scanned.*
+>
+> *2 November 2026: Amendment 1, the instrument re-pinned from OfficeFloorSlim 0.3.0 to 0.5.0 for
+> speed alone (section 9).*
 
 ## 1. Purpose
 
@@ -86,12 +89,12 @@ without a threshold (section 6, *Hypotheses*); how each is read is fixed here. I
 
 Every cost comes from the released products. This repository computes none.
 
-- **OfficeFloorSlim 0.3.0**, its command line `officefloorslim scan
-  --format json` (schema `officefloorslim-scan/2`, with the combined split's fields added in
-  0.3.0), run once per repository at its pinned commit. It reports, for every long method, three
+- **OfficeFloorSlim 0.5.0** (Amendment 1; registered as 0.3.0, whose results it gives), its
+  command line `officefloorslim scan --format json` (schema `officefloorslim-scan/2`, with the
+  combined split's fields added in 0.3.0), run once per repository at its pinned commit. It reports, for every long method, three
   columns:
   - **SinewSlim's assessment**, under SinewSlim's defaults, from the SinewSlim libraries it is
-    built on (**SinewSlim 0.2.0**, from Maven Central): trigger 26, target 25, at most 5
+    built on (**SinewSlim 0.2.1**, from Maven Central; 0.2.0 when registered): trigger 26, target 25, at most 5
     parameters and 1 return per piece, records offered, no framework reading;
   - **the OfficeFloor split**, `officefloorslim-split/1`: every line in a function, none over
     25 code lines; its cost the values carried between functions, plus 1 per function and per
@@ -223,3 +226,45 @@ Each step is a script, run by hand; the values it uses are in `long_method_slim_
   read Java records: a repository near the criterion that uses them could be undercounted and
   excluded. Records arrived as a final feature in Java 16 (March 2021), after the as-of date
   (only as a preview in Java 14 and 15), so this is close to moot.
+
+## 9. Amendments
+
+### Amendment 1 (2 November 2026): OfficeFloorSlim 0.3.0 → 0.5.0, for speed alone
+
+**What happened.** Step 3 ran 69 repositories with OfficeFloorSlim 0.3.0, then stayed on the 70th,
+`intoolswetrust/jsignpdf`, for over three hours. A thread dump showed the combined split
+(`officefloorslim-split/2`) slimming candidate function bodies with SinewSlim. jsignpdf holds
+three NetBeans-generated `initComponents()` methods of 255, 385 and 575 flat statements. Under
+`split/2` every run of statements over the target is a candidate body, about n²/2 runs of a
+sequence of n statements, and 0.3.0 slimmed each from scratch: about 160,000 SinewSlim searches
+for the largest method. Generated GUI code is common in Java of this period, so the step could
+not finish in any reasonable time.
+
+**What changed.** OfficeFloorSlim 0.5.0, on SinewSlim 0.2.1, assesses a sequence's runs together
+(SinewSlim's `Assessor.runs`): one walk of SinewSlim's search per first statement serves every
+run starting there, since the search's states after a run's statements do not depend on what
+follows them. The cost model, the limits, the selection and the scan's fields are unchanged;
+0.5.0 adds `links` to each plan (the flows between its functions), which this study does not
+read. Nothing in sections 1 to 8 changes but the version.
+
+**Evidence that the results are the same.** Before re-pinning:
+
+- SinewSlim's `RunSlimmerTest`: every run of every sequence of its committed parity subset (1,200
+  methods, 141,111 runs, 30,590 slimmable) slimmed and assessed both ways: all equal.
+- SinewSlim's full parity on `seed3` (the facts only, as before registration): 187,285 methods,
+  936,425 results, 0 mismatched.
+- The scans of 0.3.0 and the released 0.5.0 jar compared field for field, all but `links` and the
+  scan's run time: OfficeFloor's repository (446 long methods), and jsignpdf's 255- and
+  385-statement methods (0.3.0: 7 and 36 minutes; 0.5.0: 10 and 27 seconds). All equal.
+  The 575-statement method is still being scanned by 0.3.0 for the same comparison; its result is
+  added here when it ends.
+
+**After step 3**, the 69 repositories 0.3.0 had scanned are compared field for field with their
+0.5.0 scans, and the result is reported with the analysis, whichever way it falls; the 0.3.0
+scans are kept for this (`results-0.3.0-partial/`, not part of the analysis).
+
+**What had been seen.** The sample (`sample/`). The 69 raw 0.3.0 scans existed but had not been
+opened, and are not used. Of jsignpdf, to find the cause: the names and sizes of its three
+`initComponents()` methods, from its source, and those methods' scans by each version compared
+only for equality, no field of them being read. No figure of section 5 had been computed.
+
