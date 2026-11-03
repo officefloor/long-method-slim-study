@@ -10,6 +10,9 @@
 >
 > *2 November 2026: Amendment 1, the instrument re-pinned from OfficeFloorSlim 0.3.0 to 0.5.0 for
 > speed alone (section 9).*
+>
+> *3 November 2026: Amendment 2, the instrument re-pinned from OfficeFloorSlim 0.5.0 to 0.5.1 for
+> speed alone (section 9).*
 
 ## 1. Purpose
 
@@ -89,12 +92,12 @@ without a threshold (section 6, *Hypotheses*); how each is read is fixed here. I
 
 Every cost comes from the released products. This repository computes none.
 
-- **OfficeFloorSlim 0.5.0** (Amendment 1; registered as 0.3.0, whose results it gives), its
+- **OfficeFloorSlim 0.5.1** (Amendments 1 and 2; registered as 0.3.0, whose results it gives), its
   command line `officefloorslim scan --format json` (schema `officefloorslim-scan/2`, with the
   combined split's fields added in 0.3.0), run once per repository at its pinned commit. It reports, for every long method, three
   columns:
   - **SinewSlim's assessment**, under SinewSlim's defaults, from the SinewSlim libraries it is
-    built on (**SinewSlim 0.2.1**, from Maven Central; 0.2.0 when registered): trigger 26, target 25, at most 5
+    built on (**SinewSlim 0.2.2**, from Maven Central; 0.2.0 when registered): trigger 26, target 25, at most 5
     parameters and 1 return per piece, records offered, no framework reading;
   - **the OfficeFloor split**, `officefloorslim-split/1`: every line in a function, none over
     25 code lines; its cost the values carried between functions, plus 1 per function and per
@@ -267,4 +270,66 @@ scans are kept for this (`results-0.3.0-partial/`, not part of the analysis).
 opened, and are not used. Of jsignpdf, to find the cause: the names and sizes of its three
 `initComponents()` methods, from its source, and those methods' scans by each version compared
 only for equality, no field of them being read. No figure of section 5 had been computed.
+
+### Amendment 2 (3 November 2026): OfficeFloorSlim 0.5.0 → 0.5.1, for speed alone
+
+**What happened.** Step 3 ran 469 repositories with OfficeFloorSlim 0.5.0 before it was stopped
+at the 471st. 463 of them took 0.9 hours of scanning together; six took 8.7 hours: MeteoInfo
+(3 h 33 min), MyBookshelf (3 h 12 min), jsignpdf, Android-nRF-Mesh-Library and open-liberty (about
+34 min each), and AppManager (17 min). `plantuml/plantuml` failed after 9.2 hours (the scan
+exited 1), and `Grover-c13/PokeGOAPI-Java` was 41 minutes in when the step was stopped. The cause
+was generated tables: methods of thousands of one-line statements, such as an encoding
+detector's frequency table (MyBookshelf's `EncodingDetect.initialize_frequencies()`, about 3,670
+statements) or a vendored parser's keyword map (jsignpdf's copy of iText, 1,782). 0.5.0 walked
+SinewSlim's search from every statement of such a method to its end, and built the facts of
+every one of the n²/2 runs to ask of them.
+
+**What changed.** OfficeFloorSlim 0.5.1, on SinewSlim 0.2.2. Three changes, each exact:
+
+- SinewSlim's search keeps only the ways of handling a run that can still bring it to the
+  target (a way's lines left only grow as the search goes on), and a walk stops when none is
+  left; a run past that point is known not to slim without its facts being built.
+- In a flat method that fits one function, the whole method as one function is taken without
+  the search when a lower bound on every other plan's total shows none can match it.
+- Each statement's jumps are counted once per sequence, not once per run.
+
+The cost model, the limits, the selection and the scan's fields are unchanged. Nothing in
+sections 1 to 8 changes but the versions.
+
+**Evidence that the results are the same.** Before re-pinning:
+
+- SinewSlim's `RunSlimmerTest`: every run of its parity subset (141,111 runs), and the 8,347 the
+  walk alone answers "cannot be slimmed" for, each checked against slimming from scratch: all
+  equal. SinewSlim's full parity on `seed3`: 187,285 methods, 0 mismatched.
+- OfficeFloorSlim's `ShortcutTest`: the shortcut's plan against the search's on 400 random flat
+  and nearly flat methods (97 taken by the shortcut): all equal.
+- The 150 repositories step 3 had scanned when the change was made, cloned again at their pinned
+  commits and scanned by the 0.5.1 build, then compared field for field with their 0.5.0 scans,
+  all but the checkout path and the run time: 150 of 150 equal. MeteoInfo took 274 s (0.5.0:
+  3 h 33 min), MyBookshelf 271 s (3 h 12 min), jsignpdf 333 s (34 min), each run two at a time
+  beside step 3.
+- An earlier build differed from 0.5.0 in one field of one method (apache/hive). The cause was in
+  0.5.0 itself: it keeps the result of a run by the run's first and last lines, and two different
+  runs can share them when two statements share a line (`x = f();;`), so whichever is asked of
+  first decides both. The earlier build asked in another order. 0.5.1 keeps 0.5.0's order
+  exactly, and the 150 were compared again with the final build. The quirk is left as it is for
+  this study, so that the instrument's results do not change; it is to be fixed after.
+- The released 0.5.1 jar (built by its release from SinewSlim 0.2.2 on Maven Central; the 150 were
+  scanned by a local build of the same commits) compared again on MeteoInfo, MyBookshelf,
+  jsignpdf and apache/hive: all four equal to 0.5.0 (179, 180, 187 and 29 seconds).
+
+**Step 3 is run again from the start** on 0.5.1, so every scan comes from one jar. **After step
+3**, the 469 repositories 0.5.0 had scanned are compared field for field with their 0.5.1 scans,
+and the result is reported with the analysis, whichever way it falls; the 0.5.0 scans and run log
+are kept for this (`results-0.5.0-partial/`, not part of the analysis). The comparison Amendment 1
+promised, of the 69 0.3.0 scans, is made against the 0.5.1 scans.
+
+**What had been seen.** The sample (`sample/`). Of step 3's run log, each repository's status,
+error message and scan time. The 469 raw 0.5.0 scans had not been opened, and are not used:
+comparing the 150 with 0.5.1 read only whether each pair was equal and, where not, the path of
+the differing field. For the apache/hive difference: the differing field's path
+(`combined.tie_by_pieces` of one method), that method's file, signature and line in the 0.5.1
+scan, and its source, which was then scanned alone by both versions, compared again only for
+equality. Of MyBookshelf and jsignpdf, to find the cause: the sizes of their longest flat
+statement runs, from their source. No figure of section 5 had been computed.
 

@@ -22,12 +22,14 @@ AS_OF = "2020-12-01"
 # The sampler's release with --as-of (v0.3.0, 25c4bf6, on PyPI 1 November 2026).
 SAMPLER_VERSION = "0.3.0"
 
-# Instruments (section 4): OfficeFloorSlim 0.5.0 (released 2 November 2026, built on SinewSlim
-# 0.2.1 from Maven Central), with the combined split, and its jar's sha256 from that GitHub
+# Instruments (section 4): OfficeFloorSlim 0.5.1 (released 3 November 2026, built on SinewSlim
+# 0.2.2 from Maven Central), with the combined split, and its jar's sha256 from that GitHub
 # Release. Amendment 1 (2 November 2026): was 0.3.0 (sha256 e8177237...), whose combined split
-# took hours on long flat methods; 0.5.0 gives the same results, faster.
-OFFICEFLOORSLIM_VERSION = "0.5.0"
-OFFICEFLOORSLIM_JAR_SHA256 = "0fcebfd3838e2c177db627c7caf26b17be3f9ecb666934e4a625f2df8c826cd3"
+# took hours on long flat methods. Amendment 2 (3 November 2026): was 0.5.0 (sha256 0fcebfd3...),
+# which still took hours on generated tables of thousands of statements. Each gives the same
+# results as the one before, faster.
+OFFICEFLOORSLIM_VERSION = "0.5.1"
+OFFICEFLOORSLIM_JAR_SHA256 = "9f3d8819cabf59efca4321029005d271d135235b145d84b71964befab51a6d08"
 
 # Scope (section 4): production Java, no tests, decided 1 November 2026 (OfficeFloorSlim's
 # defaults, plus test directories outside Maven's layout). The configuration files are read only
