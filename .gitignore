@@ -16,3 +16,12 @@ results-0.5.1/
 # the raw scans (hundreds of MB): not kept in git; step 3 reproduces them from the pinned sample
 # and jar. The run log and the analysis (results/analysis/) are
 results/scans/
+
+# the paper's build products (main.tex, scripts/ and generated/ are tracked)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/main.pdf
+paper/abstract.txt
+paper/arxiv.tar.gz
+*.egg-info/

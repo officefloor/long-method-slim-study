@@ -1,0 +1,2371 @@
+{
+  "schema": "long-method-slim-study-posthoc/1",
+  "status": "post hoc: none of this was registered; computed after the registered analysis was read",
+  "test_paths": {
+    "rule": "a method whose path has a directory segment containing 'test' (case-insensitive) is left out",
+    "repositories_affected": 80,
+    "dropped": {
+      "long": 8191,
+      "slimmable": 7184,
+      "improved": 1123,
+      "stuck": 1007,
+      "category3c": 99,
+      "category3": 89
+    },
+    "segments": [
+      [
+        "test-applications",
+        2900
+      ],
+      [
+        "internalClusterTest",
+        1772
+      ],
+      [
+        "notestore",
+        430
+      ],
+      [
+        "androidTest",
+        318
+      ],
+      [
+        "test-resourceadapters",
+        241
+      ],
+      [
+        "fattest.simplicity",
+        208
+      ],
+      [
+        "mockserver-integration-testing",
+        171
+      ],
+      [
+        "javatests",
+        169
+      ],
+      [
+        "test-integration",
+        166
+      ],
+      [
+        "native-multi-node-tests",
+        135
+      ],
+      [
+        "titan-test",
+        105
+      ],
+      [
+        "itests",
+        93
+      ]
+    ],
+    "headline": {
+      "S2_over_S1": {
+        "count": 20834,
+        "of": 37426,
+        "pooled": 0.5567,
+        "interval": [
+          0.5364,
+          0.5765
+        ],
+        "population": 0.5506,
+        "population_interval": [
+          0.5178,
+          0.5823
+        ],
+        "by_tier": {
+          "high": 0.5591,
+          "low": 0.546,
+          "mid": 0.5603
+        },
+        "per_repository": {
+          "repositories": 467,
+          "median": 0.6
+        }
+      },
+      "category3_over_S1": {
+        "count": 7426,
+        "of": 37426,
+        "pooled": 0.1984,
+        "interval": [
+          0.1848,
+          0.2145
+        ],
+        "population": 0.1967,
+        "population_interval": [
+          0.1807,
+          0.2162
+        ],
+        "by_tier": {
+          "high": 0.2019,
+          "low": 0.1968,
+          "mid": 0.1951
+        },
+        "per_repository": {
+          "repositories": 467,
+          "median": 0.1467
+        }
+      },
+      "S2c_over_S1": {
+        "count": 23749,
+        "of": 37426,
+        "pooled": 0.6346,
+        "interval": [
+          0.6154,
+          0.6532
+        ],
+        "population": 0.63,
+        "population_interval": [
+          0.5981,
+          0.6608
+        ],
+        "by_tier": {
+          "high": 0.6382,
+          "low": 0.6276,
+          "mid": 0.6344
+        },
+        "per_repository": {
+          "repositories": 467,
+          "median": 0.6777
+        }
+      },
+      "category3c_over_S1": {
+        "count": 8425,
+        "of": 37426,
+        "pooled": 0.2251,
+        "interval": [
+          0.2108,
+          0.2418
+        ],
+        "population": 0.2267,
+        "population_interval": [
+          0.2098,
+          0.2472
+        ],
+        "by_tier": {
+          "high": 0.2273,
+          "low": 0.2295,
+          "mid": 0.2196
+        },
+        "per_repository": {
+          "repositories": 467,
+          "median": 0.1752
+        }
+      },
+      "improved_over_slimmable": {
+        "count": 34495,
+        "of": 122849,
+        "pooled": 0.2808,
+        "interval": [
+          0.2589,
+          0.307
+        ],
+        "population": 0.2949,
+        "population_interval": [
+          0.2482,
+          0.3506
+        ],
+        "by_tier": {
+          "high": 0.2776,
+          "low": 0.3059,
+          "mid": 0.2663
+        },
+        "per_repository": {
+          "repositories": 558,
+          "median": 0.2191
+        }
+      },
+      "tied_over_slimmable": {
+        "count": 24970,
+        "of": 122849,
+        "pooled": 0.2033,
+        "interval": [
+          0.1949,
+          0.214
+        ],
+        "population": 0.2104,
+        "population_interval": [
+          0.1922,
+          0.2303
+        ],
+        "by_tier": {
+          "high": 0.2059,
+          "low": 0.2178,
+          "mid": 0.1892
+        },
+        "per_repository": {
+          "repositories": 558,
+          "median": 0.1919
+        }
+      },
+      "H1": {
+        "reading": "refuted",
+        "share": 0.25,
+        "minimum": 30,
+        "figure": "category3c_over_S1"
+      },
+      "H2": {
+        "reading": "estimate",
+        "share": "none",
+        "figure": "improved_over_slimmable"
+      }
+    }
+  },
+  "construction_exceptions": [
+    {
+      "repository": "M66B/FairEmail",
+      "path": "app/src/main/java/eu/faircode/email/Core.java",
+      "method": "Core.State.error(Throwable)",
+      "line": 4251,
+      "length": 26,
+      "sinewslim_status": "slimmable_but_locked",
+      "sinewslim_cost": 2,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "h2database/h2database",
+      "path": "h2/src/main/org/h2/expression/function/JsonConstructorFunction.java",
+      "method": "JsonConstructorFunction.jsonArray(SessionLocal, Expression[])",
+      "line": 81,
+      "length": 32,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 14,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "h2database/h2database",
+      "path": "h2/src/main/org/h2/table/Column.java",
+      "method": "Column.validateConvertUpdateSequence(SessionLocal, Value, Row)",
+      "line": 355,
+      "length": 29,
+      "sinewslim_status": "slimmable_but_locked",
+      "sinewslim_cost": 3,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "h2database/h2database",
+      "path": "h2/src/main/org/h2/util/json/JSONBytesSource.java",
+      "method": "JSONBytesSource.parseNumber(boolean)",
+      "line": 148,
+      "length": 27,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 3,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "h2database/h2database",
+      "path": "h2/src/main/org/h2/util/json/JSONStringSource.java",
+      "method": "JSONStringSource.parseNumber(boolean)",
+      "line": 92,
+      "length": 27,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 3,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "JetBrains/fernflower",
+      "path": "testData/obfuscated/an.java",
+      "method": "an.a()",
+      "line": 38,
+      "length": 36,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 2,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "JetBrains/fernflower",
+      "path": "testData/obfuscated/b.java",
+      "method": "b.b(K, V, long, long)",
+      "line": 48,
+      "length": 28,
+      "sinewslim_status": "slimmable_but_locked",
+      "sinewslim_cost": 1,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "JetBrains/fernflower",
+      "path": "testData/obfuscated/bc.java",
+      "method": "bc.endElement(String, String, String)",
+      "line": 33,
+      "length": 54,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 7,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "JetBrains/fernflower",
+      "path": "testData/obfuscated/h.java",
+      "method": "h.a()",
+      "line": 6,
+      "length": 34,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 2,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "LWJGL/lwjgl3",
+      "path": "modules/lwjgl/vulkan/src/main/java/org/lwjgl/vulkan/VkInstance.java",
+      "method": "VkInstance.getAvailableDeviceExtensions(long)",
+      "line": 50,
+      "length": 39,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 6,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/java/util/SimpleTimeZone.java",
+      "method": "SimpleTimeZone.getOffsets(long, int[])",
+      "line": 546,
+      "length": 28,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 3,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/java/util/concurrent/CopyOnWriteArrayList.java",
+      "method": "CopyOnWriteArrayList.remove(Object, Object[], int)",
+      "line": 535,
+      "length": 33,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 11,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/sun/tools/tree/Vset.java",
+      "method": "Vset.varLimit()",
+      "line": 464,
+      "length": 30,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 6,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/impl/AbstractResultQuery.java",
+      "method": "AbstractResultQuery.execute(ExecuteContext, ExecuteListener)",
+      "line": 271,
+      "length": 31,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 2,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "betacraftuk/betacraft-launcher",
+      "path": "src/org/betacraft/launcher/WebsitePanel.java",
+      "method": "WebsitePanel.getServers(boolean)",
+      "line": 113,
+      "length": 28,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 2,
+      "combined_reason": "long_statement",
+      "combined_detail": "the labeled statement at lines 117-167 (50 lines); as a function body, SinewSlim: a single statement is longer than the cap and nothing inside it can move: the statement at lines 131-166 (36 lines)"
+    },
+    {
+      "repository": "betacraftuk/betacraft-launcher",
+      "path": "src/org/betacraft/launcher/WebsitePanel.java",
+      "method": "WebsitePanel.getUpdateNews(boolean)",
+      "line": 180,
+      "length": 29,
+      "sinewslim_status": "slimmable",
+      "sinewslim_cost": 2,
+      "combined_reason": "long_statement",
+      "combined_detail": "the labeled statement at lines 184-226 (41 lines); as a function body, SinewSlim: a single statement is longer than the cap and nothing inside it can move: the statement at lines 198-224 (27 lines)"
+    }
+  ],
+  "category3c_composition": {
+    "functions_only": 5514,
+    "with_pieces": 3010,
+    "pieces_histogram": {
+      "0": 5514,
+      "1": 1092,
+      "2": 671,
+      "3": 477,
+      "4": 243,
+      "5": 169,
+      "6": 115,
+      "7": 49,
+      "8": 61,
+      "9": 25,
+      "10": 16,
+      "11": 28,
+      "12": 15,
+      "13": 6,
+      "14": 6,
+      "15": 12,
+      "16": 3,
+      "17": 2,
+      "18": 1,
+      "19": 2,
+      "20": 3,
+      "21": 1,
+      "27": 1,
+      "29": 2,
+      "39": 1,
+      "42": 1,
+      "47": 1,
+      "56": 1,
+      "71": 1,
+      "75": 1,
+      "100": 1,
+      "133": 2,
+      "239": 1
+    }
+  },
+  "plan_shapes": {
+    "rescued": {
+      "branching": 3849,
+      "branching with early returns": 1634,
+      "sequence": 2189,
+      "sequence with early returns": 852
+    },
+    "improved": {
+      "branching": 1062,
+      "branching with early returns": 216,
+      "sequence": 28252,
+      "sequence with early returns": 6088
+    },
+    "tied": {
+      "branching": 564,
+      "branching with early returns": 41,
+      "sequence": 21644,
+      "sequence with early returns": 3807
+    }
+  },
+  "plans_by_category": {
+    "1": {
+      "stuck": 17123,
+      "combined_has_plan": 13012,
+      "share": 0.7599
+    },
+    "2": {
+      "stuck": 3727,
+      "combined_has_plan": 2791,
+      "share": 0.7489
+    },
+    "3": {
+      "stuck": 7515,
+      "combined_has_plan": 7326,
+      "share": 0.9749
+    },
+    "4": {
+      "stuck": 10068,
+      "combined_has_plan": 1198,
+      "share": 0.119
+    }
+  },
+  "category3c_over_not_conventional": {
+    "count": 8524,
+    "of": 17583,
+    "pooled": 0.4848,
+    "interval": [
+      0.4589,
+      0.5126
+    ],
+    "population": 0.4717,
+    "population_interval": [
+      0.434,
+      0.512
+    ],
+    "by_tier": {
+      "high": 0.5011,
+      "low": 0.4675,
+      "mid": 0.4762
+    },
+    "per_repository": {
+      "repositories": 404,
+      "median": 0.5
+    }
+  },
+  "category3c_per_repository": {
+    "repositories": 470,
+    "quartiles": [
+      0.0,
+      0.1741,
+      0.2877
+    ],
+    "without_category3c": 124
+  },
+  "improved_strict_over_slimmable": {
+    "count": 21655,
+    "of": 130033,
+    "pooled": 0.1665,
+    "interval": [
+      0.154,
+      0.1805
+    ],
+    "population": 0.1725,
+    "population_interval": [
+      0.146,
+      0.2011
+    ],
+    "by_tier": {
+      "high": 0.1654,
+      "low": 0.1775,
+      "mid": 0.1604
+    },
+    "per_repository": {
+      "repositories": 559,
+      "median": 0.1186
+    }
+  },
+  "category4_machine_written": {
+    "rule": "a category 4 method (combined split) named initComponents, jbInit, $$$setupUI$$$, or of 500 code lines or more",
+    "gui_builder_methods": [
+      "initComponents",
+      "jbInit",
+      "$$$setupUI$$$"
+    ],
+    "long_table_lines": 500,
+    "category4": 9059,
+    "either": 176,
+    "gui_builder": 48,
+    "long_table": 130
+  },
+  "category3_without_combined_plan": [
+    {
+      "repository": "Guardsquare/proguard",
+      "path": "base/src/proguard/ConfigurationParser.java",
+      "method": "ConfigurationParser.parseCommaSeparatedList(String, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, List)",
+      "line": 1502,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hive",
+      "path": "druid-handler/src/java/org/apache/hadoop/hive/druid/json/KafkaIndexTaskTuningConfig.java",
+      "method": "KafkaIndexTaskTuningConfig.KafkaIndexTaskTuningConfig(Integer, Long, Integer, Long, Period, File, Integer, IndexSpec, IndexSpec, Boolean, Boolean, Long, Boolean, SegmentWriteOutMediumFactory, Period, Boolean, Integer, Integer)",
+      "line": 36,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hive",
+      "path": "llap-server/src/java/org/apache/hadoop/hive/llap/cache/BuddyAllocator.java",
+      "method": "BuddyAllocator.BuddyAllocator(boolean, boolean, int, int, int, long, long, String, MemoryManager, LlapDaemonCacheMetrics, String, boolean)",
+      "line": 161,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Netflix/zuul",
+      "path": "zuul-core/src/main/java/com/netflix/zuul/netty/connectionpool/DefaultClientChannelManager.java",
+      "method": "DefaultClientChannelManager.createConnectionPool(ServerStats, InstanceInfo, SocketAddress, NettyClientConnectionFactory, PooledConnectionFactory, ConnectionPoolConfig, IClientConfig, Counter, Counter, Counter, Counter, Counter, Counter, Counter, PercentileTimer, AtomicInteger, AtomicInteger)",
+      "line": 374,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "gocd/gocd",
+      "path": "server/src/main/java/com/thoughtworks/go/server/newsecurity/filterchains/AuthenticationFilterChain.java",
+      "method": "AuthenticationFilterChain.AuthenticationFilterChain(Filter, Filter, Filter, Filter, Filter, Filter, Filter, Filter)",
+      "line": 29,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "gocd/gocd",
+      "path": "server/src/main/java/com/thoughtworks/go/server/newsecurity/filterchains/MainFilterChain.java",
+      "method": "MainFilterChain.MainFilterChain(BackupFilter, ModeAwareFilter, CreateSessionFilterChain, RememberLastRequestUrlFilterChain, AuthenticationFilterChain, ThreadLocalUserFilter, UserEnabledCheckFilterChain, AuthorizeFilterChain, DenyGoCDAccessForArtifactsFilterChain, ArtifactSizeEnforcementFilterChain, FlashLoadingFilter)",
+      "line": 43,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "stargate/stargate",
+      "path": "restapi/src/main/java/io/stargate/web/docsapi/resources/DocumentResourceV2.java",
+      "method": "DocumentResourceV2.getDoc(HttpHeaders, UriInfo, String, String, String, String, String, String, int, String, Boolean)",
+      "line": 445,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "senbox-org/snap-engine",
+      "path": "snap-envisat-reader/src/main/java/org/esa/snap/dataio/envisat/ProductFile.java",
+      "method": "ProductFile.createBandInfo(String, int, int, int, int, double, double, String, FlagCoding, String, String, String)",
+      "line": 957,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apereo/cas",
+      "path": "support/cas-server-support-logging-config-cloudwatch/src/main/java/org/apereo/cas/logging/CloudWatchAppender.java",
+      "method": "CloudWatchAppender.createAppender(String, String, String, String, String, String, String, String, Layout<Serializable>, Boolean, Boolean, Boolean)",
+      "line": 220,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "google/error-prone",
+      "path": "core/src/main/java/com/google/errorprone/refaster/PlaceholderUnificationVisitor.java",
+      "method": "PlaceholderUnificationVisitor.chooseSubtrees(State<?>, Function<State<?>,Choice<? extends State<? extends T1>>>, Function<State<?>,Choice<? extends State<? extends T2>>>, Function<State<?>,Choice<? extends State<? extends T3>>>, Function<State<?>,Choice<? extends State<? extends T4>>>, QuadFunction<T1,T2,T3,T4,R>)",
+      "line": 368,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSDirStatAndListingOp.java",
+      "method": "FSDirStatAndListingOp.createFileStatus(long, boolean, int, long, long, long, FsPermission, EnumSet<HdfsFileStatus.Flags>, String, String, byte[], byte[], long, int, FileEncryptionInfo, byte, ErasureCodingPolicy, LocatedBlocks)",
+      "line": 479,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java",
+      "method": "NamenodeWebHdfsMethods.putRoot(UserGroupInformation, DelegationParam, UserParam, DoAsParam, PutOpParam, DestinationParam, OwnerParam, GroupParam, PermissionParam, UnmaskedPermissionParam, OverwriteParam, BufferSizeParam, ReplicationParam, BlockSizeParam, ModificationTimeParam, AccessTimeParam, RenameOptionSetParam, CreateParentParam, TokenArgumentParam, AclPermissionParam, XAttrNameParam, XAttrValueParam, XAttrSetFlagParam, SnapshotNameParam, OldSnapshotNameParam, ExcludeDatanodesParam, CreateFlagParam, NoRedirectParam, StoragePolicyParam, ECPolicyParam, NameSpaceQuotaParam, StorageSpaceQuotaParam, StorageTypeParam)",
+      "line": 455,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java",
+      "method": "NamenodeWebHdfsMethods.getRoot(UserGroupInformation, DelegationParam, UserParam, DoAsParam, GetOpParam, OffsetParam, LengthParam, RenewerParam, BufferSizeParam, List<XAttrNameParam>, XAttrEncodingParam, ExcludeDatanodesParam, FsActionParam, SnapshotNameParam, OldSnapshotNameParam, TokenKindParam, TokenServiceParam, NoRedirectParam, StartAfterParam)",
+      "line": 1010,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getEntities(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 491,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getFlowRunApps(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2064,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getFlowRunApps(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2177,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getFlowApps(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2287,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getFlowApps(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2396,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getAppAttempts(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2520,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getAppAttempts(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2644,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getContainers(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 2936,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/hadoop",
+      "path": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/src/main/java/org/apache/hadoop/yarn/server/timelineservice/reader/TimelineReaderWebServices.java",
+      "method": "TimelineReaderWebServices.getSubAppEntities(HttpServletRequest, HttpServletResponse, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String, String)",
+      "line": 3381,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "geonetwork/core-geonetwork",
+      "path": "services/src/main/java/org/fao/geonet/api/records/extent/MetadataExtentApi.java",
+      "method": "MetadataExtentApi.getOneRecordExtentAsImage(String, Integer, String, Integer, Integer, String, String, String, NativeWebRequest, HttpServletRequest)",
+      "line": 225,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "dCache/dcache",
+      "path": "modules/dcache-vehicles/src/main/java/diskCacheV111/vehicles/transferManager/RemoteGsiftpTransferProtocolInfo.java",
+      "method": "RemoteGsiftpTransferProtocolInfo.RemoteGsiftpTransferProtocolInfo(String, int, int, InetSocketAddress, String, String, String, int, int, X509Credential, String, Optional<ChecksumType>)",
+      "line": 65,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "aeron-io/aeron",
+      "path": "aeron-archive/src/main/java/io/aeron/archive/Catalog.java",
+      "method": "Catalog.addNewRecording(long, long, int, int, int, int, int, int, String, String, String)",
+      "line": 431,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "aeron-io/aeron",
+      "path": "aeron-driver/src/main/java/io/aeron/driver/ext/CubicCongestionControlSupplier.java",
+      "method": "CubicCongestionControlSupplier.newInstance(long, UdpChannel, int, int, int, int, InetSocketAddress, InetSocketAddress, NanoClock, MediaDriver.Context, CountersManager)",
+      "line": 38,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "rstudio/rstudio",
+      "path": "src/gwt/src/org/rstudio/studio/client/common/filetypes/WebContentFileType.java",
+      "method": "WebContentFileType.WebContentFileType(String, String, EditorLanguage, String, ImageResource, boolean)",
+      "line": 27,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "robolectric/robolectric",
+      "path": "shadows/framework/src/main/java/org/robolectric/shadows/ShadowMotionEvent.java",
+      "method": "ShadowMotionEvent.nativeInitialize(int, int, int, int, int, int, int, int, float, float, float, float, long, long, int, PointerProperties[], PointerCoords[])",
+      "line": 198,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "robolectric/robolectric",
+      "path": "shadows/framework/src/main/java/org/robolectric/shadows/ShadowMotionEvent.java",
+      "method": "ShadowMotionEvent.nativeInitialize(long, int, int, int, int, int, int, int, int, int, float, float, float, float, long, long, int, PointerProperties[], PointerCoords[])",
+      "line": 301,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "robolectric/robolectric",
+      "path": "shadows/httpclient/src/main/java/org/robolectric/shadows/httpclient/DefaultRequestDirector.java",
+      "method": "DefaultRequestDirector.DefaultRequestDirector(HttpRequestExecutor, ClientConnectionManager, ConnectionReuseStrategy, ConnectionKeepAliveStrategy, HttpRoutePlanner, HttpProcessor, HttpRequestRetryHandler, RedirectHandler, AuthenticationHandler, AuthenticationHandler, UserTokenHandler, HttpParams)",
+      "line": 277,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "robolectric/robolectric",
+      "path": "shadows/httpclient/src/main/java/org/robolectric/shadows/httpclient/ShadowDefaultRequestDirector.java",
+      "method": "ShadowDefaultRequestDirector.__constructor__(HttpRequestExecutor, ClientConnectionManager, ConnectionReuseStrategy, ConnectionKeepAliveStrategy, HttpRoutePlanner, HttpProcessor, HttpRequestRetryHandler, RedirectHandler, AuthenticationHandler, AuthenticationHandler, UserTokenHandler, HttpParams)",
+      "line": 107,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java",
+      "method": "AbstractPlugin.bingo(int, int, String, String, String, String, String, String, String, String, HttpMessage)",
+      "line": 526,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java",
+      "method": "AbstractPlugin.bingo(int, int, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 559,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java",
+      "method": "AbstractPlugin.bingo(int, int, String, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 595,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/zaproxy/zap/extension/ascan/ScriptsActiveScanner.java",
+      "method": "ScriptsActiveScanner.raiseAlert(int, int, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 252,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/zaproxy/zap/extension/ascan/ScriptsActiveScanner.java",
+      "method": "ScriptsActiveScanner.raiseAlert(int, int, String, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 287,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/ScriptsPassiveScanner.java",
+      "method": "ScriptsPassiveScanner.raiseAlert(int, int, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 135,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "zaproxy/zaproxy",
+      "path": "zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/ScriptsPassiveScanner.java",
+      "method": "ScriptsPassiveScanner.raiseAlert(int, int, String, String, String, String, String, String, String, String, String, int, int, HttpMessage)",
+      "line": 172,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog/plugins/views/migrations/V20191125144500_MigrateDashboardsToViewsSupport/dashboardwidgets/QuickValuesConfig.java",
+      "method": "QuickValuesConfig.create(String, TimeRange, String, Boolean, Boolean, Integer, Integer, String, String, String)",
+      "line": 174,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog2/configuration/ExposedConfiguration.java",
+      "method": "ExposedConfiguration.create(int, int, int, String, String, int, int, Path, Path, Path, String, boolean, boolean, long, int, long, int, String)",
+      "line": 114,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog2/rest/models/users/responses/UserSummary.java",
+      "method": "UserSummary.create(String, String, String, String, List<WildcardPermission>, List<GRNPermission>, Map<String,Object>, String, Long, boolean, boolean, Startpage, Set<String>, boolean, Date, String, User.AccountStatus)",
+      "line": 103,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog2/rest/resources/streams/responses/StreamResponse.java",
+      "method": "StreamResponse.create(String, String, Collection<OutputSummary>, String, String, String, boolean, Collection<StreamRule>, Collection<AlertConditionSummary>, AlertReceivers, String, String, Boolean, Boolean, String)",
+      "line": 87,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog2/streams/StreamDTO.java",
+      "method": "StreamDTO.create(String, String, Collection<ObjectId>, String, String, String, boolean, Collection<StreamRule>, Collection<AlertConditionSummary>, AlertReceivers, String, String, Boolean, Boolean, String)",
+      "line": 112,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "Graylog2/graylog2-server",
+      "path": "graylog2-server/src/main/java/org/graylog2/system/stats/ClusterStats.java",
+      "method": "ClusterStats.create(ElasticsearchStats, MongoStats, long, long, Map<String,Long>, long, long, Map<String,Long>, long, long, long, Map<String,Long>, long, Map<Extractor.Type,Long>, AlarmStats)",
+      "line": 78,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-announcementsservice/src/main/java/com/oracle/bmc/announcementsservice/model/AnnouncementSummary.java",
+      "method": "AnnouncementSummary.AnnouncementSummary(String, String, String, String, java.util.Date, String, java.util.Date, java.util.List<String>, java.util.List<String>, AnnouncementType, LifecycleState, Boolean, java.util.Date, java.util.Date)",
+      "line": 217,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-core/src/main/java/com/oracle/bmc/core/model/EmulatedVolumeAttachment.java",
+      "method": "EmulatedVolumeAttachment.EmulatedVolumeAttachment(String, String, String, String, String, String, Boolean, Boolean, LifecycleState, java.util.Date, String, Boolean)",
+      "line": 194,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-core/src/main/java/com/oracle/bmc/core/model/ParavirtualizedVolumeAttachment.java",
+      "method": "ParavirtualizedVolumeAttachment.ParavirtualizedVolumeAttachment(String, String, String, String, String, String, Boolean, Boolean, LifecycleState, java.util.Date, String, Boolean)",
+      "line": 194,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-database/src/main/java/com/oracle/bmc/database/model/CreateAutonomousDatabaseDetails.java",
+      "method": "CreateAutonomousDatabaseDetails.CreateAutonomousDatabaseDetails(String, String, Integer, DbWorkload, Integer, Boolean, String, String, LicenseModel, Boolean, Boolean, Boolean, String, Boolean, java.util.List<String>, Boolean, String, java.util.List<String>, String, java.util.Map<String,String>, java.util.Map<String,java.util.Map<String,Object>>, String)",
+      "line": 309,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-dataintegration/src/main/java/com/oracle/bmc/dataintegration/model/Distinct.java",
+      "method": "Distinct.Distinct(String, String, ParentReference, String, String, Integer, java.util.List<InputPort>, java.util.List<OutputPort>, Integer, String, java.util.List<Parameter>, ConfigValues)",
+      "line": 192,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-dataintegration/src/main/java/com/oracle/bmc/dataintegration/model/Projection.java",
+      "method": "Projection.Projection(String, String, ParentReference, String, String, Integer, java.util.List<InputPort>, java.util.List<OutputPort>, Integer, String, java.util.List<Parameter>, ConfigValues)",
+      "line": 192,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "oracle/oci-java-sdk",
+      "path": "bmc-examples/src/main/java/LoadBalancedWebServer.java",
+      "method": "LoadBalancedWebServer.getStartInstanceRunnable(int, ComputeWaiters, String, List<AvailabilityDomain>, String, String, String, String, NetworkSecurityGroup, Map<String,Subnet>, Map<String,Instance>)",
+      "line": 688,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "MarquezProject/marquez",
+      "path": "clients/java/src/main/java/marquez/client/models/DbTable.java",
+      "method": "DbTable.DbTable(DatasetId, String, String, Instant, Instant, String, String, List<Field>, Set<String>, Instant, String)",
+      "line": 29,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/collection/internal/AbstractBagSemantics.java",
+      "method": "AbstractBagSemantics.createInitializerProducer(NavigablePath, PluralAttributeMapping, FetchParent, boolean, String, LockMode, DomainResultCreationState)",
+      "line": 68,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/collection/internal/AbstractMapSemantics.java",
+      "method": "AbstractMapSemantics.createInitializerProducer(NavigablePath, PluralAttributeMapping, FetchParent, boolean, String, LockMode, DomainResultCreationState)",
+      "line": 81,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/collection/internal/StandardArraySemantics.java",
+      "method": "StandardArraySemantics.createInitializerProducer(NavigablePath, PluralAttributeMapping, FetchParent, boolean, String, LockMode, DomainResultCreationState)",
+      "line": 99,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/collection/internal/StandardListSemantics.java",
+      "method": "StandardListSemantics.createInitializerProducer(NavigablePath, PluralAttributeMapping, FetchParent, boolean, String, LockMode, DomainResultCreationState)",
+      "line": 73,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/engine/spi/QueryParameters.java",
+      "method": "QueryParameters.QueryParameters(QueryParameterBindings, LockOptions, QueryOptions, Serializable[], Object, String, Serializable, ResultTransformer)",
+      "line": 228,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/metamodel/mapping/internal/PluralAttributeMappingImpl.java",
+      "method": "PluralAttributeMappingImpl.PluralAttributeMappingImpl(String, Collection, PropertyAccess, StateArrayContributorMetadataAccess, CollectionMappingType, int, CollectionPart, CollectionPart, CollectionIdentifierDescriptor, FetchStrategy, CascadeStyle, ManagedMappingType, CollectionPersister)",
+      "line": 119,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-core/src/main/java/org/hibernate/tuple/StandardProperty.java",
+      "method": "StandardProperty.StandardProperty(String, Type, boolean, boolean, boolean, ValueGeneration, boolean, boolean, boolean, CascadeStyle, FetchMode)",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-orm",
+      "path": "hibernate-envers/src/main/java/org/hibernate/envers/configuration/internal/metadata/AuditMetadataGenerator.java",
+      "method": "AuditMetadataGenerator.addProperties(Element, Iterator<Property>, CompositeMapperBuilder, ClassAuditingData, String, EntityXmlMappingData, boolean)",
+      "line": 329,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-validator",
+      "path": "engine/src/main/java/org/hibernate/validator/internal/engine/ConstraintViolationImpl.java",
+      "method": "ConstraintViolationImpl.forBeanValidation(String, Map<String,Object>, Map<String,Object>, String, Class<T>, T, Object, Object, Path, ConstraintDescriptor<?>, Object)",
+      "line": 46,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-validator",
+      "path": "engine/src/main/java/org/hibernate/validator/internal/engine/ConstraintViolationImpl.java",
+      "method": "ConstraintViolationImpl.forParameterValidation(String, Map<String,Object>, Map<String,Object>, String, Class<T>, T, Object, Object, Path, ConstraintDescriptor<?>, Object[], Object)",
+      "line": 74,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "hibernate/hibernate-validator",
+      "path": "engine/src/main/java/org/hibernate/validator/internal/engine/ConstraintViolationImpl.java",
+      "method": "ConstraintViolationImpl.forReturnValueValidation(String, Map<String,Object>, Map<String,Object>, String, Class<T>, T, Object, Object, Path, ConstraintDescriptor<?>, Object, Object)",
+      "line": 103,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "account/src/main/java/org/killbill/billing/account/api/DefaultAccount.java",
+      "method": "DefaultAccount.DefaultAccount(UUID, String, String, String, Integer, Currency, UUID, Boolean, Integer, UUID, DateTime, DateTimeZone, String, String, String, String, String, String, String, String, String, String, Boolean)",
+      "line": 92,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/api/DefaultInvoicePaymentApi.java",
+      "method": "DefaultInvoicePaymentApi.createPurchaseForInvoicePayment(Account, UUID, UUID, UUID, BigDecimal, Currency, DateTime, String, String, Iterable<PluginProperty>, PaymentOptions, CallContext)",
+      "line": 67,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/core/sm/PluginControlPaymentAutomatonRunner.java",
+      "method": "PluginControlPaymentAutomatonRunner.run(boolean, TransactionType, ControlOperation, Account, UUID, UUID, String, String, BigDecimal, Currency, DateTime, Iterable<PluginProperty>, List<String>, CallContext, InternalCallContext)",
+      "line": 115,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/core/sm/PluginControlPaymentAutomatonRunner.java",
+      "method": "PluginControlPaymentAutomatonRunner.run(boolean, Boolean, TransactionType, ControlOperation, Account, UUID, UUID, String, UUID, String, BigDecimal, Currency, DateTime, Iterable<PluginProperty>, List<String>, CallContext, InternalCallContext)",
+      "line": 150,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/core/sm/PluginControlPaymentAutomatonRunner.java",
+      "method": "PluginControlPaymentAutomatonRunner.run(State, boolean, TransactionType, ControlOperation, Account, UUID, UUID, String, String, BigDecimal, Currency, DateTime, Iterable<PluginProperty>, List<String>, CallContext, InternalCallContext)",
+      "line": 187,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/dao/DefaultPaymentDao.java",
+      "method": "DefaultPaymentDao.updatePaymentAndTransactionOnCompletion(UUID, UUID, UUID, TransactionType, String, UUID, TransactionStatus, BigDecimal, Currency, String, String, boolean, InternalCallContext)",
+      "line": 331,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/dao/DefaultPaymentDao.java",
+      "method": "DefaultPaymentDao.updatePaymentAndTransactionOnCompletion(UUID, UUID, UUID, TransactionType, String, String, UUID, TransactionStatus, BigDecimal, Currency, String, String, boolean, InternalCallContext)",
+      "line": 362,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/logging/PaymentLoggingHelper.java",
+      "method": "PaymentLoggingHelper.logEnterAPICall(Logger, String, Account, UUID, UUID, UUID, BigDecimal, Currency, String, String, TransactionStatus, List<String>)",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "payment/src/main/java/org/killbill/billing/payment/logging/PaymentLoggingHelper.java",
+      "method": "PaymentLoggingHelper.logExitAPICall(Logger, String, Account, UUID, UUID, UUID, BigDecimal, Currency, String, String, TransactionStatus, List<String>, PaymentApiException)",
+      "line": 67,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "subscription/src/main/java/org/killbill/billing/subscription/api/user/DefaultEffectiveSubscriptionEvent.java",
+      "method": "DefaultEffectiveSubscriptionEvent.DefaultEffectiveSubscriptionEvent(UUID, UUID, UUID, String, DateTime, EntitlementState, String, String, String, Integer, EntitlementState, String, String, String, Integer, Long, SubscriptionBaseTransitionType, Integer, DateTime, Long, Long, UUID)",
+      "line": 37,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "killbill/killbill",
+      "path": "subscription/src/main/java/org/killbill/billing/subscription/api/user/DefaultRequestedSubscriptionEvent.java",
+      "method": "DefaultRequestedSubscriptionEvent.DefaultRequestedSubscriptionEvent(UUID, UUID, UUID, String, DateTime, DateTime, EntitlementState, String, String, String, Integer, EntitlementState, String, String, String, Integer, Long, SubscriptionBaseTransitionType, Integer, DateTime, Long, Long, UUID)",
+      "line": 34,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "OpenLiberty/open-liberty",
+      "path": "dev/com.ibm.ws.messaging.runtime/src/com/ibm/ws/sib/processor/impl/AnycastInputHandler.java",
+      "method": "AnycastInputHandler.AnycastInputHandler(String, SIBUuid12, boolean, MessageProcessor, ItemStream, SIBUuid8, SIBUuid12, AsyncUpdateThread, BaseDestinationHandler, boolean)",
+      "line": 338,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "OpenLiberty/open-liberty",
+      "path": "dev/com.ibm.ws.microprofile.openapi_fat/test-applications/appWithAnnotations/src/app/web/airlines/resources/AvailabilityResource.java",
+      "method": "AvailabilityResource.getFlights(String, String, String, String, int, int)",
+      "line": 68,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-client/src/main/java/com/facebook/presto/client/QueryResults.java",
+      "method": "QueryResults.QueryResults(String, URI, URI, URI, List<Column>, List<List<Object>>, StatementStats, QueryError, List<PrestoWarning>, String, Long)",
+      "line": 51,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-hive/src/main/java/com/facebook/presto/hive/HiveInsertTableHandle.java",
+      "method": "HiveInsertTableHandle.HiveInsertTableHandle(String, String, List<HiveColumnHandle>, String, HivePageSinkMetadata, LocationHandle, Optional<HiveBucketProperty>, List<SortingColumn>, HiveStorageFormat, HiveStorageFormat, HiveStorageFormat, HiveCompressionCodec, Optional<EncryptionInformation>)",
+      "line": 30,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-hive/src/main/java/com/facebook/presto/hive/HiveSplitManager.java",
+      "method": "HiveSplitManager.HiveSplitManager(HiveClientConfig, CacheQuotaRequirementProvider, HiveTransactionManager, NamenodeStats, HdfsEnvironment, DirectoryLister, ExecutorService, CoercionPolicy, HiveEncryptionInformationProvider)",
+      "line": 117,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/execution/QueryStateMachine.java",
+      "method": "QueryStateMachine.begin(String, Session, URI, ResourceGroupId, Optional<QueryType>, boolean, TransactionManager, AccessControl, Executor, Metadata, WarningCollector)",
+      "line": 178,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/operator/HashAggregationOperator.java",
+      "method": "HashAggregationOperator.HashAggregationOperatorFactory.HashAggregationOperatorFactory(int, PlanNodeId, List<? extends Type>, List<Integer>, List<Integer>, Step, List<AccumulatorFactory>, Optional<Integer>, Optional<Integer>, int, Optional<DataSize>, JoinCompiler, boolean)",
+      "line": 78,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/operator/HashAggregationOperator.java",
+      "method": "HashAggregationOperator.HashAggregationOperatorFactory.HashAggregationOperatorFactory(int, PlanNodeId, List<? extends Type>, List<Integer>, List<Integer>, Step, boolean, List<AccumulatorFactory>, Optional<Integer>, Optional<Integer>, int, Optional<DataSize>, boolean, DataSize, SpillerFactory, JoinCompiler, boolean)",
+      "line": 115,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/operator/aggregation/GenericAccumulatorFactoryBinder.java",
+      "method": "GenericAccumulatorFactoryBinder.bind(List<Integer>, Optional<Integer>, List<Type>, List<Integer>, List<SortOrder>, PagesIndex.Factory, boolean, JoinCompiler, List<LambdaProvider>, boolean, Session)",
+      "line": 63,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/operator/aggregation/LazyAccumulatorFactoryBinder.java",
+      "method": "LazyAccumulatorFactoryBinder.bind(List<Integer>, Optional<Integer>, List<Type>, List<Integer>, List<SortOrder>, PagesIndex.Factory, boolean, JoinCompiler, List<LambdaProvider>, boolean, Session)",
+      "line": 46,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/operator/aggregation/builder/InMemoryHashAggregationBuilder.java",
+      "method": "InMemoryHashAggregationBuilder.InMemoryHashAggregationBuilder(List<AccumulatorFactory>, Step, int, List<Type>, List<Integer>, Optional<Integer>, OperatorContext, Optional<DataSize>, JoinCompiler, boolean, boolean)",
+      "line": 70,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/server/BasicQueryInfo.java",
+      "method": "BasicQueryInfo.BasicQueryInfo(QueryId, SessionRepresentation, Optional<ResourceGroupId>, QueryState, MemoryPoolId, boolean, URI, String, BasicQueryStats, ExecutionFailureInfo, Optional<QueryType>, List<PrestoWarning>)",
+      "line": 100,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-main/src/main/java/com/facebook/presto/sql/planner/PlanOptimizers.java",
+      "method": "PlanOptimizers.PlanOptimizers(Metadata, SqlParser, MBeanExporter, SplitManager, ConnectorPlanOptimizerManager, PageSourceManager, StatsCalculator, CostCalculator, CostCalculator, CostComparator, TaskCountEstimator)",
+      "line": 156,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-raptor/src/main/java/com/facebook/presto/raptor/metadata/ShardCleaner.java",
+      "method": "ShardCleaner.ShardCleaner(DaoSupplier<ShardDao>, Ticker, NodeManager, StorageService, Optional<BackupStore>, OrcDataEnvironment, ShardCleanerConfig)",
+      "line": 105,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-raptor/src/main/java/com/facebook/presto/raptor/storage/OrcStorageManager.java",
+      "method": "OrcStorageManager.OrcStorageManager(NodeManager, StorageService, Optional<BackupStore>, ReaderAttributes, StorageManagerConfig, RaptorConnectorId, BackupManager, ShardRecoveryManager, ShardRecorder, TypeManager, OrcDataEnvironment, OrcFileTailSource, StripeMetadataSource)",
+      "line": 174,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "prestodb/presto",
+      "path": "presto-raptor/src/main/java/com/facebook/presto/raptor/storage/StorageManager.java",
+      "method": "StorageManager.getPageSource(HdfsContext, HiveFileContext, UUID, Optional<UUID>, boolean, OptionalInt, List<Long>, List<Type>, TupleDomain<RaptorColumnHandle>, ReaderAttributes)",
+      "line": 32,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "clojure/clojure",
+      "path": "src/jvm/clojure/lang/MultiFn.java",
+      "method": "MultiFn.invoke(Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object)",
+      "line": 493,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "clojure/clojure",
+      "path": "src/jvm/clojure/lang/MultiFn.java",
+      "method": "MultiFn.invoke(Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object)",
+      "line": 520,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "clojure/clojure",
+      "path": "src/jvm/clojure/lang/MultiFn.java",
+      "method": "MultiFn.invoke(Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object...)",
+      "line": 549,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "clojure/clojure",
+      "path": "src/jvm/clojure/lang/Var.java",
+      "method": "Var.invoke(Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object...)",
+      "line": 676,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/CURInfo.java",
+      "method": "CURInfo.CURInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 37,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/GenericImageInfo.java",
+      "method": "GenericImageInfo.GenericImageInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 44,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ICOInfo.java",
+      "method": "ICOInfo.ICOInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(Image, int, int, ScaleType, ImageFormat, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 900,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(InputStream, int, int, ScaleType, ImageFormat, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 957,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(byte[], int, int, ScaleType, ImageFormat, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 1012,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(Image, int, int, ScaleType, DLNAImageProfile, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 1066,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(InputStream, int, int, ScaleType, DLNAImageProfile, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 1122,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/ImagesUtil.java",
+      "method": "ImagesUtil.transcodeImage(byte[], int, int, ScaleType, DLNAImageProfile, boolean, boolean, boolean, BufferedImageFilterChain)",
+      "line": 1176,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/PCXInfo.java",
+      "method": "PCXInfo.PCXInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/RAWInfo.java",
+      "method": "RAWInfo.RAWInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 37,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/RAWInfo.java",
+      "method": "RAWInfo.RAWInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, boolean, PhotometricInterpretation, ExifOrientation, ExifOrientation, Integer, ExifCompression, ExifColorSpace, boolean)",
+      "line": 85,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/TIFFInfo.java",
+      "method": "TIFFInfo.TIFFInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 37,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/TIFFInfo.java",
+      "method": "TIFFInfo.TIFFInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, boolean, PhotometricInterpretation, ExifOrientation, ExifOrientation, Integer, ExifCompression, ExifColorSpace, boolean)",
+      "line": 85,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "UniversalMediaServer/UniversalMediaServer",
+      "path": "src/main/java/net/pms/image/WebPInfo.java",
+      "method": "WebPInfo.WebPInfo(int, int, ImageFormat, long, int, int, ColorSpace, ColorSpaceType, Metadata, boolean, boolean)",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "core/src/main/java/org/apache/druid/indexer/TaskStatusPlus.java",
+      "method": "TaskStatusPlus.TaskStatusPlus(String, String, String, DateTime, DateTime, TaskState, RunnerTaskState, Long, TaskLocation, String, String)",
+      "line": 48,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "core/src/main/java/org/apache/druid/timeline/DataSegment.java",
+      "method": "DataSegment.DataSegment(String, Interval, String, Map<String,Object>, List<String>, List<String>, ShardSpec, CompactionState, Integer, long)",
+      "line": 163,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-contrib/materialized-view-maintenance/src/main/java/org/apache/druid/indexing/materializedview/MaterializedViewSupervisorReport.java",
+      "method": "MaterializedViewSupervisorReport.MaterializedViewSupervisorReport(String, DateTime, boolean, String, Set<String>, Set<String>, List<Interval>, boolean, SupervisorStateManager.State, List<SupervisorStateManager.ExceptionEvent>)",
+      "line": 34,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kafka-indexing-service/src/main/java/org/apache/druid/indexing/kafka/KafkaIndexTaskIOConfig.java",
+      "method": "KafkaIndexTaskIOConfig.KafkaIndexTaskIOConfig(int, String, SeekableStreamStartSequenceNumbers<Integer,Long>, SeekableStreamEndSequenceNumbers<Integer,Long>, Map<String,Object>, Long, Boolean, DateTime, DateTime, InputFormat)",
+      "line": 90,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kafka-indexing-service/src/main/java/org/apache/druid/indexing/kafka/KafkaIndexTaskTuningConfig.java",
+      "method": "KafkaIndexTaskTuningConfig.KafkaIndexTaskTuningConfig(AppendableIndexSpec, Integer, Long, Integer, Long, Period, File, Integer, IndexSpec, IndexSpec, Boolean, Boolean, Long, Boolean, SegmentWriteOutMediumFactory, Period, Boolean, Integer, Integer)",
+      "line": 36,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kafka-indexing-service/src/main/java/org/apache/druid/indexing/kafka/supervisor/KafkaSupervisorReportPayload.java",
+      "method": "KafkaSupervisorReportPayload.KafkaSupervisorReportPayload(String, String, int, int, long, Map<Integer,Long>, Map<Integer,Long>, Long, DateTime, boolean, boolean, SupervisorStateManager.State, SupervisorStateManager.State, List<SupervisorStateManager.ExceptionEvent>)",
+      "line": 32,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kafka-indexing-service/src/main/java/org/apache/druid/indexing/kafka/supervisor/KafkaSupervisorSpec.java",
+      "method": "KafkaSupervisorSpec.KafkaSupervisorSpec(KafkaSupervisorIngestionSpec, DataSchema, KafkaSupervisorTuningConfig, KafkaSupervisorIOConfig, Map<String,Object>, Boolean, TaskStorage, TaskMaster, IndexerMetadataStorageCoordinator, KafkaIndexTaskClientFactory, ObjectMapper, ServiceEmitter, DruidMonitorSchedulerConfig, RowIngestionMetersFactory, SupervisorStateManagerConfig)",
+      "line": 47,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kinesis-indexing-service/src/main/java/org/apache/druid/indexing/kinesis/KinesisIndexTaskIOConfig.java",
+      "method": "KinesisIndexTaskIOConfig.KinesisIndexTaskIOConfig(int, String, SeekableStreamStartSequenceNumbers<String,String>, SeekableStreamEndSequenceNumbers<String,String>, Boolean, DateTime, DateTime, InputFormat, String, Integer, Integer, String, String, boolean)",
+      "line": 102,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "extensions-core/kinesis-indexing-service/src/main/java/org/apache/druid/indexing/kinesis/supervisor/KinesisSupervisorReportPayload.java",
+      "method": "KinesisSupervisorReportPayload.KinesisSupervisorReportPayload(String, String, Integer, Integer, Long, boolean, boolean, SupervisorStateManager.State, SupervisorStateManager.State, List<SupervisorStateManager.ExceptionEvent>, Map<String,Long>, Long)",
+      "line": 31,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "indexing-service/src/main/java/org/apache/druid/indexing/common/task/CompactionTask.java",
+      "method": "CompactionTask.createIoConfig(TaskToolbox, DataSchema, Interval, CoordinatorClient, SegmentLoaderFactory, RetryPolicyFactory)",
+      "line": 572,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "indexing-service/src/main/java/org/apache/druid/indexing/seekablestream/supervisor/SeekableStreamSupervisor.java",
+      "method": "SeekableStreamSupervisor.TaskGroup.TaskGroup(int, ImmutableMap<PartitionIdType,SequenceOffsetType>, ImmutableMap<PartitionIdType,SequenceOffsetType>, Optional<DateTime>, Optional<DateTime>, Set<PartitionIdType>)",
+      "line": 182,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "integration-tests/src/main/java/org/apache/druid/server/coordination/ServerManagerForQueryRetryTest.java",
+      "method": "ServerManagerForQueryRetryTest.ServerManagerForQueryRetryTest(QueryRunnerFactoryConglomerate, ServiceEmitter, ExecutorService, CachePopulator, ObjectMapper, Cache, CacheConfig, SegmentManager, JoinableFactory, ServerConfig)",
+      "line": 73,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "processing/src/main/java/org/apache/druid/query/groupby/GroupByQuery.java",
+      "method": "GroupByQuery.GroupByQuery(DataSource, QuerySegmentSpec, VirtualColumns, DimFilter, Granularity, List<DimensionSpec>, List<AggregatorFactory>, List<PostAggregator>, HavingSpec, LimitSpec, List<List<String>>, Map<String,Object>)",
+      "line": 133,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "processing/src/main/java/org/apache/druid/query/groupby/epinephelinae/ConcurrentGrouper.java",
+      "method": "ConcurrentGrouper.ConcurrentGrouper(GroupByQueryConfig, Supplier<ByteBuffer>, ReferenceCountingResourceHolder<ByteBuffer>, KeySerdeFactory<KeyType>, KeySerdeFactory<KeyType>, ColumnSelectorFactory, AggregatorFactory[], LimitedTemporaryStorage, ObjectMapper, int, DefaultLimitSpec, boolean, ListeningExecutorService, int, boolean, long)",
+      "line": 98,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "processing/src/main/java/org/apache/druid/query/groupby/epinephelinae/RowBasedGrouperHelper.java",
+      "method": "RowBasedGrouperHelper.createGrouperAccumulatorPair(GroupByQuery, GroupByQuery, GroupByQueryConfig, Supplier<ByteBuffer>, LimitedTemporaryStorage, ObjectMapper, int)",
+      "line": 112,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/metadata/IndexerSQLMetadataStorageCoordinator.java",
+      "method": "IndexerSQLMetadataStorageCoordinator.insertToMetastore(Handle, SegmentIdWithShardSpec, String, Interval, String, String, String)",
+      "line": 757,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/segment/realtime/appenderator/Appenderators.java",
+      "method": "Appenderators.createOffline(String, DataSchema, AppenderatorConfig, FireDepartmentMetrics, DataSegmentPusher, ObjectMapper, IndexIO, IndexMerger, RowIngestionMeters, ParseExceptionHandler)",
+      "line": 96,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/segment/realtime/appenderator/UnifiedIndexerAppenderatorsManager.java",
+      "method": "UnifiedIndexerAppenderatorsManager.createRealtimeAppenderatorForTask(String, DataSchema, AppenderatorConfig, FireDepartmentMetrics, DataSegmentPusher, ObjectMapper, IndexIO, IndexMerger, QueryRunnerFactoryConglomerate, DataSegmentAnnouncer, ServiceEmitter, ExecutorService, JoinableFactory, Cache, CacheConfig, CachePopulatorStats, RowIngestionMeters, ParseExceptionHandler)",
+      "line": 148,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/segment/realtime/appenderator/UnifiedIndexerAppenderatorsManager.java",
+      "method": "UnifiedIndexerAppenderatorsManager.createOfflineAppenderatorForTask(String, DataSchema, AppenderatorConfig, FireDepartmentMetrics, DataSegmentPusher, ObjectMapper, IndexIO, IndexMerger, RowIngestionMeters, ParseExceptionHandler)",
+      "line": 197,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/server/ClientQuerySegmentWalker.java",
+      "method": "ClientQuerySegmentWalker.ClientQuerySegmentWalker(ServiceEmitter, CachingClusteredClient, LocalQuerySegmentWalker, QueryToolChestWarehouse, JoinableFactory, RetryQueryRunnerConfig, ObjectMapper, ServerConfig, Cache, CacheConfig)",
+      "line": 116,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/server/coordination/LoadableDataSegment.java",
+      "method": "LoadableDataSegment.LoadableDataSegment(String, Interval, String, Map<String,Object>, List<String>, List<String>, ShardSpec, CompactionState, Integer, long, PruneSpecsHolder)",
+      "line": 45,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/server/coordinator/DruidCoordinator.java",
+      "method": "DruidCoordinator.DruidCoordinator(DruidCoordinatorConfig, ZkPathsConfig, JacksonConfigManager, SegmentsMetadataManager, ServerInventoryView, MetadataRuleManager, Provider<CuratorFramework>, ServiceEmitter, ScheduledExecutorFactory, IndexingServiceClient, LoadQueueTaskMaster, ServiceAnnouncer, DruidNode, Set<CoordinatorDuty>, BalancerStrategyFactory, LookupCoordinatorManager, DruidLeaderSelector, CompactSegments, ZkEnablementConfig)",
+      "line": 169,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/druid",
+      "path": "server/src/main/java/org/apache/druid/server/coordinator/UserCompactionTaskQueryTuningConfig.java",
+      "method": "UserCompactionTaskQueryTuningConfig.UserCompactionTaskQueryTuningConfig(Integer, Long, Long, SplitHintSpec, PartitionsSpec, IndexSpec, IndexSpec, Integer, Long, SegmentWriteOutMediumFactory, Integer, Integer, Long, Duration, Integer, Integer, Integer)",
+      "line": 37,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/sun/security/krb5/Credentials.java",
+      "method": "Credentials.Credentials(byte[], String, String, String, String, byte[], int, boolean[], Date, Date, Date, Date, InetAddress[])",
+      "line": 126,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/sun/security/krb5/internal/EncASRepPart.java",
+      "method": "EncASRepPart.EncASRepPart(EncryptionKey, LastReq, int, KerberosTime, TicketFlags, KerberosTime, KerberosTime, KerberosTime, KerberosTime, PrincipalName, HostAddresses, PAData[])",
+      "line": 39,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "corretto/corretto-8",
+      "path": "jdk/src/share/classes/sun/security/krb5/internal/EncTGSRepPart.java",
+      "method": "EncTGSRepPart.EncTGSRepPart(EncryptionKey, LastReq, int, KerberosTime, TicketFlags, KerberosTime, KerberosTime, KerberosTime, KerberosTime, PrincipalName, HostAddresses, PAData[])",
+      "line": 38,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "box/mojito",
+      "path": "webapp/src/main/java/com/box/l10n/mojito/rest/screenshot/ScreenshotWS.java",
+      "method": "ScreenshotWS.getScreeenshots(ArrayList<Long>, ArrayList<String>, String, Screenshot.Status, String, String, String, SearchType, ScreenshotRunType, Integer, Integer)",
+      "line": 45,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "strimzi/strimzi-kafka-operator",
+      "path": "systemtest/src/main/java/io/strimzi/systemtest/resources/crd/KafkaMirrorMakerResource.java",
+      "method": "KafkaMirrorMakerResource.defaultKafkaMirrorMaker(KafkaMirrorMaker, String, String, String, String, int, boolean)",
+      "line": 51,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>)",
+      "line": 665,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>)",
+      "line": 720,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>)",
+      "line": 777,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>)",
+      "line": 836,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>, Function<? super T,? extends Field<T19>>)",
+      "line": 897,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>, Function<? super T,? extends Field<T19>>, Function<? super T,? extends Field<T20>>)",
+      "line": 960,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>, Function<? super T,? extends Field<T19>>, Function<? super T,? extends Field<T20>>, Function<? super T,? extends Field<T21>>)",
+      "line": 1025,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collectingArray(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>, Function<? super T,? extends Field<T19>>, Function<? super T,? extends Field<T20>>, Function<? super T,? extends Field<T21>>, Function<? super T,? extends Field<T22>>)",
+      "line": 1062,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "jOOQ/jOOQ",
+      "path": "jOOQ/src/main/java/org/jooq/Rows.java",
+      "method": "Rows.collecting(Function<? super T,? extends Field<T1>>, Function<? super T,? extends Field<T2>>, Function<? super T,? extends Field<T3>>, Function<? super T,? extends Field<T4>>, Function<? super T,? extends Field<T5>>, Function<? super T,? extends Field<T6>>, Function<? super T,? extends Field<T7>>, Function<? super T,? extends Field<T8>>, Function<? super T,? extends Field<T9>>, Function<? super T,? extends Field<T10>>, Function<? super T,? extends Field<T11>>, Function<? super T,? extends Field<T12>>, Function<? super T,? extends Field<T13>>, Function<? super T,? extends Field<T14>>, Function<? super T,? extends Field<T15>>, Function<? super T,? extends Field<T16>>, Function<? super T,? extends Field<T17>>, Function<? super T,? extends Field<T18>>, Function<? super T,? extends Field<T19>>, Function<? super T,? extends Field<T20>>, Function<? super T,? extends Field<T21>>, Function<? super T,? extends Field<T22>>)",
+      "line": 1092,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/fineract",
+      "path": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/FixedDepositAccountData.java",
+      "method": "FixedDepositAccountData.withTemplateOptions(FixedDepositAccountData, Collection<DepositProductData>, Collection<StaffData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<SavingsAccountTransactionData>, Collection<SavingsAccountChargeData>, Collection<ChargeData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<SavingsAccountData>, Collection<EnumOptionData>)",
+      "line": 227,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/fineract",
+      "path": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/FixedDepositProductData.java",
+      "method": "FixedDepositProductData.withTemplate(FixedDepositProductData, Collection<CurrencyData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<PaymentTypeData>, Collection<EnumOptionData>, Map<String,List<GLAccountData>>, Collection<ChargeData>, Collection<ChargeData>, InterestRateChartData, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<TaxGroupData>)",
+      "line": 143,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/fineract",
+      "path": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/RecurringDepositAccountData.java",
+      "method": "RecurringDepositAccountData.withTemplateOptions(RecurringDepositAccountData, Collection<DepositProductData>, Collection<StaffData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<SavingsAccountTransactionData>, Collection<SavingsAccountChargeData>, Collection<ChargeData>, Collection<EnumOptionData>, Collection<EnumOptionData>)",
+      "line": 266,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/fineract",
+      "path": "fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/data/RecurringDepositProductData.java",
+      "method": "RecurringDepositProductData.withTemplate(RecurringDepositProductData, Collection<CurrencyData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<PaymentTypeData>, Collection<EnumOptionData>, Map<String,List<GLAccountData>>, Collection<ChargeData>, Collection<ChargeData>, InterestRateChartData, Collection<EnumOptionData>, Collection<EnumOptionData>, Collection<TaxGroupData>)",
+      "line": 151,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/FunctionsBase.java",
+      "method": "FunctionsBase.registerFunction(String, String, String, InputStream, FormDataContentDisposition, String, FunctionConfig)",
+      "line": 78,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/FunctionsBase.java",
+      "method": "FunctionsBase.updateFunction(String, String, String, InputStream, FormDataContentDisposition, String, FunctionConfig, UpdateOptions)",
+      "line": 185,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/SinksBase.java",
+      "method": "SinksBase.registerSink(String, String, String, InputStream, FormDataContentDisposition, String, SinkConfig)",
+      "line": 75,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/SinksBase.java",
+      "method": "SinksBase.updateSink(String, String, String, InputStream, FormDataContentDisposition, String, SinkConfig, UpdateOptions)",
+      "line": 159,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/SourcesBase.java",
+      "method": "SourcesBase.registerSource(String, String, String, InputStream, FormDataContentDisposition, String, SourceConfig)",
+      "line": 76,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/pulsar",
+      "path": "pulsar-broker/src/main/java/org/apache/pulsar/broker/admin/impl/SourcesBase.java",
+      "method": "SourcesBase.updateSource(String, String, String, InputStream, FormDataContentDisposition, String, SourceConfig, UpdateOptions)",
+      "line": 150,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/kafka",
+      "path": "clients/src/main/java/org/apache/kafka/clients/NetworkClient.java",
+      "method": "NetworkClient.NetworkClient(Selectable, Metadata, String, int, long, long, int, int, int, long, long, ClientDnsLookup, Time, boolean, ApiVersions, LogContext)",
+      "line": 132,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/kafka",
+      "path": "clients/src/main/java/org/apache/kafka/clients/NetworkClient.java",
+      "method": "NetworkClient.NetworkClient(Selectable, Metadata, String, int, long, long, int, int, int, long, long, ClientDnsLookup, Time, boolean, ApiVersions, Sensor, LogContext)",
+      "line": 168,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/kafka",
+      "path": "clients/src/main/java/org/apache/kafka/clients/NetworkClient.java",
+      "method": "NetworkClient.NetworkClient(Selectable, MetadataUpdater, String, int, long, long, int, int, int, long, long, ClientDnsLookup, Time, boolean, ApiVersions, LogContext)",
+      "line": 205,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/kafka",
+      "path": "raft/src/main/java/org/apache/kafka/raft/KafkaRaftClient.java",
+      "method": "KafkaRaftClient.KafkaRaftClient(RaftConfig, RecordSerde<T>, NetworkChannel, ReplicatedLog, QuorumState, Time, ExpirationService, LogContext)",
+      "line": 148,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-connectors/flink-connector-elasticsearch6/src/main/java/org/apache/flink/streaming/connectors/elasticsearch6/Elasticsearch6UpsertTableSink.java",
+      "method": "Elasticsearch6UpsertTableSink.Elasticsearch6UpsertTableSink(boolean, TableSchema, List<Host>, String, String, String, String, SerializationSchema<Row>, XContentType, ActionRequestFailureHandler, Map<SinkOption,String>)",
+      "line": 69,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-connectors/flink-connector-elasticsearch6/src/main/java/org/apache/flink/streaming/connectors/elasticsearch6/Elasticsearch6UpsertTableSink.java",
+      "method": "Elasticsearch6UpsertTableSink.copy(boolean, TableSchema, List<Host>, String, String, String, String, SerializationSchema<Row>, XContentType, ActionRequestFailureHandler, Map<SinkOption,String>, RequestFactory)",
+      "line": 98,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-connectors/flink-connector-elasticsearch7/src/main/java/org/apache/flink/streaming/connectors/elasticsearch7/Elasticsearch7UpsertTableSink.java",
+      "method": "Elasticsearch7UpsertTableSink.Elasticsearch7UpsertTableSink(boolean, TableSchema, List<Host>, String, String, String, String, SerializationSchema<Row>, XContentType, ActionRequestFailureHandler, Map<SinkOption,String>)",
+      "line": 96,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-connectors/flink-connector-kafka/src/main/java/org/apache/flink/streaming/connectors/kafka/table/KafkaDynamicTableFactory.java",
+      "method": "KafkaDynamicTableFactory.createKafkaTableSource(DataType, DecodingFormat<DeserializationSchema<RowData>>, DecodingFormat<DeserializationSchema<RowData>>, int[], int[], String, List<String>, Pattern, Properties, StartupMode, Map<KafkaTopicPartition,Long>, long)",
+      "line": 288,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-connectors/flink-connector-kafka/src/main/java/org/apache/flink/streaming/connectors/kafka/table/KafkaDynamicTableFactory.java",
+      "method": "KafkaDynamicTableFactory.createKafkaTableSink(DataType, EncodingFormat<SerializationSchema<RowData>>, EncodingFormat<SerializationSchema<RowData>>, int[], int[], String, String, Properties, FlinkKafkaPartitioner<RowData>, KafkaSinkSemantic, Integer)",
+      "line": 317,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-core/src/main/java/org/apache/flink/api/java/tuple/Tuple24.java",
+      "method": "Tuple24.of(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22, T23)",
+      "line": 557,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-core/src/main/java/org/apache/flink/api/java/tuple/Tuple25.java",
+      "method": "Tuple25.of(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22, T23, T24)",
+      "line": 574,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-runtime/src/main/java/org/apache/flink/runtime/checkpoint/CheckpointCoordinator.java",
+      "method": "CheckpointCoordinator.CheckpointCoordinator(JobID, CheckpointCoordinatorConfiguration, ExecutionVertex[], ExecutionVertex[], ExecutionVertex[], Collection<OperatorCoordinatorCheckpointContext>, CheckpointIDCounter, CompletedCheckpointStore, StateBackend, Executor, CheckpointsCleaner, ScheduledExecutor, SharedStateRegistryFactory, CheckpointFailureManager)",
+      "line": 215,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-runtime/src/main/java/org/apache/flink/runtime/resourcemanager/active/ActiveResourceManagerFactory.java",
+      "method": "ActiveResourceManagerFactory.createResourceManager(Configuration, ResourceID, RpcService, HighAvailabilityServices, HeartbeatServices, FatalErrorHandler, ClusterInformation, String, ResourceManagerMetricGroup, ResourceManagerRuntimeServices, Executor)",
+      "line": 84,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-runtime/src/main/java/org/apache/flink/runtime/rest/messages/checkpoints/CheckpointStatistics.java",
+      "method": "CheckpointStatistics.PendingCheckpointStatistics.PendingCheckpointStatistics(long, CheckpointStatsStatus, boolean, long, long, long, long, long, long, long, int, int, CheckpointType, Map<JobVertexID,TaskCheckpointStatistics>)",
+      "line": 535,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-runtime/src/main/java/org/apache/flink/runtime/rest/messages/taskmanager/TaskManagerMetricsInfo.java",
+      "method": "TaskManagerMetricsInfo.TaskManagerMetricsInfo(long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, List<GarbageCollectorInfo>)",
+      "line": 148,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-runtime/src/main/java/org/apache/flink/runtime/state/StateBackend.java",
+      "method": "StateBackend.createKeyedStateBackend(Environment, JobID, String, TypeSerializer<K>, int, KeyGroupRange, TaskKvStateRegistry, TtlTimeProvider, MetricGroup, Collection<KeyedStateHandle>, CloseableRegistry, double)",
+      "line": 163,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-state-backends/flink-statebackend-rocksdb/src/main/java/org/apache/flink/contrib/streaming/state/RocksDBStateBackend.java",
+      "method": "RocksDBStateBackend.createKeyedStateBackend(Environment, JobID, String, TypeSerializer<K>, int, KeyGroupRange, TaskKvStateRegistry, TtlTimeProvider, MetricGroup, Collection<KeyedStateHandle>, CloseableRegistry)",
+      "line": 474,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "apache/flink",
+      "path": "flink-state-backends/flink-statebackend-rocksdb/src/main/java/org/apache/flink/contrib/streaming/state/restore/RocksDBNoneRestoreOperation.java",
+      "method": "RocksDBNoneRestoreOperation.RocksDBNoneRestoreOperation(KeyGroupRange, int, int, CloseableRegistry, ClassLoader, Map<String,RocksDbKvStateInfo>, StateSerializerProvider<K>, File, File, DBOptions, Function<String,ColumnFamilyOptions>, RocksDBNativeMetricOptions, MetricGroup, Collection<KeyedStateHandle>, RocksDbTtlCompactFiltersManager, Long)",
+      "line": 44,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "server/src/main/java/org/elasticsearch/index/mapper/DateFieldMapper.java",
+      "method": "DateFieldMapper.DateFieldType.dateRangeQuery(Object, Object, boolean, boolean, ZoneId, DateMathParser, QueryShardContext, Resolution, BiFunction<Long,Long,Query>)",
+      "line": 369,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "server/src/main/java/org/elasticsearch/index/query/QueryShardContext.java",
+      "method": "QueryShardContext.QueryShardContext(int, IndexSettings, BigArrays, BitsetFilterCache, TriFunction<MappedFieldType,String,Supplier<SearchLookup>,IndexFieldData<?>>, MapperService, SimilarityService, ScriptService, NamedXContentRegistry, NamedWriteableRegistry, Client, IndexSearcher, LongSupplier, String, Predicate<String>, BooleanSupplier, ValuesSourceRegistry, Map<String,Object>)",
+      "line": 115,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "server/src/main/java/org/elasticsearch/indices/cluster/IndicesClusterStateService.java",
+      "method": "IndicesClusterStateService.IndicesClusterStateService(Settings, IndicesService, ClusterService, ThreadPool, PeerRecoveryTargetService, ShardStateAction, NodeMappingRefreshAction, RepositoriesService, SearchService, PeerRecoverySourceService, SnapshotShardsService, PrimaryReplicaSyncer, RetentionLeaseSyncer, NodeClient)",
+      "line": 127,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "server/src/main/java/org/elasticsearch/search/aggregations/bucket/histogram/AutoDateHistogramAggregator.java",
+      "method": "AutoDateHistogramAggregator.build(String, AggregatorFactories, int, RoundingInfo[], ValuesSourceConfig, AggregationContext, Aggregator, CardinalityUpperBound, Map<String,Object>)",
+      "line": 68,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "server/src/main/java/org/elasticsearch/search/aggregations/bucket/range/RangeAggregator.java",
+      "method": "RangeAggregator.NoOverlap.NoOverlap(String, AggregatorFactories, Numeric, DocValueFormat, Factory, Range[], double, Map<String,Object>, boolean, AggregationContext, Aggregator, CardinalityUpperBound, Map<String,Object>)",
+      "line": 614,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/TransportPutTransformAction.java",
+      "method": "TransportPutTransformAction.TransportPutTransformAction(Settings, TransportService, ThreadPool, ActionFilters, IndexNameExpressionResolver, ClusterService, XPackLicenseState, TransformServices, Client, IngestService)",
+      "line": 80,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/TransportStartTransformAction.java",
+      "method": "TransportStartTransformAction.TransportStartTransformAction(TransportService, ActionFilters, ClusterService, XPackLicenseState, ThreadPool, IndexNameExpressionResolver, TransformServices, PersistentTasksService, Client, Settings, IngestService)",
+      "line": 79,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/TransportUpdateTransformAction.java",
+      "method": "TransportUpdateTransformAction.TransportUpdateTransformAction(Settings, TransportService, ThreadPool, ActionFilters, IndexNameExpressionResolver, ClusterService, XPackLicenseState, TransformServices, Client, IngestService)",
+      "line": 91,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/compat/TransportPutTransformActionDeprecated.java",
+      "method": "TransportPutTransformActionDeprecated.TransportPutTransformActionDeprecated(Settings, TransportService, ThreadPool, ActionFilters, IndexNameExpressionResolver, ClusterService, XPackLicenseState, TransformServices, Client, IngestService)",
+      "line": 26,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/compat/TransportStartTransformActionDeprecated.java",
+      "method": "TransportStartTransformActionDeprecated.TransportStartTransformActionDeprecated(TransportService, ActionFilters, ClusterService, XPackLicenseState, ThreadPool, IndexNameExpressionResolver, TransformServices, PersistentTasksService, Client, Settings, IngestService)",
+      "line": 27,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "path": "x-pack/plugin/transform/src/main/java/org/elasticsearch/xpack/transform/action/compat/TransportUpdateTransformActionDeprecated.java",
+      "method": "TransportUpdateTransformActionDeprecated.TransportUpdateTransformActionDeprecated(Settings, TransportService, ThreadPool, ActionFilters, IndexNameExpressionResolver, ClusterService, XPackLicenseState, TransformServices, Client, IngestService)",
+      "line": 26,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "google/copybara",
+      "path": "java/com/google/copybara/TransformResult.java",
+      "method": "TransformResult.TransformResult(Path, Revision, Author, String, Revision, String, Changes, String, boolean, Function<String,Collection<String>>, String)",
+      "line": 62,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "google/copybara",
+      "path": "java/com/google/copybara/git/GerritOrigin.java",
+      "method": "GerritOrigin.newGerritOrigin(Options, String, SubmoduleStrategy, boolean, boolean, Checker, PatchTransformation, String, boolean, boolean)",
+      "line": 166,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "alibaba/atlas",
+      "path": "atlas-gradle-plugin/atlas-plugin/src/main/java/com/android/builder/core/AtlasBuilder.java",
+      "method": "AtlasBuilder.mergeManifestsForApplication(File, List<File>, List<? extends ManifestProvider>, String, String, int, String, String, String, Integer, String, String, String, ManifestMerger2.MergeType, Map<String,Object>, List<ManifestMerger2.Invoker.Feature>, File)",
+      "line": 761,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    },
+    {
+      "repository": "alibaba/atlas",
+      "path": "atlas-gradle-plugin/atlas-plugin/src/main/java/com/taobao/android/builder/tasks/app/merge/bundle/MergeAwbResource.java",
+      "method": "MergeAwbResource.makeAapt(AaptGeneration, AndroidBuilder, FileCache, boolean, VariantScope, File, MergingLog)",
+      "line": 139,
+      "combined_reason": "jumps",
+      "combined_detail": null
+    }
+  ],
+  "category3c_gain_by_injection_reason": {
+    "carried": 300,
+    "jumps": 1,
+    "long_statement": 58,
+    "loop": 647,
+    "switch": 11,
+    "try": 181
+  },
+  "improved_composition": {
+    "with_pieces": 10430,
+    "functions_only": 25188
+  },
+  "saving_among_improved": {
+    "n": 35618,
+    "median": 2.0,
+    "quartiles": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "mean": 3.4,
+    "max": 50,
+    "share_saving_one": 0.392
+  },
+  "worse_seam_difference": {
+    "1": 4197,
+    "2": 650,
+    "3": 129,
+    "4": 14,
+    "5": 3
+  },
+  "stuck_without_plan_combined": {
+    "carried": 1493,
+    "jumps": 484,
+    "long_statement": 2609,
+    "loop": 6133,
+    "switch": 1634,
+    "try": 1753
+  },
+  "stuck_concentration": {
+    "S1": 38433,
+    "top": [
+      {
+        "repository": "corretto/corretto-8",
+        "tier": "mid",
+        "long": 14560,
+        "stuck": 4384,
+        "category3c": 889,
+        "methods": 202991
+      },
+      {
+        "repository": "OpenLiberty/open-liberty",
+        "tier": "mid",
+        "long": 18374,
+        "stuck": 3172,
+        "category3c": 670,
+        "methods": 222734
+      },
+      {
+        "repository": "apache/hive",
+        "tier": "high",
+        "long": 6165,
+        "stuck": 1786,
+        "category3c": 360,
+        "methods": 78268
+      },
+      {
+        "repository": "apache/hadoop",
+        "tier": "high",
+        "long": 4907,
+        "stuck": 872,
+        "category3c": 165,
+        "methods": 86476
+      },
+      {
+        "repository": "oracle/coherence",
+        "tier": "low",
+        "long": 2541,
+        "stuck": 812,
+        "category3c": 167,
+        "methods": 30957
+      },
+      {
+        "repository": "elastic/elasticsearch",
+        "tier": "high",
+        "long": 5688,
+        "stuck": 812,
+        "category3c": 150,
+        "methods": 97688
+      },
+      {
+        "repository": "openhab/openhab-addons",
+        "tier": "mid",
+        "long": 2821,
+        "stuck": 761,
+        "category3c": 212,
+        "methods": 47756
+      },
+      {
+        "repository": "prestodb/presto",
+        "tier": "high",
+        "long": 2121,
+        "stuck": 693,
+        "category3c": 235,
+        "methods": 44066
+      },
+      {
+        "repository": "payara/Payara",
+        "tier": "low",
+        "long": 4373,
+        "stuck": 692,
+        "category3c": 124,
+        "methods": 59536
+      },
+      {
+        "repository": "tranleduy2000/javaide",
+        "tier": "low",
+        "long": 1883,
+        "stuck": 628,
+        "category3c": 106,
+        "methods": 23729
+      }
+    ],
+    "top10_share": 0.3802,
+    "top30_share": 0.5775,
+    "repositories_without_long": 18,
+    "repositories_without_stuck": 110,
+    "repositories_with_stuck_without_category3c": 124,
+    "median_long_per_repository": 42.5,
+    "median_stuck_per_repository": 7.0,
+    "long_share_of_methods": 0.0557
+  },
+  "per_repository_by_tier": {
+    "category3c_over_S1": {
+      "high": {
+        "repositories": 198,
+        "median": 0.1698
+      },
+      "low": {
+        "repositories": 128,
+        "median": 0.1969
+      },
+      "mid": {
+        "repositories": 144,
+        "median": 0.158
+      }
+    },
+    "S2c_over_S1": {
+      "high": {
+        "repositories": 198,
+        "median": 0.6801
+      },
+      "low": {
+        "repositories": 128,
+        "median": 0.699
+      },
+      "mid": {
+        "repositories": 144,
+        "median": 0.6667
+      }
+    },
+    "improved_over_slimmable": {
+      "high": {
+        "repositories": 220,
+        "median": 0.2417
+      },
+      "low": {
+        "repositories": 155,
+        "median": 0.2
+      },
+      "mid": {
+        "repositories": 184,
+        "median": 0.2034
+      }
+    }
+  },
+  "readings_of_long_methods": {
+    "conventional": 165099,
+    "framework_entry_point": 3190,
+    "officefloor_function": 177
+  },
+  "officefloor_reading": {
+    "long_methods": 177,
+    "repositories": [
+      [
+        "geonetwork/core-geonetwork",
+        123
+      ],
+      [
+        "apache/fineract",
+        25
+      ],
+      [
+        "openhab/openhab-addons",
+        9
+      ],
+      [
+        "DSpace/DSpace",
+        6
+      ],
+      [
+        "pxb1988/dex2jar",
+        5
+      ]
+    ],
+    "evidence": [
+      [
+        "@Parameter",
+        166
+      ],
+      [
+        "Out",
+        5
+      ],
+      [
+        "Var",
+        3
+      ],
+      [
+        "In",
+        3
+      ]
+    ]
+  },
+  "unparsed_by_repository": [
+    [
+      "alibaba/COLA",
+      65
+    ],
+    [
+      "java110/MicroCommunity",
+      44
+    ],
+    [
+      "flowable/flowable-engine",
+      8
+    ],
+    [
+      "nroduit/Weasis",
+      8
+    ],
+    [
+      "hibernate/hibernate-orm",
+      6
+    ],
+    [
+      "awsdocs/aws-doc-sdk-examples",
+      5
+    ],
+    [
+      "tranleduy2000/javaide",
+      4
+    ],
+    [
+      "Graylog2/graylog2-server",
+      4
+    ]
+  ],
+  "longest_methods": [
+    {
+      "length": 5976,
+      "repository": "plantuml/plantuml",
+      "method": "MapData.MapData()"
+    },
+    {
+      "length": 3552,
+      "repository": "Guardsquare/proguard",
+      "method": "InstructionSequenceConstants.InstructionSequenceConstants(ClassPool, ClassPool)"
+    },
+    {
+      "length": 3467,
+      "repository": "OpenLiberty/open-liberty",
+      "method": "QueryLockModeTestLogic.testScenario01(TestExecutionContext, TestExecutionResources, Object)"
+    },
+    {
+      "length": 3337,
+      "repository": "meteoinfo/MeteoInfo",
+      "method": "EncodingDetect.initialize_frequencies()"
+    },
+    {
+      "length": 3337,
+      "repository": "gedoor/MyBookshelf",
+      "method": "BytesEncodingDetect.initialize_frequencies()"
+    }
+  ],
+  "scan_time": {
+    "total_seconds": 7277,
+    "median_seconds": 3.6,
+    "longest": [
+      [
+        2268.4,
+        "OpenLiberty/open-liberty"
+      ],
+      [
+        414.1,
+        "plantuml/plantuml"
+      ],
+      [
+        280.8,
+        "Grover-c13/PokeGOAPI-Java"
+      ],
+      [
+        174.8,
+        "intoolswetrust/jsignpdf"
+      ],
+      [
+        168.7,
+        "meteoinfo/MeteoInfo"
+      ]
+    ],
+    "first_finished_utc": "2026-11-03T13:24:40Z",
+    "last_finished_utc": "2026-11-03T15:25:50Z"
+  }
+}

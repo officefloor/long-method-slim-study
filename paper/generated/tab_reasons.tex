@@ -1,0 +1,15 @@
+\begin{tabular}{>{\raggedright\arraybackslash}p{5.4cm}rrrrrr}
+\toprule
+Reason & \multicolumn{3}{c}{Injection split} & \multicolumn{3}{c}{Combined split} \\
+ & Stuck & Share & All long & Stuck & Share & All long \\
+\midrule
+A loop longer than the target & 8{,}265 & 48.3\% & 18{,}528 & 6{,}133 & 43.5\% & 6{,}133 \\
+A single statement longer than the target & 2{,}839 & 16.6\% & 6{,}553 & 2{,}609 & 18.5\% & 2{,}611 \\
+A try with resources or a finally & 2{,}491 & 14.6\% & 8{,}544 & 1{,}753 & 12.4\% & 1{,}753 \\
+A switch whose cases fall through & 1{,}714 & 10.0\% & 1{,}962 & 1{,}634 & 11.6\% & 1{,}634 \\
+More than 5 carried values in every plan & 1{,}618 & 9.5\% & 1{,}921 & 1{,}493 & 10.6\% & 1{,}493 \\
+A jump crossing every cut & 177 & 1.0\% & 226 & 484 & 3.4\% & 498 \\
+\midrule
+Without a plan & 17{,}104 & & 37{,}734 & 14{,}106 & & 14{,}122 \\
+\bottomrule
+\end{tabular}
