@@ -9,3 +9,6 @@ results-0.3.0-partial/
 
 # Amendment 2: the 0.5.0 scans of step 3 before it was stopped, kept to compare with 0.5.1
 results-0.5.0-partial/
+
+# Amendment 3: the 0.5.1 scans of step 3, not used (0.5.1 changed two results)
+results-0.5.1/

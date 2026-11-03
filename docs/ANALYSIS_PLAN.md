@@ -13,6 +13,9 @@
 >
 > *3 November 2026: Amendment 2, the instrument re-pinned from OfficeFloorSlim 0.5.0 to 0.5.1 for
 > speed alone (section 9).*
+>
+> *3 November 2026: Amendment 3, the instrument re-pinned from OfficeFloorSlim 0.5.1 to 0.5.2:
+> 0.5.1 did not give 0.5.0's results on 2 repositories (section 9).*
 
 ## 1. Purpose
 
@@ -92,12 +95,12 @@ without a threshold (section 6, *Hypotheses*); how each is read is fixed here. I
 
 Every cost comes from the released products. This repository computes none.
 
-- **OfficeFloorSlim 0.5.1** (Amendments 1 and 2; registered as 0.3.0, whose results it gives), its
+- **OfficeFloorSlim 0.5.2** (Amendments 1 to 3; registered as 0.3.0, whose results it gives), its
   command line `officefloorslim scan --format json` (schema `officefloorslim-scan/2`, with the
   combined split's fields added in 0.3.0), run once per repository at its pinned commit. It reports, for every long method, three
   columns:
   - **SinewSlim's assessment**, under SinewSlim's defaults, from the SinewSlim libraries it is
-    built on (**SinewSlim 0.2.2**, from Maven Central; 0.2.0 when registered): trigger 26, target 25, at most 5
+    built on (**SinewSlim 0.2.3**, from Maven Central; 0.2.0 when registered): trigger 26, target 25, at most 5
     parameters and 1 return per piece, records offered, no framework reading;
   - **the OfficeFloor split**, `officefloorslim-split/1`: every line in a function, none over
     25 code lines; its cost the values carried between functions, plus 1 per function and per
@@ -333,3 +336,52 @@ scan, and its source, which was then scanned alone by both versions, compared ag
 equality. Of MyBookshelf and jsignpdf, to find the cause: the sizes of their longest flat
 statement runs, from their source. No figure of section 5 had been computed.
 
+### Amendment 3 (3 November 2026): OfficeFloorSlim 0.5.1 → 0.5.2, as 0.5.1 changed two results
+
+**What happened.** Step 3 ran all 580 repositories on 0.5.1 in 1 hour 52 minutes. Amendment 2
+promised that its scans be compared field for field with the 469 that 0.5.0 had scanned, and the
+69 of 0.3.0. The 69 were all equal; of the 469, 467 were equal and 2 were not:
+`corretto/corretto-8` (in one method, `DESCrypt.expandKey`, the combined split's functions) and
+`yellowstonegames/SquidLib` (in one method, `IsaacRNG.init`, SinewSlim's obstacle). So 0.5.1 was
+not the instrument Amendment 2 said it was, and its scans are not used (`results-0.5.1/`, kept,
+not part of the analysis).
+
+**The cause.** SinewSlim 0.2.2 dropped, as its search went, the states that already left more
+lines than could reach the target, taking it that the lines a state leaves only grow. They can
+fall: statements that share a line (both methods are written several statements to a line,
+inside loops and ifs) are each counted against it, so a loop or if slimmed from inside can leave
+fewer than no lines. The 150 repositories compared before Amendment 2 happened to have no method
+where this changed a result, and no test made such a method.
+
+**What changed.** OfficeFloorSlim 0.5.2, on SinewSlim 0.2.3. A state is now dropped only if, after
+allowing for the most the later statements can lower its lines left, it can still reach no end
+of its walk. The shortcut that took a flat method whole (Amendment 2's second change) is removed:
+it never applied to the slow methods, and its bound had the same weakness. Nothing else in
+Amendment 2's changes, or in sections 1 to 8, changes but the versions.
+
+**Evidence that the results are the same.** Before re-pinning:
+
+- SinewSlim's `RunSlimmerSharedLinesTest`, new: methods generated with several statements to a
+  line inside loops and ifs, nearly all with a statement leaving fewer than no lines. Every run of
+  each (329,264) slimmed by the walks and from scratch, and each method (300) by the pruned and
+  the whole search under every variant the assessment uses: all equal. Both checks fail on 0.2.2.
+- SinewSlim's `RunSlimmerTest` and the full parity on `seed3` (187,285 methods, 0 mismatched), as
+  before.
+- The two methods' files, and the apache/hive file of Amendment 2, scanned alone by 0.5.0 and
+  0.5.2 (a local build, then the released jar): equal.
+- 15 of the 111 repositories 0.5.0 had not scanned, scanned by both 0.5.0 and 0.5.2: all equal.
+  `plantuml/plantuml`, which 0.5.0 cannot finish (it failed after 9.2 hours), took 443 seconds
+  and equals its 0.5.1 scan.
+
+**After step 3**, its scans are compared field for field with the 469 of 0.5.0
+(`results-0.5.0-partial/`), and the 69 of 0.3.0, and the result is reported with the analysis,
+whichever way it falls. The other 95 repositories 0.5.0 had not scanned are not compared with
+0.5.0 before the analysis: running 0.5.0 on them takes hours, and the tests above are what show
+the walks exact. Should the comparison of the 469 find any difference, the analysis waits for
+its cause.
+
+**What had been seen.** The sample (`sample/`), and step 3's run logs (status, error and time of
+each repository). Of the 0.5.1 scans: whether each of the 538 compared was equal and, for the two
+that were not, the paths of the differing fields, and each method's file, signature and line;
+then those files' source, scanned alone by each version and compared again only for equality.
+No figure of section 5 had been computed.
