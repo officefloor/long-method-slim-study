@@ -25,7 +25,7 @@ on 2 November 2026: 580 usable Java repositories (`sample/`). Nothing has been s
 | `long_method_slim_study/scan.py` | The hook the sampler calls for each repository: OfficeFloorSlim's scan, kept raw |
 | `long_method_slim_study/analyse.py` | The measures and intervals, from the raw scans; it computes no cost |
 | `sample/` | The sampler's CSV and derivation (once drawn) |
-| `results/` | The raw scans and the analysis (once run) |
+| `results/` | The run log and the analysis (once run); the raw scans (`results/scans/`) are not kept in git, as step 3 reproduces them |
 | `paper/` | The write-up (to come) |
 
 ## Replicating

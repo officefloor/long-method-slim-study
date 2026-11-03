@@ -25,7 +25,7 @@ echo "=== STEP 4: analyse -> results/analysis/ ==="
 cat <<'NEXT'
 
 === STEP 4 complete. ===
-The figures are in results/analysis/analysis.json; commit results/ with them (the raw scans are
-the evidence for every figure).
+The figures are in results/analysis/analysis.json; commit results/analysis/ (the raw scans in
+results/scans/ stay out of git: step 3 reproduces them from the pinned sample and jar).
 
 NEXT

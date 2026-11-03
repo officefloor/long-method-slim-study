@@ -12,3 +12,7 @@ results-0.5.0-partial/
 
 # Amendment 3: the 0.5.1 scans of step 3, not used (0.5.1 changed two results)
 results-0.5.1/
+
+# the raw scans (hundreds of MB): not kept in git; step 3 reproduces them from the pinned sample
+# and jar. The run log and the analysis (results/analysis/) are
+results/scans/
