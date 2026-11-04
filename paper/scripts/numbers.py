@@ -3,6 +3,7 @@
 
 Reads   results/analysis/analysis.json     the registered analysis (docs/ANALYSIS_PLAN.md, sections 5 and 6; step 4)
         results/analysis/posthoc.json      the post hoc readings (long_method_slim_study/posthoc.py; step 5), labelled so
+        exploratory/results/explore.json   the exploratory reading of category 4 (step 6): not registered, labelled so
         sample/open-source-repository-sample.derivation.json   the sampler's frame and strata
 Writes  paper/generated/numbers.tex        one \\newcommand per number
         paper/generated/tab_*.tex          every table the paper places
@@ -523,10 +524,52 @@ define("amendRescanned", count(AMEND["rescanned_0_5_1"]))
 define("amendSpot", count(AMEND["spot_0_5_0"]))
 define("amendUncompared", count(S["usable"] - AMEND["scans_0_5_0"] - AMEND["spot_0_5_0"]))
 
+# --- exploratory (step 6, not registered): what category 4 holds -----------------------------------------
+X = load("exploratory/results/explore.json")
+if X["category4"] != int(str(macros["catFourC"]).replace("{,}", "")):
+    raise SystemExit("exploratory/results/explore.json is not over the paper's category 4: run ./step6_explore.sh")
+XC, XN = X["classes"], X["category4"]
+# tables and literals: long for their option set or their data, not their logic (cognitive complexity 0 or
+# near it); named here, so the paper's count is exactly these classes
+TABLES = ["indivisible / switch: short cases (each under the cap, too many together)",
+          "indivisible / switch: flat table (every case 3 lines or fewer)",
+          "indivisible / expression: array initializer", "indivisible / expression: long argument list",
+          "indivisible / expression: call chain (builder)", "indivisible / expression: string concatenation",
+          "indivisible / constructor delegation (the body is only super(...) or this(...))",
+          "indivisible / a one-statement body (one return or expression)"]
+tables = sum(XC[k]["n"] for k in TABLES)
+define("exTables", count(tables))
+define("exTablesShare", pct(tables / XN))
+G = X["groups"]
+for g, name in (("indivisible", "Indivisible"), ("data", "Data"), ("control", "Control")):
+    define(f"ex{name}Share", pct(G[g]["share"]))
+contained = sum(v["n"] for k, v in XC.items()
+                if k.startswith("control /") and k.endswith((", in a loop", ", in a try", ", in a switch")))
+define("exControlContainedShare", pct(contained / G["control"]["n"], 0))
+# the instrument reports "jumps" where nothing can be cut and no jump crosses a cut (report.regroup)
+REGROUPED = ["indivisible / constructor delegation (the body is only super(...) or this(...))",
+             "indivisible / a one-statement body (one return or expression)",
+             "indivisible / returns inside a lambda or anonymous class"]
+define("exRegrouped", count(sum(XC[k]["n"] for k in REGROUPED)))
+L = X["limits"]
+define("exLimitSix", pct(L["6"]["combined"] / XN))
+define("exLimitTen", pct(L["10"]["combined"] / XN))
+C = X["concentration"]
+define("exRepos", count(C["repositories"]))
+define("exHotRepos", count(C["hot_repositories"]))
+define("exHotShare", pct(C["hot_share"], 0))
+define("exHotLongShare", pct(C["hot_long_share"], 0))
+# complexity does not depend on call resolution, so it is read over every measured repository
+CX = X["complexity"]["groups"]
+define("exCogCatFour", dec(CX["category 4"]["standardised"]["cognitive"]))
+define("exCogRescued", dec(CX["category 3"]["standardised"]["cognitive"]))  # the rescue
+define("exCogConventional", dec(CX["categories 1-2"]["standardised"]["cognitive"]))  # a record, or jumps ignored
+
 # ---------------------------------------------------------------------------------------------
 os.makedirs(OUT, exist_ok=True)
 with open(os.path.join(OUT, "numbers.tex"), "w") as f:
-    f.write("% Written by paper/scripts/numbers.py from results/analysis/analysis.json and posthoc.json. Do not edit.\n")
+    f.write("% Written by paper/scripts/numbers.py from results/analysis/analysis.json, posthoc.json and "
+                "exploratory/results/explore.json. Do not edit.\n")
     for k, v in macros.items():
         f.write(f"\\newcommand{{\\{k}}}{{{v}}}\n")
 print(f"wrote {len(macros)} macros and {len([n for n in os.listdir(OUT) if n.startswith('tab_')])} tables to {OUT}")

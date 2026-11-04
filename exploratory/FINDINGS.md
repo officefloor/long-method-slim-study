@@ -175,19 +175,22 @@ These are the densest classes in the study: cognitive per line 0.58 to 0.63 in l
 |---|---:|---:|---:|
 | slimmable | 35.4 | 19.1 | 0.34 |
 | category 4 | 46.2 | 26.7 | 0.35 |
-| category 3 | 45.9 | 30.7 | 0.33 |
-| categories 1–2 (rescued by injection) | **59.6** | 31.6 | **0.47** |
+| category 3 (the rescue: only injection takes it apart) | 45.9 | 30.7 | 0.33 |
+| categories 1–2 (a record, or jumps ignored) | **59.6** | 31.6 | **0.47** |
 
-At the same length, category 4 is no more complex than category 3 and less complex than the methods
-injection rescues. **Being stuck is about shape, not complexity.** Category 4 holds two different
+At the same length, category 4 is no more complex than category 3, the methods only injection takes
+apart, and less complex than categories 1–2, which a record or ignoring jumps fixes. **Being stuck is about shape, not complexity.** Category 4 holds two different
 families:
 
-- **Tables and literals, about 3,400 methods (37%):**
-  - array initializers, argument lists, builder chains and string concatenation (cognitive 0);
-  - short-case and flat switches;
-  - nested try;
+- **Tables and literals, 3,030 methods (33.4%):**
+  - short-case and flat switches (1,374);
+  - array initializers, long argument lists, builder chains and string concatenation (1,454);
   - constructors that only delegate to `super(…)` or `this(…)` (81), and bodies of a single return
-    or expression (121), both with cognitive 0.
+    or expression (121).
+
+  All of these have cognitive complexity 0 or close to it. The paper counts exactly these classes
+  (`paper/scripts/numbers.py`, `TABLES`). Nested try blocks (129) and other lone expressions (211) are
+  nearly as flat, but are not counted.
 
   These are long without being complex. Arguably they are not long-method smells at all.
 - **Dense logic:**

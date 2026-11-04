@@ -58,6 +58,8 @@ pack() {
   local d="$stage/anc/analysis"; mkdir -p "$d"
   cp "$ROOT"/results/analysis/analysis.json "$ROOT"/results/analysis/posthoc.json "$d/" 2>/dev/null || echo "   ! results/analysis/*.json missing: run ./step4_analyse.sh and ./step5_paper.sh" >&2
   cp "$ROOT"/results/run-log.jsonl "$d/" 2>/dev/null || echo "   ! results/run-log.jsonl missing" >&2
+  d="$stage/anc/exploratory"; mkdir -p "$d"
+  cp "$ROOT"/exploratory/results/explore.json "$ROOT"/exploratory/results/tables.md "$ROOT"/exploratory/FINDINGS.md "$d/" 2>/dev/null || echo "   ! exploratory/ results missing: run ./step6_explore.sh" >&2
   d="$stage/anc/sample"; mkdir -p "$d"
   cp "$ROOT"/sample/*.csv "$ROOT"/sample/*.json "$d/" 2>/dev/null || echo "   ! sample/ missing: run ./step2_sample.sh" >&2
   tar czf arxiv.tar.gz main.tex generated -C "$stage" anc

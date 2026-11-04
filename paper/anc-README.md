@@ -14,7 +14,7 @@ Everything is public and Apache-2.0 licensed.
 
 | Repository | What it is |
 |---|---|
-| https://github.com/officefloor/long-method-slim-study | **The study and the paper.** The registered analysis plan with its amendments (`docs/ANALYSIS_PLAN.md`, registered by commit `bcb5d48` on 1 November 2026), the pinned values (`long_method_slim_study/pins.py`), the numbered step scripts, the scan hook, the analysis, the post hoc readings, the sample, the run log, the analysis output and the paper with its number generator (`paper/`). |
+| https://github.com/officefloor/long-method-slim-study | **The study and the paper.** The registered analysis plan with its amendments (`docs/ANALYSIS_PLAN.md`, registered by commit `bcb5d48` on 1 November 2026), the pinned values (`long_method_slim_study/pins.py`), the numbered step scripts, the scan hook, the analysis, the post hoc readings, the exploratory step (`exploratory/`), the sample, the run log, the analysis output and the paper with its number generator (`paper/`). |
 | https://github.com/officefloor/open-source-repository-sampler | **The sampler.** Release 0.3.0 (commit `25c4bf6`, on PyPI); drew the sample with seed `20261101` as of 1 December 2020, from GitHub's index and the plan's criteria alone, and cloned each repository at its pinned commit for the scan. |
 | https://github.com/officefloor/OfficeFloorSlim | **The instrument.** Release 0.5.2 (jar sha256 `513b669f…`, pinned in `pins.py`), whose `scan` command reports every long method's SinewSlim assessment, injection split and combined split; its `DESIGN.md` records the cost models and when each question was decided. |
 | https://github.com/officefloor/SinewSlim | **The extraction search** OfficeFloorSlim is built on: release 0.2.3 (Maven Central), under its defaults. |
@@ -30,6 +30,7 @@ Everything is public and Apache-2.0 licensed.
 | `analysis/run-log.jsonl` | Step 3's run log: each repository's commit, status, scan time. |
 | `analysis/analysis.json` | Step 4, the registered analysis: every measure per repository, per tier and pooled; the headline figures with their intervals; every method where the split's worst seam is larger than SinewSlim's. |
 | `analysis/posthoc.json` | Step 5, the post hoc readings: the test-path sensitivity, the combined split's plans within each category and the rescue over what nothing conventional fixes, H2 read against plain extraction (the sum strictly below SinewSlim's cost itself), the quartiles of each repository's own rescue share, the 16 and 189 methods on which the instrument contradicts its own construction, the composition and the shape (sequence or branching) of the rescued and improved plans, the share of long methods a sequence of functions is the way to split (plain and strict), the concentration of the stuck methods, a lower bound on machine-written code among the category 4 methods, the readings, the scan times. |
+| `exploratory/` | Step 6, **exploratory, not registered**, read after the results to choose the next hypotheses: `explore.json` (every figure: the category 4 methods by root cause and refined class, the parameter limit raised, concentration, domains, complexity and coupling divergence), `tables.md` (its tables) and `FINDINGS.md` (what they suggest). The paper's paragraph "Exploratory: what the redesign list holds" is computed from `explore.json`. |
 
 ## Commands
 
@@ -40,3 +41,4 @@ From a clone of the study's repository:
     ./step3_run.sh        # every repository cloned at its commit and scanned; about two hours
     ./step4_analyse.sh    # results/analysis/analysis.json
     ./step5_paper.sh      # results/analysis/posthoc.json, paper/generated/, paper/main.pdf
+    ./step6_explore.sh    # exploratory, not registered: exploratory/results/ (clones the 329 repositories again)
