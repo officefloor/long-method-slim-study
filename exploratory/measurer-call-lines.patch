@@ -1,0 +1,46 @@
+diff --git a/measurer/src/main/java/net/officefloor/divergence/Measurer.java b/measurer/src/main/java/net/officefloor/divergence/Measurer.java
+index 0009a06..29af4ca 100644
+--- a/measurer/src/main/java/net/officefloor/divergence/Measurer.java
++++ b/measurer/src/main/java/net/officefloor/divergence/Measurer.java
+@@ -429,12 +429,12 @@ public final class Measurer {
+ 				exits++;
+ 			}
+ 			if (n instanceof MethodCallExpr mce) {
+-				m.calls.add(call(mce, mce.getArguments().size(), CALL_METHOD));
++				m.calls.add(withLine(call(mce, mce.getArguments().size(), CALL_METHOD), mce));
+ 			} else if (n instanceof ObjectCreationExpr oce) {
+ 				boolean thrown = oce.getParentNode().map(p -> p instanceof ThrowStmt).orElse(false);
+-				m.calls.add(call(oce, oce.getArguments().size(), thrown ? CALL_THROW_NEW : CALL_NEW));
++				m.calls.add(withLine(call(oce, oce.getArguments().size(), thrown ? CALL_THROW_NEW : CALL_NEW), oce));
+ 			} else if (n instanceof ExplicitConstructorInvocationStmt ecis) {
+-				m.calls.add(call(ecis, ecis.getArguments().size(), CALL_EXPLICIT_CTOR));
++				m.calls.add(withLine(call(ecis, ecis.getArguments().size(), CALL_EXPLICIT_CTOR), ecis));
+ 			}
+ 		}
+ 		m.cc = cc;
+@@ -617,6 +617,16 @@ public final class Measurer {
+ 	// call resolution
+ 	// ------------------------------------------------------------------------------------------
+ 
++	/**
++	 * Fork (long-method-slim-study, exploratory): the call's first line appended, so a call can be
++	 * placed inside a statement: [arguments, kind, resolution, target file index or -1, line].
++	 */
++	static int[] withLine(int[] c, Node n) {
++		int[] r = java.util.Arrays.copyOf(c, 5);
++		r[4] = n.getBegin().map(p -> p.line).orElse(-1);
++		return r;
++	}
++
+ 	/** [arguments, kind, resolution, target file index or -1]. */
+ 	int[] call(Node n, int args, int kind) {
+ 		if (budgetMillis > 0 && System.currentTimeMillis() - started > budgetMillis) {
+@@ -766,7 +776,7 @@ public final class Measurer {
+ 							+ ",\"calls\":[");
+ 					for (int c = 0; c < m.calls.size(); c++) {
+ 						int[] cl = m.calls.get(c);
+-						w.write((c > 0 ? "," : "") + "[" + cl[0] + "," + cl[1] + "," + cl[2] + "," + cl[3] + "]");
++						w.write((c > 0 ? "," : "") + "[" + cl[0] + "," + cl[1] + "," + cl[2] + "," + cl[3] + "," + cl[4] + "]");
+ 					}
+ 					w.write("]}");
+ 				}

@@ -25,3 +25,6 @@ paper/main.pdf
 paper/abstract.txt
 paper/arxiv.tar.gz
 *.egg-info/
+
+# the exploratory step: compiled harness (clones, logs and raw harness output are under .tmp/)
+exploratory/harness/classes/

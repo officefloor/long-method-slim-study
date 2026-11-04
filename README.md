@@ -29,6 +29,7 @@ against the registered quarter); **H2** an estimate, as registered (29.0%, 24.3%
 | `long_method_slim_study/scan.py` | The hook the sampler calls for each repository: OfficeFloorSlim's scan, kept raw |
 | `long_method_slim_study/analyse.py` | The measures and intervals, from the raw scans; it computes no cost |
 | `long_method_slim_study/posthoc.py` | The post hoc readings for the paper (none registered; labelled so): the test-code leak, the exceptions to the construction, H2 against plain extraction, the per-repository quartiles, the composition and shape of the plans |
+| `step6_explore.sh`, `exploratory/`, `long_method_slim_study/explore/` | **Exploratory, after the paper** (not registered; changes no registered figure): the category 4 methods re-read from source, classified, and set against the repositories' domains, to propose the next hypotheses. See `exploratory/README.md` |
 | `sample/` | The sampler's CSV and derivation (once drawn) |
 | `results/` | The run log, the analysis and the post hoc readings; the raw scans (`results/scans/`) are not kept in git, as step 3 reproduces them |
 | `paper/` | The paper: `main.tex`, whose every number is a macro written by `paper/scripts/numbers.py` from the committed analysis; `./build.sh` makes `main.pdf` |
@@ -41,6 +42,7 @@ against the registered quarter); **H2** an estimate, as registered (29.0%, 24.3%
 ./step3_run.sh       # each repository cloned at its commit and scanned; resumable
 ./step4_analyse.sh   # results/analysis/analysis.json
 ./step5_paper.sh     # results/analysis/posthoc.json, paper/generated/, paper/main.pdf
+./step6_explore.sh   # exploratory, not registered: exploratory/results/ (clones the 329 repositories again)
 ```
 
 ## Licence

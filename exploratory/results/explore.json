@@ -1,0 +1,6592 @@
+{
+ "schema": "long-method-slim-study-explore/1",
+ "status": "exploratory: not registered; changes no registered figure; for the next hypotheses",
+ "category4": 9059,
+ "long": 168466,
+ "check": {
+  "reread": 9057,
+  "combined_plan_at_5": 0
+ },
+ "groups": {
+  "indivisible": {
+   "n": 4579,
+   "repositories": 280,
+   "top1": [
+    "corretto/corretto-8",
+    682
+   ],
+   "top10_share": 0.4071,
+   "top10_long_share": 0.3597,
+   "hot_share": 0.3872,
+   "dispersion_index": 6.9,
+   "share": 0.5055
+  },
+  "data": {
+   "n": 3237,
+   "repositories": 226,
+   "top1": [
+    "corretto/corretto-8",
+    302
+   ],
+   "top10_share": 0.4359,
+   "top10_long_share": 0.3334,
+   "hot_share": 0.4316,
+   "dispersion_index": 6.5,
+   "share": 0.3573
+  },
+  "control": {
+   "n": 1243,
+   "repositories": 158,
+   "top1": [
+    "corretto/corretto-8",
+    186
+   ],
+   "top10_share": 0.4537,
+   "top10_long_share": 0.3223,
+   "hot_share": 0.3934,
+   "dispersion_index": 2.1,
+   "share": 0.1372
+  }
+ },
+ "causes": {
+  "indivisible / expression": 1835,
+  "indivisible / switch": 1530,
+  "data / carried": 1378,
+  "control / jumps inside a block": 1162,
+  "data / inputs": 1087,
+  "indivisible / if": 750,
+  "data / inputs or results": 524,
+  "data / results": 248,
+  "indivisible / try": 129,
+  "indivisible / a one-statement body (one return or expression)": 121,
+  "indivisible / loop": 115,
+  "control / jump across every cut": 81,
+  "indivisible / constructor delegation (the body is only super(...) or this(...))": 81,
+  "indivisible / returns inside a lambda or anonymous class": 17,
+  "indivisible / synchronized block": 1
+ },
+ "classes": {
+  "data / data: no plan at 10": {
+   "n": 1044,
+   "repositories": 149,
+   "top1": [
+    "corretto/corretto-8",
+    116
+   ],
+   "top10_share": 0.4655,
+   "top10_long_share": 0.3384,
+   "hot_share": 0.4377,
+   "dispersion_index": 3.1,
+   "share": 0.1152,
+   "facts": {}
+  },
+  "indivisible / switch: short cases (each under the cap, too many together)": {
+   "n": 1028,
+   "repositories": 142,
+   "top1": [
+    "corretto/corretto-8",
+    167
+   ],
+   "top10_share": 0.4514,
+   "top10_long_share": 0.3196,
+   "hot_share": 0.3979,
+   "dispersion_index": 4.2,
+   "share": 0.1135,
+   "facts": {
+    "entries": {
+     "median": 14.0,
+     "max": 357
+    },
+    "labels": {
+     "median": 14.0,
+     "max": 357
+    },
+    "max_case_lines": {
+     "median": 10.0,
+     "max": 25
+    },
+    "median_case_lines": {
+     "median": 3.0,
+     "max": 22
+    },
+    "share_with_fallthrough": 0.4854,
+    "share_with_returning": 0.2724
+   }
+  },
+  "data / data: blocking body slims at 6 (inner limit)": {
+   "n": 467,
+   "repositories": 109,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    45
+   ],
+   "top10_share": 0.409,
+   "top10_long_share": 0.3028,
+   "hot_share": 0.3726,
+   "dispersion_index": 1.8,
+   "share": 0.0516,
+   "facts": {}
+  },
+  "indivisible / expression: array initializer": {
+   "n": 416,
+   "repositories": 44,
+   "top1": [
+    "corretto/corretto-8",
+    287
+   ],
+   "top10_share": 0.8702,
+   "top10_long_share": 0.182,
+   "hot_share": 0.8101,
+   "dispersion_index": 11.5,
+   "share": 0.0459,
+   "facts": {
+    "lines": {
+     "median": 100.0,
+     "max": 1965
+    },
+    "max_call_chain": {
+     "median": 0.0,
+     "max": 19
+    },
+    "max_arguments": {
+     "median": 0.0,
+     "max": 15
+    }
+   }
+  },
+  "data / data: plan at 6": {
+   "n": 398,
+   "repositories": 104,
+   "top1": [
+    "apache/hive",
+    44
+   ],
+   "top10_share": 0.4724,
+   "top10_long_share": 0.2846,
+   "hot_share": 0.4095,
+   "dispersion_index": 1.5,
+   "share": 0.0439,
+   "facts": {}
+  },
+  "indivisible / expression: long argument list": {
+   "n": 390,
+   "repositories": 58,
+   "top1": [
+    "prestodb/presto",
+    43
+   ],
+   "top10_share": 0.6462,
+   "top10_long_share": 0.1281,
+   "hot_share": 0.4154,
+   "dispersion_index": 9.9,
+   "share": 0.0431,
+   "facts": {
+    "lines": {
+     "median": 32.0,
+     "max": 698
+    },
+    "max_call_chain": {
+     "median": 1.0,
+     "max": 3
+    },
+    "max_arguments": {
+     "median": 26.0,
+     "max": 263
+    }
+   }
+  },
+  "indivisible / expression: call chain (builder)": {
+   "n": 388,
+   "repositories": 76,
+   "top1": [
+    "oracle/oci-java-sdk",
+    45
+   ],
+   "top10_share": 0.5876,
+   "top10_long_share": 0.1544,
+   "hot_share": 0.3041,
+   "dispersion_index": 5.7,
+   "share": 0.0428,
+   "facts": {
+    "lines": {
+     "median": 34.0,
+     "max": 1435
+    },
+    "max_call_chain": {
+     "median": 20.5,
+     "max": 317
+    },
+    "max_arguments": {
+     "median": 2.0,
+     "max": 110
+    }
+   }
+  },
+  "control / control: break/continue, in a loop": {
+   "n": 377,
+   "repositories": 98,
+   "top1": [
+    "corretto/corretto-8",
+    38
+   ],
+   "top10_share": 0.4987,
+   "top10_long_share": 0.305,
+   "hot_share": 0.4005,
+   "dispersion_index": 1.5,
+   "share": 0.0416,
+   "facts": {}
+  },
+  "indivisible / if: else-if chain (dispatch)": {
+   "n": 375,
+   "repositories": 107,
+   "top1": [
+    "corretto/corretto-8",
+    52
+   ],
+   "top10_share": 0.4427,
+   "top10_long_share": 0.3194,
+   "hot_share": 0.3547,
+   "dispersion_index": 3.9,
+   "share": 0.0414,
+   "facts": {
+    "branches": {
+     "median": 7,
+     "max": 21
+    },
+    "else_if": {
+     "median": 5,
+     "max": 19
+    },
+    "share_with_in_loop": 0.952
+   }
+  },
+  "indivisible / switch: flat table (every case 3 lines or fewer)": {
+   "n": 346,
+   "repositories": 97,
+   "top1": [
+    "corretto/corretto-8",
+    49
+   ],
+   "top10_share": 0.4711,
+   "top10_long_share": 0.2953,
+   "hot_share": 0.3642,
+   "dispersion_index": 1.8,
+   "share": 0.0382,
+   "facts": {
+    "entries": {
+     "median": 13.0,
+     "max": 402
+    },
+    "labels": {
+     "median": 13.0,
+     "max": 402
+    },
+    "max_case_lines": {
+     "median": 2.0,
+     "max": 3
+    },
+    "median_case_lines": {
+     "median": 2.0,
+     "max": 3
+    },
+    "share_with_fallthrough": 0.1503,
+    "share_with_returning": 0.1705
+   }
+  },
+  "data / data: plan at 7": {
+   "n": 293,
+   "repositories": 91,
+   "top1": [
+    "corretto/corretto-8",
+    39
+   ],
+   "top10_share": 0.5188,
+   "top10_long_share": 0.3009,
+   "hot_share": 0.5051,
+   "dispersion_index": 1.2,
+   "share": 0.0323,
+   "facts": {}
+  },
+  "indivisible / expression: string concatenation": {
+   "n": 260,
+   "repositories": 65,
+   "top1": [
+    "redisson/redisson",
+    56
+   ],
+   "top10_share": 0.6423,
+   "top10_long_share": 0.1952,
+   "hot_share": 0.3038,
+   "dispersion_index": 11.4,
+   "share": 0.0287,
+   "facts": {
+    "lines": {
+     "median": 34.0,
+     "max": 190
+    },
+    "max_call_chain": {
+     "median": 1.0,
+     "max": 3
+    },
+    "max_arguments": {
+     "median": 1.0,
+     "max": 27
+    }
+   }
+  },
+  "data / data: blocking body slims at 7 (inner limit)": {
+   "n": 259,
+   "repositories": 80,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    24
+   ],
+   "top10_share": 0.4556,
+   "top10_long_share": 0.3312,
+   "hot_share": 0.332,
+   "dispersion_index": 1.2,
+   "share": 0.0286,
+   "facts": {}
+  },
+  "data / data: plan at 10": {
+   "n": 244,
+   "repositories": 58,
+   "top1": [
+    "Angel-ML/angel",
+    41
+   ],
+   "top10_share": 0.6148,
+   "top10_long_share": 0.3034,
+   "hot_share": 0.6721,
+   "dispersion_index": 3.3,
+   "share": 0.0269,
+   "facts": {}
+  },
+  "indivisible / expression: other": {
+   "n": 211,
+   "repositories": 39,
+   "top1": [
+    "oracle/oci-java-sdk",
+    58
+   ],
+   "top10_share": 0.8483,
+   "top10_long_share": 0.2042,
+   "hot_share": 0.1848,
+   "dispersion_index": 6.1,
+   "share": 0.0233,
+   "facts": {
+    "lines": {
+     "median": 38,
+     "max": 82
+    },
+    "max_call_chain": {
+     "median": 1,
+     "max": 3
+    },
+    "max_arguments": {
+     "median": 5,
+     "max": 7
+    }
+   }
+  },
+  "control / control: return, in a loop": {
+   "n": 199,
+   "repositories": 72,
+   "top1": [
+    "corretto/corretto-8",
+    24
+   ],
+   "top10_share": 0.5477,
+   "top10_long_share": 0.3203,
+   "hot_share": 0.3065,
+   "dispersion_index": 0.9,
+   "share": 0.022,
+   "facts": {}
+  },
+  "data / data: plan at 8": {
+   "n": 199,
+   "repositories": 63,
+   "top1": [
+    "corretto/corretto-8",
+    27
+   ],
+   "top10_share": 0.5276,
+   "top10_long_share": 0.2881,
+   "hot_share": 0.4874,
+   "dispersion_index": 1.3,
+   "share": 0.022,
+   "facts": {}
+  },
+  "indivisible / if: passes values on": {
+   "n": 170,
+   "repositories": 57,
+   "top1": [
+    "corretto/corretto-8",
+    27
+   ],
+   "top10_share": 0.5647,
+   "top10_long_share": 0.2957,
+   "hot_share": 0.4471,
+   "dispersion_index": 1.0,
+   "share": 0.0188,
+   "facts": {
+    "branches": {
+     "median": 2.0,
+     "max": 3
+    },
+    "else_if": {
+     "median": 0.0,
+     "max": 1
+    },
+    "share_with_in_loop": 0.8412
+   }
+  },
+  "control / control: return, in a try": {
+   "n": 170,
+   "repositories": 48,
+   "top1": [
+    "corretto/corretto-8",
+    37
+   ],
+   "top10_share": 0.6294,
+   "top10_long_share": 0.3125,
+   "hot_share": 0.3706,
+   "dispersion_index": 1.3,
+   "share": 0.0188,
+   "facts": {}
+  },
+  "data / data: blocking body slims at 8 (inner limit)": {
+   "n": 167,
+   "repositories": 67,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    20
+   ],
+   "top10_share": 0.503,
+   "top10_long_share": 0.296,
+   "hot_share": 0.3593,
+   "dispersion_index": 1.1,
+   "share": 0.0184,
+   "facts": {}
+  },
+  "data / data: blocking body slims at 10 (inner limit)": {
+   "n": 166,
+   "repositories": 70,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    11
+   ],
+   "top10_share": 0.4277,
+   "top10_long_share": 0.3105,
+   "hot_share": 0.2892,
+   "dispersion_index": 0.8,
+   "share": 0.0183,
+   "facts": {}
+  },
+  "control / control: return and break/continue, in a loop": {
+   "n": 156,
+   "repositories": 56,
+   "top1": [
+    "corretto/corretto-8",
+    29
+   ],
+   "top10_share": 0.5577,
+   "top10_long_share": 0.2825,
+   "hot_share": 0.3654,
+   "dispersion_index": 1.6,
+   "share": 0.0172,
+   "facts": {}
+  },
+  "indivisible / switch: a case over the cap": {
+   "n": 154,
+   "repositories": 53,
+   "top1": [
+    "corretto/corretto-8",
+    31
+   ],
+   "top10_share": 0.6039,
+   "top10_long_share": 0.2821,
+   "hot_share": 0.3896,
+   "dispersion_index": 1.4,
+   "share": 0.017,
+   "facts": {
+    "entries": {
+     "median": 12.0,
+     "max": 148
+    },
+    "labels": {
+     "median": 12.0,
+     "max": 148
+    },
+    "max_case_lines": {
+     "median": 35.5,
+     "max": 97
+    },
+    "median_case_lines": {
+     "median": 7.0,
+     "max": 78
+    },
+    "share_with_fallthrough": 0.6688,
+    "share_with_returning": 0.1948
+   }
+  },
+  "indivisible / expression: anonymous class": {
+   "n": 146,
+   "repositories": 50,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    24
+   ],
+   "top10_share": 0.6301,
+   "top10_long_share": 0.2027,
+   "hot_share": 0.226,
+   "dispersion_index": 2.2,
+   "share": 0.0161,
+   "facts": {
+    "lines": {
+     "median": 40.0,
+     "max": 325
+    },
+    "max_call_chain": {
+     "median": 2.0,
+     "max": 14
+    },
+    "max_arguments": {
+     "median": 3.0,
+     "max": 20
+    }
+   }
+  },
+  "indivisible / nested try over the cap": {
+   "n": 129,
+   "repositories": 26,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    87
+   ],
+   "top10_share": 0.876,
+   "top10_long_share": 0.2394,
+   "hot_share": 0.0543,
+   "dispersion_index": 1.8,
+   "share": 0.0142,
+   "facts": {}
+  },
+  "indivisible / a one-statement body (one return or expression)": {
+   "n": 121,
+   "repositories": 35,
+   "top1": [
+    "apache/hadoop",
+    12
+   ],
+   "top10_share": 0.6033,
+   "top10_long_share": 0.0784,
+   "hot_share": 0.1818,
+   "dispersion_index": 2.3,
+   "share": 0.0134,
+   "facts": {}
+  },
+  "indivisible / nested loop over the cap": {
+   "n": 115,
+   "repositories": 43,
+   "top1": [
+    "corretto/corretto-8",
+    18
+   ],
+   "top10_share": 0.6087,
+   "top10_long_share": 0.1545,
+   "hot_share": 0.6348,
+   "dispersion_index": 2.4,
+   "share": 0.0127,
+   "facts": {}
+  },
+  "control / control: nested break/continue, in a loop": {
+   "n": 102,
+   "repositories": 44,
+   "top1": [
+    "corretto/corretto-8",
+    14
+   ],
+   "top10_share": 0.5882,
+   "top10_long_share": 0.3435,
+   "hot_share": 0.4118,
+   "dispersion_index": 1.1,
+   "share": 0.0113,
+   "facts": {}
+  },
+  "indivisible / if: passes values and jumps": {
+   "n": 97,
+   "repositories": 43,
+   "top1": [
+    "corretto/corretto-8",
+    22
+   ],
+   "top10_share": 0.6186,
+   "top10_long_share": 0.2733,
+   "hot_share": 0.4536,
+   "dispersion_index": 1.3,
+   "share": 0.0107,
+   "facts": {
+    "branches": {
+     "median": 2,
+     "max": 3
+    },
+    "else_if": {
+     "median": 0,
+     "max": 1
+    },
+    "share_with_in_loop": 0.8454
+   }
+  },
+  "indivisible / constructor delegation (the body is only super(...) or this(...))": {
+   "n": 81,
+   "repositories": 19,
+   "top1": [
+    "apache/druid",
+    17
+   ],
+   "top10_share": 0.8642,
+   "top10_long_share": 0.2216,
+   "hot_share": 0.1605,
+   "dispersion_index": 1.7,
+   "share": 0.0089,
+   "facts": {}
+  },
+  "indivisible / if: branchy leaf (no values out, no jumps)": {
+   "n": 75,
+   "repositories": 36,
+   "top1": [
+    "corretto/corretto-8",
+    12
+   ],
+   "top10_share": 0.6,
+   "top10_long_share": 0.2643,
+   "hot_share": 0.32,
+   "dispersion_index": 0.6,
+   "share": 0.0083,
+   "facts": {
+    "branches": {
+     "median": 2,
+     "max": 3
+    },
+    "else_if": {
+     "median": 0,
+     "max": 1
+    },
+    "share_with_in_loop": 0.6933
+   }
+  },
+  "control / control: return, in the top level": {
+   "n": 55,
+   "repositories": 20,
+   "top1": [
+    "corretto/corretto-8",
+    20
+   ],
+   "top10_share": 0.8182,
+   "top10_long_share": 0.244,
+   "hot_share": 0.7091,
+   "dispersion_index": 0.6,
+   "share": 0.0061,
+   "facts": {}
+  },
+  "control / control: break/continue, in a switch": {
+   "n": 41,
+   "repositories": 27,
+   "top1": [
+    "h2database/h2database",
+    6
+   ],
+   "top10_share": 0.5854,
+   "top10_long_share": 0.2697,
+   "hot_share": 0.439,
+   "dispersion_index": 0.6,
+   "share": 0.0045,
+   "facts": {}
+  },
+  "indivisible / if: controls flow (jumps out)": {
+   "n": 33,
+   "repositories": 21,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    6
+   ],
+   "top10_share": 0.6667,
+   "top10_long_share": 0.2626,
+   "hot_share": 0.2121,
+   "dispersion_index": 2.6,
+   "share": 0.0036,
+   "facts": {
+    "branches": {
+     "median": 2,
+     "max": 3
+    },
+    "else_if": {
+     "median": 0,
+     "max": 1
+    },
+    "share_with_in_loop": 0.4545
+   }
+  },
+  "control / control: return, in a switch": {
+   "n": 33,
+   "repositories": 21,
+   "top1": [
+    "dcaoyuan/nbscala",
+    4
+   ],
+   "top10_share": 0.6667,
+   "top10_long_share": 0.2863,
+   "hot_share": 0.3939,
+   "dispersion_index": 0.9,
+   "share": 0.0036,
+   "facts": {}
+  },
+  "control / control: nested break/continue, in a try": {
+   "n": 26,
+   "repositories": 19,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    5
+   ],
+   "top10_share": 0.6538,
+   "top10_long_share": 0.2053,
+   "hot_share": 0.2692,
+   "dispersion_index": 0.7,
+   "share": 0.0029,
+   "facts": {}
+  },
+  "control / control: nested break/continue, in the top level": {
+   "n": 23,
+   "repositories": 13,
+   "top1": [
+    "spotbugs/spotbugs",
+    4
+   ],
+   "top10_share": 0.8696,
+   "top10_long_share": 0.2471,
+   "hot_share": 0.3478,
+   "dispersion_index": 0.8,
+   "share": 0.0025,
+   "facts": {}
+  },
+  "control / control: return and break/continue, in a switch": {
+   "n": 23,
+   "repositories": 11,
+   "top1": [
+    "dcaoyuan/nbscala",
+    7
+   ],
+   "top10_share": 0.9565,
+   "top10_long_share": 0.1422,
+   "hot_share": 0.6087,
+   "dispersion_index": 1.1,
+   "share": 0.0025,
+   "facts": {}
+  },
+  "indivisible / returns inside a lambda or anonymous class": {
+   "n": 17,
+   "repositories": 10,
+   "top1": [
+    "strimzi/strimzi-kafka-operator",
+    3
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0699,
+   "hot_share": 0.2353,
+   "dispersion_index": 1.5,
+   "share": 0.0019,
+   "facts": {}
+  },
+  "control / control: return, in a synchronized block": {
+   "n": 15,
+   "repositories": 5,
+   "top1": [
+    "corretto/corretto-8",
+    8
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.2317,
+   "hot_share": 0.6,
+   "dispersion_index": 0.1,
+   "share": 0.0017,
+   "facts": {}
+  },
+  "indivisible / expression: nested conditionals": {
+   "n": 12,
+   "repositories": 5,
+   "top1": [
+    "Guardsquare/proguard",
+    4
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0323,
+   "hot_share": 0.5,
+   "dispersion_index": 2.2,
+   "share": 0.0013,
+   "facts": {
+    "lines": {
+     "median": 58.5,
+     "max": 124
+    },
+    "max_call_chain": {
+     "median": 0.0,
+     "max": 2
+    },
+    "max_arguments": {
+     "median": 0.0,
+     "max": 3
+    }
+   }
+  },
+  "indivisible / expression: lambda": {
+   "n": 12,
+   "repositories": 10,
+   "top1": [
+    "hibernate/hibernate-orm",
+    2
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0649,
+   "hot_share": 0.0833,
+   "dispersion_index": 1.9,
+   "share": 0.0013,
+   "facts": {
+    "lines": {
+     "median": 45.0,
+     "max": 161
+    },
+    "max_call_chain": {
+     "median": 2.0,
+     "max": 10
+    },
+    "max_arguments": {
+     "median": 4.0,
+     "max": 11
+    }
+   }
+  },
+  "control / control: nested break/continue, in a synchronized block": {
+   "n": 9,
+   "repositories": 3,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    7
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.1161,
+   "hot_share": 0.2222,
+   "dispersion_index": 0.2,
+   "share": 0.001,
+   "facts": {}
+  },
+  "control / control: return and break/continue, in an if": {
+   "n": 4,
+   "repositories": 3,
+   "top1": [
+    "google/guava",
+    2
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0143,
+   "hot_share": 0.25,
+   "dispersion_index": 0.8,
+   "share": 0.0004,
+   "facts": {}
+  },
+  "control / control: no jump found, in the top level": {
+   "n": 3,
+   "repositories": 3,
+   "top1": [
+    "Guardsquare/proguard",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0911,
+   "hot_share": 0.6667,
+   "dispersion_index": 0.5,
+   "share": 0.0003,
+   "facts": {}
+  },
+  "control / control: break/continue, in a block": {
+   "n": 3,
+   "repositories": 2,
+   "top1": [
+    "nextgenhealthcare/connect",
+    2
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0114,
+   "hot_share": 0.3333,
+   "dispersion_index": 0.5,
+   "share": 0.0003,
+   "facts": {}
+  },
+  "control / control: return and break/continue, in a block": {
+   "n": 2,
+   "repositories": 2,
+   "top1": [
+    "JetBrains/fernflower",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.1106,
+   "hot_share": 0.0,
+   "dispersion_index": 0.6,
+   "share": 0.0002,
+   "facts": {}
+  },
+  "indivisible / not re-read": {
+   "n": 2,
+   "repositories": 2,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.1105,
+   "hot_share": 0.0,
+   "dispersion_index": 0.6,
+   "share": 0.0002,
+   "facts": {}
+  },
+  "indivisible / nested synchronized block over the cap": {
+   "n": 1,
+   "repositories": 1,
+   "top1": [
+    "OpenLiberty/open-liberty",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.1091,
+   "hot_share": 0.0,
+   "dispersion_index": 0.0,
+   "share": 0.0001,
+   "facts": {}
+  },
+  "control / control: return and break/continue, in a try": {
+   "n": 1,
+   "repositories": 1,
+   "top1": [
+    "corretto/corretto-8",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0864,
+   "hot_share": 1.0,
+   "dispersion_index": 0.0,
+   "share": 0.0001,
+   "facts": {}
+  },
+  "control / control: nested break/continue, in an if": {
+   "n": 1,
+   "repositories": 1,
+   "top1": [
+    "projectlombok/lombok",
+    1
+   ],
+   "top10_share": 1.0,
+   "top10_long_share": 0.0017,
+   "hot_share": 0.0,
+   "dispersion_index": 1.1,
+   "share": 0.0001,
+   "facts": {}
+  }
+ },
+ "residual": {
+  "definition": [
+   "data: no plan at 10",
+   "expression: other",
+   "not re-read",
+   "unknown statement"
+  ],
+  "n": 1257,
+  "repositories": 156,
+  "top1": [
+   "corretto/corretto-8",
+   121
+  ],
+  "top10_share": 0.4574,
+  "top10_long_share": 0.3483,
+  "hot_share": 0.3946,
+  "dispersion_index": 3.6
+ },
+ "limits": {
+  "note": "of the category 4 methods re-read, how many have a plan when the limit of 5 is raised to k (combined: the combined split's carried values; conventional: SinewSlim's max_inputs; injection: the injection split's carried values)",
+  "5": {
+   "combined": 0,
+   "conventional": 0,
+   "injection": 189
+  },
+  "6": {
+   "combined": 398,
+   "conventional": 308,
+   "injection": 439
+  },
+  "7": {
+   "combined": 691,
+   "conventional": 593,
+   "injection": 645
+  },
+  "8": {
+   "combined": 890,
+   "conventional": 852,
+   "injection": 786
+  },
+  "10": {
+   "combined": 1134,
+   "conventional": 1213,
+   "injection": 1011
+  }
+ },
+ "concentration": {
+  "n": 9059,
+  "repositories": 329,
+  "top1": [
+   "corretto/corretto-8",
+   1170
+  ],
+  "top10_share": 0.3898,
+  "top10_long_share": 0.3827,
+  "hot_share": 0.4039,
+  "dispersion_index": 7.8,
+  "hot_repositories": 32,
+  "hot_long_share": 0.2169,
+  "hot": [
+   "corretto/corretto-8",
+   "meteoinfo/MeteoInfo",
+   "yellowstonegames/SquidLib",
+   "oracle/coherence",
+   "prestodb/presto",
+   "deeplearning4j/deeplearning4j",
+   "h2database/h2database",
+   "jindrapetrik/jpexs-decompiler",
+   "dcaoyuan/nbscala",
+   "senbox-org/snap-engine",
+   "Angel-ML/angel",
+   "yacy/yacy_search_server",
+   "CS-SI/Orekit",
+   "jOOQ/jOOQ",
+   "apache/phoenix",
+   "libgdx/libgdx",
+   "questdb/questdb",
+   "redisson/redisson",
+   "grobidOrg/grobid",
+   "SonarSource/sonarqube",
+   "Anuken/Arc",
+   "jOOQ/jOOL",
+   "clojure/clojure",
+   "AAChartModel/AAChartCore",
+   "strimzi/strimzi-kafka-operator",
+   "Guardsquare/proguard",
+   "mvel/mvel",
+   "oshi/oshi",
+   "oschina/android-app",
+   "ChrisRM/material-theme-jetbrains",
+   "yui/yuicompressor",
+   "jamesnguyenhub/mkloader"
+  ]
+ },
+ "domains": {
+  "overall": {
+   "pooled": 0.0538,
+   "population": 0.0544,
+   "interval": [
+    0.042,
+    0.0706
+   ]
+  },
+  "by_domain": {
+   "android and UI": {
+    "repositories": 149,
+    "long": 9736,
+    "c4": 411,
+    "pooled": 0.0422,
+    "population": 0.0465,
+    "interval": [
+     0.0289,
+     0.0588
+    ],
+    "groups": {
+     "indivisible": 217,
+     "data": 153,
+     "control": 41
+    },
+    "residual": 59
+   },
+   "applications": {
+    "repositories": 25,
+    "long": 10321,
+    "c4": 419,
+    "pooled": 0.0406,
+    "population": 0.0326,
+    "interval": [
+     0.0177,
+     0.0522
+    ],
+    "groups": {
+     "indivisible": 190,
+     "data": 165,
+     "control": 64
+    },
+    "residual": 64
+   },
+   "database and query": {
+    "repositories": 59,
+    "long": 37286,
+    "c4": 2135,
+    "pooled": 0.0573,
+    "population": 0.0597,
+    "interval": [
+     0.0443,
+     0.0713
+    ],
+    "groups": {
+     "indivisible": 1104,
+     "data": 763,
+     "control": 268
+    },
+    "residual": 260
+   },
+   "distributed systems and middleware": {
+    "repositories": 87,
+    "long": 51870,
+    "c4": 1818,
+    "pooled": 0.035,
+    "population": 0.0285,
+    "interval": [
+     0.0232,
+     0.0466
+    ],
+    "groups": {
+     "indivisible": 1054,
+     "data": 533,
+     "control": 231
+    },
+    "residual": 294
+   },
+   "frameworks and libraries": {
+    "repositories": 70,
+    "long": 7427,
+    "c4": 359,
+    "pooled": 0.0483,
+    "population": 0.05,
+    "interval": [
+     0.0393,
+     0.06
+    ],
+    "groups": {
+     "indivisible": 173,
+     "data": 122,
+     "control": 64
+    },
+    "residual": 45
+   },
+   "games and graphics": {
+    "repositories": 38,
+    "long": 7181,
+    "c4": 555,
+    "pooled": 0.0773,
+    "population": 0.1016,
+    "interval": [
+     0.031,
+     0.1804
+    ],
+    "groups": {
+     "indivisible": 234,
+     "data": 261,
+     "control": 60
+    },
+    "residual": 107
+   },
+   "language tooling": {
+    "repositories": 53,
+    "long": 27238,
+    "c4": 2123,
+    "pooled": 0.0779,
+    "population": 0.0789,
+    "interval": [
+     0.0634,
+     0.1
+    ],
+    "groups": {
+     "indivisible": 1213,
+     "data": 547,
+     "control": 363
+    },
+    "residual": 216
+   },
+   "learning and examples": {
+    "repositories": 58,
+    "long": 1585,
+    "c4": 22,
+    "pooled": 0.0139,
+    "population": 0.0091,
+    "interval": [
+     0.0031,
+     0.0183
+    ],
+    "groups": {
+     "indivisible": 14,
+     "data": 6,
+     "control": 2
+    },
+    "residual": 4
+   },
+   "numeric, scientific and ML": {
+    "repositories": 18,
+    "long": 11503,
+    "c4": 1006,
+    "pooled": 0.0875,
+    "population": 0.0881,
+    "interval": [
+     0.0566,
+     0.1266
+    ],
+    "groups": {
+     "indivisible": 273,
+     "data": 622,
+     "control": 111
+    },
+    "residual": 189
+   },
+   "unknown": {
+    "repositories": 23,
+    "long": 4319,
+    "c4": 211,
+    "pooled": 0.0489,
+    "population": 0.0427,
+    "interval": [
+     0.0228,
+     0.0592
+    ],
+    "groups": {
+     "indivisible": 107,
+     "data": 65,
+     "control": 39
+    },
+    "residual": 19
+   }
+  },
+  "coding": {
+   "18601949127/DiDiCallCar": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "1hakr/AnExplorer": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "3breadt/dd-plist": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "6thsolution/EasyMVP": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "AAChartModel/AAChartCore": {
+    "domain": "games and graphics",
+    "keyword": "graphics"
+   },
+   "APIJSON/APIJSON": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "AdguardTeam/ContentBlocker": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "AgNO3/jcifs-ng": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "Angel-ML/angel": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "machine learning"
+   },
+   "Anuken/Arc": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "Anuken/Mindustry": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "AnyChart/AnyChart-Android": {
+    "domain": "language tooling",
+    "keyword": "gradle"
+   },
+   "Arello-Mobile/Moxy": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Assassinss/Interessant": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "AxonIQ/AxonFramework": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "Baseflow/PhotoView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Bearded-Hen/Android-Bootstrap": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "BotLibre/BotLibre": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "ai"
+   },
+   "CS-SI/Orekit": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "astrodynamic"
+   },
+   "CellularPrivacy/Android-IMSI-Catcher-Detector": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ChrisRM/material-theme-jetbrains": {
+    "domain": "android and UI",
+    "keyword": "material"
+   },
+   "Cleveroad/LoopBar": {
+    "domain": "frameworks and libraries",
+    "keyword": "fingerprint"
+   },
+   "CloudSlang/cloud-slang": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "CodePlato3721/shiro-redis": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "CodingDocs/springboot-guide": {
+    "domain": "distributed systems and middleware",
+    "keyword": "rabbitmq"
+   },
+   "Col-E/Recaf": {
+    "domain": "language tooling",
+    "keyword": "compiler"
+   },
+   "DSpace/DSpace": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "Devlight/InfiniteCycleViewPager": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Diffey/RxZhihuPager": {
+    "domain": "frameworks and libraries",
+    "keyword": "rxjava"
+   },
+   "Doikki/DKVideoPlayer": {
+    "domain": "games and graphics",
+    "keyword": "opengl"
+   },
+   "DreamOfTheRedChamber/system-design-interviews": {
+    "domain": "learning and examples",
+    "keyword": "interview"
+   },
+   "DroidPluginTeam/DroidPlugin": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "DrownCoder/VRShow": {
+    "domain": "games and graphics",
+    "keyword": "opengl"
+   },
+   "DylanCaiCoding/LoadingStateView": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "Elikill58/Negativity": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "EricBerendsen/dvbinspector": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "Evernote/evernote-sdk-java": {
+    "domain": "frameworks and libraries",
+    "keyword": "sdk"
+   },
+   "Exrick/xmall": {
+    "domain": "database and query",
+    "keyword": "elasticsearch"
+   },
+   "GeyserMC/Geyser": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "GoogleContainerTools/jib": {
+    "domain": "language tooling",
+    "keyword": "gradle"
+   },
+   "Graylog2/graylog2-server": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "Grover-c13/PokeGOAPI-Java": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "Guardsquare/proguard": {
+    "domain": "language tooling",
+    "keyword": "obfuscat"
+   },
+   "HMCL-dev/HMCL": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "HarlonWang/AVLoadingIndicatorView": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "HotBitmapGG/MoeQuest": {
+    "domain": "android and UI",
+    "keyword": "material"
+   },
+   "ICT-BDA/EasyML": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "JabRef/jabref": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "ai"
+   },
+   "JakeWharton/butterknife": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Jasonchenlijian/FastBle": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Javen205/IJPay": {
+    "domain": "frameworks and libraries",
+    "keyword": "payment"
+   },
+   "JessYanCoding/AndroidAutoSize": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "JetBrains/fernflower": {
+    "domain": "language tooling",
+    "keyword": "compiler"
+   },
+   "JetBrains/pty4j": {
+    "domain": "distributed systems and middleware",
+    "keyword": "pty"
+   },
+   "JetBrains/xodus": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "JoanZapata/android-pdfview": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "JorgeCastilloPrz/FABProgressCircle": {
+    "domain": "android and UI",
+    "keyword": "material"
+   },
+   "JsonChao/Awesome-WanAndroid": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "JustinRoom/JSCKit": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "Kelin-Hong/CalendarListView": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "KilianB/JImageHash": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "KingJA/LoadSir": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Konloch/bytecode-viewer": {
+    "domain": "language tooling",
+    "keyword": "compiler"
+   },
+   "LWJGL/lwjgl3": {
+    "domain": "games and graphics",
+    "keyword": "graphics"
+   },
+   "Lanchon/haystack": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "LeeLulin/ToDoList": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "LineCutFeng/PlayPicdio": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "M66B/FairEmail": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "MagicMashRoom/SuperCalendar": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "MarquezProject/marquez": {
+    "domain": "games and graphics",
+    "keyword": "visualiz"
+   },
+   "Meituan-Dianping/Leaf": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "Meituan-Dianping/walle": {
+    "domain": "language tooling",
+    "keyword": "gradle"
+   },
+   "MinecraftForge/MinecraftForge": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "Motianshi/distribute-tool": {
+    "domain": "applications",
+    "keyword": "tool"
+   },
+   "MovingBlocks/Terasology": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "MrCrayfish/MrCrayfishGunMod": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "MuntashirAkon/AppManager": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "MyCATApache/Mycat-Server": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "MyPetORG/MyPet": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "NanoHttpd/nanohttpd": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "Nepxion/Discovery": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "Netflix/concurrency-limits": {
+    "domain": "distributed systems and middleware",
+    "keyword": "concurrency"
+   },
+   "Netflix/dyno-queues": {
+    "domain": "frameworks and libraries",
+    "keyword": "util"
+   },
+   "Netflix/iceberg": {
+    "domain": "distributed systems and middleware",
+    "keyword": "hadoop"
+   },
+   "Netflix/zuul": {
+    "domain": "distributed systems and middleware",
+    "keyword": "gateway"
+   },
+   "Nightonke/BoomMenu": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "NormanGyllenhaal/canal-client": {
+    "domain": "frameworks and libraries",
+    "keyword": "client"
+   },
+   "OpenAPITools/openapi-generator": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "OpenFeign/feign": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "OpenLiberty/open-liberty": {
+    "domain": "distributed systems and middleware",
+    "keyword": "application server"
+   },
+   "OpenTSDB/opentsdb": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "Ouyangan/hunt-admin": {
+    "domain": "frameworks and libraries",
+    "keyword": "spring"
+   },
+   "PaperMC/Paper": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "Qihoo360/RePlugin": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Rayhahah/EasySports": {
+    "domain": "frameworks and libraries",
+    "keyword": "rxjava"
+   },
+   "ReactiveX/RxJava": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "Revivius/nb-darcula": {
+    "domain": "language tooling",
+    "keyword": "netbeans"
+   },
+   "RipMeApp/ripme": {
+    "domain": "database and query",
+    "keyword": "hive"
+   },
+   "Sayi/poi-tl": {
+    "domain": "frameworks and libraries",
+    "keyword": "template"
+   },
+   "ShprAlex/SproutLife": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "Soarkey/StudentManagement": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "SonarSource/sonarqube": {
+    "domain": "language tooling",
+    "keyword": "static analysis"
+   },
+   "SpongePowered/SpongeAPI": {
+    "domain": "language tooling",
+    "keyword": "gradle"
+   },
+   "SunOfBeach2/CheckVersionLib": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Tencent/QMUI_Android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Tencent/Shadow": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "TheFinestArtist/AndroidBaseUtils": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Tiviacz1337/Travelers-Backpack": {
+    "domain": "distributed systems and middleware",
+    "keyword": "integration"
+   },
+   "TogetherOS/cicada": {
+    "domain": "distributed systems and middleware",
+    "keyword": "netty"
+   },
+   "TommyLemon/Android-ZBLibrary": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "Trinea/android-common": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "Twitter4J/Twitter4J": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "UnevenSoftware/LeafPic": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "UniversalMediaServer/UniversalMediaServer": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "Uphie/ONE-Unofficial": {
+    "domain": "applications",
+    "keyword": "app"
+   },
+   "Vedenin/useful-java-links": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "XiaoMi/android_tv_metro": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "YClimb/wxpay-sdk": {
+    "domain": "frameworks and libraries",
+    "keyword": "sdk"
+   },
+   "Yalantis/uCrop": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "YoKeyword/Fragmentation": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "YunaiV/yudao-cloud": {
+    "domain": "database and query",
+    "keyword": "elasticsearch"
+   },
+   "Zo3i/frpMgr": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "a2888409/face2face": {
+    "domain": "distributed systems and middleware",
+    "keyword": "netty"
+   },
+   "aNNiMON/Lightweight-Stream-API": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "aaronjwood/PortAuthority": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ac-pm/Inspeckage": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "aeron-io/aeron": {
+    "domain": "distributed systems and middleware",
+    "keyword": "messaging"
+   },
+   "airbnb/epoxy": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "alibaba/ARouter": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "alibaba/COLA": {
+    "domain": "frameworks and libraries",
+    "keyword": "architecture"
+   },
+   "alibaba/DataX": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "alibaba/QLExpress": {
+    "domain": "applications",
+    "keyword": "platform"
+   },
+   "alibaba/Sentinel": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "alibaba/arthas": {
+    "domain": "applications",
+    "keyword": "tool"
+   },
+   "alibaba/atlas": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "alibaba/canal": {
+    "domain": "distributed systems and middleware",
+    "keyword": "binlog"
+   },
+   "alibaba/cobar": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "alibaba/freeline": {
+    "domain": "language tooling",
+    "keyword": "build tool"
+   },
+   "alibaba/tac": {
+    "domain": "learning and examples",
+    "keyword": "course"
+   },
+   "alibaba/transmittable-thread-local": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "amitshekhariitbhu/Android-Debug-Database": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "android10/arrow": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "android10/frodo": {
+    "domain": "language tooling",
+    "keyword": "debugger"
+   },
+   "antlr/antlr4": {
+    "domain": "language tooling",
+    "keyword": "parser"
+   },
+   "apache/curator": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/dolphinscheduler": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "apache/doris": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/druid": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/dubbo": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "apache/fineract": {
+    "domain": "applications",
+    "keyword": "banking"
+   },
+   "apache/flink": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "apache/flink-cdc": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "apache/hadoop": {
+    "domain": "distributed systems and middleware",
+    "keyword": "hadoop"
+   },
+   "apache/hive": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/httpcomponents-client": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "apache/hudi": {
+    "domain": "database and query",
+    "keyword": "big data"
+   },
+   "apache/iceberg": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "apache/iotdb": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/kafka": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "apache/maven": {
+    "domain": "language tooling",
+    "keyword": "maven"
+   },
+   "apache/phoenix": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/pinot": {
+    "domain": "database and query",
+    "keyword": "olap"
+   },
+   "apache/pulsar": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "apache/shardingsphere": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apache/shenyu": {
+    "domain": "distributed systems and middleware",
+    "keyword": "grpc"
+   },
+   "apache/zookeeper": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "apereo/cas": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "arduino/Arduino": {
+    "domain": "language tooling",
+    "keyword": "ide"
+   },
+   "artem-zinnatullin/qualitymatters": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "asLody/VirtualApp": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "auth0/java-jwt": {
+    "domain": "frameworks and libraries",
+    "keyword": "sdk"
+   },
+   "awsdocs/aws-doc-sdk-examples": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "baiiu/DropDownMenu": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "baomidou/mybatis-plus": {
+    "domain": "database and query",
+    "keyword": "orm"
+   },
+   "bazelbuild/bazel": {
+    "domain": "applications",
+    "keyword": "system"
+   },
+   "ben-manes/caffeine": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "betacraftuk/betacraft-launcher": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "bingoogolapple/BGASwipeBackLayout-Android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "birdLark/LarkMidTable": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "bit4woo/domain_hunter_pro": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "bootique/bootique": {
+    "domain": "frameworks and libraries",
+    "keyword": "dependency injection"
+   },
+   "box/mojito": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "brettwooldridge/HikariCP": {
+    "domain": "database and query",
+    "keyword": "jdbc"
+   },
+   "brianway/webporter": {
+    "domain": "database and query",
+    "keyword": "elasticsearch"
+   },
+   "btraceio/btrace": {
+    "domain": "language tooling",
+    "keyword": "bytecode"
+   },
+   "bucket4j/bucket4j": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "bwaldvogel/mongo-java-server": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "byc4426/ImageWatcher": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "bz51/SpringBoot-Dubbo-Docker-Jenkins": {
+    "domain": "distributed systems and middleware",
+    "keyword": "dubbo"
+   },
+   "cachecats/LikeMeiTuan": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "cachecats/coderiver": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "caelum/vraptor4": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "callicoder/spring-security-react-ant-design-polls-app": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "careercup/ctci": {
+    "domain": "learning and examples",
+    "keyword": "interview"
+   },
+   "cesardeazevedo/react-native-bottom-sheet-behavior": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "cgeo/cgeo": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "cglib/cglib": {
+    "domain": "language tooling",
+    "keyword": "code generat"
+   },
+   "changmingxie/tcc-transaction": {
+    "domain": "distributed systems and middleware",
+    "keyword": "transaction"
+   },
+   "charles-wangkai/hackerrank": {
+    "domain": "learning and examples",
+    "keyword": "hackerrank"
+   },
+   "chenBingX/SuperTextView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "chiclaim/AndroidAll": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "chillzhuang/SpringBlade": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "clojure/clojure": {
+    "domain": "language tooling",
+    "keyword": "programming language"
+   },
+   "code4craft/webmagic": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "commonsguy/cw-omnibus": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "corretto/corretto-8": {
+    "domain": "language tooling",
+    "keyword": "openjdk"
+   },
+   "crazycodeboy/TakePhoto": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "cryptomator/cryptomator": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "dCache/dcache": {
+    "domain": "database and query",
+    "keyword": "data grid"
+   },
+   "daniel-cues/NMapGUI": {
+    "domain": "distributed systems and middleware",
+    "keyword": "network"
+   },
+   "daniulive/SmarterStreaming": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "danoz73/RecyclerViewFastScroller": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "dcaoyuan/nbscala": {
+    "domain": "language tooling",
+    "keyword": "netbeans"
+   },
+   "deeplearning4j/deeplearning4j": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "deep learning"
+   },
+   "dianping/cat": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "dibakarece/DMPlayer": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "didi/DoKit": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "didi/KnowStreaming": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cluster"
+   },
+   "dinuscxj/LoadingDrawable": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "discord-jda/JDA": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "dmart28/reveno": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "dodola/AnoleFix": {
+    "domain": "language tooling",
+    "keyword": "hotfix"
+   },
+   "doocs/leetcode": {
+    "domain": "learning and examples",
+    "keyword": "leetcode"
+   },
+   "dromara/Sa-Token": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "dromara/hmily": {
+    "domain": "learning and examples",
+    "keyword": "solutions"
+   },
+   "dropwizard/dropwizard": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "dsg-titech/simblock": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "simulation"
+   },
+   "dyc87112/SpringBoot-Learning": {
+    "domain": "database and query",
+    "keyword": "jdbc"
+   },
+   "dynamicreports/dynamicreports": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "eclipse-openvsx/openvsx": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "ehcache/ehcache3": {
+    "domain": "frameworks and libraries",
+    "keyword": "cache"
+   },
+   "elastic/elasticsearch": {
+    "domain": "database and query",
+    "keyword": "search engine"
+   },
+   "elastic/logstash": {
+    "domain": "games and graphics",
+    "keyword": "processing"
+   },
+   "emanuele-f/PCAPdroid": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "esig/dss": {
+    "domain": "frameworks and libraries",
+    "keyword": "validation"
+   },
+   "etcd-io/jetcd": {
+    "domain": "frameworks and libraries",
+    "keyword": "client"
+   },
+   "f4b6a3/uuid-creator": {
+    "domain": "language tooling",
+    "keyword": "jdk"
+   },
+   "fenixsoft/jvm_book": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "fenixsoft/microservice_arch_springcloud": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "ffay/lanproxy": {
+    "domain": "distributed systems and middleware",
+    "keyword": "proxy"
+   },
+   "firebase/firebase-android-sdk": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "fizzed/rocker": {
+    "domain": "frameworks and libraries",
+    "keyword": "template"
+   },
+   "flavienlaurent/datetimepicker": {
+    "domain": "android and UI",
+    "keyword": "picker"
+   },
+   "flowable/flowable-engine": {
+    "domain": "distributed systems and middleware",
+    "keyword": "workflow"
+   },
+   "forcedotcom/dataloader": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "forezp/SpringCloudLearning": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "freedomotic/freedomotic": {
+    "domain": "distributed systems and middleware",
+    "keyword": "mqtt"
+   },
+   "frogermcs/GithubClient": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "frogermcs/InstaMaterial": {
+    "domain": "android and UI",
+    "keyword": "material"
+   },
+   "fusesource/mqtt-client": {
+    "domain": "distributed systems and middleware",
+    "keyword": "mqtt"
+   },
+   "fuzhengwei/interview": {
+    "domain": "learning and examples",
+    "keyword": "interview"
+   },
+   "fuzhengwei/itstack-demo-design": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "gedoor/MyBookshelf": {
+    "domain": "applications",
+    "keyword": "\u9605\u8bfb"
+   },
+   "geniusgithub/MediaPlayer": {
+    "domain": "applications",
+    "keyword": "player"
+   },
+   "geonetwork/core-geonetwork": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "geospatial"
+   },
+   "getActivity/Toaster": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "gocd/gocd": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "google/auto": {
+    "domain": "language tooling",
+    "keyword": "code generat"
+   },
+   "google/copybara": {
+    "domain": "applications",
+    "keyword": "tool"
+   },
+   "google/error-prone": {
+    "domain": "language tooling",
+    "keyword": "static analysis"
+   },
+   "google/google-java-format": {
+    "domain": "language tooling",
+    "keyword": "formatter"
+   },
+   "google/guava": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "googleapis/google-api-java-client": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "grandstaish/paperparcel": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "greenrobot/EventBus": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "grobidOrg/grobid": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "machine learning"
+   },
+   "guardianproject/haven": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "guokr/simbase": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "gwenshap/kafka-examples": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "h2database/h2database": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "h6ah4i/android-advancedrecyclerview": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "halo-dev/halo": {
+    "domain": "applications",
+    "keyword": "management system"
+   },
+   "hamidness/restring": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "happydog-intj/CircleProgress": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "hehonghui/AndroidEventBus": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "hellokaton/learn-java8": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "hemin1003/spring-boot-study": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "hibernate/hibernate-orm": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "hibernate/hibernate-validator": {
+    "domain": "frameworks and libraries",
+    "keyword": "validation"
+   },
+   "hitherejoe/Vineyard": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "hivemq/hivemq-community-edition": {
+    "domain": "database and query",
+    "keyword": "hive"
+   },
+   "houbb/sensitive-word": {
+    "domain": "applications",
+    "keyword": "tool"
+   },
+   "hs-web/hsweb-framework": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "huanghaibin-dev/CalendarView": {
+    "domain": "games and graphics",
+    "keyword": "rendering"
+   },
+   "huangyanbin/smartTable": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "huangyz0918/AndroidWM": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "image processing"
+   },
+   "iainporter/oauth2-provider": {
+    "domain": "distributed systems and middleware",
+    "keyword": "oauth"
+   },
+   "iammert/Android-MVVM-Architecture": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "imLibo/FilePicker": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "intoolswetrust/jsignpdf": {
+    "domain": "android and UI",
+    "keyword": "ui"
+   },
+   "itwanger/toBeBetterJavaer": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "ityouknow/spring-cloud-examples": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "jOOQ/jOOL": {
+    "domain": "language tooling",
+    "keyword": "jdk"
+   },
+   "jOOQ/jOOQ": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "jagrosh/Vortex": {
+    "domain": "frameworks and libraries",
+    "keyword": "logging"
+   },
+   "jamesnguyenhub/mkloader": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "janishar/PlaceHolderView": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "java110/MicroCommunity": {
+    "domain": "applications",
+    "keyword": "manager"
+   },
+   "javaee-samples/javaee8-samples": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "javiersantos/MLManager": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "jbake-org/jbake": {
+    "domain": "applications",
+    "keyword": "blog"
+   },
+   "jberkel/sms-backup-plus": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "jboss-javassist/javassist": {
+    "domain": "language tooling",
+    "keyword": "bytecode"
+   },
+   "jchambers/pushy": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "jeasonlzy/okhttp-OkGo": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "jeddict/jeddict-modeler": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "jenkinsci/github-plugin": {
+    "domain": "frameworks and libraries",
+    "keyword": "plugin"
+   },
+   "jenkinsci/jenkins": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "jindrapetrik/jpexs-decompiler": {
+    "domain": "language tooling",
+    "keyword": "compiler"
+   },
+   "jinhx128/springboot-demo": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "jnr/jnr-posix": {
+    "domain": "distributed systems and middleware",
+    "keyword": "posix"
+   },
+   "jnr/jnr-unixsocket": {
+    "domain": "distributed systems and middleware",
+    "keyword": "socket"
+   },
+   "jodconverter/jodconverter": {
+    "domain": "frameworks and libraries",
+    "keyword": "document conver"
+   },
+   "joelittlejohn/jsonschema2pojo": {
+    "domain": "language tooling",
+    "keyword": "gradle"
+   },
+   "jpenilla/TabTPS": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "junit-team/junit-examples": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "junit-team/junit4": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "junixapp/XPopup": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "justauth/JustAuth": {
+    "domain": "distributed systems and middleware",
+    "keyword": "oauth"
+   },
+   "jvm-profiling-tools/honest-profiler": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "kagkarlsson/db-scheduler": {
+    "domain": "database and query",
+    "keyword": "jdbc"
+   },
+   "kairosdb/kairosdb": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "karma9874/AndroRAT": {
+    "domain": "language tooling",
+    "keyword": "interpreter"
+   },
+   "kestra-io/kestra": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "ai"
+   },
+   "kevin-wayne/algs4": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "killbill/killbill": {
+    "domain": "frameworks and libraries",
+    "keyword": "payment"
+   },
+   "killme2008/aviatorscript": {
+    "domain": "language tooling",
+    "keyword": "programming language"
+   },
+   "kingsollyu/AppEnv": {
+    "domain": "applications",
+    "keyword": "app"
+   },
+   "knightliao/disconf": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "kofigyan/StateProgressBar": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "komoot/photon": {
+    "domain": "database and query",
+    "keyword": "elasticsearch"
+   },
+   "kongchen/swagger-maven-plugin": {
+    "domain": "language tooling",
+    "keyword": "maven"
+   },
+   "koral--/android-gif-drawable": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "koush/AndroidAsync": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ksoichiro/Android-ObservableScrollView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ksvc/KSYMediaPlayer_Android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "la-team/light-admin": {
+    "domain": "android and UI",
+    "keyword": "ui"
+   },
+   "landy8530/DesignPatterns": {
+    "domain": "learning and examples",
+    "keyword": "design pattern"
+   },
+   "languagetool-org/languagetool": {
+    "domain": "language tooling",
+    "keyword": "grammar"
+   },
+   "lawloretienne/Loop": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "learning-zone/spring-boot-basics": {
+    "domain": "learning and examples",
+    "keyword": "interview"
+   },
+   "learnopengles/Learn-OpenGLES-Tutorials": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "lecho/hellocharts-android": {
+    "domain": "games and graphics",
+    "keyword": "chart"
+   },
+   "lenve/javaboy-code-samples": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "leolewis/openvisualtraceroute": {
+    "domain": "applications",
+    "keyword": "platform"
+   },
+   "leslie1015/list-tool": {
+    "domain": "frameworks and libraries",
+    "keyword": "spring"
+   },
+   "lets-mica/mica": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "lfkdsk/JustWeTools": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "lgvalle/Material-Animations": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "liaochong/myexcel": {
+    "domain": "frameworks and libraries",
+    "keyword": "excel"
+   },
+   "liaohuqiu/android-Ultra-Pull-To-Refresh": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "liaohuqiu/cube-sdk": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "libgdx/libgdx": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "lightbend/config": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "limboemu/limbo": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "lingochamp/okdownload": {
+    "domain": "frameworks and libraries",
+    "keyword": "download"
+   },
+   "linkedin/kafka-monitor": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "statistic"
+   },
+   "linkedin/test-butler": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "linyiqun/DataMiningAlgorithm": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "liuweijw/fw-cloud-framework": {
+    "domain": "database and query",
+    "keyword": "query"
+   },
+   "liuweiran900217/CloudCrypto": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "liuyubobobo/Play-with-Algorithms": {
+    "domain": "learning and examples",
+    "keyword": "course"
+   },
+   "liweiwei1419/LeetCode-Solutions-in-Good-Style": {
+    "domain": "learning and examples",
+    "keyword": "leetcode"
+   },
+   "liyue2008/simple-rpc-framework": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "lmco/streamflow": {
+    "domain": "games and graphics",
+    "keyword": "processing"
+   },
+   "logisim-evolution/logisim-evolution": {
+    "domain": "applications",
+    "keyword": "tool"
+   },
+   "lsfusion/platform": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "ltsopensource/light-task-scheduler": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "luckybilly/PreLoader": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "luxiaoxun/NettyRpc": {
+    "domain": "distributed systems and middleware",
+    "keyword": "rpc"
+   },
+   "lygttpod/SuperTextView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "lysine-dev/retrofit": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "macrozheng/mall": {
+    "domain": "database and query",
+    "keyword": "elasticsearch"
+   },
+   "macrozheng/springcloud-learning": {
+    "domain": "language tooling",
+    "keyword": "jdk"
+   },
+   "madflow/flow-netbeans-markdown": {
+    "domain": "language tooling",
+    "keyword": "ide"
+   },
+   "mahmoudparsian/data-algorithms-book": {
+    "domain": "learning and examples",
+    "keyword": "design pattern"
+   },
+   "manmal/hn-android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "maoruibin/GankDaily": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "mapstruct/mapstruct": {
+    "domain": "frameworks and libraries",
+    "keyword": "annotation"
+   },
+   "mattia-battiston/clean-architecture-example": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "mattjlewis/diozero": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "mayubao/Android-Pay": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "mcxtzhang/ZLayoutManager": {
+    "domain": "android and UI",
+    "keyword": "layout"
+   },
+   "mekanism/Mekanism": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "mercyblitz/segmentfault-lessons": {
+    "domain": "learning and examples",
+    "keyword": "course"
+   },
+   "meteoinfo/MeteoInfo": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "scientific"
+   },
+   "mezz/JustEnoughItems": {
+    "domain": "games and graphics",
+    "keyword": "minecraft"
+   },
+   "mgsx-dev/gdx-gltf": {
+    "domain": "games and graphics",
+    "keyword": "3d"
+   },
+   "microcks/microcks": {
+    "domain": "distributed systems and middleware",
+    "keyword": "kubernetes"
+   },
+   "micronaut-projects/micronaut-core": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "microservices-patterns/ftgo-application": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "mircokroon/minecraft-world-downloader": {
+    "domain": "games and graphics",
+    "keyword": "render"
+   },
+   "mkyong/spring-boot": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "mock-server/mockserver-monorepo": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "ai"
+   },
+   "moquette-io/moquette": {
+    "domain": "distributed systems and middleware",
+    "keyword": "mqtt"
+   },
+   "mosmetro-android/mosmetro-android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "mostafacs/ecommerce-microservices-spring-reactive-webflux": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "motianhuo/wechat": {
+    "domain": "applications",
+    "keyword": "app"
+   },
+   "mrniko/netty-socketio": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "muraee/Horizontal-Calendar": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "murraco/spring-boot-jwt": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "mustfun/mybatis-lite": {
+    "domain": "frameworks and libraries",
+    "keyword": "plugin"
+   },
+   "mvel/mvel": {
+    "domain": "language tooling",
+    "keyword": "expression language"
+   },
+   "naman14/S-Tools": {
+    "domain": "android and UI",
+    "keyword": "picker"
+   },
+   "naman14/Timber": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "navasmdc/MaterialDesignLibrary": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ncanode-kz/NCANode": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "neo4j/neo4j": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "netty/netty": {
+    "domain": "distributed systems and middleware",
+    "keyword": "network"
+   },
+   "nextgenhealthcare/connect": {
+    "domain": "distributed systems and middleware",
+    "keyword": "integration"
+   },
+   "nginx-clojure/nginx-clojure": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "niedev/RTranslator": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "nmyphp/tbschedule": {
+    "domain": "distributed systems and middleware",
+    "keyword": "schedul"
+   },
+   "noidsirius/SootTutorial": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "nolanlawson/Catlog": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "nordicsemi/Android-nRF-Mesh-Library": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "nroduit/Weasis": {
+    "domain": "games and graphics",
+    "keyword": "rendering"
+   },
+   "obsidiandynamics/kafdrop": {
+    "domain": "android and UI",
+    "keyword": "ui"
+   },
+   "offbye/DroidDLNA": {
+    "domain": "games and graphics",
+    "keyword": "render"
+   },
+   "opencollab/jlatexmath": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "math"
+   },
+   "opendroneid/receiver-android": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "openhab/openhab-addons": {
+    "domain": "applications",
+    "keyword": "openhab"
+   },
+   "openpnp/openpnp": {
+    "domain": "applications",
+    "keyword": "pick and place"
+   },
+   "oracle/coherence": {
+    "domain": "database and query",
+    "keyword": "data grid"
+   },
+   "oracle/oci-java-sdk": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "oracle/opengrok": {
+    "domain": "language tooling",
+    "keyword": "maven"
+   },
+   "oschina/android-app": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "oshi/oshi": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "osmandapp/OsmAnd": {
+    "domain": "applications",
+    "keyword": "osmand"
+   },
+   "owlcs/owlapi": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "paascloud/paascloud-master": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "pagehelper-org/Mybatis-PageHelper": {
+    "domain": "frameworks and libraries",
+    "keyword": "plugin"
+   },
+   "palexdev/MaterialFX": {
+    "domain": "android and UI",
+    "keyword": "ui"
+   },
+   "patzly/grocy-android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "payara/Payara": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "pedrovgs/Algorithms": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "pedrovgs/EffectiveAndroidUI": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "pegasus-isi/pegasus": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "scientific"
+   },
+   "pengliangAndroid/VirtualLocation": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "phimpme/phimpme-android-v1": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "pierreown/PullRefreshView": {
+    "domain": "android and UI",
+    "keyword": "view"
+   },
+   "pingidentity/scim2": {
+    "domain": "frameworks and libraries",
+    "keyword": "sdk"
+   },
+   "pkanyue/jboot-admin": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "pkilller/super-jadx": {
+    "domain": "language tooling",
+    "keyword": "reverse engineer"
+   },
+   "plantuml/plantuml": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "plantuml/plantuml-server": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "pragma-/networklog": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "prestodb/presto": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "processing/processing": {
+    "domain": "games and graphics",
+    "keyword": "processing"
+   },
+   "project-travel-mate/Travel-Mate": {
+    "domain": "applications",
+    "keyword": "travel"
+   },
+   "projectlombok/lombok": {
+    "domain": "language tooling",
+    "keyword": "programming language"
+   },
+   "prometheus/client_java": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "protegeproject/protege": {
+    "domain": "applications",
+    "keyword": "desktop"
+   },
+   "pumadong/cl-privilege": {
+    "domain": "distributed systems and middleware",
+    "keyword": "dubbo"
+   },
+   "pxb1988/dex2jar": {
+    "domain": "language tooling",
+    "keyword": "dex"
+   },
+   "quarkusio/quarkus-quickstarts": {
+    "domain": "learning and examples",
+    "keyword": "quickstart"
+   },
+   "questdb/questdb": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "qyxxjd/CommonAdapter": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "rabbitmq/rabbitmq-tutorials": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "rapidoid/rapidoid": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "razerdp/BasePopup": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "rdio/rdio-simple": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "reactive-streams/reactive-streams-jvm": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "reactor/reactor-core": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "redisson/redisson": {
+    "domain": "database and query",
+    "keyword": "redis"
+   },
+   "rengwuxian/HenCoderPlus": {
+    "domain": "learning and examples",
+    "keyword": "\u8bfe"
+   },
+   "resteasy/resteasy": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "rjeschke/txtmark": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "robertvazan/sourceafis-java": {
+    "domain": "frameworks and libraries",
+    "keyword": "similarity"
+   },
+   "robo-code/robocode": {
+    "domain": "applications",
+    "keyword": "robocode"
+   },
+   "roboguice/roboguice": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "robolectric/robolectric": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "rockerhieu/emojicon": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "romannurik/Android-WizardPager": {
+    "domain": "learning and examples",
+    "keyword": "sample"
+   },
+   "rome753/webrtc-android-tutorial": {
+    "domain": "learning and examples",
+    "keyword": "tutorial"
+   },
+   "roughike/BottomBar": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "rstudio/rstudio": {
+    "domain": "language tooling",
+    "keyword": "ide"
+   },
+   "rubenlagus/TelegramBots": {
+    "domain": "language tooling",
+    "keyword": "maven"
+   },
+   "ryderchan/point-to-offer-edition2": {
+    "domain": "learning and examples",
+    "keyword": "offer"
+   },
+   "samdjstevens/java-totp": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "samphonic/Moppy2": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "sdwfqin/AndroidQuick": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "sedmelluq/lavaplayer": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "segmentio/analytics-android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "senbox-org/snap-engine": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "remote sensing"
+   },
+   "sgroschupf/zkclient": {
+    "domain": "distributed systems and middleware",
+    "keyword": "zookeeper"
+   },
+   "shuzheng/zheng": {
+    "domain": "database and query",
+    "keyword": "solr"
+   },
+   "shwenzhang/AndResGuard": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "shzlw/poli": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "signalapp/Signal-Server": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "signal"
+   },
+   "singwhatiwanna/dynamic-load-apk": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "sirthias/parboiled": {
+    "domain": "language tooling",
+    "keyword": "parsing"
+   },
+   "sirthias/pegdown": {
+    "domain": "language tooling",
+    "keyword": "parser"
+   },
+   "skydoves/ColorPickerView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "smuyyh/BookReader": {
+    "domain": "language tooling",
+    "keyword": "epub"
+   },
+   "snazy/ohc": {
+    "domain": "frameworks and libraries",
+    "keyword": "cache"
+   },
+   "sofastack/sofa-tracer": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "soulqw/Curtain": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "spotbugs/spotbugs": {
+    "domain": "language tooling",
+    "keyword": "static analysis"
+   },
+   "spring-io/initializr": {
+    "domain": "learning and examples",
+    "keyword": "quickstart"
+   },
+   "spring-io/start.spring.io": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "spring-projects/spring-boot": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "spring-projects/spring-data-examples": {
+    "domain": "learning and examples",
+    "keyword": "example"
+   },
+   "spring-projects/spring-security": {
+    "domain": "frameworks and libraries",
+    "keyword": "framework"
+   },
+   "springframeworkguru/sfg-pet-clinic": {
+    "domain": "learning and examples",
+    "keyword": "pet clinic"
+   },
+   "sqshq/piggymetrics": {
+    "domain": "distributed systems and middleware",
+    "keyword": "microservice"
+   },
+   "ssssssss-team/spider-flow": {
+    "domain": "applications",
+    "keyword": "crawler"
+   },
+   "stargate/stargate": {
+    "domain": "database and query",
+    "keyword": "cassandra"
+   },
+   "stfalcon-studio/ChatKit": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "strimzi/strimzi-kafka-operator": {
+    "domain": "distributed systems and middleware",
+    "keyword": "messaging"
+   },
+   "suceser/android-open-source-project-analysis": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "sujithkanna/SmileyRating": {
+    "domain": "games and graphics",
+    "keyword": "graphics"
+   },
+   "tdebatty/java-string-similarity": {
+    "domain": "learning and examples",
+    "keyword": "algorithms"
+   },
+   "termux/termux-api": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "thinkaurelius/titan": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "tiann/epic": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "tinkerpop/blueprints": {
+    "domain": "frameworks and libraries",
+    "keyword": "property graph"
+   },
+   "tmobile/pacbot": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "touchmii/OpenTCS-4": {
+    "domain": "distributed systems and middleware",
+    "keyword": "http"
+   },
+   "tranleduy2000/javaide": {
+    "domain": "language tooling",
+    "keyword": "compiler"
+   },
+   "trello-archive/RxLifecycle": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "turing-tech/MaterialScrollBar": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "twitter/Serial": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ukanth/afwall": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "ushahidi/Ushahidi_Android": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "vavr-io/vavr": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "venkivijay/Java-Solutions-TCS-Xplore-Proctored-Assessment": {
+    "domain": "learning and examples",
+    "keyword": "solutions"
+   },
+   "venshine/WheelView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "vipshop/vjtools": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "vladmihalcea/flexy-pool": {
+    "domain": "database and query",
+    "keyword": "database"
+   },
+   "vsch/flexmark-java": {
+    "domain": "language tooling",
+    "keyword": "parser"
+   },
+   "w3c/epubcheck": {
+    "domain": "language tooling",
+    "keyword": "epub"
+   },
+   "w446108264/XhsWelcomeAnim": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "w568w/fuckView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "waylau/netty-4-user-guide-demos": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "webbit/webbit": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "weibocom/motan": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "wengwh/plumdo-work": {
+    "domain": "distributed systems and middleware",
+    "keyword": "\u5de5\u4f5c\u6d41"
+   },
+   "wenmingvs/AndroidProcess": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "wildfirechat/im-server": {
+    "domain": "distributed systems and middleware",
+    "keyword": "server"
+   },
+   "wizzardo/webery": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "wonderyuan/LEMarket": {
+    "domain": "applications",
+    "keyword": "shop"
+   },
+   "wuba/WPaxos": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "wxiaoqi/Spring-Cloud-Platform": {
+    "domain": "distributed systems and middleware",
+    "keyword": "cloud"
+   },
+   "wyouflf/xUtils3": {
+    "domain": "database and query",
+    "keyword": "orm"
+   },
+   "xiaoxiangyeyu123/HeavenlyModule": {
+    "domain": "frameworks and libraries",
+    "keyword": "rxjava"
+   },
+   "ximsfei/Android-skin-support": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "xiongwei-git/AndroidVideoPlayer": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "xipki/xipki": {
+    "domain": "frameworks and libraries",
+    "keyword": "api"
+   },
+   "xkcoding/spring-boot-demo": {
+    "domain": "learning and examples",
+    "keyword": "demo"
+   },
+   "xtuhcy/gecco": {
+    "domain": "frameworks and libraries",
+    "keyword": "json"
+   },
+   "xuexiangjys/XUI": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "xurui1995/Sword-pointing-to-offer": {
+    "domain": "learning and examples",
+    "keyword": "offer"
+   },
+   "xuxueli/xxl-job": {
+    "domain": "distributed systems and middleware",
+    "keyword": "distributed"
+   },
+   "xyzlf/ShareSDK": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "yacy/yacy_search_server": {
+    "domain": "database and query",
+    "keyword": "search engine"
+   },
+   "yangchong211/YCSlideLayout": {
+    "domain": "android and UI",
+    "keyword": "ui"
+   },
+   "yangchong211/YCThreadPool": {
+    "domain": "distributed systems and middleware",
+    "keyword": "thread pool"
+   },
+   "yanzhenjie/AndPermission": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "yellowstonegames/SquidLib": {
+    "domain": "games and graphics",
+    "keyword": "game"
+   },
+   "yinchuandong/JavaVerify": {
+    "domain": "frameworks and libraries",
+    "keyword": "librar"
+   },
+   "yixia/VitamioBundle": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "youlookwhat/CloudReader": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "youlookwhat/DesignPattern": {
+    "domain": "learning and examples",
+    "keyword": "design pattern"
+   },
+   "ysc/superword": {
+    "domain": "unknown",
+    "keyword": null
+   },
+   "yui/yuicompressor": {
+    "domain": "language tooling",
+    "keyword": "compressor"
+   },
+   "yuyakaido/CardStackView": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "zaproxy/zaproxy": {
+    "domain": "distributed systems and middleware",
+    "keyword": "proxy"
+   },
+   "zfile-dev/zfile": {
+    "domain": "numeric, scientific and ML",
+    "keyword": "ai"
+   },
+   "zhangke3016/TranslationCompat": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "zhanglei-workspace/shopping-management-system": {
+    "domain": "language tooling",
+    "keyword": "maven"
+   },
+   "zhkl0228/unidbg": {
+    "domain": "language tooling",
+    "keyword": "debugger"
+   },
+   "zhpanvip/BannerViewPager": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "zincPower/UI2018": {
+    "domain": "games and graphics",
+    "keyword": "animation"
+   },
+   "zirouan/NavigationDrawer-MaterialDesign": {
+    "domain": "android and UI",
+    "keyword": "material"
+   },
+   "zlt2000/microservices-platform": {
+    "domain": "database and query",
+    "keyword": "sql"
+   },
+   "zouzg/mybatis-generator-gui": {
+    "domain": "language tooling",
+    "keyword": "generator gui"
+   },
+   "zxing/zxing": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "zyyoona7/EasyPopup": {
+    "domain": "android and UI",
+    "keyword": "android"
+   },
+   "zzz40500/AndroidSweetSheet": {
+    "domain": "android and UI",
+    "keyword": "android"
+   }
+  }
+ },
+ "complexity": {
+  "definition": "flow, all internal calls: in = 1 + parameters, out = sum(1 + arguments); d = out - in; catchment d < 0, pipe d = 0, junction d > 0",
+  "length_weights": {
+   "26-35": 0.07319496577610951,
+   "36-50": 0.13634356370059617,
+   "51-75": 0.22113049238242438,
+   "76-100": 0.17818502980790463,
+   "101-150": 0.18834179730624862,
+   "151-300": 0.1527931110620446,
+   "301+": 0.05001103996467211
+  },
+  "groups": {
+   "category 4": {
+    "wanted": 9059,
+    "joined": 9058,
+    "n": 9058,
+    "length": 83.0,
+    "cc": 19.0,
+    "cognitive": 26.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.314,
+    "d": 23.0,
+    "roles": {
+     "catchment": 0.2508,
+     "pipe": 0.017,
+     "junction": 0.7322
+    },
+    "standardised": {
+     "cc": 26.66,
+     "cognitive": 46.2,
+     "nesting": 3.27,
+     "cognitive_per_line": 0.352,
+     "roles": {
+      "catchment": 0.2508,
+      "pipe": 0.017,
+      "junction": 0.7322
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 663,
+      "length": 30,
+      "cc": 1,
+      "cognitive": 0,
+      "nesting": 0,
+      "cognitive_per_line": 0.0,
+      "d": 0,
+      "roles": {
+       "catchment": 0.4766,
+       "pipe": 0.0437,
+       "junction": 0.4796
+      }
+     },
+     "36-50": {
+      "n": 1235,
+      "length": 43,
+      "cc": 9,
+      "cognitive": 5,
+      "nesting": 2,
+      "cognitive_per_line": 0.111,
+      "d": 3,
+      "roles": {
+       "catchment": 0.387,
+       "pipe": 0.0259,
+       "junction": 0.587
+      }
+     },
+     "51-75": {
+      "n": 2003,
+      "length": 63,
+      "cc": 14,
+      "cognitive": 18,
+      "nesting": 3,
+      "cognitive_per_line": 0.296,
+      "d": 16,
+      "roles": {
+       "catchment": 0.2426,
+       "pipe": 0.0185,
+       "junction": 0.7389
+      }
+     },
+     "76-100": {
+      "n": 1614,
+      "length": 86.0,
+      "cc": 20.0,
+      "cognitive": 33.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.38,
+      "d": 25.0,
+      "roles": {
+       "catchment": 0.2088,
+       "pipe": 0.0118,
+       "junction": 0.7794
+      }
+     },
+     "101-150": {
+      "n": 1706,
+      "length": 121.5,
+      "cc": 28.0,
+      "cognitive": 51.0,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.419,
+      "d": 42.0,
+      "roles": {
+       "catchment": 0.1717,
+       "pipe": 0.0129,
+       "junction": 0.8154
+      }
+     },
+     "151-300": {
+      "n": 1384,
+      "length": 192.0,
+      "cc": 46.0,
+      "cognitive": 85.0,
+      "nesting": 5.0,
+      "cognitive_per_line": 0.447,
+      "d": 66.0,
+      "roles": {
+       "catchment": 0.1994,
+       "pipe": 0.0087,
+       "junction": 0.7919
+      }
+     },
+     "301+": {
+      "n": 453,
+      "length": 405,
+      "cc": 90,
+      "cognitive": 161,
+      "nesting": 5,
+      "cognitive_per_line": 0.401,
+      "d": 189,
+      "roles": {
+       "catchment": 0.1898,
+       "pipe": 0.0066,
+       "junction": 0.8035
+      }
+     }
+    }
+   },
+   "category 3": {
+    "wanted": 8385,
+    "joined": 8385,
+    "n": 8385,
+    "length": 59,
+    "cc": 16,
+    "cognitive": 14,
+    "nesting": 2,
+    "cognitive_per_line": 0.241,
+    "d": 14,
+    "roles": {
+     "catchment": 0.3244,
+     "pipe": 0.0247,
+     "junction": 0.6509
+    },
+    "standardised": {
+     "cc": 30.73,
+     "cognitive": 45.9,
+     "nesting": 2.87,
+     "cognitive_per_line": 0.328,
+     "roles": {
+      "catchment": 0.2829,
+      "pipe": 0.0194,
+      "junction": 0.6977
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 1209,
+      "length": 32,
+      "cc": 10,
+      "cognitive": 1,
+      "nesting": 1,
+      "cognitive_per_line": 0.036,
+      "d": -1,
+      "roles": {
+       "catchment": 0.5203,
+       "pipe": 0.0397,
+       "junction": 0.44
+      }
+     },
+     "36-50": {
+      "n": 2033,
+      "length": 42,
+      "cc": 12,
+      "cognitive": 6,
+      "nesting": 2,
+      "cognitive_per_line": 0.14,
+      "d": 4,
+      "roles": {
+       "catchment": 0.3886,
+       "pipe": 0.0398,
+       "junction": 0.5716
+      }
+     },
+     "51-75": {
+      "n": 2256,
+      "length": 61.0,
+      "cc": 15.0,
+      "cognitive": 16.0,
+      "nesting": 2.0,
+      "cognitive_per_line": 0.255,
+      "d": 17.0,
+      "roles": {
+       "catchment": 0.2784,
+       "pipe": 0.0182,
+       "junction": 0.7035
+      }
+     },
+     "76-100": {
+      "n": 1134,
+      "length": 85.5,
+      "cc": 22.0,
+      "cognitive": 28.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.329,
+      "d": 28.0,
+      "roles": {
+       "catchment": 0.2469,
+       "pipe": 0.0168,
+       "junction": 0.7363
+      }
+     },
+     "101-150": {
+      "n": 943,
+      "length": 118,
+      "cc": 29,
+      "cognitive": 43,
+      "nesting": 3,
+      "cognitive_per_line": 0.363,
+      "d": 35,
+      "roles": {
+       "catchment": 0.2503,
+       "pipe": 0.0095,
+       "junction": 0.7402
+      }
+     },
+     "151-300": {
+      "n": 621,
+      "length": 187,
+      "cc": 53,
+      "cognitive": 82,
+      "nesting": 4,
+      "cognitive_per_line": 0.449,
+      "d": 78,
+      "roles": {
+       "catchment": 0.2093,
+       "pipe": 0.0081,
+       "junction": 0.7826
+      }
+     },
+     "301+": {
+      "n": 189,
+      "length": 417,
+      "cc": 110,
+      "cognitive": 177,
+      "nesting": 4,
+      "cognitive_per_line": 0.455,
+      "d": 246,
+      "roles": {
+       "catchment": 0.1429,
+       "pipe": 0.0212,
+       "junction": 0.836
+      }
+     }
+    }
+   },
+   "categories 1-2": {
+    "wanted": 20366,
+    "joined": 20366,
+    "n": 20366,
+    "length": 47.0,
+    "cc": 13.0,
+    "cognitive": 18.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.394,
+    "d": 9.0,
+    "roles": {
+     "catchment": 0.2839,
+     "pipe": 0.0364,
+     "junction": 0.6797
+    },
+    "standardised": {
+     "cc": 31.62,
+     "cognitive": 59.63,
+     "nesting": 3.63,
+     "cognitive_per_line": 0.474,
+     "roles": {
+      "catchment": 0.2492,
+      "pipe": 0.0218,
+      "junction": 0.7289
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 5292,
+      "length": 30.0,
+      "cc": 9.0,
+      "cognitive": 11.0,
+      "nesting": 2.0,
+      "cognitive_per_line": 0.375,
+      "d": 3.0,
+      "roles": {
+       "catchment": 0.3611,
+       "pipe": 0.0625,
+       "junction": 0.5763
+      }
+     },
+     "36-50": {
+      "n": 6176,
+      "length": 42.0,
+      "cc": 11.0,
+      "cognitive": 16.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.381,
+      "d": 8.0,
+      "roles": {
+       "catchment": 0.2812,
+       "pipe": 0.0372,
+       "junction": 0.6815
+      }
+     },
+     "51-75": {
+      "n": 5246,
+      "length": 60.0,
+      "cc": 15.0,
+      "cognitive": 24.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.403,
+      "d": 14.0,
+      "roles": {
+       "catchment": 0.2499,
+       "pipe": 0.0248,
+       "junction": 0.7253
+      }
+     },
+     "76-100": {
+      "n": 2041,
+      "length": 85,
+      "cc": 21,
+      "cognitive": 37,
+      "nesting": 4,
+      "cognitive_per_line": 0.432,
+      "d": 23,
+      "roles": {
+       "catchment": 0.22,
+       "pipe": 0.0171,
+       "junction": 0.7629
+      }
+     },
+     "101-150": {
+      "n": 1192,
+      "length": 116.0,
+      "cc": 29.0,
+      "cognitive": 53.0,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.446,
+      "d": 36.0,
+      "roles": {
+       "catchment": 0.2156,
+       "pipe": 0.0092,
+       "junction": 0.7752
+      }
+     },
+     "151-300": {
+      "n": 401,
+      "length": 176,
+      "cc": 49,
+      "cognitive": 87,
+      "nesting": 4,
+      "cognitive_per_line": 0.471,
+      "d": 60,
+      "roles": {
+       "catchment": 0.2868,
+       "pipe": 0.0125,
+       "junction": 0.7007
+      }
+     },
+     "301+": {
+      "n": 18,
+      "length": 413.0,
+      "cc": 117.0,
+      "cognitive": 311.5,
+      "nesting": 6.0,
+      "cognitive_per_line": 0.608,
+      "d": 332.0,
+      "roles": {
+       "catchment": 0.1111,
+       "pipe": 0.0,
+       "junction": 0.8889
+      }
+     }
+    }
+   },
+   "slimmable": {
+    "wanted": 126026,
+    "joined": 126024,
+    "n": 126024,
+    "length": 35.0,
+    "cc": 7.0,
+    "cognitive": 10.0,
+    "nesting": 2.0,
+    "cognitive_per_line": 0.271,
+    "d": 8.0,
+    "roles": {
+     "catchment": 0.2683,
+     "pipe": 0.0292,
+     "junction": 0.7025
+    },
+    "standardised": {
+     "cc": 19.05,
+     "cognitive": 35.38,
+     "nesting": 2.92,
+     "cognitive_per_line": 0.338,
+     "roles": {
+      "catchment": 0.2183,
+      "pipe": 0.0169,
+      "junction": 0.7649
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 65309,
+      "length": 30,
+      "cc": 6,
+      "cognitive": 7,
+      "nesting": 2,
+      "cognitive_per_line": 0.25,
+      "d": 6,
+      "roles": {
+       "catchment": 0.2738,
+       "pipe": 0.0367,
+       "junction": 0.6895
+      }
+     },
+     "36-50": {
+      "n": 36637,
+      "length": 41,
+      "cc": 8,
+      "cognitive": 12,
+      "nesting": 2,
+      "cognitive_per_line": 0.282,
+      "d": 9,
+      "roles": {
+       "catchment": 0.2827,
+       "pipe": 0.0239,
+       "junction": 0.6933
+      }
+     },
+     "51-75": {
+      "n": 16994,
+      "length": 59.0,
+      "cc": 12.0,
+      "cognitive": 19.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.317,
+      "d": 16.0,
+      "roles": {
+       "catchment": 0.2441,
+       "pipe": 0.0195,
+       "junction": 0.7363
+      }
+     },
+     "76-100": {
+      "n": 4233,
+      "length": 85,
+      "cc": 17,
+      "cognitive": 28,
+      "nesting": 3,
+      "cognitive_per_line": 0.33,
+      "d": 25,
+      "roles": {
+       "catchment": 0.2147,
+       "pipe": 0.0116,
+       "junction": 0.7737
+      }
+     },
+     "101-150": {
+      "n": 2042,
+      "length": 116.0,
+      "cc": 23.0,
+      "cognitive": 39.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.333,
+      "d": 42.0,
+      "roles": {
+       "catchment": 0.1876,
+       "pipe": 0.0093,
+       "junction": 0.8031
+      }
+     },
+     "151-300": {
+      "n": 738,
+      "length": 181.0,
+      "cc": 36.0,
+      "cognitive": 59.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.326,
+      "d": 69.5,
+      "roles": {
+       "catchment": 0.164,
+       "pipe": 0.0136,
+       "junction": 0.8225
+      }
+     },
+     "301+": {
+      "n": 71,
+      "length": 368,
+      "cc": 8,
+      "cognitive": 15,
+      "nesting": 1,
+      "cognitive_per_line": 0.05,
+      "d": 112,
+      "roles": {
+       "catchment": 0.1408,
+       "pipe": 0.0141,
+       "junction": 0.8451
+      }
+     }
+    }
+   }
+  },
+  "category4_classes": {
+   "data / data: no plan at 10": {
+    "n": 1044,
+    "length": 95.0,
+    "cc": 21.0,
+    "cognitive": 42.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.448,
+    "d": 32.0,
+    "roles": {
+     "catchment": 0.1906,
+     "pipe": 0.0192,
+     "junction": 0.7902
+    },
+    "statement_n": 800,
+    "statement_roles": {
+     "catchment": 0.32,
+     "pipe": 0.0138,
+     "junction": 0.6663
+    }
+   },
+   "indivisible / switch: short cases (each under the cap, too many together)": {
+    "n": 1028,
+    "length": 89.0,
+    "cc": 27.5,
+    "cognitive": 20.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.207,
+    "d": 26.0,
+    "roles": {
+     "catchment": 0.2179,
+     "pipe": 0.0136,
+     "junction": 0.7685
+    },
+    "statement_n": 1028,
+    "statement_roles": {
+     "catchment": 0.3356,
+     "pipe": 0.0195,
+     "junction": 0.6449
+    }
+   },
+   "data / data: blocking body slims at 6 (inner limit)": {
+    "n": 467,
+    "length": 79,
+    "cc": 18,
+    "cognitive": 37,
+    "nesting": 4,
+    "cognitive_per_line": 0.471,
+    "d": 33,
+    "roles": {
+     "catchment": 0.2077,
+     "pipe": 0.0086,
+     "junction": 0.7837
+    },
+    "statement_n": 467,
+    "statement_roles": {
+     "catchment": 0.2955,
+     "pipe": 0.0128,
+     "junction": 0.6916
+    }
+   },
+   "indivisible / expression: array initializer": {
+    "n": 416,
+    "length": 112.5,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": -1.0,
+    "roles": {
+     "catchment": 0.7091,
+     "pipe": 0.012,
+     "junction": 0.2788
+    },
+    "statement_n": 416,
+    "statement_roles": {
+     "catchment": 0.8029,
+     "pipe": 0.0048,
+     "junction": 0.1923
+    }
+   },
+   "data / data: plan at 6": {
+    "n": 398,
+    "length": 83.0,
+    "cc": 18.0,
+    "cognitive": 30.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.348,
+    "d": 31.0,
+    "roles": {
+     "catchment": 0.2312,
+     "pipe": 0.0025,
+     "junction": 0.7663
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / expression: long argument list": {
+    "n": 390,
+    "length": 43.0,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": 21.0,
+    "roles": {
+     "catchment": 0.3154,
+     "pipe": 0.0103,
+     "junction": 0.6744
+    },
+    "statement_n": 390,
+    "statement_roles": {
+     "catchment": 0.3923,
+     "pipe": 0.0179,
+     "junction": 0.5897
+    }
+   },
+   "indivisible / expression: call chain (builder)": {
+    "n": 388,
+    "length": 54.5,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": 24.0,
+    "roles": {
+     "catchment": 0.2603,
+     "pipe": 0.0284,
+     "junction": 0.7113
+    },
+    "statement_n": 388,
+    "statement_roles": {
+     "catchment": 0.4278,
+     "pipe": 0.0155,
+     "junction": 0.5567
+    }
+   },
+   "control / control: break/continue, in a loop": {
+    "n": 377,
+    "length": 111,
+    "cc": 28,
+    "cognitive": 61,
+    "nesting": 5,
+    "cognitive_per_line": 0.575,
+    "d": 29,
+    "roles": {
+     "catchment": 0.1777,
+     "pipe": 0.0345,
+     "junction": 0.7878
+    },
+    "statement_n": 377,
+    "statement_roles": {
+     "catchment": 0.305,
+     "pipe": 0.0239,
+     "junction": 0.6711
+    }
+   },
+   "indivisible / if: else-if chain (dispatch)": {
+    "n": 375,
+    "length": 87,
+    "cc": 27,
+    "cognitive": 39,
+    "nesting": 3,
+    "cognitive_per_line": 0.444,
+    "d": 26,
+    "roles": {
+     "catchment": 0.1867,
+     "pipe": 0.016,
+     "junction": 0.7973
+    },
+    "statement_n": 375,
+    "statement_roles": {
+     "catchment": 0.3867,
+     "pipe": 0.0293,
+     "junction": 0.584
+    }
+   },
+   "indivisible / switch: flat table (every case 3 lines or fewer)": {
+    "n": 346,
+    "length": 55.0,
+    "cc": 18.0,
+    "cognitive": 6.0,
+    "nesting": 2.0,
+    "cognitive_per_line": 0.119,
+    "d": 8.0,
+    "roles": {
+     "catchment": 0.3208,
+     "pipe": 0.0318,
+     "junction": 0.6474
+    },
+    "statement_n": 346,
+    "statement_roles": {
+     "catchment": 0.526,
+     "pipe": 0.0578,
+     "junction": 0.4162
+    }
+   },
+   "data / data: plan at 7": {
+    "n": 293,
+    "length": 80,
+    "cc": 19,
+    "cognitive": 32,
+    "nesting": 3,
+    "cognitive_per_line": 0.36,
+    "d": 28,
+    "roles": {
+     "catchment": 0.2082,
+     "pipe": 0.0102,
+     "junction": 0.7816
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / expression: string concatenation": {
+    "n": 260,
+    "length": 47.5,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": 4.5,
+    "roles": {
+     "catchment": 0.3038,
+     "pipe": 0.0269,
+     "junction": 0.6692
+    },
+    "statement_n": 260,
+    "statement_roles": {
+     "catchment": 0.6192,
+     "pipe": 0.0346,
+     "junction": 0.3462
+    }
+   },
+   "data / data: blocking body slims at 7 (inner limit)": {
+    "n": 259,
+    "length": 81,
+    "cc": 17,
+    "cognitive": 33,
+    "nesting": 4,
+    "cognitive_per_line": 0.429,
+    "d": 29,
+    "roles": {
+     "catchment": 0.1776,
+     "pipe": 0.0116,
+     "junction": 0.8108
+    },
+    "statement_n": 259,
+    "statement_roles": {
+     "catchment": 0.2896,
+     "pipe": 0.0232,
+     "junction": 0.6873
+    }
+   },
+   "data / data: plan at 10": {
+    "n": 244,
+    "length": 92.0,
+    "cc": 20.0,
+    "cognitive": 33.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.375,
+    "d": 53.5,
+    "roles": {
+     "catchment": 0.1721,
+     "pipe": 0.0,
+     "junction": 0.8279
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / expression: other": {
+    "n": 211,
+    "length": 38,
+    "cc": 2,
+    "cognitive": 1,
+    "nesting": 1,
+    "cognitive_per_line": 0.012,
+    "d": -2,
+    "roles": {
+     "catchment": 0.6588,
+     "pipe": 0.0047,
+     "junction": 0.3365
+    },
+    "statement_n": 211,
+    "statement_roles": {
+     "catchment": 0.6825,
+     "pipe": 0.0095,
+     "junction": 0.3081
+    }
+   },
+   "control / control: return, in a loop": {
+    "n": 199,
+    "length": 82,
+    "cc": 23,
+    "cognitive": 49,
+    "nesting": 5,
+    "cognitive_per_line": 0.575,
+    "d": 22,
+    "roles": {
+     "catchment": 0.1658,
+     "pipe": 0.0402,
+     "junction": 0.794
+    },
+    "statement_n": 199,
+    "statement_roles": {
+     "catchment": 0.2714,
+     "pipe": 0.0251,
+     "junction": 0.7035
+    }
+   },
+   "data / data: plan at 8": {
+    "n": 199,
+    "length": 88,
+    "cc": 18,
+    "cognitive": 32,
+    "nesting": 3,
+    "cognitive_per_line": 0.353,
+    "d": 44,
+    "roles": {
+     "catchment": 0.196,
+     "pipe": 0.0,
+     "junction": 0.804
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / if: passes values on": {
+    "n": 170,
+    "length": 141.0,
+    "cc": 36.5,
+    "cognitive": 76.0,
+    "nesting": 5.0,
+    "cognitive_per_line": 0.534,
+    "d": 34.0,
+    "roles": {
+     "catchment": 0.2294,
+     "pipe": 0.0,
+     "junction": 0.7706
+    },
+    "statement_n": 170,
+    "statement_roles": {
+     "catchment": 0.4824,
+     "pipe": 0.0176,
+     "junction": 0.5
+    }
+   },
+   "control / control: return, in a try": {
+    "n": 170,
+    "length": 101.5,
+    "cc": 22.0,
+    "cognitive": 42.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.412,
+    "d": 36.0,
+    "roles": {
+     "catchment": 0.1588,
+     "pipe": 0.0176,
+     "junction": 0.8235
+    },
+    "statement_n": 170,
+    "statement_roles": {
+     "catchment": 0.2294,
+     "pipe": 0.0353,
+     "junction": 0.7353
+    }
+   },
+   "data / data: blocking body slims at 8 (inner limit)": {
+    "n": 167,
+    "length": 82,
+    "cc": 18,
+    "cognitive": 37,
+    "nesting": 4,
+    "cognitive_per_line": 0.417,
+    "d": 21,
+    "roles": {
+     "catchment": 0.1796,
+     "pipe": 0.006,
+     "junction": 0.8144
+    },
+    "statement_n": 167,
+    "statement_roles": {
+     "catchment": 0.3174,
+     "pipe": 0.018,
+     "junction": 0.6647
+    }
+   },
+   "data / data: blocking body slims at 10 (inner limit)": {
+    "n": 166,
+    "length": 82.5,
+    "cc": 16.5,
+    "cognitive": 33.5,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.392,
+    "d": 33.0,
+    "roles": {
+     "catchment": 0.2048,
+     "pipe": 0.012,
+     "junction": 0.7831
+    },
+    "statement_n": 166,
+    "statement_roles": {
+     "catchment": 0.2892,
+     "pipe": 0.0181,
+     "junction": 0.6928
+    }
+   },
+   "control / control: return and break/continue, in a loop": {
+    "n": 156,
+    "length": 99.0,
+    "cc": 28.0,
+    "cognitive": 67.5,
+    "nesting": 5.0,
+    "cognitive_per_line": 0.63,
+    "d": 19.5,
+    "roles": {
+     "catchment": 0.2244,
+     "pipe": 0.0192,
+     "junction": 0.7564
+    },
+    "statement_n": 156,
+    "statement_roles": {
+     "catchment": 0.3526,
+     "pipe": 0.0128,
+     "junction": 0.6346
+    }
+   },
+   "indivisible / switch: a case over the cap": {
+    "n": 154,
+    "length": 145.0,
+    "cc": 39.0,
+    "cognitive": 51.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.408,
+    "d": 60.0,
+    "roles": {
+     "catchment": 0.1688,
+     "pipe": 0.0065,
+     "junction": 0.8247
+    },
+    "statement_n": 154,
+    "statement_roles": {
+     "catchment": 0.1948,
+     "pipe": 0.0065,
+     "junction": 0.7987
+    }
+   },
+   "indivisible / expression: anonymous class": {
+    "n": 146,
+    "length": 77.0,
+    "cc": 14.0,
+    "cognitive": 20.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.278,
+    "d": 19.0,
+    "roles": {
+     "catchment": 0.1438,
+     "pipe": 0.0137,
+     "junction": 0.8425
+    },
+    "statement_n": 146,
+    "statement_roles": {
+     "catchment": 0.4658,
+     "pipe": 0.2534,
+     "junction": 0.2808
+    }
+   },
+   "indivisible / nested try over the cap": {
+    "n": 129,
+    "length": 129,
+    "cc": 16,
+    "cognitive": 15,
+    "nesting": 1,
+    "cognitive_per_line": 0.083,
+    "d": 56,
+    "roles": {
+     "catchment": 0.1008,
+     "pipe": 0.0,
+     "junction": 0.8992
+    },
+    "statement_n": 129,
+    "statement_roles": {
+     "catchment": 0.1163,
+     "pipe": 0.0,
+     "junction": 0.8837
+    }
+   },
+   "indivisible / a one-statement body (one return or expression)": {
+    "n": 121,
+    "length": 29,
+    "cc": 1,
+    "cognitive": 0,
+    "nesting": 0,
+    "cognitive_per_line": 0.0,
+    "d": 0,
+    "roles": {
+     "catchment": 0.4876,
+     "pipe": 0.124,
+     "junction": 0.3884
+    },
+    "statement_n": 6,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "indivisible / nested loop over the cap": {
+    "n": 115,
+    "length": 140,
+    "cc": 29,
+    "cognitive": 60,
+    "nesting": 4,
+    "cognitive_per_line": 0.466,
+    "d": 42,
+    "roles": {
+     "catchment": 0.1304,
+     "pipe": 0.0174,
+     "junction": 0.8522
+    },
+    "statement_n": 115,
+    "statement_roles": {
+     "catchment": 0.4,
+     "pipe": 0.0087,
+     "junction": 0.5913
+    }
+   },
+   "control / control: nested break/continue, in a loop": {
+    "n": 102,
+    "length": 85.5,
+    "cc": 21.0,
+    "cognitive": 35.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.403,
+    "d": 20.0,
+    "roles": {
+     "catchment": 0.2353,
+     "pipe": 0.0,
+     "junction": 0.7647
+    },
+    "statement_n": 102,
+    "statement_roles": {
+     "catchment": 0.3824,
+     "pipe": 0.0098,
+     "junction": 0.6078
+    }
+   },
+   "indivisible / if: passes values and jumps": {
+    "n": 97,
+    "length": 170,
+    "cc": 51,
+    "cognitive": 106,
+    "nesting": 5,
+    "cognitive_per_line": 0.59,
+    "d": 46,
+    "roles": {
+     "catchment": 0.0412,
+     "pipe": 0.0309,
+     "junction": 0.9278
+    },
+    "statement_n": 97,
+    "statement_roles": {
+     "catchment": 0.3505,
+     "pipe": 0.0206,
+     "junction": 0.6289
+    }
+   },
+   "indivisible / constructor delegation (the body is only super(...) or this(...))": {
+    "n": 81,
+    "length": 28,
+    "cc": 1,
+    "cognitive": 0,
+    "nesting": 0,
+    "cognitive_per_line": 0.0,
+    "d": -11,
+    "roles": {
+     "catchment": 0.6543,
+     "pipe": 0.0741,
+     "junction": 0.2716
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "indivisible / if: branchy leaf (no values out, no jumps)": {
+    "n": 75,
+    "length": 183,
+    "cc": 46,
+    "cognitive": 90,
+    "nesting": 5,
+    "cognitive_per_line": 0.526,
+    "d": 72,
+    "roles": {
+     "catchment": 0.0933,
+     "pipe": 0.0133,
+     "junction": 0.8933
+    },
+    "statement_n": 75,
+    "statement_roles": {
+     "catchment": 0.24,
+     "pipe": 0.04,
+     "junction": 0.72
+    }
+   },
+   "control / control: return, in the top level": {
+    "n": 55,
+    "length": 134,
+    "cc": 39,
+    "cognitive": 48,
+    "nesting": 3,
+    "cognitive_per_line": 0.304,
+    "d": 51,
+    "roles": {
+     "catchment": 0.2,
+     "pipe": 0.0364,
+     "junction": 0.7636
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: break/continue, in a switch": {
+    "n": 41,
+    "length": 110,
+    "cc": 25,
+    "cognitive": 28,
+    "nesting": 3,
+    "cognitive_per_line": 0.343,
+    "d": 45,
+    "roles": {
+     "catchment": 0.1463,
+     "pipe": 0.0,
+     "junction": 0.8537
+    },
+    "statement_n": 41,
+    "statement_roles": {
+     "catchment": 0.2439,
+     "pipe": 0.0,
+     "junction": 0.7561
+    }
+   },
+   "indivisible / if: controls flow (jumps out)": {
+    "n": 33,
+    "length": 186,
+    "cc": 63,
+    "cognitive": 97,
+    "nesting": 5,
+    "cognitive_per_line": 0.551,
+    "d": 53,
+    "roles": {
+     "catchment": 0.2424,
+     "pipe": 0.0,
+     "junction": 0.7576
+    },
+    "statement_n": 33,
+    "statement_roles": {
+     "catchment": 0.4545,
+     "pipe": 0.0606,
+     "junction": 0.4848
+    }
+   },
+   "control / control: return, in a switch": {
+    "n": 33,
+    "length": 85,
+    "cc": 21,
+    "cognitive": 30,
+    "nesting": 3,
+    "cognitive_per_line": 0.362,
+    "d": 47,
+    "roles": {
+     "catchment": 0.1818,
+     "pipe": 0.0,
+     "junction": 0.8182
+    },
+    "statement_n": 33,
+    "statement_roles": {
+     "catchment": 0.303,
+     "pipe": 0.0606,
+     "junction": 0.6364
+    }
+   },
+   "control / control: nested break/continue, in a try": {
+    "n": 26,
+    "length": 122.5,
+    "cc": 27.5,
+    "cognitive": 58.0,
+    "nesting": 5.0,
+    "cognitive_per_line": 0.464,
+    "d": 20.0,
+    "roles": {
+     "catchment": 0.2308,
+     "pipe": 0.0,
+     "junction": 0.7692
+    },
+    "statement_n": 26,
+    "statement_roles": {
+     "catchment": 0.2692,
+     "pipe": 0.0,
+     "junction": 0.7308
+    }
+   },
+   "control / control: nested break/continue, in the top level": {
+    "n": 23,
+    "length": 121,
+    "cc": 38,
+    "cognitive": 38,
+    "nesting": 4,
+    "cognitive_per_line": 0.481,
+    "d": 35,
+    "roles": {
+     "catchment": 0.2174,
+     "pipe": 0.0435,
+     "junction": 0.7391
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: return and break/continue, in a switch": {
+    "n": 23,
+    "length": 95,
+    "cc": 28,
+    "cognitive": 39,
+    "nesting": 5,
+    "cognitive_per_line": 0.429,
+    "d": 28,
+    "roles": {
+     "catchment": 0.1304,
+     "pipe": 0.0,
+     "junction": 0.8696
+    },
+    "statement_n": 23,
+    "statement_roles": {
+     "catchment": 0.1304,
+     "pipe": 0.0435,
+     "junction": 0.8261
+    }
+   },
+   "indivisible / returns inside a lambda or anonymous class": {
+    "n": 17,
+    "length": 94,
+    "cc": 16,
+    "cognitive": 26,
+    "nesting": 3,
+    "cognitive_per_line": 0.393,
+    "d": 40,
+    "roles": {
+     "catchment": 0.0588,
+     "pipe": 0.0,
+     "junction": 0.9412
+    },
+    "statement_n": 16,
+    "statement_roles": {
+     "catchment": 0.25,
+     "pipe": 0.0,
+     "junction": 0.75
+    }
+   },
+   "control / control: return, in a synchronized block": {
+    "n": 15,
+    "length": 118,
+    "cc": 34,
+    "cognitive": 80,
+    "nesting": 5,
+    "cognitive_per_line": 0.512,
+    "d": 10,
+    "roles": {
+     "catchment": 0.3333,
+     "pipe": 0.0667,
+     "junction": 0.6
+    },
+    "statement_n": 15,
+    "statement_roles": {
+     "catchment": 0.4,
+     "pipe": 0.0,
+     "junction": 0.6
+    }
+   },
+   "indivisible / expression: nested conditionals": {
+    "n": 12,
+    "length": 51.0,
+    "cc": 34.5,
+    "cognitive": 211.5,
+    "nesting": 7.0,
+    "cognitive_per_line": 2.932,
+    "d": 15.5,
+    "roles": {
+     "catchment": 0.25,
+     "pipe": 0.0,
+     "junction": 0.75
+    },
+    "statement_n": 12,
+    "statement_roles": {
+     "catchment": 0.8333,
+     "pipe": 0.0,
+     "junction": 0.1667
+    }
+   },
+   "indivisible / expression: lambda": {
+    "n": 12,
+    "length": 74.0,
+    "cc": 8.5,
+    "cognitive": 11.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.151,
+    "d": 7.5,
+    "roles": {
+     "catchment": 0.1667,
+     "pipe": 0.0,
+     "junction": 0.8333
+    },
+    "statement_n": 12,
+    "statement_roles": {
+     "catchment": 0.3333,
+     "pipe": 0.1667,
+     "junction": 0.5
+    }
+   },
+   "control / control: nested break/continue, in a synchronized block": {
+    "n": 9,
+    "length": 169,
+    "cc": 39,
+    "cognitive": 86,
+    "nesting": 5,
+    "cognitive_per_line": 0.505,
+    "d": -2,
+    "roles": {
+     "catchment": 0.5556,
+     "pipe": 0.0,
+     "junction": 0.4444
+    },
+    "statement_n": 9,
+    "statement_roles": {
+     "catchment": 0.5556,
+     "pipe": 0.0,
+     "junction": 0.4444
+    }
+   },
+   "control / control: return and break/continue, in an if": {
+    "n": 4,
+    "length": 87.5,
+    "cc": 21.5,
+    "cognitive": 52.5,
+    "nesting": 6.0,
+    "cognitive_per_line": 0.64,
+    "d": 34.0,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 4,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.25,
+     "junction": 0.75
+    }
+   },
+   "control / control: no jump found, in the top level": {
+    "n": 3,
+    "length": 70,
+    "cc": 50,
+    "cognitive": 24,
+    "nesting": 2,
+    "cognitive_per_line": 0.37,
+    "d": 29,
+    "roles": {
+     "catchment": 0.3333,
+     "pipe": 0.0,
+     "junction": 0.6667
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: break/continue, in a block": {
+    "n": 3,
+    "length": 117,
+    "cc": 68,
+    "cognitive": 122,
+    "nesting": 4,
+    "cognitive_per_line": 0.974,
+    "d": -2,
+    "roles": {
+     "catchment": 0.6667,
+     "pipe": 0.0,
+     "junction": 0.3333
+    },
+    "statement_n": 3,
+    "statement_roles": {
+     "catchment": 0.6667,
+     "pipe": 0.0,
+     "junction": 0.3333
+    }
+   },
+   "indivisible / not re-read": {
+    "n": 2,
+    "length": 2513.0,
+    "cc": 414.5,
+    "cognitive": 961.5,
+    "nesting": 4.5,
+    "cognitive_per_line": 0.606,
+    "d": 994.5,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: return and break/continue, in a block": {
+    "n": 1,
+    "length": 180,
+    "cc": 52,
+    "cognitive": 117,
+    "nesting": 4,
+    "cognitive_per_line": 0.65,
+    "d": -2,
+    "roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    }
+   },
+   "indivisible / nested synchronized block over the cap": {
+    "n": 1,
+    "length": 269,
+    "cc": 31,
+    "cognitive": 69,
+    "nesting": 4,
+    "cognitive_per_line": 0.257,
+    "d": -3,
+    "roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    }
+   },
+   "control / control: return and break/continue, in a try": {
+    "n": 1,
+    "length": 53,
+    "cc": 13,
+    "cognitive": 27,
+    "nesting": 3,
+    "cognitive_per_line": 0.509,
+    "d": 1,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "control / control: nested break/continue, in an if": {
+    "n": 1,
+    "length": 57,
+    "cc": 18,
+    "cognitive": 62,
+    "nesting": 5,
+    "cognitive_per_line": 1.088,
+    "d": -2,
+    "roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    }
+   }
+  },
+  "repositories_measured": 329,
+  "budget_exhausted": [
+   "OpenLiberty__open-liberty",
+   "apache__hive"
+  ]
+ },
+ "complexity_within_budget": {
+  "definition": "flow, all internal calls: in = 1 + parameters, out = sum(1 + arguments); d = out - in; catchment d < 0, pipe d = 0, junction d > 0",
+  "length_weights": {
+   "26-35": 0.08062723793060872,
+   "36-50": 0.14223978268922088,
+   "51-75": 0.2265711816273614,
+   "76-100": 0.17520681565625384,
+   "101-150": 0.1801456969996296,
+   "151-300": 0.14853685640202494,
+   "301+": 0.046672428694900604
+  },
+  "groups": {
+   "category 4": {
+    "wanted": 8100,
+    "joined": 8099,
+    "n": 8099,
+    "length": 81,
+    "cc": 18,
+    "cognitive": 25,
+    "nesting": 3,
+    "cognitive_per_line": 0.304,
+    "d": 27,
+    "roles": {
+     "catchment": 0.2034,
+     "pipe": 0.0186,
+     "junction": 0.778
+    },
+    "standardised": {
+     "cc": 26.14,
+     "cognitive": 44.42,
+     "nesting": 3.21,
+     "cognitive_per_line": 0.343,
+     "roles": {
+      "catchment": 0.2034,
+      "pipe": 0.0186,
+      "junction": 0.778
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 653,
+      "length": 30,
+      "cc": 1,
+      "cognitive": 0,
+      "nesting": 0,
+      "cognitive_per_line": 0.0,
+      "d": 0,
+      "roles": {
+       "catchment": 0.4747,
+       "pipe": 0.0444,
+       "junction": 0.4809
+      }
+     },
+     "36-50": {
+      "n": 1152,
+      "length": 43.0,
+      "cc": 8.0,
+      "cognitive": 4.5,
+      "nesting": 2.0,
+      "cognitive_per_line": 0.105,
+      "d": 6.0,
+      "roles": {
+       "catchment": 0.355,
+       "pipe": 0.0269,
+       "junction": 0.6181
+      }
+     },
+     "51-75": {
+      "n": 1835,
+      "length": 63,
+      "cc": 14,
+      "cognitive": 18,
+      "nesting": 3,
+      "cognitive_per_line": 0.288,
+      "d": 19,
+      "roles": {
+       "catchment": 0.1978,
+       "pipe": 0.0196,
+       "junction": 0.7826
+      }
+     },
+     "76-100": {
+      "n": 1419,
+      "length": 86,
+      "cc": 20,
+      "cognitive": 32,
+      "nesting": 3,
+      "cognitive_per_line": 0.379,
+      "d": 28,
+      "roles": {
+       "catchment": 0.1536,
+       "pipe": 0.0134,
+       "junction": 0.833
+      }
+     },
+     "101-150": {
+      "n": 1459,
+      "length": 121,
+      "cc": 28,
+      "cognitive": 51,
+      "nesting": 4,
+      "cognitive_per_line": 0.421,
+      "d": 46,
+      "roles": {
+       "catchment": 0.1069,
+       "pipe": 0.0144,
+       "junction": 0.8787
+      }
+     },
+     "151-300": {
+      "n": 1203,
+      "length": 192,
+      "cc": 46,
+      "cognitive": 83,
+      "nesting": 4,
+      "cognitive_per_line": 0.44,
+      "d": 76,
+      "roles": {
+       "catchment": 0.1131,
+       "pipe": 0.01,
+       "junction": 0.877
+      }
+     },
+     "301+": {
+      "n": 378,
+      "length": 406.0,
+      "cc": 93.5,
+      "cognitive": 161.0,
+      "nesting": 5.0,
+      "cognitive_per_line": 0.401,
+      "d": 199.5,
+      "roles": {
+       "catchment": 0.1455,
+       "pipe": 0.0079,
+       "junction": 0.8466
+      }
+     }
+    }
+   },
+   "category 3": {
+    "wanted": 7355,
+    "joined": 7355,
+    "n": 7355,
+    "length": 58,
+    "cc": 15,
+    "cognitive": 13,
+    "nesting": 2,
+    "cognitive_per_line": 0.231,
+    "d": 18,
+    "roles": {
+     "catchment": 0.2619,
+     "pipe": 0.0272,
+     "junction": 0.7109
+    },
+    "standardised": {
+     "cc": 30.33,
+     "cognitive": 44.53,
+     "nesting": 2.84,
+     "cognitive_per_line": 0.322,
+     "roles": {
+      "catchment": 0.2088,
+      "pipe": 0.0218,
+      "junction": 0.7694
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 1112,
+      "length": 32.0,
+      "cc": 10.0,
+      "cognitive": 1.0,
+      "nesting": 1.0,
+      "cognitive_per_line": 0.036,
+      "d": 0.0,
+      "roles": {
+       "catchment": 0.4883,
+       "pipe": 0.0432,
+       "junction": 0.4685
+      }
+     },
+     "36-50": {
+      "n": 1823,
+      "length": 42,
+      "cc": 12,
+      "cognitive": 6,
+      "nesting": 2,
+      "cognitive_per_line": 0.133,
+      "d": 7,
+      "roles": {
+       "catchment": 0.3423,
+       "pipe": 0.0433,
+       "junction": 0.6144
+      }
+     },
+     "51-75": {
+      "n": 2001,
+      "length": 61,
+      "cc": 15,
+      "cognitive": 16,
+      "nesting": 2,
+      "cognitive_per_line": 0.254,
+      "d": 21,
+      "roles": {
+       "catchment": 0.2169,
+       "pipe": 0.018,
+       "junction": 0.7651
+      }
+     },
+     "76-100": {
+      "n": 968,
+      "length": 85.0,
+      "cc": 22.0,
+      "cognitive": 27.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.325,
+      "d": 34.0,
+      "roles": {
+       "catchment": 0.157,
+       "pipe": 0.0196,
+       "junction": 0.8233
+      }
+     },
+     "101-150": {
+      "n": 771,
+      "length": 118,
+      "cc": 30,
+      "cognitive": 42,
+      "nesting": 3,
+      "cognitive_per_line": 0.358,
+      "d": 51,
+      "roles": {
+       "catchment": 0.1349,
+       "pipe": 0.0117,
+       "junction": 0.8534
+      }
+     },
+     "151-300": {
+      "n": 512,
+      "length": 188.5,
+      "cc": 55.0,
+      "cognitive": 82.0,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.448,
+      "d": 99.0,
+      "roles": {
+       "catchment": 0.0996,
+       "pipe": 0.0098,
+       "junction": 0.8906
+      }
+     },
+     "301+": {
+      "n": 168,
+      "length": 420.5,
+      "cc": 112.5,
+      "cognitive": 196.5,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.487,
+      "d": 322.5,
+      "roles": {
+       "catchment": 0.1071,
+       "pipe": 0.0238,
+       "junction": 0.869
+      }
+     }
+    }
+   },
+   "categories 1-2": {
+    "wanted": 17397,
+    "joined": 17397,
+    "n": 17397,
+    "length": 46,
+    "cc": 13,
+    "cognitive": 18,
+    "nesting": 3,
+    "cognitive_per_line": 0.393,
+    "d": 12,
+    "roles": {
+     "catchment": 0.2106,
+     "pipe": 0.0398,
+     "junction": 0.7496
+    },
+    "standardised": {
+     "cc": 30.81,
+     "cognitive": 59.3,
+     "nesting": 3.72,
+     "cognitive_per_line": 0.478,
+     "roles": {
+      "catchment": 0.1507,
+      "pipe": 0.0256,
+      "junction": 0.8237
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 4665,
+      "length": 30,
+      "cc": 9,
+      "cognitive": 11,
+      "nesting": 2,
+      "cognitive_per_line": 0.379,
+      "d": 4,
+      "roles": {
+       "catchment": 0.3048,
+       "pipe": 0.0667,
+       "junction": 0.6285
+      }
+     },
+     "36-50": {
+      "n": 5416,
+      "length": 42.0,
+      "cc": 11.0,
+      "cognitive": 16.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.378,
+      "d": 10.0,
+      "roles": {
+       "catchment": 0.2169,
+       "pipe": 0.0393,
+       "junction": 0.7437
+      }
+     },
+     "51-75": {
+      "n": 4431,
+      "length": 60,
+      "cc": 15,
+      "cognitive": 24,
+      "nesting": 3,
+      "cognitive_per_line": 0.397,
+      "d": 17,
+      "roles": {
+       "catchment": 0.1663,
+       "pipe": 0.0271,
+       "junction": 0.8066
+      }
+     },
+     "76-100": {
+      "n": 1674,
+      "length": 85.0,
+      "cc": 21.0,
+      "cognitive": 37.0,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.429,
+      "d": 28.0,
+      "roles": {
+       "catchment": 0.126,
+       "pipe": 0.0197,
+       "junction": 0.8542
+      }
+     },
+     "101-150": {
+      "n": 938,
+      "length": 116.0,
+      "cc": 29.0,
+      "cognitive": 53.5,
+      "nesting": 4.0,
+      "cognitive_per_line": 0.449,
+      "d": 43.0,
+      "roles": {
+       "catchment": 0.1034,
+       "pipe": 0.0117,
+       "junction": 0.8849
+      }
+     },
+     "151-300": {
+      "n": 255,
+      "length": 177,
+      "cc": 51,
+      "cognitive": 97,
+      "nesting": 4,
+      "cognitive_per_line": 0.516,
+      "d": 86,
+      "roles": {
+       "catchment": 0.0784,
+       "pipe": 0.0196,
+       "junction": 0.902
+      }
+     },
+     "301+": {
+      "n": 18,
+      "length": 413.0,
+      "cc": 117.0,
+      "cognitive": 311.5,
+      "nesting": 6.0,
+      "cognitive_per_line": 0.608,
+      "d": 332.0,
+      "roles": {
+       "catchment": 0.1111,
+       "pipe": 0.0,
+       "junction": 0.8889
+      }
+     }
+    }
+   },
+   "slimmable": {
+    "wanted": 106445,
+    "joined": 106444,
+    "n": 106444,
+    "length": 35.0,
+    "cc": 7.0,
+    "cognitive": 9.0,
+    "nesting": 2.0,
+    "cognitive_per_line": 0.262,
+    "d": 10.0,
+    "roles": {
+     "catchment": 0.1939,
+     "pipe": 0.0323,
+     "junction": 0.7738
+    },
+    "standardised": {
+     "cc": 17.56,
+     "cognitive": 32.66,
+     "nesting": 2.84,
+     "cognitive_per_line": 0.321,
+     "roles": {
+      "catchment": 0.1334,
+      "pipe": 0.0193,
+      "junction": 0.8473
+     },
+     "bins_covered": 1.0
+    },
+    "by_bin": {
+     "26-35": {
+      "n": 56295,
+      "length": 30,
+      "cc": 6,
+      "cognitive": 7,
+      "nesting": 2,
+      "cognitive_per_line": 0.241,
+      "d": 8,
+      "roles": {
+       "catchment": 0.2076,
+       "pipe": 0.04,
+       "junction": 0.7524
+      }
+     },
+     "36-50": {
+      "n": 30666,
+      "length": 41.0,
+      "cc": 8.0,
+      "cognitive": 11.0,
+      "nesting": 2.0,
+      "cognitive_per_line": 0.273,
+      "d": 11.0,
+      "roles": {
+       "catchment": 0.2053,
+       "pipe": 0.0268,
+       "junction": 0.7679
+      }
+     },
+     "51-75": {
+      "n": 13897,
+      "length": 59,
+      "cc": 12,
+      "cognitive": 18,
+      "nesting": 3,
+      "cognitive_per_line": 0.308,
+      "d": 20,
+      "roles": {
+       "catchment": 0.1534,
+       "pipe": 0.0208,
+       "junction": 0.8258
+      }
+     },
+     "76-100": {
+      "n": 3285,
+      "length": 85,
+      "cc": 16,
+      "cognitive": 27,
+      "nesting": 3,
+      "cognitive_per_line": 0.315,
+      "d": 33,
+      "roles": {
+       "catchment": 0.0965,
+       "pipe": 0.014,
+       "junction": 0.8895
+      }
+     },
+     "101-150": {
+      "n": 1640,
+      "length": 116.0,
+      "cc": 22.0,
+      "cognitive": 36.0,
+      "nesting": 3.0,
+      "cognitive_per_line": 0.314,
+      "d": 51.0,
+      "roles": {
+       "catchment": 0.0872,
+       "pipe": 0.0104,
+       "junction": 0.9024
+      }
+     },
+     "151-300": {
+      "n": 595,
+      "length": 181,
+      "cc": 32,
+      "cognitive": 54,
+      "nesting": 3,
+      "cognitive_per_line": 0.298,
+      "d": 81,
+      "roles": {
+       "catchment": 0.0924,
+       "pipe": 0.0168,
+       "junction": 0.8908
+      }
+     },
+     "301+": {
+      "n": 66,
+      "length": 369.5,
+      "cc": 2.5,
+      "cognitive": 2.0,
+      "nesting": 1.0,
+      "cognitive_per_line": 0.004,
+      "d": 112.5,
+      "roles": {
+       "catchment": 0.1364,
+       "pipe": 0.0152,
+       "junction": 0.8485
+      }
+     }
+    }
+   }
+  },
+  "category4_classes": {
+   "indivisible / switch: short cases (each under the cap, too many together)": {
+    "n": 931,
+    "length": 89,
+    "cc": 28,
+    "cognitive": 20,
+    "nesting": 3,
+    "cognitive_per_line": 0.21,
+    "d": 32,
+    "roles": {
+     "catchment": 0.1633,
+     "pipe": 0.014,
+     "junction": 0.8228
+    },
+    "statement_n": 931,
+    "statement_roles": {
+     "catchment": 0.2836,
+     "pipe": 0.0204,
+     "junction": 0.696
+    }
+   },
+   "data / data: no plan at 10": {
+    "n": 927,
+    "length": 92,
+    "cc": 20,
+    "cognitive": 41,
+    "nesting": 4,
+    "cognitive_per_line": 0.45,
+    "d": 36,
+    "roles": {
+     "catchment": 0.1262,
+     "pipe": 0.0216,
+     "junction": 0.8522
+    },
+    "statement_n": 702,
+    "statement_roles": {
+     "catchment": 0.2721,
+     "pipe": 0.0157,
+     "junction": 0.7123
+    }
+   },
+   "indivisible / expression: array initializer": {
+    "n": 409,
+    "length": 114,
+    "cc": 1,
+    "cognitive": 0,
+    "nesting": 0,
+    "cognitive_per_line": 0.0,
+    "d": -1,
+    "roles": {
+     "catchment": 0.7115,
+     "pipe": 0.0122,
+     "junction": 0.2763
+    },
+    "statement_n": 409,
+    "statement_roles": {
+     "catchment": 0.802,
+     "pipe": 0.0049,
+     "junction": 0.1932
+    }
+   },
+   "data / data: blocking body slims at 6 (inner limit)": {
+    "n": 401,
+    "length": 76,
+    "cc": 17,
+    "cognitive": 36,
+    "nesting": 4,
+    "cognitive_per_line": 0.472,
+    "d": 39,
+    "roles": {
+     "catchment": 0.1222,
+     "pipe": 0.01,
+     "junction": 0.8678
+    },
+    "statement_n": 401,
+    "statement_roles": {
+     "catchment": 0.2244,
+     "pipe": 0.015,
+     "junction": 0.7606
+    }
+   },
+   "indivisible / expression: call chain (builder)": {
+    "n": 379,
+    "length": 55,
+    "cc": 1,
+    "cognitive": 0,
+    "nesting": 0,
+    "cognitive_per_line": 0.0,
+    "d": 27,
+    "roles": {
+     "catchment": 0.2507,
+     "pipe": 0.0264,
+     "junction": 0.723
+    },
+    "statement_n": 379,
+    "statement_roles": {
+     "catchment": 0.4195,
+     "pipe": 0.0158,
+     "junction": 0.5646
+    }
+   },
+   "indivisible / expression: long argument list": {
+    "n": 378,
+    "length": 43.0,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": 21.0,
+    "roles": {
+     "catchment": 0.2989,
+     "pipe": 0.0106,
+     "junction": 0.6905
+    },
+    "statement_n": 378,
+    "statement_roles": {
+     "catchment": 0.3757,
+     "pipe": 0.0185,
+     "junction": 0.6058
+    }
+   },
+   "indivisible / if: else-if chain (dispatch)": {
+    "n": 347,
+    "length": 88,
+    "cc": 28,
+    "cognitive": 39,
+    "nesting": 3,
+    "cognitive_per_line": 0.441,
+    "d": 31,
+    "roles": {
+     "catchment": 0.1441,
+     "pipe": 0.0173,
+     "junction": 0.8386
+    },
+    "statement_n": 347,
+    "statement_roles": {
+     "catchment": 0.3573,
+     "pipe": 0.0288,
+     "junction": 0.6138
+    }
+   },
+   "data / data: plan at 6": {
+    "n": 331,
+    "length": 83,
+    "cc": 17,
+    "cognitive": 27,
+    "nesting": 3,
+    "cognitive_per_line": 0.338,
+    "d": 39,
+    "roles": {
+     "catchment": 0.1148,
+     "pipe": 0.003,
+     "junction": 0.8822
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: break/continue, in a loop": {
+    "n": 327,
+    "length": 108,
+    "cc": 27,
+    "cognitive": 59,
+    "nesting": 5,
+    "cognitive_per_line": 0.573,
+    "d": 33,
+    "roles": {
+     "catchment": 0.104,
+     "pipe": 0.0398,
+     "junction": 0.8563
+    },
+    "statement_n": 327,
+    "statement_roles": {
+     "catchment": 0.2508,
+     "pipe": 0.0275,
+     "junction": 0.7217
+    }
+   },
+   "indivisible / switch: flat table (every case 3 lines or fewer)": {
+    "n": 316,
+    "length": 55.0,
+    "cc": 17.5,
+    "cognitive": 6.0,
+    "nesting": 2.0,
+    "cognitive_per_line": 0.119,
+    "d": 9.0,
+    "roles": {
+     "catchment": 0.2785,
+     "pipe": 0.0316,
+     "junction": 0.6899
+    },
+    "statement_n": 316,
+    "statement_roles": {
+     "catchment": 0.4968,
+     "pipe": 0.0633,
+     "junction": 0.4399
+    }
+   },
+   "data / data: plan at 7": {
+    "n": 256,
+    "length": 76.0,
+    "cc": 17.0,
+    "cognitive": 30.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.349,
+    "d": 36.5,
+    "roles": {
+     "catchment": 0.1094,
+     "pipe": 0.0117,
+     "junction": 0.8789
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / expression: string concatenation": {
+    "n": 245,
+    "length": 48,
+    "cc": 1,
+    "cognitive": 0,
+    "nesting": 0,
+    "cognitive_per_line": 0.0,
+    "d": 5,
+    "roles": {
+     "catchment": 0.2939,
+     "pipe": 0.0286,
+     "junction": 0.6776
+    },
+    "statement_n": 245,
+    "statement_roles": {
+     "catchment": 0.6163,
+     "pipe": 0.0367,
+     "junction": 0.3469
+    }
+   },
+   "data / data: blocking body slims at 7 (inner limit)": {
+    "n": 226,
+    "length": 78.0,
+    "cc": 16.0,
+    "cognitive": 31.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.432,
+    "d": 33.5,
+    "roles": {
+     "catchment": 0.0973,
+     "pipe": 0.0133,
+     "junction": 0.8894
+    },
+    "statement_n": 226,
+    "statement_roles": {
+     "catchment": 0.2212,
+     "pipe": 0.0265,
+     "junction": 0.7522
+    }
+   },
+   "data / data: plan at 10": {
+    "n": 224,
+    "length": 93.5,
+    "cc": 20.0,
+    "cognitive": 34.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.375,
+    "d": 61.5,
+    "roles": {
+     "catchment": 0.1161,
+     "pipe": 0.0,
+     "junction": 0.8839
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / expression: other": {
+    "n": 209,
+    "length": 38,
+    "cc": 2,
+    "cognitive": 1,
+    "nesting": 1,
+    "cognitive_per_line": 0.011,
+    "d": -2,
+    "roles": {
+     "catchment": 0.6555,
+     "pipe": 0.0048,
+     "junction": 0.3397
+    },
+    "statement_n": 209,
+    "statement_roles": {
+     "catchment": 0.6794,
+     "pipe": 0.0096,
+     "junction": 0.311
+    }
+   },
+   "control / control: return, in a loop": {
+    "n": 177,
+    "length": 81,
+    "cc": 22,
+    "cognitive": 46,
+    "nesting": 5,
+    "cognitive_per_line": 0.556,
+    "d": 25,
+    "roles": {
+     "catchment": 0.0904,
+     "pipe": 0.0452,
+     "junction": 0.8644
+    },
+    "statement_n": 177,
+    "statement_roles": {
+     "catchment": 0.209,
+     "pipe": 0.0282,
+     "junction": 0.7627
+    }
+   },
+   "data / data: plan at 8": {
+    "n": 177,
+    "length": 85,
+    "cc": 16,
+    "cognitive": 29,
+    "nesting": 3,
+    "cognitive_per_line": 0.349,
+    "d": 50,
+    "roles": {
+     "catchment": 0.1186,
+     "pipe": 0.0,
+     "junction": 0.8814
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: return, in a try": {
+    "n": 153,
+    "length": 97,
+    "cc": 21,
+    "cognitive": 38,
+    "nesting": 4,
+    "cognitive_per_line": 0.411,
+    "d": 40,
+    "roles": {
+     "catchment": 0.0915,
+     "pipe": 0.0196,
+     "junction": 0.8889
+    },
+    "statement_n": 153,
+    "statement_roles": {
+     "catchment": 0.1699,
+     "pipe": 0.0392,
+     "junction": 0.7908
+    }
+   },
+   "data / data: blocking body slims at 10 (inner limit)": {
+    "n": 148,
+    "length": 82.5,
+    "cc": 16.0,
+    "cognitive": 33.5,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.392,
+    "d": 35.0,
+    "roles": {
+     "catchment": 0.1486,
+     "pipe": 0.0135,
+     "junction": 0.8378
+    },
+    "statement_n": 148,
+    "statement_roles": {
+     "catchment": 0.2432,
+     "pipe": 0.0203,
+     "junction": 0.7365
+    }
+   },
+   "control / control: return and break/continue, in a loop": {
+    "n": 143,
+    "length": 98,
+    "cc": 28,
+    "cognitive": 67,
+    "nesting": 5,
+    "cognitive_per_line": 0.632,
+    "d": 23,
+    "roles": {
+     "catchment": 0.1748,
+     "pipe": 0.021,
+     "junction": 0.8042
+    },
+    "statement_n": 143,
+    "statement_roles": {
+     "catchment": 0.3077,
+     "pipe": 0.014,
+     "junction": 0.6783
+    }
+   },
+   "indivisible / if: passes values on": {
+    "n": 142,
+    "length": 138.0,
+    "cc": 37.5,
+    "cognitive": 77.0,
+    "nesting": 5.0,
+    "cognitive_per_line": 0.54,
+    "d": 43.0,
+    "roles": {
+     "catchment": 0.1268,
+     "pipe": 0.0,
+     "junction": 0.8732
+    },
+    "statement_n": 142,
+    "statement_roles": {
+     "catchment": 0.4085,
+     "pipe": 0.0211,
+     "junction": 0.5704
+    }
+   },
+   "data / data: blocking body slims at 8 (inner limit)": {
+    "n": 139,
+    "length": 79,
+    "cc": 17,
+    "cognitive": 34,
+    "nesting": 4,
+    "cognitive_per_line": 0.391,
+    "d": 23,
+    "roles": {
+     "catchment": 0.1007,
+     "pipe": 0.0072,
+     "junction": 0.8921
+    },
+    "statement_n": 139,
+    "statement_roles": {
+     "catchment": 0.259,
+     "pipe": 0.0216,
+     "junction": 0.7194
+    }
+   },
+   "indivisible / switch: a case over the cap": {
+    "n": 132,
+    "length": 147.5,
+    "cc": 39.0,
+    "cognitive": 51.5,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.399,
+    "d": 75.0,
+    "roles": {
+     "catchment": 0.0606,
+     "pipe": 0.0076,
+     "junction": 0.9318
+    },
+    "statement_n": 132,
+    "statement_roles": {
+     "catchment": 0.0909,
+     "pipe": 0.0076,
+     "junction": 0.9015
+    }
+   },
+   "indivisible / expression: anonymous class": {
+    "n": 122,
+    "length": 74.0,
+    "cc": 14.0,
+    "cognitive": 20.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.278,
+    "d": 23.0,
+    "roles": {
+     "catchment": 0.1475,
+     "pipe": 0.0164,
+     "junction": 0.8361
+    },
+    "statement_n": 122,
+    "statement_roles": {
+     "catchment": 0.4754,
+     "pipe": 0.1885,
+     "junction": 0.3361
+    }
+   },
+   "indivisible / a one-statement body (one return or expression)": {
+    "n": 120,
+    "length": 29.0,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": 0.0,
+    "roles": {
+     "catchment": 0.4833,
+     "pipe": 0.125,
+     "junction": 0.3917
+    },
+    "statement_n": 6,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "indivisible / nested loop over the cap": {
+    "n": 108,
+    "length": 137.5,
+    "cc": 29.0,
+    "cognitive": 60.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.466,
+    "d": 48.5,
+    "roles": {
+     "catchment": 0.0833,
+     "pipe": 0.0185,
+     "junction": 0.8981
+    },
+    "statement_n": 108,
+    "statement_roles": {
+     "catchment": 0.3704,
+     "pipe": 0.0093,
+     "junction": 0.6204
+    }
+   },
+   "control / control: nested break/continue, in a loop": {
+    "n": 87,
+    "length": 86,
+    "cc": 20,
+    "cognitive": 31,
+    "nesting": 4,
+    "cognitive_per_line": 0.378,
+    "d": 27,
+    "roles": {
+     "catchment": 0.1609,
+     "pipe": 0.0,
+     "junction": 0.8391
+    },
+    "statement_n": 87,
+    "statement_roles": {
+     "catchment": 0.3333,
+     "pipe": 0.0115,
+     "junction": 0.6552
+    }
+   },
+   "indivisible / if: passes values and jumps": {
+    "n": 86,
+    "length": 173.5,
+    "cc": 51.5,
+    "cognitive": 107.5,
+    "nesting": 5.5,
+    "cognitive_per_line": 0.595,
+    "d": 46.5,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0349,
+     "junction": 0.9651
+    },
+    "statement_n": 86,
+    "statement_roles": {
+     "catchment": 0.3372,
+     "pipe": 0.0233,
+     "junction": 0.6395
+    }
+   },
+   "indivisible / constructor delegation (the body is only super(...) or this(...))": {
+    "n": 78,
+    "length": 28.5,
+    "cc": 1.0,
+    "cognitive": 0.0,
+    "nesting": 0.0,
+    "cognitive_per_line": 0.0,
+    "d": -11.0,
+    "roles": {
+     "catchment": 0.6538,
+     "pipe": 0.0769,
+     "junction": 0.2692
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "indivisible / if: branchy leaf (no values out, no jumps)": {
+    "n": 65,
+    "length": 205,
+    "cc": 47,
+    "cognitive": 91,
+    "nesting": 5,
+    "cognitive_per_line": 0.526,
+    "d": 78,
+    "roles": {
+     "catchment": 0.0308,
+     "pipe": 0.0154,
+     "junction": 0.9538
+    },
+    "statement_n": 65,
+    "statement_roles": {
+     "catchment": 0.2,
+     "pipe": 0.0462,
+     "junction": 0.7538
+    }
+   },
+   "control / control: return, in the top level": {
+    "n": 52,
+    "length": 136.5,
+    "cc": 41.0,
+    "cognitive": 49.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.314,
+    "d": 51.0,
+    "roles": {
+     "catchment": 0.1538,
+     "pipe": 0.0385,
+     "junction": 0.8077
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "indivisible / nested try over the cap": {
+    "n": 42,
+    "length": 106.5,
+    "cc": 17.5,
+    "cognitive": 22.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.226,
+    "d": 72.0,
+    "roles": {
+     "catchment": 0.119,
+     "pipe": 0.0,
+     "junction": 0.881
+    },
+    "statement_n": 42,
+    "statement_roles": {
+     "catchment": 0.1667,
+     "pipe": 0.0,
+     "junction": 0.8333
+    }
+   },
+   "control / control: break/continue, in a switch": {
+    "n": 36,
+    "length": 102.5,
+    "cc": 23.5,
+    "cognitive": 25.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.335,
+    "d": 39.5,
+    "roles": {
+     "catchment": 0.1389,
+     "pipe": 0.0,
+     "junction": 0.8611
+    },
+    "statement_n": 36,
+    "statement_roles": {
+     "catchment": 0.25,
+     "pipe": 0.0,
+     "junction": 0.75
+    }
+   },
+   "control / control: return, in a switch": {
+    "n": 30,
+    "length": 84.0,
+    "cc": 19.5,
+    "cognitive": 27.5,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.307,
+    "d": 61.5,
+    "roles": {
+     "catchment": 0.1,
+     "pipe": 0.0,
+     "junction": 0.9
+    },
+    "statement_n": 30,
+    "statement_roles": {
+     "catchment": 0.2333,
+     "pipe": 0.0667,
+     "junction": 0.7
+    }
+   },
+   "indivisible / if: controls flow (jumps out)": {
+    "n": 25,
+    "length": 229,
+    "cc": 74,
+    "cognitive": 112,
+    "nesting": 6,
+    "cognitive_per_line": 0.571,
+    "d": 66,
+    "roles": {
+     "catchment": 0.08,
+     "pipe": 0.0,
+     "junction": 0.92
+    },
+    "statement_n": 25,
+    "statement_roles": {
+     "catchment": 0.36,
+     "pipe": 0.08,
+     "junction": 0.56
+    }
+   },
+   "control / control: return and break/continue, in a switch": {
+    "n": 23,
+    "length": 95,
+    "cc": 28,
+    "cognitive": 39,
+    "nesting": 5,
+    "cognitive_per_line": 0.429,
+    "d": 28,
+    "roles": {
+     "catchment": 0.1304,
+     "pipe": 0.0,
+     "junction": 0.8696
+    },
+    "statement_n": 23,
+    "statement_roles": {
+     "catchment": 0.1304,
+     "pipe": 0.0435,
+     "junction": 0.8261
+    }
+   },
+   "control / control: nested break/continue, in the top level": {
+    "n": 22,
+    "length": 129.5,
+    "cc": 34.5,
+    "cognitive": 36.0,
+    "nesting": 4.0,
+    "cognitive_per_line": 0.465,
+    "d": 37.0,
+    "roles": {
+     "catchment": 0.1818,
+     "pipe": 0.0455,
+     "junction": 0.7727
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: nested break/continue, in a try": {
+    "n": 19,
+    "length": 119,
+    "cc": 27,
+    "cognitive": 54,
+    "nesting": 5,
+    "cognitive_per_line": 0.411,
+    "d": 25,
+    "roles": {
+     "catchment": 0.2105,
+     "pipe": 0.0,
+     "junction": 0.7895
+    },
+    "statement_n": 19,
+    "statement_roles": {
+     "catchment": 0.2632,
+     "pipe": 0.0,
+     "junction": 0.7368
+    }
+   },
+   "indivisible / returns inside a lambda or anonymous class": {
+    "n": 17,
+    "length": 94,
+    "cc": 16,
+    "cognitive": 26,
+    "nesting": 3,
+    "cognitive_per_line": 0.393,
+    "d": 40,
+    "roles": {
+     "catchment": 0.0588,
+     "pipe": 0.0,
+     "junction": 0.9412
+    },
+    "statement_n": 16,
+    "statement_roles": {
+     "catchment": 0.25,
+     "pipe": 0.0,
+     "junction": 0.75
+    }
+   },
+   "indivisible / expression: nested conditionals": {
+    "n": 12,
+    "length": 51.0,
+    "cc": 34.5,
+    "cognitive": 211.5,
+    "nesting": 7.0,
+    "cognitive_per_line": 2.932,
+    "d": 15.5,
+    "roles": {
+     "catchment": 0.25,
+     "pipe": 0.0,
+     "junction": 0.75
+    },
+    "statement_n": 12,
+    "statement_roles": {
+     "catchment": 0.8333,
+     "pipe": 0.0,
+     "junction": 0.1667
+    }
+   },
+   "indivisible / expression: lambda": {
+    "n": 12,
+    "length": 74.0,
+    "cc": 8.5,
+    "cognitive": 11.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.151,
+    "d": 7.5,
+    "roles": {
+     "catchment": 0.1667,
+     "pipe": 0.0,
+     "junction": 0.8333
+    },
+    "statement_n": 12,
+    "statement_roles": {
+     "catchment": 0.3333,
+     "pipe": 0.1667,
+     "junction": 0.5
+    }
+   },
+   "control / control: return, in a synchronized block": {
+    "n": 11,
+    "length": 117,
+    "cc": 29,
+    "cognitive": 78,
+    "nesting": 4,
+    "cognitive_per_line": 0.512,
+    "d": 23,
+    "roles": {
+     "catchment": 0.0909,
+     "pipe": 0.0909,
+     "junction": 0.8182
+    },
+    "statement_n": 11,
+    "statement_roles": {
+     "catchment": 0.1818,
+     "pipe": 0.0,
+     "junction": 0.8182
+    }
+   },
+   "control / control: return and break/continue, in an if": {
+    "n": 4,
+    "length": 87.5,
+    "cc": 21.5,
+    "cognitive": 52.5,
+    "nesting": 6.0,
+    "cognitive_per_line": 0.64,
+    "d": 34.0,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 4,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.25,
+     "junction": 0.75
+    }
+   },
+   "control / control: no jump found, in the top level": {
+    "n": 3,
+    "length": 70,
+    "cc": 50,
+    "cognitive": 24,
+    "nesting": 2,
+    "cognitive_per_line": 0.37,
+    "d": 29,
+    "roles": {
+     "catchment": 0.3333,
+     "pipe": 0.0,
+     "junction": 0.6667
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: break/continue, in a block": {
+    "n": 3,
+    "length": 117,
+    "cc": 68,
+    "cognitive": 122,
+    "nesting": 4,
+    "cognitive_per_line": 0.974,
+    "d": -2,
+    "roles": {
+     "catchment": 0.6667,
+     "pipe": 0.0,
+     "junction": 0.3333
+    },
+    "statement_n": 3,
+    "statement_roles": {
+     "catchment": 0.6667,
+     "pipe": 0.0,
+     "junction": 0.3333
+    }
+   },
+   "control / control: nested break/continue, in a synchronized block": {
+    "n": 2,
+    "length": 85.0,
+    "cc": 18.0,
+    "cognitive": 25.0,
+    "nesting": 3.0,
+    "cognitive_per_line": 0.294,
+    "d": 36.5,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 2,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "indivisible / not re-read": {
+    "n": 1,
+    "length": 1559,
+    "cc": 696,
+    "cognitive": 1863,
+    "nesting": 6,
+    "cognitive_per_line": 1.195,
+    "d": 332,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 0,
+    "statement_roles": null
+   },
+   "control / control: return and break/continue, in a try": {
+    "n": 1,
+    "length": 53,
+    "cc": 13,
+    "cognitive": 27,
+    "nesting": 3,
+    "cognitive_per_line": 0.509,
+    "d": 1,
+    "roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 0.0,
+     "pipe": 0.0,
+     "junction": 1.0
+    }
+   },
+   "control / control: nested break/continue, in an if": {
+    "n": 1,
+    "length": 57,
+    "cc": 18,
+    "cognitive": 62,
+    "nesting": 5,
+    "cognitive_per_line": 1.088,
+    "d": -2,
+    "roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    },
+    "statement_n": 1,
+    "statement_roles": {
+     "catchment": 1.0,
+     "pipe": 0.0,
+     "junction": 0.0
+    }
+   }
+  },
+  "repositories_measured": 327,
+  "budget_exhausted": []
+ }
+}
