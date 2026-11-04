@@ -1,8 +1,7 @@
 \pdfoutput=1
 % ---------------------------------------------------------------------------
 % What extraction cannot slim, and whether function injection can.
-% A pre-registered count of the long methods in 580 open-source Java
-% repositories, as they stood before AI coding assistants.
+% A pre-registered study of 580 Java repositories.
 %
 % Built for arXiv (primary class cs.SE). No .bib: the bibliography is a
 % `thebibliography` environment at the end.
@@ -33,7 +32,7 @@
 \usepackage{tikz}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={What extraction cannot slim, and whether function injection can: a pre-registered count of the long methods in 580 open-source Java repositories},
+\hypersetup{pdftitle={What extraction cannot slim, and whether function injection can: a pre-registered study of 580 Java repositories},
   pdfauthor={Daniel Sagenschneider}, pdfsubject={Software engineering: empirical study of long-method refactoring}}
 \usepackage{caption}
 \captionsetup{font=small,labelfont=bf}
@@ -46,7 +45,7 @@
 \newcommand{\Htwo}{H2}
 
 \title{\bfseries What extraction cannot slim, and whether function injection can\\
-A pre-registered count of the long methods in \nUsable{} open-source Java repositories, as they stood before AI coding assistants}
+A pre-registered study of \nUsable{} Java repositories}
 
 % Zenodo DOI, reserved before publishing and printed under the author block.
 % \newcommand{\thedoi}{10.5281/zenodo.XXXXXXXX}
@@ -65,32 +64,32 @@ A pre-registered count of the long methods in \nUsable{} open-source Java reposi
 \begin{abstract}
 \noindent
 A method of 26 code lines or more reads as a Long Method, and Extract Method
-is the usual fix. For some long methods there is no single-exit fix: a return
-cannot leave an extracted piece, a piece hands back one value, and some
-methods are knotted so that every cut is blocked. Function injection, as the
-OfficeFloor framework does it, cuts differently: each piece becomes a function
-the framework injects and sequences, an early return ends a function, and a
-function hands on several values. The author of that framework pre-registered
-a test of whether it takes apart the methods extraction cannot, with the
-hypotheses, the sample's seed and the reading rule committed before any
-repository was scanned. A stratified random sample of \nUsable{} open-source
-Java repositories, each pinned to its last commit before \planAsOf{}, was
-scanned by released tools whose cost models were fixed before the plan:
-\nMethods{} methods, \nLong{} of them long. Single-exit extraction, as
-SinewSlim models it, slims \slimsShare{} of the long methods; \nStuck{}
-are stuck. The registered hypothesis, that at least a quarter of the stuck
-methods are ones only function injection takes apart, is refuted:
-\ciCatThreeC{}. The split has a plan for \popStuckPlannedC{} of the stuck
-methods; nearly half of the stuck methods are early-return methods the plan
-counts as conventionally fixable, and the split takes three in four of those
-apart as they stand. Where extraction would do, the split chooses injection
-and costs less for \ciImproved{} against extraction wrapped as one function,
-and for \popImprovedStrict{} against plain extraction; its plan is then a
-straight sequence of functions in \shapeImprovedAnySequence{} of cases, a
-pipeline, whose hand-offs the extraction cost model prices twice and the flow
-cost model once. Where it rescues a stuck method, the plan branches in
-\shapeRescuedAnyBranching{}. Every figure, every failure and every method where injection
-does worse is reported.
+is the usual fix. Some long methods have no single-exit fix: a return cannot
+leave an extracted piece, a piece hands back one value, and some methods are
+knotted so that every cut is blocked. Function injection, as the OfficeFloor
+framework does it, cuts differently: each piece becomes a function the
+framework injects and sequences, an early return ends a function, and a
+function hands on several values. The framework's author pre-registered a
+test of whether it takes apart what extraction cannot, committing the
+hypotheses, seed and reading rule before any repository was scanned.
+A stratified random sample of \nUsable{} open-source Java repositories, each
+pinned to its last commit before \planAsOf{}, was scanned by released tools
+with cost models fixed before the plan: \nMethods{} methods, \nLong{} of them
+long. Single-exit extraction, as SinewSlim models it, slims \slimsShare{} of
+the long methods; \nStuck{} are stuck. The registered hypothesis, that at
+least a quarter of the stuck methods are ones only function injection takes
+apart, is refuted: \ciCatThreeC{}. The split has a plan for
+\popStuckPlannedC{} of the stuck methods; nearly half are early-return
+methods the plan counts as conventionally fixable, and the split takes three
+in four of those apart as they stand. Where extraction would do, the split
+chooses injection and costs less for \ciImproved{} against extraction wrapped
+as one function, and \popImprovedStrict{} against plain extraction, almost
+always (\shapeImprovedAnySequence{}) as a straight sequence of functions: a
+pipeline, whose hand-offs extraction prices twice and a flow once. A sequence
+is the way to split \ciSeqWay{} of all long methods, \popSeqWayStrict{}
+against plain extraction. Where injection rescues a stuck method, the plan
+branches in \shapeRescuedAnyBranching{}. Every figure, failure and method
+where injection does worse is reported.
 \end{abstract}
 
 \section{Introduction}
@@ -147,34 +146,49 @@ says what the stuck methods are instead.
 
 \paragraph{Extraction, and its cost.} SinewSlim reads a method's facts (its
 statements, the values each declares, reads and writes, the jumps that leave
-each run of statements) and searches for the segmentation into contiguous
+each run of statements) and searches for the segmentation $S$ into contiguous
 runs whose extraction leaves every piece and the remainder at or under the
-target. A run's \emph{seam} is what crosses its boundary, its inputs as
-parameters and its output as a return value, at 1 each; a run is feasible
-with at most one output, at most five inputs and no jump leaving it. The
-search takes the segmentation with the smallest worst seam, then the fewest
-pieces, then the smallest total. A method is \emph{slimmable} when one
-exists; \emph{slimmable but locked} when every piece and the remainder are
-bound to the class's fields or methods, so that a split moves nothing out of
-the class; \emph{slimmable only with a record} when a piece must hand back
-several values, at three per value; and \emph{not slimmable} otherwise, with
-the obstacle named. The last two statuses are what this paper calls stuck.
+target. A piece $p \in S$ is priced by its \emph{seam}, what crosses its
+boundary: its $i_p$ inputs, passed as parameters, and its $o_p$ outputs,
+handed back; and the piece itself costs 1, for its name and its call. The
+extraction cost of a segmentation is
+\begin{equation}\label{eq:extraction}
+  C_{\mathrm{ext}}(S) \;=\; \sum_{p \in S}
+    \bigl(\, \underbrace{i_p + r(o_p)}_{\text{seam of } p} \,+\, 1 \,\bigr),
+  \qquad
+  r(o) = \begin{cases} o, & o \le 1,\\ 3o, & o \ge 2 \text{ (a record)}. \end{cases}
+\end{equation}
+A run is feasible with $i_p \le 5$, $o_p \le 1$ and no jump leaving it. The
+search takes the segmentation with the smallest worst seam
+$\max_{p} (i_p + r(o_p))$, then the fewest pieces $|S|$, then the smallest
+$C_{\mathrm{ext}}$. A method is \emph{slimmable} when one exists;
+\emph{slimmable but locked} when every piece and the remainder are bound to
+the class's fields or methods, so that a split moves nothing out of the
+class; \emph{slimmable only with a record} when a piece must hand back
+several values ($o_p \ge 2$, priced at $3o_p$); and \emph{not slimmable}
+otherwise, with the obstacle named. The last two statuses are what this
+paper calls stuck.
 
 \paragraph{The injection split.} OfficeFloorSlim, the second product, reads
-the same facts and searches for a partition of the method's control flow into
-functions, each at or under the target, with every line in some function. Its
-cost model was decided before any of its figures was set beside SinewSlim's:
-a value computed inside the method and carried to a later function costs 1
-for each function that declares it, while values from outside the method,
-its parameters and whatever the framework injects, are free; a function
-costs 1 and a flow between functions costs 1; a function may carry at most
-five values. A \sig{return} ends a function, a \sig{throw} becomes an
-escalation, and an \sig{if} or \sig{switch} may become a decision whose
-branches are flows. Loops, lambda bodies and labelled statements are never
-cut between functions. Its worst seam is the most values any function
-declares, the counterpart of SinewSlim's widest piece, with one difference
-that matters for reading them side by side: SinewSlim's width prices the
-method's own parameters when a piece reads them, and the split's seam does
+the same facts and searches for a partition $P$ of the method's control flow
+into functions $F$ joined by edges $E$, each function at or under the target,
+with every line in some function. Its cost model was decided before any of
+its figures was set beside SinewSlim's:
+\begin{equation}\label{eq:injection}
+  C_{\mathrm{inj}}(P) \;=\; \sum_{f \in F} \bigl(\, d_f + 1 \,\bigr) \;+\; |E|,
+\end{equation}
+where $d_f$, the function's seam, counts the values computed inside the
+method that $f$ declares, so that a value carried to several later functions
+costs 1 for each; values from outside the method, its parameters and whatever
+the framework injects, are free and not counted. Each function costs 1 and
+each edge, a flow between functions, costs 1; a function may carry at most
+five values, $d_f \le 5$. A \sig{return} ends a function, a \sig{throw}
+becomes an escalation, and an \sig{if} or \sig{switch} may become a decision
+function in $F$ whose branches are edges in $E$. Loops, lambda bodies and
+labelled statements are never cut between functions. Its worst seam,
+$\max_f d_f$, is the counterpart of SinewSlim's widest piece, with one
+difference that matters for reading them side by side: SinewSlim's $i_p$
+counts the method's own parameters when a piece reads them, and $d_f$ does
 not, since the framework injects them.
 
 \paragraph{The combined split.} No OfficeFloor developer would wire a
@@ -183,13 +197,22 @@ extracting a method would do. The combined split is what a developer would
 do: functions where the flow divides, extracted methods inside them. Its
 outer search is the injection split's; a function whose body is over the
 target is allowed when SinewSlim's search, under its defaults, slims that
-body as a method of its own. A body SinewSlim slims only with a record is
-refused. The plan chosen is the one with the smallest \emph{sum} of the
-injection total and SinewSlim's cost of the pieces inside the functions; on a
-tie, the fewer pieces, then the fewer functions. The whole method as one
-function, slimmed by SinewSlim, is always a candidate at SinewSlim's cost
-plus 1, so wherever SinewSlim slims a method the combined split has a plan
-and its sum is never more than SinewSlim's cost plus 1. That holds by
+body as a method of its own, its declared values its parameters. A body
+SinewSlim slims only with a record is refused. Writing $S_f$ for SinewSlim's
+segmentation of the body of $f$ (empty when the body is at or under the
+target), a plan is priced by the \emph{sum}
+\begin{equation}\label{eq:combined}
+  C_{\mathrm{comb}}(P) \;=\; C_{\mathrm{inj}}(P) \;+\; \sum_{f \in F} C_{\mathrm{ext}}(S_f),
+\end{equation}
+the injection total of~\eqref{eq:injection} plus the extraction cost
+of~\eqref{eq:extraction} of the pieces inside the functions. The plan chosen
+is the one with the smallest $C_{\mathrm{comb}}$; on a tie, the fewer pieces
+$\sum_f |S_f|$, then the fewer functions $|F|$. The whole method as one
+function, slimmed by SinewSlim, is always a candidate: with $|F| = 1$, no
+edge and nothing carried, $C_{\mathrm{inj}} = 1$ and
+$C_{\mathrm{comb}} = C_{\mathrm{ext}}(S) + 1$. So wherever SinewSlim slims a
+method the combined split has a plan, and
+$\min_P C_{\mathrm{comb}}(P) \le C_{\mathrm{ext}}(S) + 1$. That holds by
 construction and is not a finding; a one-function plan is reported as
 \emph{extraction only} and counted as SinewSlim's.
 
@@ -555,6 +578,15 @@ returns), and the tied plans are sequences in \shapeTiedAnySequence{}. Where
 injection rescues a stuck method, the plan branches in
 \shapeRescuedAnyBranching{} of the \shapeNRescued{}, and
 \shapeRescuedSequenceReturns{} are sequences with early returns.
+Read as a population, the long methods for which a straight sequence of
+functions is the way to split, the plan a sequence and either cheaper than
+extraction wrapped as one function or the only plan there is, are
+\ciSeqWay{} of the long methods (\nSeqWay{} in the sample), and
+\popSeqWayMethods{} of all methods. Nearly all are methods extraction would
+also split: \popSeqImproved{} of the long methods are improved, against
+\popSeqRescued{} rescued. Against plain extraction, a saving of 2 or more,
+the share is \ciSeqWayStrict{}; with the ties it is \popSeqWayTied{}; and
+plans of any shape that improve or rescue are \popInjWay{}.
 
 \begin{table}[t]
 \centering\small
@@ -618,6 +650,21 @@ mechanism: the methods only injection takes apart are mostly branching, an
 \shapeRescuedReturnsOfBranching{} of them with early exits, which is where
 extraction's single-exit piece fails outright.
 
+As a population, the methods a sequence of functions is the way to split
+are \popSeqWay{} of the long methods, or \popSeqWayStrict{} against plain
+extraction. At the margin, a saving of 1, the two designs cost the same
+under the registered models, and what the sequence adds is not priced.
+Under injection the caller becomes configuration: the order of the functions
+and what each receives are declared, rather than read from statement order
+and the local variables that carry one stage's product to the next, so the
+control flow and the data flow can be drawn apart, and drawn directly; the
+author's IntelliJ plugin renders such a configuration as one diagram
+\cite{iocc}. That the values injected from outside the method cost nothing
+is already in the cost model, and is not counted again here. Whether a
+declared flow is easier to follow than the method it replaces is a question
+for a study of comprehension, not this one; the \nSeqWay{} methods are where
+such a study would look.
+
 The plan defined function injection being cheaper than extraction as its
 reach and its shape, never as a comparison of totals. The shape is that,
 where both can split a method, the injection split's worst seam carries
@@ -660,6 +707,9 @@ never counted, and its one-to-one weight between the two totals is a choice;
 both parts are reported beside the sum, and \Htwo{}'s baseline of SinewSlim's
 cost plus 1 includes a function a developer outside OfficeFloor never pays
 for, so the reading against SinewSlim's cost itself is reported beside it.
+The cost models price what crosses a boundary and nothing about how the
+result is read, so whatever a declared flow adds to understanding, or takes
+away, is outside every figure here.
 The injection split charges one flow too many for an early return in a
 method's last function, as released; it can only overstate that split's
 cost. The instrument has the fault of the post hoc paragraph, and a quirk
@@ -701,7 +751,10 @@ a redesign that no split provides. Where extraction would do and injection
 is chosen instead, the method is a pipeline in \shapeImprovedAnySequence{}
 of cases, written more cheaply as a sequence of functions than contained in
 a method, because the registered cost models price each hand-off once rather
-than twice. The author expected more of the rescue, and the plan was written
+than twice. Those pipelines, with the few stuck methods a sequence alone
+rescues, are \popSeqWay{} of the long methods (\popSeqWayStrict{} against
+plain extraction), and are where a study of how a declared flow is read
+would look. The author expected more of the rescue, and the plan was written
 so that the data could say so.
 
 \paragraph{Data availability.} Every number here is produced by a script
@@ -766,6 +819,10 @@ received.
   ``What reviewers call a Long Method is a length: a pre-registered test of
   coupling divergence as a god-unit signal, and what it settled instead,''
   2026. \url{https://doi.org/10.5281/zenodo.23749773}
+
+\bibitem{iocc} D.~Sagenschneider,
+  ``OfficeFloor IoCC,'' IntelliJ plugin, JetBrains Marketplace, 2026.
+  \url{https://plugins.jetbrains.com/plugin/35087}
 
 \bibitem{silva2014} D.~Silva, R.~Terra and M.~T.~Valente,
   ``Recommending automated extract method refactorings,'' in

@@ -18,6 +18,9 @@ What it writes (results/analysis/posthoc.json):
 - category3c_per_repository: the quartiles of each repository's own H1 share, and how many
   repositories with a stuck method have no rescued method at all.
 - category4_machine_written: a lower bound on machine-written code among the category 4 methods.
+- sequence_population: the long methods a straight sequence of functions is the way to split (the
+  combined split's plan has no decision and is improved or rescued), over the long methods, with the
+  strict reading (a saving of 2 or more) and the ties beside it.
 - the composition of the rescued and improved methods (functions alone, or extracted methods
   inside them), the savings, the worse-seam differences, how the stuck methods concentrate in a
   few repositories, the per-tier per-repository medians, the readings, the unparsed files and the
@@ -112,7 +115,9 @@ def main(argv: list[str]) -> int:
     stuck_without_plan_combined, gain_by_reason = Counter(), Counter()
     by_category, planned_by_category, lost, machine = Counter(), Counter(), [], Counter()
     shapes = {"rescued": Counter(), "improved": Counter(), "tied": Counter()}
+    seq_by_repo = {}  # per repository: the long methods whose chosen plan is a sequence, by group
     for name, tier, scan in scans:
+        seq = seq_by_repo[name] = Counter()
         unparsed[name] += len(scan["unparsed"])
         stuck = c3 = 0
         for m in scan["methods"]:
@@ -164,15 +169,22 @@ def main(argv: list[str]) -> int:
                 shape = ("branching" if any(fn["kind"] == "decision" for fn in c["functions"]) else "sequence") \
                     + (" with early returns" if any(l["kind"] == "return" and l["from"] != len(c["functions"]) - 1
                                                     for l in c["links"]) else "")
+                is_sequence = shape.startswith("sequence")
                 if is_stuck:
                     if m["combined_category"]["number"] == 3:
                         shapes["rescued"][shape] += 1
+                        seq["injection_rescued"] += 1
+                        seq["sequence_rescued"] += is_sequence
                 elif s.get("cost") is not None:
                     saving = s["cost"] + 1 - c["sum"]
                     if saving > 0:
                         shapes["improved"][shape] += 1
+                        seq["injection_improved"] += 1
+                        seq["sequence_improved"] += is_sequence
+                        seq["sequence_improved_strict"] += is_sequence and saving >= 2
                     elif saving == 0:
                         shapes["tied"][shape] += 1
+                        seq["sequence_tied"] += is_sequence
             if s.get("cost") is not None and o["feasible"] and o["worst_seam"] > s["width"]:
                 seam_diff[o["worst_seam"] - s["width"]] += 1
         per.append({"repository": name, "tier": tier, "long": len(scan["methods"]), "stuck": stuck, "category3c": c3,
@@ -186,6 +198,14 @@ def main(argv: list[str]) -> int:
         r["stuck_not_conventional"] = r["category"].get("3", 0) + r["category"].get("4", 0)
         # improved by 2 or more: the sum strictly below SinewSlim's cost itself, not its cost plus 1
         r["improved_strict"] = sum(v for k, v in r["savings"].items() if int(k) >= 2)
+        # the long methods a straight sequence of functions is the way to split: the plan is a sequence and
+        # either cheaper than extraction (improved) or the only plan (rescued, category 3 combined)
+        q = seq_by_repo[r["full_name"]]
+        r["sequence_way"] = q["sequence_improved"] + q["sequence_rescued"]
+        r["sequence_way_strict"] = q["sequence_improved_strict"] + q["sequence_rescued"]
+        r["sequence_way_with_tied"] = r["sequence_way"] + q["sequence_tied"]
+        r["injection_way"] = q["injection_improved"] + q["injection_rescued"]
+        r["sequence_improved"], r["sequence_rescued"] = q["sequence_improved"], q["sequence_rescued"]
     c3_shares = sorted(r["combined_category"].get("3", 0) / r["stuck"] for r in rows if r["stuck"])
     with open(a.run_log) as f:
         log = [json.loads(line) for line in f]
@@ -201,6 +221,17 @@ def main(argv: list[str]) -> int:
                                    "with_pieces": sum(v for k, v in c3_pieces.items() if k > 0),
                                    "pieces_histogram": {str(k): v for k, v in sorted(c3_pieces.items())}},
         "plan_shapes": {k: dict(sorted(v.items())) for k, v in shapes.items()},
+        "sequence_population": {
+            "rule": "a long method whose combined-split plan has no decision function, and is improved "
+                    "(sum below SinewSlim's cost plus 1) or rescued (category 3, combined split); "
+                    "strict: improved by 2 or more (below SinewSlim's cost itself)",
+            "sequence_way_over_long": analyse.figure(rows, weights, "sequence_way", "long"),
+            "sequence_way_strict_over_long": analyse.figure(rows, weights, "sequence_way_strict", "long"),
+            "sequence_way_with_tied_over_long": analyse.figure(rows, weights, "sequence_way_with_tied", "long"),
+            "injection_way_over_long": analyse.figure(rows, weights, "injection_way", "long"),
+            "sequence_improved_over_long": analyse.figure(rows, weights, "sequence_improved", "long"),
+            "sequence_rescued_over_long": analyse.figure(rows, weights, "sequence_rescued", "long"),
+            "sequence_way_over_methods": analyse.figure(rows, weights, "sequence_way", "methods")},
         "plans_by_category": {str(k): {"stuck": by_category[k], "combined_has_plan": planned_by_category[k],
                                        "share": round(planned_by_category[k] / by_category[k], 4) if by_category[k] else None}
                               for k in sorted(by_category)},

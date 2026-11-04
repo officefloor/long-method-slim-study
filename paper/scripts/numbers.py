@@ -437,6 +437,17 @@ write("tab_shapes.tex", "\n".join([
 br = SH["rescued"].get("branching", 0) + SH["rescued"].get("branching with early returns", 0)
 define("shapeRescuedReturnsOfBranching", pct(SH["rescued"].get("branching with early returns", 0) / br))
 
+# --- post hoc: the population a sequence of functions is the way to split --------------------------------
+SP = P["sequence_population"]
+for key, name in (("sequence_way_over_long", "SeqWay"), ("sequence_way_strict_over_long", "SeqWayStrict"),
+                  ("sequence_way_with_tied_over_long", "SeqWayTied"), ("injection_way_over_long", "InjWay"),
+                  ("sequence_improved_over_long", "SeqImproved"), ("sequence_rescued_over_long", "SeqRescued"),
+                  ("sequence_way_over_methods", "SeqWayMethods")):
+    f = SP[key]
+    define(f"n{name}", count(f["count"]))
+    define(f"pop{name}", pct(f["population"]))
+    define(f"ci{name}", ci(f["population"], f["population_interval"]))
+
 # --- post hoc: the construction exceptions, the readings, the parse failures, the run -----------------
 E = P["construction_exceptions"]
 define("nExceptions", count(len(E)))

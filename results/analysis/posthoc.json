@@ -451,6 +451,170 @@
       "sequence with early returns": 3807
     }
   },
+  "sequence_population": {
+    "rule": "a long method whose combined-split plan has no decision function, and is improved (sum below SinewSlim's cost plus 1) or rescued (category 3, combined split); strict: improved by 2 or more (below SinewSlim's cost itself)",
+    "sequence_way_over_long": {
+      "count": 37381,
+      "of": 168466,
+      "pooled": 0.2219,
+      "interval": [
+        0.2025,
+        0.2485
+      ],
+      "population": 0.2376,
+      "population_interval": [
+        0.1923,
+        0.2982
+      ],
+      "by_tier": {
+        "high": 0.2193,
+        "low": 0.251,
+        "mid": 0.2056
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.1724
+      }
+    },
+    "sequence_way_strict_over_long": {
+      "count": 23763,
+      "of": 168466,
+      "pooled": 0.1411,
+      "interval": [
+        0.1292,
+        0.1553
+      ],
+      "population": 0.148,
+      "population_interval": [
+        0.1218,
+        0.1798
+      ],
+      "by_tier": {
+        "high": 0.1406,
+        "low": 0.1542,
+        "mid": 0.1329
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.1
+      }
+    },
+    "sequence_way_with_tied_over_long": {
+      "count": 62832,
+      "of": 168466,
+      "pooled": 0.373,
+      "interval": [
+        0.3462,
+        0.4119
+      ],
+      "population": 0.3977,
+      "population_interval": [
+        0.3359,
+        0.4848
+      ],
+      "by_tier": {
+        "high": 0.3708,
+        "low": 0.4199,
+        "mid": 0.3443
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.3333
+      }
+    },
+    "injection_way_over_long": {
+      "count": 44142,
+      "of": 168466,
+      "pooled": 0.262,
+      "interval": [
+        0.2444,
+        0.2851
+      ],
+      "population": 0.2747,
+      "population_interval": [
+        0.235,
+        0.3257
+      ],
+      "by_tier": {
+        "high": 0.2603,
+        "low": 0.2858,
+        "mid": 0.2483
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.212
+      }
+    },
+    "sequence_improved_over_long": {
+      "count": 34340,
+      "of": 168466,
+      "pooled": 0.2038,
+      "interval": [
+        0.1851,
+        0.2304
+      ],
+      "population": 0.2203,
+      "population_interval": [
+        0.1753,
+        0.2817
+      ],
+      "by_tier": {
+        "high": 0.1994,
+        "low": 0.2336,
+        "mid": 0.1894
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.16
+      }
+    },
+    "sequence_rescued_over_long": {
+      "count": 3041,
+      "of": 168466,
+      "pooled": 0.0181,
+      "interval": [
+        0.0159,
+        0.0207
+      ],
+      "population": 0.0173,
+      "population_interval": [
+        0.0144,
+        0.021
+      ],
+      "by_tier": {
+        "high": 0.0199,
+        "low": 0.0175,
+        "mid": 0.0162
+      },
+      "per_repository": {
+        "repositories": 562,
+        "median": 0.0
+      }
+    },
+    "sequence_way_over_methods": {
+      "count": 37381,
+      "of": 3026902,
+      "pooled": 0.0123,
+      "interval": [
+        0.0103,
+        0.0146
+      ],
+      "population": 0.0153,
+      "population_interval": [
+        0.011,
+        0.0212
+      ],
+      "by_tier": {
+        "high": 0.0103,
+        "low": 0.0169,
+        "mid": 0.0128
+      },
+      "per_repository": {
+        "repositories": 580,
+        "median": 0.0069
+      }
+    }
+  },
   "plans_by_category": {
     "1": {
       "stuck": 17123,

@@ -1,7 +1,7 @@
 # The paper
 
-*What extraction cannot slim, and whether function injection can. A pre-registered count of the long
-methods in 580 open-source Java repositories, as they stood before AI coding assistants.*
+*What extraction cannot slim, and whether function injection can. A pre-registered study of
+580 Java repositories.*
 
 ## What is here
 

@@ -1,7 +1,7 @@
 # Ancillary data for the paper
 
-*What extraction cannot slim, and whether function injection can. A pre-registered count of the long
-methods in 580 open-source Java repositories, as they stood before AI coding assistants.* Daniel
+*What extraction cannot slim, and whether function injection can. A pre-registered study of
+580 Java repositories.* Daniel
 Sagenschneider, 2026.
 
 This directory holds the data the paper is computed from and the key to every public repository
@@ -29,7 +29,7 @@ Everything is public and Apache-2.0 licensed.
 | `sample/` | The sampler's CSV (757 drawn, 580 usable) and its derivation (the frame, the command, the strata). |
 | `analysis/run-log.jsonl` | Step 3's run log: each repository's commit, status, scan time. |
 | `analysis/analysis.json` | Step 4, the registered analysis: every measure per repository, per tier and pooled; the headline figures with their intervals; every method where the split's worst seam is larger than SinewSlim's. |
-| `analysis/posthoc.json` | Step 5, the post hoc readings: the test-path sensitivity, the combined split's plans within each category and the rescue over what nothing conventional fixes, H2 read against plain extraction (the sum strictly below SinewSlim's cost itself), the quartiles of each repository's own rescue share, the 16 and 189 methods on which the instrument contradicts its own construction, the composition and the shape (sequence or branching) of the rescued and improved plans, the concentration of the stuck methods, a lower bound on machine-written code among the category 4 methods, the readings, the scan times. |
+| `analysis/posthoc.json` | Step 5, the post hoc readings: the test-path sensitivity, the combined split's plans within each category and the rescue over what nothing conventional fixes, H2 read against plain extraction (the sum strictly below SinewSlim's cost itself), the quartiles of each repository's own rescue share, the 16 and 189 methods on which the instrument contradicts its own construction, the composition and the shape (sequence or branching) of the rescued and improved plans, the share of long methods a sequence of functions is the way to split (plain and strict), the concentration of the stuck methods, a lower bound on machine-written code among the category 4 methods, the readings, the scan times. |
 
 ## Commands
 
