@@ -1,0 +1,7 @@
+{
+  "tool": "SinewSlim via officefloorslim 0.5.2",
+  "methods": [
+    {"signature": "describe(Order, Customer, Catalog)", "status": "not_slimmable", "feasible": false},
+    {"signature": "build(List<String>, Options)", "status": "slimmable", "feasible": true, "cost": 9, "width": 4, "remainder": 19, "pieces": [{"lo": 53, "hi": 65, "inputs": ["rows", "options", "records"], "outputs": ["skipped"], "passed": ["rows", "options"]}, {"lo": 71, "hi": 80, "inputs": ["options", "records", "summary"], "outputs": [], "passed": ["options"]}]}
+  ]
+}

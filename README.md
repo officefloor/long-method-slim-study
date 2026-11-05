@@ -32,7 +32,8 @@ against the registered quarter); **H2** an estimate, as registered (29.0%, 24.3%
 | `step6_explore.sh`, `exploratory/`, `long_method_slim_study/explore/` | **Exploratory, after the paper** (not registered; changes no registered figure): the category 4 methods re-read from source, classified, and set against the repositories' domains, to propose the next hypotheses. See `exploratory/README.md` |
 | `sample/` | The sampler's CSV and derivation (once drawn) |
 | `results/` | The run log, the analysis and the post hoc readings; the raw scans (`results/scans/`) are not kept in git, as step 3 reproduces them |
-| `paper/` | The paper: `main.tex`, whose every number is a macro written by `paper/scripts/numbers.py` from the committed analysis; `./build.sh` makes `main.pdf` |
+| `paper/` | The paper: `main.tex`, whose every number is a macro written by `paper/scripts/numbers.py` from the committed analysis; `paper/examples/`, its two worked examples priced by the pinned jar; `./build.sh` makes `main.pdf` |
+| `results-0.5.1/` (not in git) | Amendment 3's set-aside scans; when present, step 5 compares them field for field with the scans used (`instrument_versions` in `posthoc.json`: 578 of 580 equal) |
 
 ## Replicating
 

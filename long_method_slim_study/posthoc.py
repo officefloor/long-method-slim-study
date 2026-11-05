@@ -25,6 +25,11 @@ What it writes (results/analysis/posthoc.json):
   inside them), the savings, the worse-seam differences, how the stuck methods concentrate in a
   few repositories, the per-tier per-repository medians, the readings, the unparsed files and the
   scan times.
+- instrument_versions: the scans of the release before the one used (0.5.1, which Amendment 3
+  found gave different results on 2 repositories) compared field for field with the scans used,
+  all but the run time and the checkout path, over every repository both scanned. Given with
+  `--scans-previous results-0.5.1/scans --previous-version 0.5.1`; without it (a fresh clone has
+  no earlier scans) the reading already in posthoc.json is carried forward.
 """
 from __future__ import annotations
 
@@ -93,6 +98,64 @@ def test_path_sensitivity(scans, weights) -> dict:
             "segments": segments.most_common(12), "headline": analyse.headline(rows, weights)}
 
 
+IGNORED_IN_COMPARISON = ("seconds", "repository", "tool")  # the run time, the checkout path, the version string
+
+
+def _strip(o):
+    if isinstance(o, dict):
+        return {k: _strip(v) for k, v in o.items() if k not in IGNORED_IN_COMPARISON}
+    if isinstance(o, list):
+        return [_strip(v) for v in o]
+    return o
+
+
+def _diff(a, b, path, out):
+    if type(a) is not type(b):
+        out.append(path)
+    elif isinstance(a, dict):
+        for k in sorted(set(a) | set(b)):
+            if k not in a or k not in b:
+                out.append(f"{path}.{k}")
+            else:
+                _diff(a[k], b[k], f"{path}.{k}", out)
+    elif isinstance(a, list):
+        if len(a) != len(b):
+            out.append(f"{path}[{len(a)} vs {len(b)}]")
+        else:
+            for i, (x, y) in enumerate(zip(a, b)):
+                _diff(x, y, f"{path}[{i}]", out)
+    elif a != b:
+        out.append(path)
+
+
+def compare_scans(previous_dir: str, current_dir: str, previous_version: str, current_version: str) -> dict:
+    """Every scan both directories hold, compared field for field but for the fields in
+    IGNORED_IN_COMPARISON; each differing scan is listed with the methods its differences fall in."""
+    names = sorted(set(os.listdir(previous_dir)) & set(os.listdir(current_dir)))
+    equal, differing = 0, []
+    for n in names:
+        with open(os.path.join(previous_dir, n)) as f:
+            a = _strip(json.load(f))
+        with open(os.path.join(current_dir, n)) as f:
+            b = _strip(json.load(f))
+        paths = []
+        _diff(a, b, "", paths)
+        if not paths:
+            equal += 1
+            continue
+        methods = {}
+        for p in paths:
+            key = p.split(".")[1] if p.startswith(".methods[") else "(outside methods)"
+            i = int(key[len("methods["):-1]) if key.startswith("methods[") else None
+            m = b["methods"][i] if i is not None else None
+            label = f"{m['type']}.{m['signature']} ({m['path']}:{m['line']})" if m else key
+            methods.setdefault(label, []).append(p)
+        differing.append({"repository": n[:-len(".json")].replace("__", "/", 1), "methods": methods})
+    return {"previous_version": previous_version, "current_version": current_version,
+            "rule": f"every scan both made, compared field for field, all but {', '.join(IGNORED_IN_COMPARISON)}",
+            "compared": len(names), "equal": equal, "differing": differing}
+
+
 def per_tier_medians(rows, num, den) -> dict:
     return {t: analyse.per_repository([r for r in rows if r["tier"] == t], num, den)
             for t in sorted({r["tier"] for r in rows})}
@@ -105,7 +168,17 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--derivation", required=True)
     ap.add_argument("--run-log", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--scans-previous", help="the scans of the release before the one used, to compare field for field")
+    ap.add_argument("--previous-version", default="0.5.1")
     a = ap.parse_args(argv)
+    previous_file = os.path.join(a.out, "posthoc.json")
+    if a.scans_previous:
+        versions = compare_scans(a.scans_previous, a.scans, a.previous_version, pins.OFFICEFLOORSLIM_VERSION)
+    elif os.path.exists(previous_file):
+        with open(previous_file) as f:
+            versions = json.load(f).get("instrument_versions")
+    else:
+        versions = None
     with open(a.derivation) as f:
         weights = analyse.weights_from(json.load(f))
     scans = load_rows(a.scans, a.sample)
@@ -265,6 +338,7 @@ def main(argv: list[str]) -> int:
             "category3c_over_S1": per_tier_medians(rows, "combined_category.3", "stuck"),
             "S2c_over_S1": per_tier_medians(rows, "stuck_combined", "stuck"),
             "improved_over_slimmable": per_tier_medians(rows, "improved", "slimmable")},
+        "instrument_versions": versions,
         "readings_of_long_methods": dict(readings_long),
         "officefloor_reading": {"long_methods": sum(of_repos.values()), "repositories": of_repos.most_common(5),
                                 "evidence": of_evidence.most_common(5)},

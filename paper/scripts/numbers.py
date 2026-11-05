@@ -21,6 +21,8 @@ import re
 import sys
 from datetime import datetime, timezone
 
+analyse_STUCK = ("not_slimmable", "slimmable_with_record")  # analyse.STUCK, the statuses the plan calls stuck (S1)
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, "paper", "generated")
 
@@ -410,6 +412,11 @@ define("rescueOfNotConventionalMedian", pct(NC["per_repository"]["median"]))
 define("rescueOfNotConventionalCi", ci(NC["population"], NC["population_interval"]))
 define("nCatThreeLost", count(len(P["category3_without_combined_plan"])))
 define("nCatThreeLostJumps", count(sum(1 for e in P["category3_without_combined_plan"] if e["combined_reason"] == "jumps")))
+# H1's count with every lost method restored: the most the instrument's fault could add to the rescue
+lost = len(P["category3_without_combined_plan"])
+define("catThreeCRestored", count(POOL["S3c"]["3"] + lost))
+define("catThreeCRestoredShare", pct((POOL["S3c"]["3"] + lost) / POOL["S1"]))
+define("hOneBarGap", pctn(H["H1"]["share"] - H["category3c_over_S1"]["population_interval"][1]))
 
 # --- post hoc: the shape of the chosen plans -----------------------------------------------------------
 SH = P["plan_shapes"]
@@ -523,6 +530,62 @@ define("amendDiffering", count(AMEND["differing_0_5_1"]))
 define("amendRescanned", count(AMEND["rescanned_0_5_1"]))
 define("amendSpot", count(AMEND["spot_0_5_0"]))
 define("amendUncompared", count(S["usable"] - AMEND["scans_0_5_0"] - AMEND["spot_0_5_0"]))
+# The two releases that scanned every repository (0.5.1, set aside by Amendment 3, and 0.5.2, used), compared
+# field for field by posthoc.py: how far the fault Amendment 3 found reached.
+IV = P["instrument_versions"]
+if IV is None:
+    raise SystemExit("posthoc.json has no instrument_versions: run step 5 with --scans-previous results-0.5.1/scans")
+define("versPrevious", IV["previous_version"])
+define("versCompared", count(IV["compared"]))
+define("versEqual", count(IV["equal"]))
+define("versDiffering", count(len(IV["differing"])))
+define("versDifferingMethods", count(sum(len(d["methods"]) for d in IV["differing"])))
+define("versDifferingRepos", ", ".join(f"\\texttt{{{repo(d['repository'])}}}" for d in IV["differing"]))
+
+# --- the worked examples (paper/examples/Examples.java), priced by the pinned jar ---------------------------
+EXS = load("paper/examples/scan.json")
+if not EXS["tool"].endswith(pins.OFFICEFLOORSLIM_VERSION):
+    raise SystemExit(f"paper/examples/scan.json is by {EXS['tool']}, not the pinned release: rerun paper/examples/scan.sh")
+if sorted(m["signature"].split("(")[0] for m in EXS["methods"]) != ["build", "describe"]:
+    raise SystemExit("paper/examples/scan.json should hold exactly the two examples: rerun paper/examples/scan.sh")
+# SinewSlim's pieces of the examples (the scan reports their cost, width and count, not the pieces), by
+# paper/scripts/SinewSlimPieces.java against the SinewSlim classes the pinned jar bundles
+EXP = {m["signature"]: m for m in load("paper/examples/sinewslim-pieces.json")["methods"]}
+for m in EXS["methods"]:
+    name = "ExA" if m["signature"].startswith("describe(") else "ExB" if m["signature"].startswith("build(") else None
+    if name is None:
+        continue
+    ss, o, c = m["sinewslim"], m["officefloor"], m["combined"]
+    define(f"{name.lower()}Lines", count(m["length"]))
+    define(f"{name.lower()}InjTotal", count(o["total"]))
+    define(f"{name.lower()}InjFunctions", count(len(o["functions"])))
+    define(f"{name.lower()}InjEdges", count(o["edges"]))
+    define(f"{name.lower()}InjSeam", count(o["worst_seam"]))
+    define(f"{name.lower()}CombSum", count(c["sum"]))
+    define(f"{name.lower()}CombFunctions", count(len(c["functions"])))
+    define(f"{name.lower()}CombEdges", count(c["edges"]))
+    define(f"{name.lower()}CombCarried", count(sum(len(f["declares"]) for f in c["functions"])))
+    define(f"{name.lower()}CombDeclares", ", ".join(f"\\texttt{{{v}}}" for f in c["functions"] for v in f["declares"]) or "nothing")
+    if ss["status"] in analyse_STUCK:
+        define(f"{name.lower()}SinewObstacle", ss["obstacle"])
+        define(f"{name.lower()}Category", count(m["category"]["number"]))
+    else:
+        define(f"{name.lower()}SinewCost", count(ss["cost"]))
+        define(f"{name.lower()}SinewWidth", count(ss["width"]))
+        define(f"{name.lower()}SinewPieces", count(ss["pieces"]))
+        define(f"{name.lower()}SinewRemainder", count(ss["remainder"]))
+        define(f"{name.lower()}SavingWrapped", count(ss["cost"] + 1 - c["sum"]))
+        define(f"{name.lower()}SavingPlain", count(ss["cost"] - c["sum"]))
+        pieces = EXP[m["signature"]]["pieces"]
+        if EXP[m["signature"]]["cost"] != ss["cost"] or len(pieces) != ss["pieces"]:
+            raise SystemExit(f"sinewslim-pieces.json disagrees with scan.json on {m['signature']}: rerun paper/examples/scan.sh")
+        for i, pc in enumerate(pieces):
+            word = "One Two Three Four".split()[i]
+            define(f"{name.lower()}Piece{word}Lines", count(pc["hi"] - pc["lo"] + 1))
+            define(f"{name.lower()}Piece{word}Inputs", ", ".join(f"\\texttt{{{v}}}" for v in pc["inputs"]) or "nothing")
+            define(f"{name.lower()}Piece{word}Outputs", ", ".join(f"\\texttt{{{v}}}" for v in pc["outputs"]) or "nothing")
+            define(f"{name.lower()}Piece{word}Cost", count(len(pc["inputs"]) + (len(pc["outputs"]) if len(pc["outputs"]) <= 1 else 3 * len(pc["outputs"])) + 1))
+        define(f"{name.lower()}SinewValuesPriced", count(sum(len(pc["inputs"]) + len(pc["outputs"]) for pc in pieces)))
 
 # --- exploratory (step 6, not registered): what category 4 holds -----------------------------------------
 X = load("exploratory/results/explore.json")

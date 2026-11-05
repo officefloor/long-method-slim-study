@@ -9,8 +9,9 @@
 # `../.venv/bin/python scripts/numbers.py` (step 5), not part of the build.
 #
 # Writes: main.pdf, abstract.txt (the abstract as plain text, for the arXiv and Zenodo forms, with a
-# warning past arXiv's 1920 characters) and arxiv.tar.gz, the submission bundle: main.tex and
-# generated/ at the root and, under anc/, the data the paper rests on (see pack() and anc-README.md).
+# warning past arXiv's 1920 characters) and arxiv.tar.gz, the submission bundle: main.tex, generated/
+# and examples/ (the worked examples' source, read in by line range, and their scan) at the root and,
+# under anc/, the data the paper rests on (see pack() and anc-README.md).
 set -euo pipefail
 cd "$(dirname "$0")"
 ROOT="$(cd .. && pwd)"
@@ -62,7 +63,7 @@ pack() {
   cp "$ROOT"/exploratory/results/explore.json "$ROOT"/exploratory/results/tables.md "$ROOT"/exploratory/FINDINGS.md "$d/" 2>/dev/null || echo "   ! exploratory/ results missing: run ./step6_explore.sh" >&2
   d="$stage/anc/sample"; mkdir -p "$d"
   cp "$ROOT"/sample/*.csv "$ROOT"/sample/*.json "$d/" 2>/dev/null || echo "   ! sample/ missing: run ./step2_sample.sh" >&2
-  tar czf arxiv.tar.gz main.tex generated -C "$stage" anc
+  tar czf arxiv.tar.gz main.tex generated examples/src examples/scan.json examples/sinewslim-pieces.json -C "$stage" anc
   echo "Packed arxiv.tar.gz ($(tar tzf arxiv.tar.gz | grep -c .) entries, $(du -h arxiv.tar.gz | cut -f1))"
 }
 

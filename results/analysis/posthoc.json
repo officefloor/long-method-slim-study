@@ -2395,6 +2395,38 @@
       }
     }
   },
+  "instrument_versions": {
+    "previous_version": "0.5.1",
+    "current_version": "0.5.2",
+    "rule": "every scan both made, compared field for field, all but seconds, repository, tool",
+    "compared": 580,
+    "equal": 578,
+    "differing": [
+      {
+        "repository": "corretto/corretto-8",
+        "methods": {
+          "DESCrypt.expandKey(byte[]) (jdk/src/share/classes/com/sun/crypto/provider/DESCrypt.java:742)": [
+            ".methods[4179].combined.functions[1].extraction",
+            ".methods[4179].combined.functions[1].hi",
+            ".methods[4179].combined.functions[1].lines",
+            ".methods[4179].combined.functions[1].pieces[4 vs 5]",
+            ".methods[4179].combined.functions[2].extraction",
+            ".methods[4179].combined.functions[2].lines",
+            ".methods[4179].combined.functions[2].lo",
+            ".methods[4179].combined.functions[2].pieces[11 vs 10]"
+          ]
+        }
+      },
+      {
+        "repository": "yellowstonegames/SquidLib",
+        "methods": {
+          "IsaacRNG.init(boolean) (squidlib-util/src/main/java/squidpony/squidmath/IsaacRNG.java:216)": [
+            ".methods[614].sinewslim.obstacle"
+          ]
+        }
+      }
+    ]
+  },
   "readings_of_long_methods": {
     "conventional": 165099,
     "framework_entry_point": 3190,

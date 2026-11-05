@@ -1,0 +1,293 @@
+{
+  "schema": "officefloorslim-scan/2",
+  "tool": "officefloorslim 0.5.2",
+  "facts_schema": 3,
+  "officefloor_reading": "officefloorslim-split/1",
+  "combined_reading": "officefloorslim-split/2",
+  "repository": "paper/examples",
+  "commit": "89cd93ee6b63f0f2c48e359e56e1f496779d4bc7",
+  "seconds": 0.6,
+  "options": {
+    "include": [
+      "**/*.java",
+      "**/*.yml",
+      "**/*.yaml",
+      "**/*.woof",
+      "**/*.officefloor"
+    ],
+    "exclude": [
+      "**/src/test/**",
+      "**/src/it/**",
+      "**/build/**",
+      "**/target/**",
+      "**/generated/**",
+      "**/node_modules/**"
+    ],
+    "growth_commits": 0,
+    "growth_months": 12
+  },
+  "files": 1,
+  "unparsed": [],
+  "methods_by_reading": {
+    "officefloor_function": 0,
+    "framework_entry_point": 0,
+    "conventional": 43
+  },
+  "long_methods": 2,
+  "bar": {
+    "not_slimmable": 1,
+    "by_category": {
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "category3_share": 0.0,
+    "go": false,
+    "rule": "category 3 at least a quarter of not_slimmable, and at least 30"
+  },
+  "combined_bar": {
+    "not_slimmable": 1,
+    "by_category": {
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "category3_share": 0.0,
+    "go": false,
+    "rule": "category 3 at least a quarter of not_slimmable, and at least 30"
+  },
+  "wiring": {
+    "files": 0,
+    "lines": 0,
+    "functions": 0,
+    "edges": 0,
+    "window_commits": null,
+    "touching_commits": null,
+    "by_file": []
+  },
+  "methods": [
+    {
+      "path": "src/main/java/example/Examples.java",
+      "type": "Examples",
+      "signature": "describe(Order, Customer, Catalog)",
+      "line": 9,
+      "length": 32,
+      "reading": "conventional",
+      "evidence": "no OfficeFloor wiring or framework marker",
+      "sinewslim": {
+        "status": "not_slimmable",
+        "obstacle": "jumps",
+        "cost": null
+      },
+      "officefloor": {
+        "feasible": true,
+        "total": 4,
+        "worst_seam": 0,
+        "edges": 2,
+        "largest_function": 18,
+        "functions": [
+          {
+            "kind": "run",
+            "lo": 11,
+            "hi": 22,
+            "lines": 12,
+            "declares": []
+          },
+          {
+            "kind": "run",
+            "lo": 25,
+            "hi": 42,
+            "lines": 18,
+            "declares": []
+          }
+        ],
+        "links": [
+          {
+            "from": 0,
+            "to": null,
+            "kind": "return"
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "kind": "next"
+          }
+        ]
+      },
+      "combined": {
+        "feasible": true,
+        "sum": 4,
+        "injection_total": 4,
+        "extraction_total": 0,
+        "worst_seam": 0,
+        "worst_piece": 0,
+        "edges": 2,
+        "pieces": 0,
+        "extraction_only": false,
+        "tie_by_pieces": false,
+        "functions": [
+          {
+            "kind": "run",
+            "lo": 11,
+            "hi": 22,
+            "lines": 12,
+            "declares": [],
+            "pieces": []
+          },
+          {
+            "kind": "run",
+            "lo": 25,
+            "hi": 42,
+            "lines": 18,
+            "declares": [],
+            "pieces": []
+          }
+        ],
+        "links": [
+          {
+            "from": 0,
+            "to": null,
+            "kind": "return"
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "kind": "next"
+          }
+        ]
+      },
+      "category": {
+        "number": 1,
+        "label": "conventionally fixable once restructured"
+      },
+      "combined_category": {
+        "number": 1,
+        "label": "conventionally fixable once restructured"
+      },
+      "migration": {
+        "fields": 0,
+        "transactional": false,
+        "escalations": 0,
+        "functions": 2,
+        "edges": 2
+      },
+      "growth": null
+    },
+    {
+      "path": "src/main/java/example/Examples.java",
+      "type": "Examples",
+      "signature": "build(List<String>, Options)",
+      "line": 48,
+      "length": 40,
+      "reading": "conventional",
+      "evidence": "no OfficeFloor wiring or framework marker",
+      "sinewslim": {
+        "status": "slimmable",
+        "obstacle": null,
+        "cost": 9,
+        "width": 4,
+        "pieces": 2,
+        "remainder": 19,
+        "largest_piece": 13
+      },
+      "officefloor": {
+        "feasible": true,
+        "total": 7,
+        "worst_seam": 1,
+        "edges": 2,
+        "largest_function": 25,
+        "functions": [
+          {
+            "kind": "run",
+            "lo": 50,
+            "hi": 51,
+            "lines": 2,
+            "declares": []
+          },
+          {
+            "kind": "run",
+            "lo": 53,
+            "hi": 82,
+            "lines": 25,
+            "declares": [
+              "records"
+            ]
+          },
+          {
+            "kind": "run",
+            "lo": 83,
+            "hi": 93,
+            "lines": 11,
+            "declares": [
+              "summary"
+            ]
+          }
+        ],
+        "links": [
+          {
+            "from": 0,
+            "to": 1,
+            "kind": "next"
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "kind": "next"
+          }
+        ]
+      },
+      "combined": {
+        "feasible": true,
+        "sum": 5,
+        "injection_total": 5,
+        "extraction_total": 0,
+        "worst_seam": 2,
+        "worst_piece": 0,
+        "edges": 1,
+        "pieces": 0,
+        "extraction_only": false,
+        "tie_by_pieces": false,
+        "functions": [
+          {
+            "kind": "run",
+            "lo": 50,
+            "hi": 65,
+            "lines": 15,
+            "declares": [],
+            "pieces": []
+          },
+          {
+            "kind": "run",
+            "lo": 69,
+            "hi": 93,
+            "lines": 23,
+            "declares": [
+              "records",
+              "skipped"
+            ],
+            "pieces": []
+          }
+        ],
+        "links": [
+          {
+            "from": 0,
+            "to": 1,
+            "kind": "next"
+          }
+        ]
+      },
+      "category": null,
+      "combined_category": null,
+      "migration": {
+        "fields": 0,
+        "transactional": false,
+        "escalations": 0,
+        "functions": 3,
+        "edges": 2
+      },
+      "growth": null
+    }
+  ]
+}
