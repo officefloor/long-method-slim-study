@@ -5,7 +5,7 @@
   "officefloor_reading": "officefloorslim-split/1",
   "combined_reading": "officefloorslim-split/2",
   "repository": "paper/examples",
-  "commit": "89cd93ee6b63f0f2c48e359e56e1f496779d4bc7",
+  "commit": "b8bc72eaa76d734221ecc9dc1bbc26a9d15db2c3",
   "seconds": 0.6,
   "options": {
     "include": [

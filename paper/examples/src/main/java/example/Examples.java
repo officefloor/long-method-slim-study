@@ -20,7 +20,7 @@ public class Examples {
         if (!customer.isActive()) {
             return "inactive customer";
         }
-        // END FUNCTION
+        // END FUNCTION: passes nothing on; each return ends the flow
         // FUNCTION price(Order order, Customer customer, Catalog catalog)
         int total = catalog.totalOf(order.getLines());
         if (total == 0) {
@@ -40,7 +40,7 @@ public class Examples {
             return currency + " " + due;
         }
         return currency + " " + due + " (" + note + ")";
-        // END FUNCTION
+        // END FUNCTION: passes nothing on; returns the String
     }
 
     // Example B: a pipeline. Three stages; the first hands two values on, and a parameter is read throughout.
@@ -63,8 +63,8 @@ public class Examples {
             record.setSource(options.source());
             records.add(record);
         }
-        // END EXTRACT
-        // END FUNCTION
+        // END EXTRACT: returns skipped
+        // END FUNCTION: passes on records, skipped
         // FUNCTION summarise(List<Record> records, int skipped, Options options)
         Summary summary = new Summary();
         // EXTRACT to method void summarise(Options options, List<Record> records, Summary summary)
@@ -78,7 +78,7 @@ public class Examples {
             summary.addSource(record.getSource());
             summary.incrementCount();
         }
-        // END EXTRACT
+        // END EXTRACT: returns nothing
         summary.setSkipped(skipped);
         Report report = new Report();
         report.setTitle(options.title() + ": " + summary.getCount() + " records");
@@ -91,7 +91,7 @@ public class Examples {
         report.setFormat(options.format());
         report.finish();
         return report;
-        // END FUNCTION
+        // END FUNCTION: passes nothing on; returns report
     }
 
     interface Order { List<Line> getLines(); }
