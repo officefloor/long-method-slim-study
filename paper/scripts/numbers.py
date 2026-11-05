@@ -146,16 +146,16 @@ write("tab_status.tex", "\n".join([
     f"Methods with a body & {' & '.join(count(TIERS[t]['L1']['methods']) for t in TIER_ORDER)} & {count(POOL['L1']['methods'])} & \\\\",
     f"Long (26 code lines or more) & {' & '.join(count(TIERS[t]['L1']['long']) for t in TIER_ORDER)} & {count(POOL['L1']['long'])} & {pct(POOL['L1']['long'] / POOL['L1']['methods'])} of methods \\\\",
     r"\midrule", *rows, r"\midrule",
-    f"Stuck (S1) & {' & '.join(count(TIERS[t]['S1']) for t in TIER_ORDER)} & {count(POOL['S1'])} & {pct(POOL['S1'] / POOL['L1']['long'])} of long \\\\",
+    f"Stuck & {' & '.join(count(TIERS[t]['S1']) for t in TIER_ORDER)} & {count(POOL['S1'])} & {pct(POOL['S1'] / POOL['L1']['long'])} of long \\\\",
     r"\bottomrule", r"\end{tabular}", ""]))
 
 # --- the headline figures -----------------------------------------------------------------------
-FIG = [("S2_over_S1", "StuckPlanned", "Stuck with an injection-split plan (S2 over S1)"),
-       ("category3_over_S1", "CatThree", "Category 3 under the injection split (S3 over S1)"),
-       ("S2c_over_S1", "StuckPlannedC", "Stuck with a combined-split plan (S2c over S1)"),
-       ("category3c_over_S1", "CatThreeC", "Category 3 under the combined split (S3c over S1): \\textbf{H1}"),
-       ("improved_over_slimmable", "Improved", "Improved: injection chosen and cheaper, over what SinewSlim slims (K2): \\textbf{H2}"),
-       ("tied_over_slimmable", "Tied", "Tied on the sum, settled by the tie-break (K2)")]
+FIG = [("S2_over_S1", "StuckPlanned", "Stuck methods the injection split has a plan for"),
+       ("category3_over_S1", "CatThree", "Category 3 under the injection split"),
+       ("S2c_over_S1", "StuckPlannedC", "Stuck methods the combined split has a plan for"),
+       ("category3c_over_S1", "CatThreeC", "Category 3 under the combined split, the rescue: \\textbf{H1}"),
+       ("improved_over_slimmable", "Improved", "Improved: injection chosen and cheaper, of what SinewSlim slims: \\textbf{H2}"),
+       ("tied_over_slimmable", "Tied", "Tied on the sum, settled by the tie-break")]
 rows, tier_rows = [], []
 for key, name, label in FIG:
     f = H[key]
@@ -208,8 +208,8 @@ for k, label in CAT:
 write("tab_categories.tex", "\n".join([
     r"\begin{tabular}{>{\raggedright\arraybackslash}p{8.2cm}rrrr}", r"\toprule",
     r"Category of a stuck method & \multicolumn{2}{c}{Injection split} & \multicolumn{2}{c}{Combined split} \\",
-    r" & Count & of S1 & Count & of S1 \\", r"\midrule", *rows, r"\midrule",
-    f"Stuck methods (S1) & {count(POOL['S1'])} & & {count(POOL['S1'])} & \\\\",
+    r" & Count & of stuck & Count & of stuck \\", r"\midrule", *rows, r"\midrule",
+    f"Stuck methods & {count(POOL['S1'])} & & {count(POOL['S1'])} & \\\\",
     r"\bottomrule", r"\end{tabular}", ""]))
 define("catThreeGain", count(POOL["S3c"]["3"] - POOL["S3"]["3"]))
 G = P["category3c_gain_by_injection_reason"]
@@ -627,6 +627,200 @@ CX = X["complexity"]["groups"]
 define("exCogCatFour", dec(CX["category 4"]["standardised"]["cognitive"]))
 define("exCogRescued", dec(CX["category 3"]["standardised"]["cognitive"]))  # the rescue
 define("exCogConventional", dec(CX["categories 1-2"]["standardised"]["cognitive"]))  # a record, or jumps ignored
+define("exCogSlimmable", dec(CX["slimmable"]["standardised"]["cognitive"]))
+define("exCogPerLineCatFour", dec(CX["category 4"]["standardised"]["cognitive_per_line"], 2))
+define("exCogPerLineRescued", dec(CX["category 3"]["standardised"]["cognitive_per_line"], 2))
+define("exCogPerLineConventional", dec(CX["categories 1-2"]["standardised"]["cognitive_per_line"], 2))
+define("exReread", count(X["check"]["reread"]))
+
+# the three root causes, with their repositories
+for g, name in (("indivisible", "Indivisible"), ("data", "Data"), ("control", "Control")):
+    define(f"ex{name}", count(G[g]["n"]))
+    define(f"ex{name}Repos", count(G[g]["repositories"]))
+
+
+def xc(k: str) -> int:
+    return XC[k]["n"]
+
+
+# the switches: long for how many options they have
+SW_SHORT = "indivisible / switch: short cases (each under the cap, too many together)"
+SW_FLAT = "indivisible / switch: flat table (every case 3 lines or fewer)"
+SW_OVER = "indivisible / switch: a case over the cap"
+switches = xc(SW_SHORT) + xc(SW_FLAT) + xc(SW_OVER)
+define("exSwitches", count(switches))
+define("exSwitchesShare", pct(switches / XN))
+define("exSwitchOptions", count(xc(SW_SHORT) + xc(SW_FLAT)))
+define("exSwitchOptionsShare", pct((xc(SW_SHORT) + xc(SW_FLAT)) / XN))
+define("exSwitchShort", count(xc(SW_SHORT)))
+define("exSwitchFlat", count(xc(SW_FLAT)))
+define("exSwitchCaseOver", count(xc(SW_OVER)))
+# the ifs: dispatch chains, or branches that pass values on and jump
+IF_DISPATCH = "indivisible / if: else-if chain (dispatch)"
+IF_PASS = "indivisible / if: passes values on"
+IF_PASSJUMP = "indivisible / if: passes values and jumps"
+IF_JUMP = "indivisible / if: controls flow (jumps out)"
+IF_LEAF = "indivisible / if: branchy leaf (no values out, no jumps)"
+ifs = sum(xc(k) for k in (IF_DISPATCH, IF_PASS, IF_PASSJUMP, IF_JUMP, IF_LEAF))
+define("exIfs", count(ifs))
+define("exIfsShare", pct(ifs / XN))
+define("exIfDispatch", count(xc(IF_DISPATCH)))
+define("exIfPasses", count(xc(IF_PASS) + xc(IF_PASSJUMP)))
+define("exIfLeaf", count(xc(IF_LEAF)))
+define("exIfLeafShare", pct(xc(IF_LEAF) / XN))
+define("exIfNonDispatch", count(ifs - xc(IF_DISPATCH)))
+define("exIfPassOrJump", count(xc(IF_PASS) + xc(IF_PASSJUMP) + xc(IF_JUMP)))
+define("exIfPassOrJumpShare", pct((xc(IF_PASS) + xc(IF_PASSJUMP) + xc(IF_JUMP)) / (ifs - xc(IF_DISPATCH)), 0))
+CXC = X["complexity"]["category4_classes"]  # each class's median length and cognitive complexity
+dense_ifs = [CXC[k] for k in (IF_PASS, IF_PASSJUMP, IF_JUMP)]
+define("exIfDenseLengthLo", count(min(c["length"] for c in dense_ifs)))
+define("exIfDenseLengthHi", count(max(c["length"] for c in dense_ifs)))
+define("exIfDenseCplLo", dec(min(c["cognitive_per_line"] for c in dense_ifs), 2))
+define("exIfDenseCplHi", dec(max(c["cognitive_per_line"] for c in dense_ifs), 2))
+# the control group: where the blocking jump is
+def ctl(where: str) -> int:
+    return sum(v["n"] for k, v in XC.items() if k.startswith("control /") and k.endswith(where))
+
+
+define("exControlLoop", count(ctl(", in a loop")))
+define("exControlTry", count(ctl(", in a try")))
+define("exControlSwitch", count(ctl(", in a switch")))
+define("exControlTop", count(ctl(", in the top level")))
+define("exControlContained", count(contained))
+define("exControlTopReturn", count(xc("control / control: return, in the top level")))
+loop_cpl = [CXC[k]["cognitive_per_line"] for k in XC
+            if k.startswith("control /") and k.endswith(", in a loop") and "nested" not in k]
+define("exCogPerLineLoopLo", dec(min(loop_cpl), 2))
+define("exCogPerLineLoopHi", dec(max(loop_cpl), 2))
+define("exCogPerLineFlat", dec(CXC[SW_FLAT]["cognitive_per_line"], 2))
+define("exCogPerLineShort", dec(CXC[SW_SHORT]["cognitive_per_line"], 2))
+# the limit of five raised: the combined split, SinewSlim alone and the injection split alone
+for k, word in (("6", "Six"), ("7", "Seven"), ("8", "Eight"), ("10", "Ten")):
+    define(f"exLimit{word}N", count(L[k]["combined"]))
+define("exLimitSixConventionalN", count(L["6"]["conventional"]))
+define("exLimitSixConventional", pct(L["6"]["conventional"] / XN))
+rows = [f"{k} & {count(L[k]['combined'])} & {pct(L[k]['combined'] / XN)} & {count(L[k]['conventional'])} & "
+        f"{pct(L[k]['conventional'] / XN)} & {count(L[k]['injection'])} & {pct(L[k]['injection'] / XN)} \\\\"
+        for k in ("5", "6", "7", "8", "10")]
+write("tab_explore_limits.tex", "\n".join([
+    r"\begin{tabular}{lrrrrrr}", r"\toprule",
+    r"Limit & \multicolumn{2}{c}{Combined split has a plan} & \multicolumn{2}{c}{SinewSlim slims} & \multicolumn{2}{c}{Injection split has a plan} \\",
+    r" & Methods & Share & Methods & Share & Methods & Share \\",
+    r"\midrule", *rows, r"\bottomrule", r"\end{tabular}", ""]))
+# the data group: a plan at some limit up to 10, only the blocking body slims, or no plan at 10
+DATA_NONE = "data / data: no plan at 10"
+data_plan = sum(v["n"] for k, v in XC.items() if k.startswith("data / data: plan at"))
+data_body = sum(v["n"] for k, v in XC.items() if k.startswith("data / data: blocking body slims"))
+data_none = xc(DATA_NONE)
+if data_plan + data_body + data_none != G["data"]["n"]:
+    raise SystemExit("the data classes do not add up to the data group: rerun ./step6_explore.sh")
+define("exDataPlan", count(data_plan))
+define("exDataPlanShare", pct(data_plan / G["data"]["n"], 0))
+define("exDataBody", count(data_body))
+define("exDataBodyShare", pct(data_body / G["data"]["n"], 0))
+define("exDataNone", count(data_none))
+define("exDataNoneShare", pct(data_none / G["data"]["n"], 0))
+define("exDataNoneCogPerLine", dec(CXC[DATA_NONE]["cognitive_per_line"], 2))
+define("exDataNoneLength", count(CXC[DATA_NONE]["length"]))
+# concentration
+define("exDispersion", dec(C["dispersion_index"], 1))
+define("exTopTenShare", pct(C["top10_share"]))
+define("exTopTenSizeShare", pct(C["top10_long_share"]))
+define("exTopRepo", repo(C["top1"][0]))
+define("exTopRepoN", count(C["top1"][1]))
+define("exTopRepoShare", pct(C["top1"][1] / XN))
+ARRAY = "indivisible / expression: array initializer"
+define("exArrayTopTen", pct(XC[ARRAY]["top10_share"], 0))
+define("exArrayTopTenSize", pct(XC[ARRAY]["top10_long_share"], 0))
+define("exArrayDispersion", dec(XC[ARRAY]["dispersion_index"], 1))
+define("exFlatDispersion", dec(XC[SW_FLAT]["dispersion_index"], 1))
+define("exIfPassDispersion", dec(XC[IF_PASS]["dispersion_index"], 1))
+NESTED_TRY = "indivisible / nested try over the cap"
+define("exNestedTry", count(xc(NESTED_TRY)))
+define("exNestedTryTopTen", pct(XC[NESTED_TRY]["top10_share"], 0))
+# the classes, by family: tables and literals (TABLES above, long for their data), dense logic, and the rest
+FAMILIES = [
+    ("Tables and literals", [
+        (SW_SHORT, "A switch of short cases, too many together"),
+        (SW_FLAT, "A switch that is a flat table (every case 3 lines or fewer)"),
+        (ARRAY, "An array initialiser"),
+        ("indivisible / expression: long argument list", "A long argument list"),
+        ("indivisible / expression: call chain (builder)", "A builder chain"),
+        ("indivisible / expression: string concatenation", "A string concatenation"),
+        ("indivisible / constructor delegation (the body is only super(...) or this(...))", "A constructor that only delegates"),
+        ("indivisible / a one-statement body (one return or expression)", "A body of one statement")]),
+    ("Dense logic", [
+        ("control / control: break/continue, in a loop", "A break or continue inside a loop"),
+        ("control / control: return, in a loop", "A return inside a loop"),
+        ("control / control: return and break/continue, in a loop", "A return and a break or continue inside a loop"),
+        ("control / control: return, in a try", "A return inside a try"),
+        (IF_PASS, "An if that passes values on"),
+        (IF_PASSJUMP, "An if that passes values on and jumps"),
+        (DATA_NONE, "Too many values at every cut, even at a limit of 10")]),
+    ("Dispatch and nesting", [
+        (IF_DISPATCH, "An else-if chain (dispatch)"),
+        (SW_OVER, "A switch with a case over the cap"),
+        (NESTED_TRY, "A nested try over the cap"),
+        ("indivisible / nested loop over the cap", "A nested loop over the cap")]),
+    ("Data within reach of a higher limit", [
+        ([k for k in XC if k.startswith("data / data: plan at")], "A plan at a limit of 6 to 10"),
+        ([k for k in XC if k.startswith("data / data: blocking body slims")], "Only the blocking body slims, at a limit of 6 to 10")])]
+if set(k for k, _ in FAMILIES[0][1]) != set(TABLES):
+    raise SystemExit("the tables family must be exactly the TABLES classes")
+rows, listed = [], 0
+for family, classes in FAMILIES:
+    keys = [k for k, _ in classes]
+    sub = sum(xc(k) for k in keys if isinstance(k, str)) + sum(xc(j) for k in keys if isinstance(k, list) for j in k)
+    listed += sub
+    rows.append(f"\\textbf{{{family}}} & \\textbf{{{count(sub)}}} & \\textbf{{{pct(sub / XN)}}} & & & & & \\\\")
+    for k, label in classes:
+        if isinstance(k, list):  # several classes together: only their count and share
+            n = sum(xc(j) for j in k)
+            rows.append(f"\\quad {label} & {count(n)} & {pct(n / XN)} & & & & & \\\\")
+            continue
+        c, cx = XC[k], CXC[k]
+        rows.append(f"\\quad {label} & {count(c['n'])} & {pct(c['n'] / XN)} & {count(c['repositories'])} & "
+                    f"{pct(c['top10_share'], 0)} & {pct(c['top10_long_share'], 0)} & {dec(c['dispersion_index'], 1)} & "
+                    f"{dec(cx['cognitive_per_line'], 2)} \\\\")
+rows.append(f"All other classes & {count(XN - listed)} & {pct((XN - listed) / XN)} & & & & & \\\\")
+write("tab_explore_classes.tex", "\n".join([
+    r"\begin{tabular}{>{\raggedright\arraybackslash}p{6.6cm}rrrrrrr}", r"\toprule",
+    r"Class & Methods & Share & Repos. & Top ten & Size predicts & Dispersion & Cognitive per line \\",
+    r"\midrule", *rows, r"\midrule",
+    f"Category 4 & {count(XN)} & & {count(C['repositories'])} & {pct(C['top10_share'], 0)} & {pct(C['top10_long_share'], 0)} & "
+    f"{dec(C['dispersion_index'], 1)} & {dec(CX['category 4']['standardised']['cognitive_per_line'], 2)} \\\\",
+    r"\bottomrule", r"\end{tabular}", ""]))
+# the domains: keyword-coded from each repository's description and topics, crude
+DOM = X["domains"]
+define("exRateOverall", ci(DOM["overall"]["population"], DOM["overall"]["interval"]))
+DOMAIN_MACRO = {"games and graphics": "Games", "numeric, scientific and ML": "Numeric", "language tooling": "Tooling",
+                "distributed systems and middleware": "Distributed", "learning and examples": "Learning"}
+rows = []
+for name, d in sorted(DOM["by_domain"].items(), key=lambda kv: -kv[1]["population"]):
+    if name in DOMAIN_MACRO:
+        define(f"exRate{DOMAIN_MACRO[name]}", ci(d["population"], d["interval"]))
+    g = d["groups"]
+    rows.append(f"{name[0].upper() + name[1:]} & {count(d['repositories'])} & {count(d['long'])} & {count(d['c4'])} & "
+                f"{pct(d['population'])} {interval(d['interval'])} & {pct(g['indivisible'] / d['c4'], 0)} & "
+                f"{pct(g['data'] / d['c4'], 0)} & {pct(g['control'] / d['c4'], 0)} \\\\")
+write("tab_explore_domains.tex", "\n".join([
+    r"\begin{tabular}{>{\raggedright\arraybackslash}p{4.6cm}rrrlrrr}", r"\toprule",
+    r"Domain & Repos. & Long & Category 4 & Rate (95\% CI) & Indivisible & Data & Control \\",
+    r"\midrule", *rows, r"\midrule",
+    f"All & {count(sum(d['repositories'] for d in DOM['by_domain'].values()))} & {count(sum(d['long'] for d in DOM['by_domain'].values()))} & "
+    f"{count(sum(d['c4'] for d in DOM['by_domain'].values()))} & {pct(DOM['overall']['population'])} {interval(DOM['overall']['interval'])} & "
+    f"{pct(G['indivisible']['n'] / XN, 0)} & {pct(G['data']['n'] / XN, 0)} & {pct(G['control']['n'] / XN, 0)} \\\\",
+    r"\bottomrule", r"\end{tabular}", ""]))
+define("exNumericDataShare", pct(DOM["by_domain"]["numeric, scientific and ML"]["groups"]["data"] / DOM["by_domain"]["numeric, scientific and ML"]["c4"], 0))
+define("exToolingIndivisibleShare", pct(DOM["by_domain"]["language tooling"]["groups"]["indivisible"] / DOM["by_domain"]["language tooling"]["c4"], 0))
+# the blocking statement as a method of its own: literals take data in and call nothing internal (catchment),
+# logic statements hand on to other internal code (junction); read within the call-resolution budget
+WB = X["complexity_within_budget"]["category4_classes"]
+define("exLitCatchmentArray", pct(WB[ARRAY]["statement_roles"]["catchment"], 0))
+define("exLitCatchmentConcat", pct(WB["indivisible / expression: string concatenation"]["statement_roles"]["catchment"], 0))
+define("exLogicJunctionCase", pct(WB[SW_OVER]["statement_roles"]["junction"], 0))
+define("exLogicJunctionTry", pct(WB[NESTED_TRY]["statement_roles"]["junction"], 0))
+define("exBudgetRepos", ", ".join(f"\\texttt{{{repo(r.replace('__', '/'))}}}" for r in X["complexity"]["budget_exhausted"]))
 
 # ---------------------------------------------------------------------------------------------
 os.makedirs(OUT, exist_ok=True)
