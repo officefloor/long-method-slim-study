@@ -265,36 +265,65 @@ example \sig{build} below shows. Which of them the long methods of the
 sample contain is what Section~\ref{sec:results} measures.
 
 \paragraph{Two worked examples.} Figure~\ref{fig:examples} gives two methods
-written for this paper and priced by the pinned instrument; the costs below
-are the instrument's, and the comments in the code mark the cuts it reports,
-\sig{EXTRACT} for a piece SinewSlim would extract and \sig{FUNCTION} for a
-function of the split. The first, \sig{describe}, is \exaLines{} code lines
-of guard clauses: every run of more than a line or two contains a
-\sig{return}, so no single-exit piece is feasible and SinewSlim reports the
-obstacle \emph{\exaSinewObstacle}. Its jumps ignored, it would slim, so the
-plan puts it in category 1 (below), conventionally fixable. The injection
-split takes it apart as it stands: \exaInjFunctions{} functions, the first
-holding the four guards, each early return a flow to the method's end, and
-the second holding the rest; nothing is carried, and the total is
-\exaInjTotal{}, two functions and two flows. The second, \sig{build}, is
-\exbLines{} lines in three stages, the first of which produces two values,
-\sig{records} and \sig{skipped}, read by what follows, and a parameter,
-\sig{options}, read throughout. SinewSlim slims it by extracting the two
-loops: a piece of \exbPieceOneLines{} lines taking \exbPieceOneInputs{} and
-handing back \exbPieceOneOutputs{}, seam \exbSinewWidth{}, and one of
-\exbPieceTwoLines{} lines taking \exbPieceTwoInputs{}; \exbSinewValuesPriced{}
-values priced and \exbSinewPieces{} pieces, a cost of \exbSinewCost{}, so the
-method as one function costs \exbSinewCost{} plus 1. The injection split
-alone, choosing by worst seam first, makes \exbInjFunctions{} functions for a
-total of \exbInjTotal{}. The combined split, choosing by the total, cuts
-before the second stage: \exbCombFunctions{} functions with \exbCombEdges{}
-flow, the second declaring \exbCombDeclares{}, so \exbCombCarried{} values
-priced, a total of \exbCombSum{}, a saving of \exbSavingWrapped{} against
-extraction wrapped as one function and \exbSavingPlain{} against plain
-extraction. The saving is the parameters, \sig{options} priced into each
-piece and \sig{rows} into the first, which the split never prices, and
-\sig{summary}, which extraction separates from the loop that fills it and the
-split keeps with it; against that the split pays 1 for its flow.
+written for this paper and priced by the pinned instrument; the comments in
+the code mark the cuts it reports, \sig{EXTRACT} for a piece SinewSlim would
+extract and \sig{FUNCTION} for a function of the split. The costs below are
+the instrument's, set out term by term under
+Equations~\eqref{eq:extraction} to~\eqref{eq:combined}.
+
+The first, \sig{describe}, is \exaLines{} code lines of guard clauses. Every
+run of more than a line or two contains a \sig{return}, so no single-exit
+piece is feasible: SinewSlim reports the obstacle \emph{\exaSinewObstacle},
+and $C_{\mathrm{ext}}$ has no value. The injection split makes two
+functions, the guards and the rest, each declaring nothing; every early
+return is a flow to the method's end and one flow joins the two:
+\begin{equation*}
+  C_{\mathrm{inj}}(\sig{describe}) \;=\;
+    \underbrace{(\exaInjFunOneDeclares{} + 1)}_{\sig{check}} \;+\;
+    \underbrace{(\exaInjFunTwoDeclares{} + 1)}_{\sig{price}} \;+\;
+    \underbrace{\exaInjEdges{}}_{|E|} \;=\; \exaInjTotal{}.
+\end{equation*}
+Its jumps ignored, the method would slim, so the plan puts it in category 1
+(below), conventionally fixable, and credits the split with it only in the
+post hoc reading.
+
+The second, \sig{build}, is \exbLines{} lines in three stages: the first
+produces \sig{records} and \sig{skipped}, read by what follows, and the
+parameter \sig{options} is read throughout. SinewSlim extracts the two loops,
+\sig{parseRows} taking \exbPieceOneInputs{} and handing back
+\exbPieceOneOutputs{}, and \sig{summarise} taking \exbPieceTwoInputs{} and
+handing back \exbPieceTwoOutputs{}:
+\begin{equation*}
+  C_{\mathrm{ext}}(\sig{build}) \;=\;
+    \underbrace{(\exbPieceOneInputsN{} + r(\exbPieceOneOutputsN{}) + 1)}_{\sig{parseRows}} \;+\;
+    \underbrace{(\exbPieceTwoInputsN{} + r(\exbPieceTwoOutputsN{}) + 1)}_{\sig{summarise}} \;=\; \exbSinewCost{},
+  \qquad
+  C_{\mathrm{comb}}(\text{one function}) \;=\; \exbSinewCost{} + 1 \;=\; \exbSinewCostPlusOne{}.
+\end{equation*}
+The widest piece is \sig{parseRows}, seam \exbSinewWidth{}. The injection
+split alone, choosing by worst seam first, cuts at both stage boundaries so
+that no function declares more than one value, and pays a flow at each:
+\begin{equation*}
+  C_{\mathrm{inj}}(\sig{build}) \;=\;
+    (\exbInjFunOneDeclares{} + 1) + (\exbInjFunTwoDeclares{} + 1) + (\exbInjFunThreeDeclares{} + 1)
+    \;+\; \underbrace{\exbInjEdges{}}_{|E|} \;=\; \exbInjTotal{}.
+\end{equation*}
+The combined split, choosing by the total, cuts once, before the second
+stage; the second function declares \exbCombDeclares{}, and both bodies are
+at or under the target, so no piece is extracted inside either:
+\begin{equation*}
+  C_{\mathrm{comb}}(\sig{build}) \;=\;
+    \underbrace{(\exbCombFunOneDeclares{} + 1)}_{\sig{parse}} \;+\;
+    \underbrace{(\exbCombFunTwoDeclares{} + 1)}_{\sig{summarise}} \;+\;
+    \underbrace{\exbCombEdges{}}_{|E|} \;+\;
+    \underbrace{0}_{\sum_f C_{\mathrm{ext}}(S_f)} \;=\; \exbCombSum{},
+\end{equation*}
+a saving of \exbSavingWrapped{} against extraction wrapped as one function
+and \exbSavingPlain{} against plain extraction. The saving is the
+parameters, \sig{options} priced into each piece and \sig{rows} into the
+first, which the split never prices, and \sig{summary}, which extraction
+separates from the loop that fills it and the split keeps with it; against
+that the split pays 1 for its flow.
 
 \begin{figure}[tbp]
 \begin{minipage}[t]{0.47\textwidth}

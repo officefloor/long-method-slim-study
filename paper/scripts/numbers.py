@@ -566,6 +566,10 @@ for m in EXS["methods"]:
     define(f"{name.lower()}CombEdges", count(c["edges"]))
     define(f"{name.lower()}CombCarried", count(sum(len(f["declares"]) for f in c["functions"])))
     define(f"{name.lower()}CombDeclares", ", ".join(f"\\texttt{{{v}}}" for f in c["functions"] for v in f["declares"]) or "nothing")
+    # each function's d_f, for the costs set out term by term under the equations
+    for split, fns in (("Inj", o["functions"]), ("Comb", c["functions"])):
+        for i, fn in enumerate(fns):
+            define(f"{name.lower()}{split}Fun{'One Two Three Four'.split()[i]}Declares", count(len(fn["declares"])))
     if ss["status"] in analyse_STUCK:
         define(f"{name.lower()}SinewObstacle", ss["obstacle"])
         define(f"{name.lower()}Category", count(m["category"]["number"]))
@@ -574,6 +578,7 @@ for m in EXS["methods"]:
         define(f"{name.lower()}SinewWidth", count(ss["width"]))
         define(f"{name.lower()}SinewPieces", count(ss["pieces"]))
         define(f"{name.lower()}SinewRemainder", count(ss["remainder"]))
+        define(f"{name.lower()}SinewCostPlusOne", count(ss["cost"] + 1))  # the method as one function
         define(f"{name.lower()}SavingWrapped", count(ss["cost"] + 1 - c["sum"]))
         define(f"{name.lower()}SavingPlain", count(ss["cost"] - c["sum"]))
         pieces = EXP[m["signature"]]["pieces"]
@@ -584,6 +589,8 @@ for m in EXS["methods"]:
             define(f"{name.lower()}Piece{word}Lines", count(pc["hi"] - pc["lo"] + 1))
             define(f"{name.lower()}Piece{word}Inputs", ", ".join(f"\\texttt{{{v}}}" for v in pc["inputs"]) or "nothing")
             define(f"{name.lower()}Piece{word}Outputs", ", ".join(f"\\texttt{{{v}}}" for v in pc["outputs"]) or "nothing")
+            define(f"{name.lower()}Piece{word}InputsN", count(len(pc["inputs"])))  # i_p
+            define(f"{name.lower()}Piece{word}OutputsN", count(len(pc["outputs"])))  # o_p
             define(f"{name.lower()}Piece{word}Cost", count(len(pc["inputs"]) + (len(pc["outputs"]) if len(pc["outputs"]) <= 1 else 3 * len(pc["outputs"])) + 1))
         define(f"{name.lower()}SinewValuesPriced", count(sum(len(pc["inputs"]) + len(pc["outputs"]) for pc in pieces)))
 
