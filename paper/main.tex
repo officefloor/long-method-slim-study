@@ -406,9 +406,13 @@ over long methods \cite{haas2016}. Maruyama's block-based slicing
 \cite{maruyama2001} and Komondoor and Horwitz's semantics-preserving
 extraction \cite{komondoor2000} take runs that are not contiguous or that
 jump, which is where a single-exit piece fails; IDEs do the same for one
-early return by handing back a flag the caller tests. Each of these proposes
-cuts; none counts what no cut can do across a corpus, and that is the count
-this paper makes, under one tool's rules. Studies of refactoring as practised
+early return by handing back a flag the caller tests. JExtract is the
+nearest in what it considers: it shares SinewSlim's candidate space,
+contiguous runs with one exit, but scores a run by how far its variables,
+types and packages differ from the rest of the method and returns the best
+three, so it has no length target and no verdict when nothing is feasible.
+Each of these proposes cuts; none counts what no cut can do across a corpus,
+and that is the count this paper makes, under one tool's rules. Studies of refactoring as practised
 find that most of it is done by hand and that Extract Method is among the
 refactorings developers apply most \cite{murphyhill2012}; asked why,
 developers name reuse and the readability of a long method
