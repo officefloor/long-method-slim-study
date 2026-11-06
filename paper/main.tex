@@ -314,10 +314,15 @@ handing back \exbPieceTwoOutputs{}:
 \end{equation*}
 The widest piece is \sig{parseRows}, seam \exbSinewWidth{}. The injection
 split alone, choosing by worst seam first, cuts at both stage boundaries so
-that no function declares more than one value, and pays a flow at each:
+that no function declares more than one value, and pays a flow at each: the
+first function holds the two declarations and declares nothing, the second
+holds both loops and declares \sig{records}, and the third builds the report
+and declares \sig{summary}:
 \begin{equation*}
   C_{\mathrm{inj}}(\sig{build}) \;=\;
-    (\exbInjFunOneDeclares{} + 1) + (\exbInjFunTwoDeclares{} + 1) + (\exbInjFunThreeDeclares{} + 1)
+    \underbrace{(\exbInjFunOneDeclares{} + 1)}_{\text{declarations}} \;+\;
+    \underbrace{(\exbInjFunTwoDeclares{} + 1)}_{\text{the loops}} \;+\;
+    \underbrace{(\exbInjFunThreeDeclares{} + 1)}_{\text{the report}}
     \;+\; \underbrace{\exbInjEdges{}}_{|E|} \;=\; \exbInjTotal{}.
 \end{equation*}
 The combined split, choosing by the total, cuts once, before the second
