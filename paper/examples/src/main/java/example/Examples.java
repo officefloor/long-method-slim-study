@@ -7,7 +7,7 @@ public class Examples {
     // Example A: guard clauses. Stuck under single-exit extraction: every cut contains a return.
     // The injection split: two functions, nothing carried; each return is a flow to the end.
     public String describe(Order order, Customer customer, Catalog catalog) {
-        // FUNCTION check(Order order, Customer customer): a return ends the flow, else next
+        // FUNCTION check: a return ends the flow, else next
         if (order == null) {
             return "no order";
         }
@@ -20,8 +20,8 @@ public class Examples {
         if (!customer.isActive()) {
             return "inactive customer";
         }
-        // END FUNCTION: passes nothing on; each return ends the flow
-        // FUNCTION price(Order order, Customer customer, Catalog catalog)
+        // END FUNCTION: passes nothing on
+        // FUNCTION price: declares nothing
         int total = catalog.totalOf(order.getLines());
         if (total == 0) {
             return "free";
@@ -40,16 +40,19 @@ public class Examples {
             return currency + " " + due;
         }
         return currency + " " + due + " (" + note + ")";
-        // END FUNCTION: passes nothing on; returns the String
+        // END FUNCTION: returns the String
     }
 
     // Example B: a pipeline. Three stages; the first hands two values on, and a parameter is read throughout.
-    // SinewSlim: the two loops extracted (EXTRACT). The combined split: two functions (FUNCTION).
+    // SinewSlim: the two loops extracted (EXTRACT). The combined split: two functions (FUNCTION). The injection split alone: three (INJECTION).
     public Report build(List<String> rows, Options options) {
-        // FUNCTION parse(List<String> rows, Options options): next, carrying records and skipped
+        // FUNCTION parse: declares nothing
+        // INJECTION prepare: declares nothing
         List<Record> records = new java.util.ArrayList<>();
         int skipped = 0;
-        // EXTRACT to method int parseRows(List<String> rows, Options options, List<Record> records)
+        // END INJECTION: passes on records
+        // INJECTION tally: declares records
+        // EXTRACT parseRows(rows, options, records)
         for (String row : rows) {
             String[] cells = row.split(options.separator());
             if (cells.length < 3) {
@@ -65,9 +68,9 @@ public class Examples {
         }
         // END EXTRACT: returns skipped
         // END FUNCTION: passes on records, skipped
-        // FUNCTION summarise(List<Record> records, int skipped, Options options)
+        // FUNCTION summarise: declares records, skipped
         Summary summary = new Summary();
-        // EXTRACT to method void summarise(Options options, List<Record> records, Summary summary)
+        // EXTRACT summarise(options, records, summary)
         for (Record record : records) {
             if (record.getValue() < options.minimum()) {
                 summary.addInvalid(record.getKey());
@@ -80,6 +83,8 @@ public class Examples {
         }
         // END EXTRACT: returns nothing
         summary.setSkipped(skipped);
+        // END INJECTION: passes on summary
+        // INJECTION report: declares summary
         Report report = new Report();
         report.setTitle(options.title() + ": " + summary.getCount() + " records");
         report.setTotal(summary.getTotal());
@@ -91,7 +96,8 @@ public class Examples {
         report.setFormat(options.format());
         report.finish();
         return report;
-        // END FUNCTION: passes nothing on; returns report
+        // END INJECTION: returns report
+        // END FUNCTION: returns report
     }
 
     interface Order { List<Line> getLines(); }

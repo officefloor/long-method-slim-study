@@ -16,8 +16,8 @@
 % also come through the script. The only exceptions are the plan's own dates
 % in the Introduction and the registration commit below; a reader checks the
 % commit in the public repository, or reruns the steps. The worked examples'
-% code is examples/src/main/java/example/Examples.java, read in by line range; its EXTRACT
-% and FUNCTION comments mark the cuts the tools report (examples/scan.json and
+% code is examples/src/main/java/example/Examples.java, read in by line range; its EXTRACT,
+% FUNCTION and INJECTION comments mark the cuts the tools report (examples/scan.json and
 % examples/sinewslim-pieces.json) and are not code lines.
 % Code, files and commands are named in the ancillary README, not here.
 %
@@ -278,9 +278,11 @@ Section~\ref{sec:results} measures.
 
 \paragraph{Two worked examples.} Figure~\ref{fig:examples} gives two methods
 written for this paper and priced by the pinned instrument; the comments in
-the code mark the cuts it reports, \sig{EXTRACT} for a piece SinewSlim would
-extract and \sig{FUNCTION} for a function of the split. The costs below are
-the instrument's, set out term by term under
+the code mark the cuts it reports and name each piece and function as the
+equations below do: \sig{EXTRACT} for a piece SinewSlim would extract,
+\sig{FUNCTION} for a function of the combined split, and \sig{INJECTION}
+for a function of the injection split alone where that differs. The costs
+below are the instrument's, set out term by term under
 Equations~\eqref{eq:extraction} to~\eqref{eq:combined}.
 
 The first, \sig{describe}, is \exaLines{} code lines of guard clauses. Every
@@ -314,15 +316,16 @@ handing back \exbPieceTwoOutputs{}:
 \end{equation*}
 The widest piece is \sig{parseRows}, seam \exbSinewWidth{}. The injection
 split alone, choosing by worst seam first, cuts at both stage boundaries so
-that no function declares more than one value, and pays a flow at each: the
-first function holds the two declarations and declares nothing, the second
-holds both loops and declares \sig{records}, and the third builds the report
-and declares \sig{summary}:
+that no function declares more than one value, and pays a flow at each. Its
+three functions are marked \sig{INJECTION} in the figure: \sig{prepare}
+holds the two declarations and declares nothing, \sig{tally} holds both
+loops and declares \sig{records}, and \sig{report} builds the report and
+declares \sig{summary}:
 \begin{equation*}
   C_{\mathrm{inj}}(\sig{build}) \;=\;
-    \underbrace{(\exbInjFunOneDeclares{} + 1)}_{\text{declarations}} \;+\;
-    \underbrace{(\exbInjFunTwoDeclares{} + 1)}_{\text{the loops}} \;+\;
-    \underbrace{(\exbInjFunThreeDeclares{} + 1)}_{\text{the report}}
+    \underbrace{(\exbInjFunOneDeclares{} + 1)}_{\sig{prepare}} \;+\;
+    \underbrace{(\exbInjFunTwoDeclares{} + 1)}_{\sig{tally}} \;+\;
+    \underbrace{(\exbInjFunThreeDeclares{} + 1)}_{\sig{report}}
     \;+\; \underbrace{\exbInjEdges{}}_{|E|} \;=\; \exbInjTotal{}.
 \end{equation*}
 The combined split, choosing by the total, cuts once, before the second
@@ -347,9 +350,9 @@ that the split pays 1 for its flow.
 \lstinputlisting[firstline=9,lastline=44]{examples/src/main/java/example/Examples.java}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.5\textwidth}
-\lstinputlisting[firstline=48,lastline=95]{examples/src/main/java/example/Examples.java}
+\lstinputlisting[firstline=48,lastline=101]{examples/src/main/java/example/Examples.java}
 \end{minipage}
-\caption{Two worked examples, priced by the pinned instrument; the comments mark the cuts it reports and are not code lines. Left, \sig{describe}: stuck under single-exit extraction (obstacle \emph{\exaSinewObstacle}); the injection split makes the \exaInjFunctions{} functions marked \sig{FUNCTION}, with \exaInjEdges{} flows, carrying nothing, total \exaInjTotal{}. Right, \sig{build}: SinewSlim extracts the \exbSinewPieces{} pieces marked \sig{EXTRACT}, each to the method named, at a cost of \exbSinewCost{}; the combined split makes the \exbCombFunctions{} functions marked \sig{FUNCTION} with \exbCombEdges{} flow, the second declaring \exbCombDeclares{}, total \exbCombSum{}.}
+\caption{Two worked examples, priced by the pinned instrument; the comments mark the cuts it reports, named as in the equations of the text, and are not code lines. Left, \sig{describe}: stuck under single-exit extraction (obstacle \emph{\exaSinewObstacle}); the injection split and the combined split both make the \exaInjFunctions{} functions marked \sig{FUNCTION}, with \exaInjEdges{} flows, carrying nothing, total \exaInjTotal{}. Right, \sig{build}: SinewSlim extracts the \exbSinewPieces{} pieces marked \sig{EXTRACT}, each to the method named, at a cost of \exbSinewCost{}; the injection split alone makes the \exbInjFunctions{} functions marked \sig{INJECTION} with \exbInjEdges{} flows, total \exbInjTotal{}; the combined split makes the \exbCombFunctions{} functions marked \sig{FUNCTION} with \exbCombEdges{} flow, the second declaring \exbCombDeclares{}, total \exbCombSum{}.}
 \label{fig:examples}
 \end{figure}
 

@@ -5,8 +5,8 @@
   "officefloor_reading": "officefloorslim-split/1",
   "combined_reading": "officefloorslim-split/2",
   "repository": "paper/examples",
-  "commit": "b8bc72eaa76d734221ecc9dc1bbc26a9d15db2c3",
-  "seconds": 0.6,
+  "commit": "86bb9e91247936cac03a2585208175561a30085f",
+  "seconds": 0.7,
   "options": {
     "include": [
       "**/*.java",
@@ -201,15 +201,15 @@
         "functions": [
           {
             "kind": "run",
-            "lo": 50,
-            "hi": 51,
+            "lo": 51,
+            "hi": 52,
             "lines": 2,
             "declares": []
           },
           {
             "kind": "run",
-            "lo": 53,
-            "hi": 82,
+            "lo": 56,
+            "hi": 85,
             "lines": 25,
             "declares": [
               "records"
@@ -217,8 +217,8 @@
           },
           {
             "kind": "run",
-            "lo": 83,
-            "hi": 93,
+            "lo": 88,
+            "hi": 98,
             "lines": 11,
             "declares": [
               "summary"
@@ -252,16 +252,16 @@
         "functions": [
           {
             "kind": "run",
-            "lo": 50,
-            "hi": 65,
+            "lo": 51,
+            "hi": 68,
             "lines": 15,
             "declares": [],
             "pieces": []
           },
           {
             "kind": "run",
-            "lo": 69,
-            "hi": 93,
+            "lo": 72,
+            "hi": 98,
             "lines": 23,
             "declares": [
               "records",
