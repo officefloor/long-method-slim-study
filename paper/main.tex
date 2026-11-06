@@ -247,22 +247,34 @@ construction and is not a finding; a one-function plan is reported as
 \paragraph{What the two models price.} Equations~\eqref{eq:extraction}
 and~\eqref{eq:injection} price the same thing, data crossing a boundary, by
 different rules, and the rules say in advance where each is cheaper.
-Extraction prices a computed value once on its way out of the piece that
-made it (three times, as a field of a record, when a piece hands back two or
-more) and once on its way into each piece that reads it, the remainder being
-free; a method's parameters are priced on the way into each piece that reads
-them; and each piece costs 1. Injection prices a value once in each function
-that declares it, nothing on the way out, and never prices the method's
-parameters or what a function returns; each function costs 1 and each flow
-costs 1. So a boundary that one computed value crosses costs the same both
-ways, an output and an input against a declared value and a flow, and a
-chain of $k$ single-value stages costs within 1 of the same under both. A
-flow is cheaper where several values cross one boundary, where a method's
-parameters are read past the first cut, and where what the last piece hands
-back is the method's own result; it is dearer where a boundary carries
-nothing, since the flow still costs 1. The second of these is what the
-example \sig{build} below shows. Which of them the long methods of the
-sample contain is what Section~\ref{sec:results} measures.
+
+Extraction prices a computed value twice: once on its way out of the piece
+that made it, as an output, and once on its way into each piece that reads
+it, as an input. A piece that hands back two or more values prices each
+three times, as a field of a record. The remainder is free: a value that
+flows back into what stays in the method costs nothing on arrival. A
+method's own parameters are priced like any other input, once into each
+piece that reads them. And each piece costs 1, for its name and its call.
+
+Injection prices a computed value once, in each function that declares it
+as a parameter, and nothing on its way out. A method's parameters are never
+priced, since the framework injects them wherever they are read, and what a
+function returns to the framework is not priced either. Each function costs
+1, and each flow between functions costs 1, whether or not anything crosses
+it.
+
+So a boundary that one computed value crosses costs the same both ways, an
+output and an input against a declared value and a flow, and a chain of $k$
+single-value stages costs within 1 of the same under both. The models part
+in four places. A flow is cheaper where several values cross one boundary,
+each priced once against twice or three times; where a method's parameters
+are read past the first cut, which extraction prices and injection does not;
+and where what the last piece hands back is the method's own result, which
+extraction prices as an output and injection returns for free. It is dearer
+where a boundary carries nothing, since the flow still costs 1 and an empty
+seam costs 0. The second of these is what the example \sig{build} below
+shows. Which of them the long methods of the sample contain is what
+Section~\ref{sec:results} measures.
 
 \paragraph{Two worked examples.} Figure~\ref{fig:examples} gives two methods
 written for this paper and priced by the pinned instrument; the comments in
