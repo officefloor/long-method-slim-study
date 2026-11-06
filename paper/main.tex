@@ -285,18 +285,21 @@ for a function of the injection split alone where that differs. The costs
 below are the instrument's, set out term by term under
 Equations~\eqref{eq:extraction} to~\eqref{eq:combined}.
 
-The first, \sig{describe}, is \exaLines{} code lines of guard clauses. Every
+The first, \sig{describe}, is \exaLines{} code lines of guard clauses, and
+the point of it is that one model has a price and the other has none. Every
 run of more than a line or two contains a \sig{return}, so no single-exit
-piece is feasible: SinewSlim reports the obstacle \emph{\exaSinewObstacle},
-and $C_{\mathrm{ext}}$ has no value. The injection split makes two
-functions, the guards and the rest, each declaring nothing; every early
-return is a flow to the method's end and one flow joins the two:
-\begin{equation*}
-  C_{\mathrm{inj}}(\sig{describe}) \;=\;
+piece is feasible and Equation~\eqref{eq:extraction} has nothing to sum.
+The injection split makes two functions, the guards and the rest, each
+declaring nothing; every early return is a flow to the method's end and one
+flow joins the two:
+\begin{align*}
+  C_{\mathrm{ext}}(\sig{describe}) &\;\text{ has no value: no feasible segmentation } S
+    \text{ (SinewSlim's obstacle: \emph{\exaSinewObstacle}),}\\
+  C_{\mathrm{inj}}(\sig{describe}) &\;=\;
     \underbrace{(\exaInjFunOneDeclares{} + 1)}_{\sig{check}} \;+\;
     \underbrace{(\exaInjFunTwoDeclares{} + 1)}_{\sig{price}} \;+\;
     \underbrace{\exaInjEdges{}}_{|E|} \;=\; \exaInjTotal{}.
-\end{equation*}
+\end{align*}
 Its jumps ignored, the method would slim, so the plan puts it in category 1
 (below), conventionally fixable, and credits the split with it only in the
 post hoc reading.
