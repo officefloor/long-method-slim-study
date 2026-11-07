@@ -796,18 +796,21 @@ statement order and the local variables that carry one stage's product to
 the next, so the control flow and the data flow can be drawn apart, and
 drawn directly; the author's IntelliJ plugin renders such a configuration as
 one diagram \cite{iocc}. Whether a declared flow is easier to follow than
-the method it replaces is a question for a study of comprehension, not this
-one; the \nSeqWay{} methods are where such a study would look. Every method
-here was written by people, before AI coding assistants were in general use;
-whether code written with assistants is stuck more often, or in other ways,
-is a different sample, and this one gives the baseline it would be compared
-against.
+the method it replaces is a question about reading, which no study in the
+programme of Section~\ref{sec:next} measures; the \nSeqWay{} methods are
+where such a study would look, if one is ever made. Every method here was
+written by people, before AI coding assistants were in general use. Whether
+code written with assistants is stuck as often, and in the same ways, is the
+third study of that programme, and the figures here are the baseline it
+compares against.
 
 \section{What the redesign list holds}\label{sec:explore}
 
 Nothing in this section was registered or bears on a registered figure. It
-was read after the results, to choose the next hypotheses, by a separate
-step whose harness, scripts and results are in the study's repository. The
+was read after the results, to decide what the tools should do with the
+methods they stop at, by a separate step whose harness, scripts and results
+are in the study's repository; Section~\ref{sec:next} turns the reading into
+a programme. The
 \catFourC{} category 4 methods, \catFourCShare{} of the stuck methods and
 \exRateOverall{} of the long methods, are those SinewSlim cannot slim and
 the combined split has no plan for. A harness re-read \exReread{} of them
@@ -886,7 +889,8 @@ the most complex of the data classes (\exDataNoneCogPerLine{} per line,
 median \exDataNoneLength{} lines) and need a different split, not a looser
 limit. SinewSlim alone gains at about the same rate (\exLimitSixConventionalN{}
 at six), so a higher limit moves categories 1 to 3 as well as 4, which is
-why the change is a study of its own.
+why the limit is swept as a whole in the second study of
+Section~\ref{sec:next} rather than raised here.
 
 \begin{table}[t]
 \centering\small
@@ -1042,7 +1046,8 @@ every count rests on, five parameters a piece, five carried values a
 function, a trigger of 26 and a target of 25, are fixed points: the trigger
 is the author's own earlier finding, and Section~\ref{sec:explore} shows a
 limit of six gives a plan to \exLimitSix{} of the redesign list, so each
-would move the categories. The split is a projection: none of this code was
+would move the categories; the second study of Section~\ref{sec:next} sweeps
+the limit for that reason. The split is a projection: none of this code was
 written for function injection, so a plan is what the split would cost, not
 what anyone paid, and the migration is not analysed here. The injection
 split's limits decide much: loops and lambda bodies are never cut between
@@ -1097,8 +1102,13 @@ that push and of the commits that follow it, not an independent registry's
 timestamp. A reader who wants more than that has the plan as registered,
 deposited with the data, and the scripts, from which every step from the
 draw to this paper's numbers is repeated without the author. The exploratory reading
-is one pass over one list by its author, its domain coding is by keyword,
-and its hypotheses are hypotheses, not findings. The study is Java only, and
+is one pass over one list by its author, its class thresholds were chosen by
+eye to sort that list and are not yet validated, which is the first study's
+job, and its domain coding is by keyword. The programme of
+Section~\ref{sec:next} is a plan, not a finding: the definition of a god
+method it proposes is the residual of refinements not yet made, and the
+claim that the measures hold on code written with assistants is the
+hypothesis of a study not yet run. The study is Java only, and
 the author created the framework and both products: this is why the sample
 was drawn by a separate tool with a seed fixed in the plan, why every cost
 is the products' and fixed before the plan, why the two totals are never
@@ -1123,8 +1133,7 @@ contained in a method and lifted into pieces, because a value crossing a
 boundary is priced once as a declared value and twice as an output and an
 input, and a parameter read throughout is priced by extraction alone. Those
 pipelines are \popSeqWay{} of the long methods (\popSeqWayStrict{} against
-plain extraction), and are where a study of how a declared flow is read
-would look. The quarter of the stuck methods that no split takes apart is,
+plain extraction). The quarter of the stuck methods that no split takes apart is,
 on an exploratory reading, a third tables and literals that are long without
 being complex, and otherwise dense logic blocked by a jump inside a loop or
 \sig{try}, by an \sig{if} whose branches pass values on, or by more values
