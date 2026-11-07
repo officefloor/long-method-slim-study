@@ -951,7 +951,9 @@ its class accept it, the tables first, since if reviewers do not call a
 table a long method the trigger itself changes.
 
 \paragraph{Study 2: a refinement per class, and what is left.} Each class
-gets the change that reaches it, tested on the methods already listed:
+gets the change that reaches it, tested on the methods already listed.
+Table~\ref{tab:rules} gives the classes of Table~\ref{tab:explore-classes}
+with the rule the harness finds each by and what the study does with it:
 named exits for a jump inside a loop, \sig{try} or \sig{switch}
 (\exControlContained{} methods); the branches of an \sig{if} that passes
 values on as functions with the value as the flow's argument
@@ -966,6 +968,43 @@ that needs no human judgement: a method over the cap that no split at the
 chosen limit and no rule-following rewrite takes apart. The hypothesis is
 that the residual is under one in a hundred long methods, and dense logic
 rather than data.
+
+\begin{table}[tbp]
+\centering\small
+\caption{The classes of the redesign list, the rule the exploratory harness finds each by, and what the second study does with it. The root cause is the instrument's reason: a statement over the cap that nothing inside can move (\emph{indivisible}), more than five carried values in every plan (\emph{data}), or a jump crossing every cut (\emph{control}); a control method whose jump crosses no cut moves to indivisible. The rules are applied in the order listed within each family, to the innermost statement over the cap; a cut is a boundary between statements.}
+\label{tab:rules}
+\fitwidth{\begin{tabular}{>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{7.0cm}>{\raggedright\arraybackslash}p{4.9cm}}
+\toprule
+Class & Rule & Refinement \\
+\midrule
+\multicolumn{3}{l}{\emph{Tables and literals} (indivisible)} \\
+A constructor that only delegates & The body is a single \sig{super(\ldots)} or \sig{this(\ldots)} call & \multirow{8}{4.9cm}{Out of the trigger, by the first study: a table to leave in place or move to configuration} \\
+A body of one statement & One top-level statement that holds no others: a return or an expression & \\
+A switch that is a flat table & A \sig{switch} with every case three lines or fewer & \\
+A switch of short cases & A \sig{switch} with no case over the cap and a case over three lines & \\
+An array initialiser & An expression whose array initialiser spans at least half its lines & \\
+A builder chain & An expression with a chain of four or more calls & \\
+A string concatenation & An expression concatenating five or more string literals & \\
+A long argument list & An expression with a call of eight or more arguments & \\
+\midrule
+\multicolumn{3}{l}{\emph{Dense logic} (control and data)} \\
+A break or continue inside a loop; a return inside a loop; both & The blocking jump leaves a loop, or targets a loop or switch nested in it; by the kind of jump & Named exits: the jump becomes the function's named exit, wired in configuration \\
+A return inside a try & The same, with a \sig{try} & The same \\
+An if that passes values on & An \sig{if} with fewer than two \sig{else if} arms, values set in its branches read after it, and no jump leaving it & The branches become functions, the value the flow's argument \\
+An if that passes values on and jumps & The same, with a jump leaving it & The same \\
+Too many values at every cut, even at a limit of ten & The instrument's reason is carried values, and the combined split has no plan at any limit up to ten & A different split, not a looser limit; what the sweep leaves \\
+\midrule
+\multicolumn{3}{l}{\emph{Dispatch and nesting} (indivisible)} \\
+An else-if chain & An \sig{if} with two or more \sig{else if} arms & Classed and reported by the first study; no refinement \\
+A switch with a case over the cap & A \sig{switch} with a case over the cap & The case extracted as a method of its own \\
+A nested try or loop over the cap & The innermost statement over the cap is a \sig{try} or a loop whose body nothing can move & Classed and reported by the first study; no refinement \\
+\midrule
+\multicolumn{3}{l}{\emph{Data within reach of a higher limit} (data)} \\
+A plan at a limit of 6 to 10 & The combined split has a plan at the first limit from six to ten & The limit swept from three to ten over the whole population \\
+Only the blocking body slims at 6 to 10 & No plan at ten, but SinewSlim slims the blocking statement as a body of its own at some limit from six to ten & The same \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \paragraph{Study 3: the measures on code written with assistants.} A
 sample drawn by the same design from repositories whose code was written
