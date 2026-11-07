@@ -940,33 +940,40 @@ figures do not depend on call resolution.
 The redesign list is where both tools stop, and Section~\ref{sec:explore}
 says it is not one thing. Three studies follow from it, each to be
 registered as this one was, by a dated commit of its plan, seed and reading
-rule in a public repository before its sample is drawn. The first moves the
-exploratory classes into the instrument as rules with fixed thresholds, so
-that a method the split cannot plan is reported with its class and the
-advice that fits it, and tests two things: that a fresh sample drawn the
-same way gives the same class shares, within the intervals here, and that
-reviewers shown a method with its class accept it, the tables first, since
-if reviewers do not call a table a long method the trigger itself changes.
-The second gives each class the change that reaches it, tested on the
-methods already listed: named exits for a jump inside a loop, \sig{try} or
-\sig{switch} (\exControlContained{} methods); the branches of an \sig{if}
-that passes values on as functions with the value as the flow's argument
+rule in a public repository before its sample is drawn.
+
+\paragraph{Study 1: the classes as rules.} The exploratory classes move
+into the instrument as rules with fixed thresholds, so that a method the
+split cannot plan is reported with its class and the advice that fits it.
+Two hypotheses: that a fresh sample drawn the same way gives the same class
+shares, within the intervals here; and that reviewers shown a method with
+its class accept it, the tables first, since if reviewers do not call a
+table a long method the trigger itself changes.
+
+\paragraph{Study 2: a refinement per class, and what is left.} Each class
+gets the change that reaches it, tested on the methods already listed:
+named exits for a jump inside a loop, \sig{try} or \sig{switch}
+(\exControlContained{} methods); the branches of an \sig{if} that passes
+values on as functions with the value as the flow's argument
 (\exIfPasses{}); and for data coupling (\exData{}) the limit of five swept
-from three to ten over the whole population, since Section~\ref{sec:explore}
-shows a higher limit moves categories 1 to 3 as well as 4. Each refinement
-is read by how many of its class become slimmable and by how cognitive
-complexity per line moves, since a rewrite that slims by growing denser has
-not helped. What is left when every class has had its refinement is the
-proposal for a definition of a god method that needs no human judgement, a
-method over the cap that no split at the chosen limit and no rule-following
-rewrite takes apart, expected to be under one in a hundred long methods and
-to be dense logic rather than data. The third draws a sample by the same
-design from repositories whose code was written after assistants were in
-general use, scans it with the refined instrument, and compares the long
-share, the stuck share, the class shares and the residual with the figures
-here, which are its baseline. The claim is bounded to decomposition: the
-measures say nothing about how methods couple to one another or whether the
-code will change well.
+from three to ten over the whole population, since
+Section~\ref{sec:explore} shows a higher limit moves categories 1 to 3 as
+well as 4. Each refinement is read by how many of its class become
+slimmable and by how cognitive complexity per line moves, since a rewrite
+that slims by growing denser has not helped. What is left when every class
+has had its refinement is the proposal for a definition of a god method
+that needs no human judgement: a method over the cap that no split at the
+chosen limit and no rule-following rewrite takes apart. The hypothesis is
+that the residual is under one in a hundred long methods, and dense logic
+rather than data.
+
+\paragraph{Study 3: the measures on code written with assistants.} A
+sample drawn by the same design from repositories whose code was written
+after assistants were in general use, scanned with the refined instrument,
+and its long share, stuck share, class shares and residual compared with
+the figures here, which are its baseline. The claim is bounded to
+decomposition: the measures say nothing about how methods couple to one
+another or whether the code will change well.
 
 \section{Threats to validity}\label{sec:threats}
 
