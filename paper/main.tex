@@ -85,9 +85,9 @@ framework injects and sequences, an early return ends a function, and a
 function hands on several values. The framework's author pre-registered a
 test of whether it takes apart what extraction cannot. A stratified random
 sample of \nUsable{} open-source Java repositories, each pinned before AI
-coding assistants were in general use, was scanned by released tools with
-cost models fixed before the plan: \nMethods{} methods, \nLong{} of them
-long. Single-exit extraction cannot slim \stuckShare{} of the long methods.
+coding assistants were in general use, was scanned by released tools whose
+cost models were fixed before the sample was drawn: \nMethods{} methods,
+\nLong{} of them long. Single-exit extraction cannot slim \stuckShare{} of the long methods.
 The registered hypothesis, that at least a quarter of those stuck methods are
 ones only function injection takes apart, is refuted: \ciCatThreeC{}. Nearly
 half of the stuck methods are early-return methods the plan counts as
@@ -97,11 +97,11 @@ less for \popImproved{} against extraction wrapped as one function and
 \popImprovedStrict{} against plain extraction, almost always as a straight
 sequence of functions. An exploratory reading of the quarter of the stuck
 methods that neither takes apart finds a third of it tables and literals,
-long for their data rather than their logic, and the rest blocked by jumps
-inside loops and by values too many for any cut. A programme of three
-registered studies follows: the classes as rules in the tools, a refinement
-per class down to the methods that need redesign, and the measures tried on
-code written with AI assistants.
+long for their data rather than their logic, and most of the rest blocked by
+a jump inside a loop, by a nested statement too large to cut, or by values
+too many for any cut. Three registered studies are proposed: the classes as
+rules in the tools, a refinement per class, and the same measures on code
+written with AI assistants.
 \end{abstract}
 
 \section{Introduction}
@@ -126,14 +126,14 @@ reader should follow. These methods are called \emph{stuck} here, and stuck
 means stuck under extraction as SinewSlim models it: one exit, one output and
 at most five parameters a piece. The first finding of this paper is the count
 of them: on \nUsable{} repositories, \stuckShare{} of the long methods are
-stuck, about one in five.
+stuck, between a fifth and a quarter.
 
 Function injection cuts a method differently. In OfficeFloor, a framework the
 author created, a function is an ordinary Java method whose arguments the
 framework supplies, as dependency injection does \cite{fowler2004}, and whose
 next function the framework chooses: the developer writes the pieces and the
 wiring between them, and the framework sequences them. An early return
-becomes the end of a function followed by a flow; an \sig{if} can become a
+becomes a flow from its function to the method's end; an \sig{if} can become a
 decision with a flow per branch; a function hands on several values, because
 the next function asks the framework for them; the instrument used here lets
 a function take up to five such values as parameters. So a method extraction
@@ -142,7 +142,7 @@ what a reader should not take on trust from the framework's author, and this
 paper is the pre-registered test of it: the sample's seed, the hypotheses,
 the bar and the rule for reading the result were committed before any
 repository of the sample was read, every cost comes from released products
-whose cost models were fixed before the plan, and every figure is reported
+whose cost models were fixed at or before registration, and every figure is reported
 whichever way it points. Each repository of the sample is pinned to its last
 commit before \planAsOf{}, six months before GitHub Copilot's technical
 preview of 29 June 2021 \cite{copilot2021}, so that no method in the sample
@@ -155,17 +155,15 @@ injection takes apart a quarter of them, which it fails: \ciCatThreeC{}, the
 bar \hOneBarGap{} points above the interval, with a reading, not registered,
 of where the shortfall sits. An estimate of how often, where extraction would
 do, the split a developer would make chooses injection and costs less under
-cost models fixed before the plan, with the shape of the plans it chooses and
-the mechanism, derived from the two cost models, that decides them. And an
-exploratory reading of the quarter of the stuck methods that no split takes
-apart, from which a programme of three registered studies is set out: the
-classes as rules in the tools, a refinement per class down to the methods
-that need redesign, and the measures tried on code written with AI
-assistants. Every reason the split fails and every method where it does worse are in
+cost models fixed at or before registration, with the shape of the plans it
+chooses and the mechanism, derived from the two cost models, that decides
+them. And an exploratory reading of the quarter of the stuck methods that no
+split takes apart, from which three further studies are proposed. Every
+reason the split fails and every method where it does worse are in
 the replication package, from which every figure here is regenerated by
 script.
 
-\section{Background}
+\section{Background}\label{sec:background}
 
 \paragraph{Extraction, and its cost.} SinewSlim reads a method's facts (its
 statements, the values each declares, reads and writes, the jumps that leave
@@ -183,8 +181,10 @@ extraction cost of a segmentation is
 \end{equation}
 A run is feasible with $i_p \le 5$, $o_p \le 1$ and no jump leaving it other
 than a trailing return. The inputs count every value a piece reads that was
-set before it, the method's own parameters included; the remainder, what is
-left in the method, is not priced. The search takes the segmentation with the
+set before it, the method's own parameters included, except a value declared
+before the piece with no value or a literal one and first used inside it,
+which moves into the piece; the remainder, what is left in the method, is
+not priced. The search takes the segmentation with the
 smallest worst seam $\max_{p} (i_p + r(o_p))$, then the fewest pieces $|S|$,
 then the smallest $C_{\mathrm{ext}}$: it minimises the widest cut first and
 the total last, so SinewSlim's segmentation is not in general the one of
@@ -209,11 +209,14 @@ method that $f$ declares as its parameters, so that a value used by several
 later functions costs 1 in each function that declares it; values from
 outside the method, its parameters and whatever the framework injects, are
 free and not counted, and what a function returns to the framework is not
-counted either. Each function costs 1 and each edge, a flow between
+counted either; a value declared earlier with no value or a literal one and
+first used inside the function moves into it, as into SinewSlim's pieces,
+and is not declared. Each function costs 1 and each edge, a flow between
 functions, costs 1; a function may carry at most five values, $d_f \le 5$. A
-\sig{return} ends a function, a \sig{throw} becomes an escalation, and an
-\sig{if} or \sig{switch} may become a decision function in $F$ whose branches
-are edges in $E$. Loops, lambda bodies and labelled statements are never cut
+\sig{return} before a function's end is one flow to the method's end,
+however many such returns the function holds; a \sig{throw} becomes an
+escalation; and an \sig{if} or \sig{switch} may become a decision function
+in $F$ whose branches are edges in $E$. Loops, lambda bodies and labelled statements are never cut
 between functions. The injection split chooses among feasible partitions by
 SinewSlim's own rule: the smallest worst seam $\max_f d_f$, then the fewest
 functions, then the smallest $C_{\mathrm{inj}}$. Its worst seam is the
@@ -225,7 +228,8 @@ injects them.
 \paragraph{The combined split.} No OfficeFloor developer would wire a
 ten-line calculation through the framework as functions and flows when
 extracting a method would do. The combined split is what a developer would
-do: functions where the flow divides, extracted methods inside them. Its
+do: functions where the flow divides, extracted methods inside them, its
+rule settled on the day of registration, before the sample was drawn. Its
 outer search is the injection split's; a function whose body is over the
 target is allowed when SinewSlim's search, under its defaults, slims that
 body as a method of its own, its declared values its parameters. A body
@@ -294,7 +298,8 @@ the point of it is that one model has a price and the other has none. Every
 run of more than a line or two contains a \sig{return}, so no single-exit
 piece is feasible and Equation~\eqref{eq:extraction} has nothing to sum.
 The injection split makes two functions, the guards and the rest, each
-declaring nothing; every early return is a flow to the method's end and one
+declaring nothing; the guards' early returns are one flow to the method's
+end, the returns of \sig{price} are its own end and cost nothing, and one
 flow joins the two:
 \begin{align*}
   C_{\mathrm{ext}}(\sig{describe}) &\;\text{ has no value: no feasible segmentation } S
@@ -305,7 +310,7 @@ flow joins the two:
     \underbrace{\exaInjEdges{}}_{|E|} \;=\; \exaInjTotal{}.
 \end{align*}
 Its jumps ignored, the method would slim, so the plan puts it in category 1
-(below), conventionally fixable, and credits the split with it only in the
+of the four defined after the examples, conventionally fixable, and credits the split with it only in the
 post hoc reading.
 
 The second, \sig{build}, is \exbLines{} lines in three stages: the first
@@ -325,9 +330,11 @@ The widest piece is \sig{parseRows}, seam \exbSinewWidth{}. The injection
 split alone, choosing by worst seam first, cuts at both stage boundaries so
 that no function declares more than one value, and pays a flow at each. Its
 three functions are marked \sig{INJECTION} in the figure: \sig{prepare}
-holds the two declarations and declares nothing, \sig{tally} holds both
-loops and declares \sig{records}, and \sig{report} builds the report and
-declares \sig{summary}:
+holds the two declarations and declares nothing; \sig{tally} holds both
+loops and declares \sig{records} alone, since \sig{skipped}, declared with a
+literal and first used inside it, moves in, as it moves into SinewSlim's
+\sig{parseRows}, which hands it back; and \sig{report} builds the report
+and declares \sig{summary}:
 \begin{equation*}
   C_{\mathrm{inj}}(\sig{build}) \;=\;
     \underbrace{(\exbInjFunOneDeclares{} + 1)}_{\sig{prepare}} \;+\;
@@ -346,11 +353,12 @@ at or under the target, so no piece is extracted inside either:
     \underbrace{0}_{\sum_f C_{\mathrm{ext}}(S_f)} \;=\; \exbCombSum{},
 \end{equation*}
 a saving of \exbSavingWrapped{} against extraction wrapped as one function
-and \exbSavingPlain{} against plain extraction. The saving is the
-parameters, \sig{options} priced into each piece and \sig{rows} into the
-first, which the split never prices, and \sig{summary}, which extraction
-separates from the loop that fills it and the split keeps with it; against
-that the split pays 1 for its flow.
+and \exbSavingPlain{} against plain extraction. The \exbSavingPlain{} is
+the three parameters, \sig{options} priced into each piece and \sig{rows}
+into the first, which the split never prices; \sig{summary}, which
+extraction separates from the loop that fills it and the split keeps with
+it; and \sig{records}, an input to both pieces but declared by one
+function; against those five the split pays 1 for its flow.
 
 \begin{figure}[tbp]
 \begin{minipage}[t]{0.47\textwidth}
@@ -599,14 +607,22 @@ points above the interval. The margin holds under the two readings that
 could move it, both in Section~\ref{sec:threats}: with the test code the
 scope let through left out the upper bound is \testHOneHi{}\%, and with every
 method the instrument's fault cost category 3 restored the pooled share would
-be \catThreeCRestoredShare{}, still under the quarter. The count is far above
+be \catThreeCRestoredShare{} against \pooledCatThreeC{}; that interval was
+not recomputed, and a shift of that size leaves the upper bound,
+\hiCatThreeC{}\%, under the quarter. The count is far above
 the minimum of \planHOneMinimum{}; it is the share that falls short. The
 tiers agree (\tierHighCatThreeC{}, \tierMidCatThreeC{} and
 \tierLowCatThreeC{}), and the median repository's own share,
 \medianCatThreeC{} over \reposCatThreeC{} repositories with a stuck method,
 is lower still, so the large repositories carry the pooled figure upward, not
-down. The remaining \catFourC{} stuck methods (\catFourCShare{}) have no plan
-from either side; Section~\ref{sec:explore} reads them.
+down. The stuck methods are concentrated, the ten repositories with the most
+holding \topTenShare{} of them, and in \reposStuckNoCatThree{} of those
+\reposCatThreeC{} repositories (\reposStuckNoCatThreeShare{}) no stuck
+method is rescued at all; the rescue share of the ten largest runs from
+\topTenCatThreeCMin{} to \topTenCatThreeCMax{}, around the pooled figure
+rather than above it. The remaining \catFourC{} stuck methods
+(\catFourCShare{}) have no plan from either side;
+Section~\ref{sec:explore} reads them.
 
 \begin{table}[t]
 \centering\small
@@ -622,19 +638,6 @@ from either side; Section~\ref{sec:explore} reads them.
 \input{generated/tab_categories}
 \end{table}
 
-\paragraph{Where the stuck methods are.} The pooled figure counts each stuck
-method once, and the stuck methods are concentrated: the largest repository,
-\sig{\topRepo}, holds \topRepoStuckShare{} of them, the ten with the most
-hold \topTenShare{} and the thirty with the most \topThirtyShare{}. The
-median repository has \medianLongPerRepo{} long methods and
-\medianStuckPerRepo{} stuck ones; \reposNoStuck{} repositories have no stuck
-method. Over the \reposCatThreeC{} that have one, the quartiles of each
-repository's own rescue share are \catThreeCQone{}, \medianCatThreeC{} and
-\catThreeCQthree{}: in \reposStuckNoCatThree{} repositories
-(\reposStuckNoCatThreeShare{}) no stuck method is rescued at all. The rescue
-share of the ten largest runs from \topTenCatThreeCMin{} to
-\topTenCatThreeCMax{}, around the pooled figure rather than above it.
-
 \paragraph{Why the combined split fails.} Table~\ref{tab:reasons} gives
 every reason, under each split. A loop longer than the target is the reason
 for \loopShareStuckNoPlanC{} of the \nStuckNoPlanC{} stuck methods the
@@ -644,7 +647,13 @@ usually a \sig{switch} of many short cases, a \sig{try} with resources or a
 \sig{finally}, and a \sig{switch} that falls through account for most of the
 rest. A jump crossing every cut, the obstacle that most often stops
 extraction, stops the combined split on only \jumpsStuckNoPlanC{}: on jumps,
-the split does what it was built to do.
+the split does what it was built to do. That is more than the
+\jumpsStuckNoPlan{} the injection split alone stops at for the same reason:
+\nCatThreeLost{} of them are the fault of Section~\ref{sec:threats}, and
+the rest are methods the injection split stops at a loop or a statement over
+the target, which the combined split may take whole as a function body, so
+that the obstacle it reports moves to the jump crossing every cut outside
+it.
 
 \begin{table}[t]
 \centering\small
@@ -681,8 +690,7 @@ them are larger by a single value. The comparison leans towards the split by
 definition, since a function's seam leaves out the method's parameters and a
 piece's width counts them, and the scans cannot say by how much; and the
 split gets there by cutting more, more functions than SinewSlim makes pieces
-for \splitLargerParts{}. Whether fewer values in more parts is a better shape
-is a question about reading, not one this study measures.
+for \splitLargerParts{}.
 
 \paragraph{Post hoc.} Nothing in the two paragraphs that follow was
 registered. Each was made after the registered analysis had been read, and
@@ -692,12 +700,13 @@ each is a reading of the same scans, not a new measure.
 injection only with what no restructuring could reach, but the combined
 split has a plan for \planInCatOneShare{} of the category 1 methods and
 \planInCatTwoShare{} of category 2, taking them apart as they stand, with no
-guard inverted and no record written. Of the \nNotConventional{} stuck
-methods that nothing conventional fixes, categories 3 and 4 together, it
-rescues \rescueOfNotConventional{} (population
+guard inverted and no record written. Read over the \nNotConventional{}
+stuck methods that nothing conventional fixes, categories 3 and 4 together,
+category 3 is \rescueOfNotConventional{} (population
 \rescueOfNotConventionalCi{}, median repository
-\rescueOfNotConventionalMedian{}). The registered reading stands; this one
-says where the shortfall against the quarter comes from.
+\rescueOfNotConventionalMedian{}): Table~\ref{tab:categories} with a
+different denominator, not a new measure. The registered reading stands;
+this one says where the shortfall against the quarter comes from.
 
 \paragraph{Post hoc 2: the shape of the plans injection wins.} Every plan
 records its functions, each a run, a decision or a handler, and its links,
@@ -714,12 +723,9 @@ Read as a population, the long methods for which a straight sequence of
 functions is the cheaper split under the registered models, the plan a
 sequence and either cheaper than extraction wrapped as one function or the
 only plan there is, are \ciSeqWay{} of the long methods (\nSeqWay{} in the
-sample), and \popSeqWayMethods{} of all methods. Nearly all are methods
-extraction would also split: \popSeqImproved{} of the long methods are
-improved, against \popSeqRescued{} rescued. Against plain extraction, a
-saving of 2 or more, the share is \ciSeqWayStrict{}; with the ties it is
-\popSeqWayTied{}; and plans of any shape that improve or rescue are
-\popInjWay{}.
+sample), or \ciSeqWayStrict{} against plain extraction, a saving of 2 or
+more. Nearly all are methods extraction would also split; the ancillary data
+has the figure with ties and for plans of any shape.
 
 \begin{table}[t]
 \centering\small
@@ -762,17 +768,13 @@ reads what it holds.
 The shape of the plans separates the two results by mechanism. Where
 injection is chosen over extraction, the method is almost always a sequence:
 stages in order, each consuming what the one before produced, sometimes
-leaving early. Equations~\eqref{eq:extraction} and~\eqref{eq:injection} say
-where a sequence of functions is cheaper than a method lifted into pieces,
-and it is not at every hand-off. A boundary that one computed value crosses
-costs the same both ways. The flow is cheaper where several values cross one
-boundary, each priced once as a declared value against twice as an output
-and an input, or three times each as a record; wherever a method's
-parameters are read past the first cut, which extraction prices as inputs
-and injection does not price at all; and where what the last piece hands
-back is the method's own result. The method \sig{build} in
-Figure~\ref{fig:examples} shows the second, with a value that extraction
-separates from the loop that fills it. The saving is small because most
+leaving early. The reading of Equations~\eqref{eq:extraction}
+and~\eqref{eq:injection} in Section~\ref{sec:background} says where such a
+sequence is cheaper than a method lifted into pieces, and it is not at every
+hand-off: where several values cross one boundary, where a method's
+parameters are read past the first cut, and where the last piece hands back
+the method's own result; \sig{build} in Figure~\ref{fig:examples} shows
+the second. The saving is small because most
 boundaries carry one or two values: a median of \savingMedian{}, and
 \savingOneShare{} of the improved methods save exactly 1, the wrapper
 function's own cost. The claim the data supports is that the long methods
@@ -780,7 +782,7 @@ people write are often pipelines, and that under the registered cost models
 a pipeline whose stages hand on more than one value, or read the method's
 parameters throughout, is cheaper written as a sequence of functions than
 contained in a method and lifted into pieces. The scans do not record which
-of the three sources each saving comes from, so their shares are not known.
+source each saving comes from, so their shares are not known.
 The rescue has the other mechanism: the methods only injection takes apart
 are mostly branching, an \sig{if} or \sig{switch} whose arms become flows,
 \shapeRescuedReturnsOfBranching{} of them with early exits, which is where
@@ -793,24 +795,20 @@ the same under the registered models, and what the sequence adds is not
 priced. Under injection the caller becomes configuration: the order of the
 functions and what each receives are declared, rather than read from
 statement order and the local variables that carry one stage's product to
-the next, so the control flow and the data flow can be drawn apart, and
-drawn directly; the author's IntelliJ plugin renders such a configuration as
-one diagram \cite{iocc}. Whether a declared flow is easier to follow than
-the method it replaces is a question about reading, which no study in the
-programme of Section~\ref{sec:next} measures; the \nSeqWay{} methods are
-where such a study would look, if one is ever made. Every method here was
-written by people, before AI coding assistants were in general use. Whether
-code written with assistants is stuck as often, and in the same ways, is the
-third study of that programme, and the figures here are the baseline it
-compares against.
+the next. Whether a declared flow is easier to follow than the method it
+replaces is a question about reading, which nothing here measures; the
+\nSeqWay{} methods are where such a study would look. Every method here was
+written by people, before AI coding assistants were in general use; whether
+code written with assistants is stuck as often, and in the same ways, is a
+study for which the figures here are the baseline.
 
 \section{What the redesign list holds}\label{sec:explore}
 
 Nothing in this section was registered or bears on a registered figure. It
 was read after the results, to decide what the tools should do with the
 methods they stop at, by a separate step whose harness, scripts and results
-are in the study's repository; Section~\ref{sec:next} turns the reading into
-a programme. The
+are in the study's repository; Section~\ref{sec:next} says what follows
+from it. The
 \catFourC{} category 4 methods, \catFourCShare{} of the stuck methods and
 \exRateOverall{} of the long methods, are those SinewSlim cannot slim and
 the combined split has no plan for. A harness re-read \exReread{} of them
@@ -889,8 +887,8 @@ the most complex of the data classes (\exDataNoneCogPerLine{} per line,
 median \exDataNoneLength{} lines) and need a different split, not a looser
 limit. SinewSlim alone gains at about the same rate (\exLimitSixConventionalN{}
 at six), so a higher limit moves categories 1 to 3 as well as 4, which is
-why the limit is swept as a whole in the second study of
-Section~\ref{sec:next} rather than raised here.
+why Section~\ref{sec:next} proposes sweeping it over the whole population
+rather than raising it here.
 
 \begin{table}[t]
 \centering\small
@@ -912,125 +910,63 @@ complexity to speak of, and the dense logic, at about
 
 \paragraph{Where the list is.} The list is in \exRepos{} repositories, so
 it is widespread, and it is also clustered beyond what repository size
-explains. Its dispersion index is \exDispersion{}, where 1 would mean spread
-as the long methods are; the ten repositories with the most hold
+explains. Its dispersion index, the chi-square of each repository's count
+against the count its long methods predict, over the repositories with a
+long method less one, is \exDispersion{}, where 1 would mean spread as the
+long methods are; the ten repositories with the most hold
 \exTopTenShare{}, close to the \exTopTenSizeShare{} their share of long
 methods predicts, so the clustering is not only the largest few; and
-\exHotRepos{} repositories whose category 4 rate is significantly above the
-pooled rate hold \exHotShare{} of the list from \exHotLongShare{} of the
-long methods. The largest, \sig{\exTopRepo}, holds \exTopRepoN{}
-(\exTopRepoShare{}). The classes split by how they are spread
-(Table~\ref{tab:explore-classes}). The literal classes are concentrated: the
-ten repositories with the most array initialisers hold \exArrayTopTen{} of
-them where size predicts \exArrayTopTenSize{}, a dispersion of
-\exArrayDispersion{}, and the long argument lists, string concatenations and
-nested tries (\exNestedTryTopTen{} in ten repositories) are alike, which
-looks like generated code or a house style of building data in code. The
-logic classes are spread as the long methods are, flat switches at
-\exFlatDispersion{} and ifs that pass values on at \exIfPassDispersion{},
-which looks like ordinary ways of writing code. By domain, coded crudely by
-keyword from each repository's description and topics
-(Table~\ref{tab:explore-domains}), the rate is highest in games and graphics
-(\exRateGames{}), numeric and scientific code (\exRateNumeric{}) and
-language tooling (\exRateTooling{}), and lowest in distributed systems
-(\exRateDistributed{}) and learning examples (\exRateLearning{}); the causes
-differ too, numeric code mostly data (\exNumericDataShare{}) and language
-tooling mostly indivisible (\exToolingIndivisibleShare{}), switches over
-tokens and opcodes, and tables. The intervals for the small domains are
-wide. Two repositories, \exBudgetRepos{}, ran out of the call-resolution
-budget the statement readings use, so their internal calls are undercounted;
-the complexity figures do not depend on call resolution.
+\exHotRepos{} repositories whose standardised residual against the pooled
+rate exceeds 3.9, about the Bonferroni bound for \nUsable{} tests at the
+plan's level, hold \exHotShare{} of the list from \exHotLongShare{} of the
+long methods. The classes split by how they are spread
+(Table~\ref{tab:explore-classes}). The literal classes are concentrated:
+the ten repositories with the most array initialisers hold
+\exArrayTopTen{} of them where size predicts \exArrayTopTenSize{}, a
+dispersion of \exArrayDispersion{}, and the long argument lists, string
+concatenations and nested tries (\exNestedTryTopTen{} in ten repositories)
+are alike, which looks like generated code or a house style of building
+data in code. The logic classes are spread as the long methods are, flat
+switches at \exFlatDispersion{} and ifs that pass values on at
+\exIfPassDispersion{}, which looks like ordinary ways of writing code. A
+reading by domain, coded by keyword from each repository's description and
+topics, is in the ancillary data; its intervals are wide. Two repositories,
+\exBudgetRepos{}, ran out of the call-resolution budget the statement
+readings use, so their internal calls are undercounted; the complexity
+figures do not depend on call resolution.
 
-\begin{table}[t]
-\centering\small
-\caption{Exploratory: the category 4 rate by domain, population-weighted with its \planLevel{} bootstrap interval, and each domain's list by cause. Domains are coded by keyword from each repository's description and topics; the coding is in the ancillary data.}
-\label{tab:explore-domains}
-\fitwidth{\input{generated/tab_explore_domains}}
-\end{table}
-
-\section{Next studies: refining the tools to the methods that matter}\label{sec:next}
+\section{What follows}\label{sec:next}
 
 The redesign list is where both tools stop, and Section~\ref{sec:explore}
-says it is not one thing. The studies that follow are a sequence rather than
-a list: each is a change to the tools or to how they are read, each narrows
-the list the next has to explain, and the last asks whether what remains is
-a measure that holds on code people did not write. Each will be registered
-as this study was, by a dated commit of its plan, seed and reading rule in a
-public repository before its sample is drawn, with scripts from which anyone
-can repeat it.
-
-\paragraph{Study 1: the classes as rules.} The exploratory harness classed
-every category 4 method from its source by explicit thresholds: a switch
-whose cases are all three lines or fewer is a flat table, a chain of four or
-more calls is a builder, eight or more arguments is a long argument list, an
-\sig{if} with two or more \sig{else if} arms is a dispatch, a jump is placed
-by the loop, \sig{try} or \sig{switch} that contains it, and a data-coupled
-method is marked by the first limit from six to ten at which a plan appears.
-The first study moves those rules into the instrument, so that a stuck
-method the split cannot plan is reported with its class and the advice that
-fits it: a table to leave in place or move to configuration, a case to
-extract, a loop body to extract with its jump as a status result, a stage
-whose products to group. Two hypotheses. The rules are stable: on a fresh
-sample drawn the same way they give the same class shares, within the
-intervals here. And developers agree with them: shown a method with its
-class and its notice, reviewers accept the class at a rate reported per
-class, the tables first, since they are a third of the list and if reviewers
-do not call a table a long method the trigger itself changes. The thresholds
-are tuned to that agreement and then fixed. This study absorbs the
-clustering reading: the per-repository and per-domain rates are reported as
-a term of the class shares, not as a finding of their own.
-
-\paragraph{Study 2: a refinement per class, and what is left.} With the
-classes fixed, each gets the change that reaches it, and every change is
-tested on the methods already listed, without a new sample.
-\begin{itemize}
-\item \emph{A jump inside a loop, \sig{try} or \sig{switch}}
-  (\exControlContained{} methods): the instrument learns named outcomes, so
-  that a \sig{continue}, \sig{break} or \sig{return} inside a body becomes
-  an injected function's named exit, wired in configuration; and the writing
-  rule that reaches the same methods from the other side, a loop body kept
-  under the cap and extracted as it grows, its jump expressed as the
-  extracted method's status result, tested by rewriting the methods under it
-  and rescanning.
-\item \emph{An \sig{if} that passes values on} (\exIfPasses{} methods): the
-  branches become injected functions with the value as the flow's argument.
-\item \emph{Data coupling} (\exData{} methods): the limit of five swept from
-  three to ten, reporting at each the methods with a plan, the categories,
-  and the values a piece or function actually carries, to find where further
-  plans stop paying for wider seams; and the writing rule that reaches the
-  same methods, no more than the limit's worth of values live across a stage
-  boundary, kept by grouping a stage's products or ending the stage where
-  they are consumed, tested the same way and priced both as a record and as
-  a type.
-\item \emph{Tables and literals} (\exTables{} methods): out of the trigger,
-  by study 1.
-\end{itemize}
-Each refinement is read by the same two numbers: how many of its class
-become slimmable, and how cognitive complexity per line moves, since a
-rewrite that slims by growing denser has not helped. The measure at the end
-of the study is what is left when every class has had its refinement. That
-residual is the proposal for a definition that needs no human judgement: a
-\emph{god method} is a method over the cap that no split at the chosen limit
-and no rule-following rewrite takes apart. The hypothesis is that the
-residual is small, under one in a hundred long methods on the exploratory
-reading, and that it is dense logic rather than data, cognitive complexity
-per line above the logic classes' floor here, so that the notice it carries
-is the one that says redesign, and says it for a reason the tool can state.
-
-\paragraph{Study 3: the measures on code written with assistants.} Every
-method here predates AI coding assistants, by the plan's as-of date. The
-third study draws a sample by the same design from repositories whose code
-was written after assistants were in general use, scans it with the refined
-instrument, and compares the long share, the stuck share, the class shares
-and the residual with the figures here. The hypothesis is that the measures
-hold: the same classes appear in shares within the intervals of this study,
-and the residual is as small and of the same kind. If it holds, the
-instrument is a monitor for generated code that needs no method-by-method
-review: it confirms that a method can be taken apart before it grows too
-big, and flags the few that cannot with their reason. The limit of that
-claim is stated with it. The measures say nothing about how methods couple
-to one another or whether the code will change well; they confirm
-decomposition, and only that.
+says it is not one thing. Three studies follow from it, each to be
+registered as this one was, by a dated commit of its plan, seed and reading
+rule in a public repository before its sample is drawn. The first moves the
+exploratory classes into the instrument as rules with fixed thresholds, so
+that a method the split cannot plan is reported with its class and the
+advice that fits it, and tests two things: that a fresh sample drawn the
+same way gives the same class shares, within the intervals here, and that
+reviewers shown a method with its class accept it, the tables first, since
+if reviewers do not call a table a long method the trigger itself changes.
+The second gives each class the change that reaches it, tested on the
+methods already listed: named exits for a jump inside a loop, \sig{try} or
+\sig{switch} (\exControlContained{} methods); the branches of an \sig{if}
+that passes values on as functions with the value as the flow's argument
+(\exIfPasses{}); and for data coupling (\exData{}) the limit of five swept
+from three to ten over the whole population, since Section~\ref{sec:explore}
+shows a higher limit moves categories 1 to 3 as well as 4. Each refinement
+is read by how many of its class become slimmable and by how cognitive
+complexity per line moves, since a rewrite that slims by growing denser has
+not helped. What is left when every class has had its refinement is the
+proposal for a definition of a god method that needs no human judgement, a
+method over the cap that no split at the chosen limit and no rule-following
+rewrite takes apart, expected to be under one in a hundred long methods and
+to be dense logic rather than data. The third draws a sample by the same
+design from repositories whose code was written after assistants were in
+general use, scans it with the refined instrument, and compares the long
+share, the stuck share, the class shares and the residual with the figures
+here, which are its baseline. The claim is bounded to decomposition: the
+measures say nothing about how methods couple to one another or whether the
+code will change well.
 
 \section{Threats to validity}\label{sec:threats}
 
@@ -1046,8 +982,8 @@ every count rests on, five parameters a piece, five carried values a
 function, a trigger of 26 and a target of 25, are fixed points: the trigger
 is the author's own earlier finding, and Section~\ref{sec:explore} shows a
 limit of six gives a plan to \exLimitSix{} of the redesign list, so each
-would move the categories; the second study of Section~\ref{sec:next} sweeps
-the limit for that reason. The split is a projection: none of this code was
+would move the categories; Section~\ref{sec:next} proposes sweeping the
+limit for that reason. The split is a projection: none of this code was
 written for function injection, so a plan is what the split would cost, not
 what anyone paid, and the migration is not analysed here. The injection
 split's limits decide much: loops and lambda bodies are never cut between
@@ -1080,8 +1016,9 @@ has a plan for, all with the reason \emph{jumps}; both lists are in the
 ancillary data, and both count against injection. The most the second could
 add to \Hone{} is every lost method restored to category 3,
 \catThreeCRestoredShare{} pooled, under the quarter. The split also charges
-one flow too many for an early return in a method's last function, which
-can only overstate its cost. The scope's globs let through test code in
+a flow for an early return in a function that otherwise falls off the
+method's end, where the flow goes where falling off the end goes; it can
+only overstate injection's cost. The scope's globs let through test code in
 directories named otherwise (\sig{\testTopSegment},
 \sig{\testSecondSegment}): \testDroppedLong{} long methods
 (\testDroppedLongShare{}) in \testRepos{} repositories. With every method
@@ -1103,12 +1040,9 @@ timestamp. A reader who wants more than that has the plan as registered,
 deposited with the data, and the scripts, from which every step from the
 draw to this paper's numbers is repeated without the author. The exploratory reading
 is one pass over one list by its author, its class thresholds were chosen by
-eye to sort that list and are not yet validated, which is the first study's
-job, and its domain coding is by keyword. The programme of
-Section~\ref{sec:next} is a plan, not a finding: the definition of a god
-method it proposes is the residual of refinements not yet made, and the
-claim that the measures hold on code written with assistants is the
-hypothesis of a study not yet run. The study is Java only, and
+eye to sort that list and are not yet validated, which is the first
+proposed study's job. The studies of Section~\ref{sec:next} are proposals,
+not findings. The study is Java only, and
 the author created the framework and both products: this is why the sample
 was drawn by a separate tool with a seed fixed in the plan, why every cost
 is the products' and fixed before the plan, why the two totals are never
@@ -1122,27 +1056,21 @@ assistants were in general use, \stuckShare{} of the long methods cannot be
 slimmed by single-exit Extract Method as SinewSlim models it. The registered
 hypothesis that function injection takes apart at least a quarter of them is
 refuted: it takes apart \ciCatThreeC{}, the bar \hOneBarGap{} points above
-the interval. A second reading, not registered, says where the shortfall
-sits: nearly half of the stuck methods are early-return methods the plan
-counted as conventionally fixable, and the split takes three in four of
-those apart as they stand. Of what nothing conventional fixes, it takes
-apart about half. Where extraction would do and injection is chosen
-instead, the method is a pipeline in \shapeImprovedAnySequence{} of cases,
-cheaper under the registered cost models as a sequence of functions than
-contained in a method and lifted into pieces, because a value crossing a
-boundary is priced once as a declared value and twice as an output and an
-input, and a parameter read throughout is priced by extraction alone. Those
-pipelines are \popSeqWay{} of the long methods (\popSeqWayStrict{} against
-plain extraction). The quarter of the stuck methods that no split takes apart is,
-on an exploratory reading, a third tables and literals that are long without
-being complex, and otherwise dense logic blocked by a jump inside a loop or
-\sig{try}, by an \sig{if} whose branches pass values on, or by more values
-than any cut may carry. Three registered studies follow from it: the
-classes as rules in the tools, a refinement per class down to the methods
-no split and no rule-following rewrite takes apart, which is a definition of
-a god method that needs no human judgement, and the same measures on code
-written with assistants, to see whether they hold as a monitor of
-decomposition. The author expected more of the rescue, and the plan was written so that
+the interval. A reading not registered says where the shortfall sits:
+nearly half of the stuck methods are early-return methods the plan counted
+as conventionally fixable, and the split takes three in four of those apart
+as they stand. Where extraction would do and injection is chosen instead,
+the method is almost always a pipeline, cheaper under the registered cost
+models as a sequence of functions because a value crossing a boundary is
+priced once as a declared value and twice as an output and an input, and a
+parameter read throughout is priced by extraction alone. The quarter of the
+stuck methods that no split takes apart is, on an exploratory reading, a
+third tables and literals that are long without being complex, and
+otherwise logic blocked by a jump inside a loop or \sig{try}, by an
+\sig{if} whose branches pass values on, or by more values than any cut may
+carry; three studies are proposed to turn that reading into rules, a
+refinement per class, and a baseline against code written with assistants.
+The author expected more of the rescue, and the plan was written so that
 the data could say so.
 
 \paragraph{Data availability.} Every number here is produced by a script
@@ -1242,10 +1170,6 @@ received.
   ``What reviewers call a Long Method is a length: a pre-registered test of
   coupling divergence as a god-unit signal, and what it settled instead,''
   2026. \url{https://doi.org/10.5281/zenodo.23749773}
-
-\bibitem{iocc} D.~Sagenschneider,
-  ``OfficeFloor IoCC,'' IntelliJ plugin, JetBrains Marketplace, 2026.
-  \url{https://plugins.jetbrains.com/plugin/35087}
 
 \bibitem{silva2014} D.~Silva, R.~Terra and M.~T.~Valente,
   ``Recommending automated extract method refactorings,'' in
